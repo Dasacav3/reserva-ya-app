@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../lib/fontawesome-free-5.15.1-web/css/all.css">
+    <script src="../lib/fontawesome-free-5.15.1-web/js/all.js"></script>
+    <!-- <link rel="stylesheet" href="../lib/bootstrap-icons-1.2.0/font/bootstrap-icons.css"> -->
+</head>
+<body class="body-login">
+    <div class="container">
+        <div class="return">
+            <a href="../index.html"><i class="fas fa-arrow-circle-left return-icon"></i></a>
+        </div>
+        <div class="login">
+            <div class="login-img">
+                <img src="../img/favicon.png" alt="" class="login-img__img">
+            </div>
+            <form action="dashboard.html" class="form-login">
+                <label for="user_name">Nombre de usuario</label> <br>
+                <input type="email" id="user_name" required placeholder="example@domain.com"> <br>
+                <label for="password">Contraseña</label> <br>
+                <input type="password" id="password" required minlength="12" maxlength="30"> <br>
+                <input type="checkbox" name="" id="remember"> Recordar <br>
+                <input type="submit" value="Iniciar sesión" id="submit">
+            </form>
+        </div>
+        <div class="btn-other-sesion">
+            <button class="btn">Iniciar sesión con Google</button>
+        </div>
+    </div>
+</body>
+</html>
