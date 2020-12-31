@@ -10,6 +10,11 @@
     --red-dark: #8F4241;
 }
 
+html{
+    scroll-behavior: smooth;
+    -webkit-scroll-behavior: smooth;
+}
+
 body{
     font-family: 'Poppins', sans-serif;
 }
@@ -44,14 +49,14 @@ body::-webkit-scrollbar-thumb{
     height: 86px; 
 }
 
-.nav-bar__nav{
+/* .nav-bar__nav{
     transform: translateX(-400px);
     display: none;
-}
+} */
 
-.show{
+/* .show{
     transform: translateX(0px);
-}
+} */
 
 .nav-bar__nav-ul{
     display: flex;
@@ -73,6 +78,7 @@ body::-webkit-scrollbar-thumb{
 
 .nav-bar__nav-ul-li a:hover{
     border-bottom: 2px #fff solid;
+    filter: drop-shadow();
 }
 
 .menu-btn{
@@ -83,7 +89,7 @@ body::-webkit-scrollbar-thumb{
     color: #fff;
     font-size: 2em;
     z-index: 20;
-    /* display: none; */
+    display: none;
 }
 
 
@@ -105,7 +111,7 @@ body::-webkit-scrollbar-thumb{
     background: var(--deep-taupe);
     border-radius: 20px;
     text-align: center;
-    padding: 5px;
+    padding: 10px;
     font-weight: 600;
 }
 
@@ -320,6 +326,8 @@ body::-webkit-scrollbar-thumb{
 
 .contacto-map > iframe{
     border-radius: 30px;
+    width: 600px;
+    height: 450px;
 }
 
 .contacto-form{
@@ -402,10 +410,11 @@ body::-webkit-scrollbar-thumb{
 /* ------------------------------------------------------------- */
 
 .body-login {
-	background: var(--middle-blue-green);
+    background: var(--middle-blue-green);
+    height: 100vh;
 }
 
-.container {
+.login-container {
 	width: 360px;
 	background: var(--deep-taupe);
 	margin: 10em auto;
@@ -485,29 +494,6 @@ body::-webkit-scrollbar-thumb{
 	font-weight: 700;
 }
 
-
-/* -------------------------------------------- */
-/* Dashboard */
-/* -------------------------------------------- */
-
-.dashboard-container{
-    margin: 20px auto;
-    width: 100%;
-}
-
-.navbar-reservaya{
-    background: var(--deep-taupe);
-    width: 371px;
-    height: 95vh;
-}
-
-.main-content{
-    background: var(--deep-taupe);
-    width: 1451px;
-    height: 95vh;
-}
-
-
 /* -------------------------------------------- */
 /* Media Queries */
 /* -------------------------------------------- */
@@ -515,8 +501,25 @@ body::-webkit-scrollbar-thumb{
 
 /* X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
+    .nav-bar__img{
+        height: 80px;
+    }
+
+    .menu-btn{
+        display: block;
+    }
+
+    .welcome-slide{
+        height: 130vh;
+    }
+
     .welcome-slide-container{
-        width: 400px;
+        width: auto;
+        height: auto;
+    }
+
+    .welcome-slide__h3{
+        font-size: 45px;
     }
 
     .welcome-slide__img{
@@ -526,7 +529,71 @@ body::-webkit-scrollbar-thumb{
     .services-container,
     .contacto-container,
     .nosotros-container{
-        width: 400px;
+        width: 380px ;
+    }
+
+    .services-container{
+        display: grid;
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .services-container h2{
+        grid-column: 1/2;
+    }
+
+    .nosotros-container{
+        display: grid;
+        grid-template-areas: "imagen"
+                             "nosotros"
+                             "mision"
+                             "vision";
+        grid-template-columns: 1fr;
+        border: 1px solid black;
+        border-radius: 20px;
+        background: var(--champagne-pink);
+        max-width: 1200px;
+    }
+
+    .contacto-map > iframe{
+        border-radius: 30px;
+        width: auto;
+        height: 300px;
+    }
+
+    .contacto-form form{
+        width: auto;
+        justify-self: center;
+    }
+
+    .contacto-form > form > input{
+        width: 300px;
+    }
+
+    .contacto-form > form > textarea{
+        width: 300px;
+    }
+
+    .body-login {
+        background: var(--middle-blue-green);
+    }
+    
+    .login-container {
+        width: 300px;
+        margin: 2em auto;
+    }
+    
+    .form-login input {
+        width: 250px;
+    }
+
+    .return-icon {
+        color: rgb(83, 79, 79);
+        width: 2.5em !important;
+        height: 2.5em !important;
+        position: absolute;
+        margin-left: 15px;
+        margin-top: 2em;
     }
 }
 
@@ -553,6 +620,10 @@ body::-webkit-scrollbar-thumb{
     .contacto-container,
     .nosotros-container{
         width: 500px;
+    }
+
+    .contacto-form{
+        text-align: center;
     }
 }
 
@@ -583,13 +654,12 @@ body::-webkit-scrollbar-thumb{
 
     .contacto-form{
         display: flex;
-        justify-content: center;
-        width: 900px;
+        justify-self: center;
+        width: auto;
     }
 
     .contacto-form form{
-        text-align: start;
-        width: 500px;
+        width: auto;
     }
 
     .contacto-container{
@@ -599,6 +669,10 @@ body::-webkit-scrollbar-thumb{
         justify-items: center;
         align-items: center;
         grid-template-columns: 1fr;
+    }
+
+    .contacto-form{
+        text-align: center;
     }
 }
 

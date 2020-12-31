@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --china-pink: #e56399ff;
+    --champagne-pink: #e5d4ceff;
+    --burnt-sienna: #de6e4bff;
+    --middle-blue-green: #7fd1b9ff;
+    --deep-taupe: #7a6563ff;
+    --gray-dark: #453F3F;
+    --red-dark: #8F4241;
+}
+
+*{
+    scroll-behavior: smooth;
+}
+
+/* -------------------------------------------- */
+/* Dashboard */
+/* -------------------------------------------- */
+
+.dashboard-container{
+    display: grid;
+    margin: 20px auto;
+    width: 100%;
+}
+
+.navbar-reservaya{
+    background: var(--deep-taupe);
+    width: 371px;
+    height: 95vh;
+}
+
+.main-content{
+    background: var(--deep-taupe);
+    width: 1451px;
+    height: 95vh;
+}
