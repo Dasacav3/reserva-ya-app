@@ -520,6 +520,27 @@ body::-webkit-scrollbar-thumb{
 
     .welcome-slide-container{
         width: auto;
+    }
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .nav-bar__img{
+        height: 80px;
+    }
+
+    .menu-btn{
+        display: block;
+    }
+
+    .welcome-slide{
+        height: 130vh;
+    }
+
+    .welcome-slide-container{
+        width: auto;
+        height: auto;
+    }
+    .welcome-slide-container{
+        width: auto;
 
     }
 
@@ -682,6 +703,6 @@ body::-webkit-scrollbar-thumb{
 }
 
 /* X-Large devices (large desktops, less than 1400px) */
-@media (max-width: 1399.98px) {
+/* @media (max-width: 1399.98px) {
 
-}
+} */
