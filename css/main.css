@@ -509,6 +509,7 @@ body::-webkit-scrollbar-thumb{
         display: block;
     }
 
+<<<<<<< HEAD
     .welcome-slide{
         height: 130vh;
     }
@@ -516,6 +517,10 @@ body::-webkit-scrollbar-thumb{
     .welcome-slide-container{
         width: auto;
         height: auto;
+=======
+    .welcome-slide-container{
+        width: auto;
+>>>>>>> main
     }
 
     .welcome-slide__h3{
