@@ -49,14 +49,9 @@ body::-webkit-scrollbar-thumb{
     height: 86px; 
 }
 
-/* .nav-bar__nav{
-    transform: translateX(-400px);
-    display: none;
-} */
-
-/* .show{
+.nav-bar__nav-ul.show{
     transform: translateX(0px);
-} */
+}
 
 .nav-bar__nav-ul{
     display: flex;
@@ -521,14 +516,8 @@ body::-webkit-scrollbar-thumb{
     .welcome-slide-container{
         width: auto;
     }
-/* X-Small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
     .nav-bar__img{
         height: 80px;
-    }
-
-    .menu-btn{
-        display: block;
     }
 
     .welcome-slide{
@@ -626,26 +615,56 @@ body::-webkit-scrollbar-thumb{
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
 
+    .menu-btn{
+        display: block;
+    }
+
     .nav-bar__nav-ul{
         display: block;
         position: absolute;
         top: 0;
         left: 0;
         background: var(--deep-taupe);
-        height: 100%;
+        height: 100vh;
         padding: 50px;
         opacity: .9;
-        transform: translateX();
+        transform: translateX(-500px);
+        transition: transform 1s ease-in-out;
     }
 
     .nav-bar__nav-ul-li{
         padding: 30px 0;
     }
 
-    .services-container,
-    .contacto-container,
-    .nosotros-container{
-        width: 500px;
+    .contacto-form{
+        text-align: center;
+    }
+
+    .contacto,
+    .services,
+    .nosotros{
+        height: auto;
+        margin-top: 8em;
+        margin-bottom: 8em;
+    }
+
+    .contacto-form{
+        display: flex;
+        justify-self: center;
+        width: auto;
+    }
+
+    .contacto-form form{
+        width: auto;
+    }
+
+    .contacto-container{
+        grid-template-areas: "title"
+                             "form"
+                             "map";
+        justify-items: center;
+        align-items: center;
+        grid-template-columns: 1fr;
     }
 
     .contacto-form{
@@ -654,16 +673,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 /* Medium devices (tablets, less than 992px) */
-@media (max-width: 991.98px) {
-    .services-container,
-    .contacto-container,
-    .nosotros-container{
-        width: 750px;
-    }
-}
-
-/* Large devices (desktops, less than 1200px) */
-@media (max-width: 1199.98px) {
+@media (min-width: 768px) and (max-width: 1150px) {
     .services-container,
     .contacto-container,
     .nosotros-container{
@@ -701,4 +711,8 @@ body::-webkit-scrollbar-thumb{
         text-align: center;
     }
 }
+
+/* Large devices (desktops, less than 1200px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    
 }
