@@ -24,5 +24,3 @@ function closeSidebar() {
 		sidebarOpen = false;
 	}
 }
-
-ScrollReveal().reveal("#body", { delay: 300 });
