@@ -94,7 +94,7 @@ body::-webkit-scrollbar-thumb{
     background-image: url(../img/background-main-page.png);
     background-position: center;
     background-size: cover;
-    height: 100vh;
+    height: 950px;
     justify-content: center;
     /* margin-top: 100px; */
 }
@@ -160,7 +160,8 @@ body::-webkit-scrollbar-thumb{
 /* ------------------------------------------------------------- */
 
 .services{
-    height: 100vh;
+    margin: 3em 0;
+    /* height: 100vh; */
     background: url(../img/patterns/light-grey-terrazzo.png);
     background-size: cover;
     display: flex;
@@ -214,7 +215,7 @@ body::-webkit-scrollbar-thumb{
 /* ------------------------------------------------------------- */
 
 .nosotros{
-    height: 100vh;
+    /* height: 100vh; */
     background: url(../img/patterns/light-grey-terrazzo.png);
     background-size: cover;
     display: flex;
@@ -283,7 +284,8 @@ body::-webkit-scrollbar-thumb{
 /* ------------------------------------------------------------- */
 
 .contacto{
-    height: 100vh;
+    /* height: 100vh; */
+    margin: 3em 0;
     background: url(../img/patterns/light-grey-terrazzo.png);
     background-size: cover;
     display: flex;
@@ -518,10 +520,6 @@ body::-webkit-scrollbar-thumb{
     }
     .nav-bar__img{
         height: 80px;
-    }
-
-    .welcome-slide{
-        height: 130vh;
     }
 
     .welcome-slide-container{
