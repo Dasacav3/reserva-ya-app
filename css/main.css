@@ -96,7 +96,6 @@ body::-webkit-scrollbar-thumb{
     background-size: cover;
     height: 950px;
     justify-content: center;
-    /* margin-top: 100px; */
 }
 
 .welcome-slide__h1{
@@ -492,6 +491,76 @@ body::-webkit-scrollbar-thumb{
 }
 
 /* -------------------------------------------- */
+/* Registro */
+/* -------------------------------------------- */
+
+.register-container{
+    width: 500px;
+    height: 700px;
+    background: var(--deep-taupe);
+    border-radius: 10px;
+    margin: 28px auto;
+}
+
+.register{
+    display: flex;
+    justify-content: center;
+}
+
+.register a, label{
+    color: var(--champagne-pink);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register a:hover{
+    color: var(--china-pink);
+}
+
+.register p{
+    margin: 0 0.7em 2em 0.7em;
+    text-align: center;
+    color: var(--champagne-pink);
+}
+
+.register-logo {
+    margin: auto;
+    padding: 20px;
+    width: 150px;
+}
+
+.register-title{
+    text-align: center;
+    color: var(--champagne-pink);
+}
+
+.form-register{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.form-register input{
+    margin: 10px;
+	padding: 10px;
+	font-weight: 600;
+	width: 300px;
+	border-radius: 0.5em;
+	border: none;
+}
+
+.form-register input[type="submit"]{
+    background: var(--middle-blue-green);
+    transition: transform 0.7s;
+}
+
+.form-register input[type="submit"]:hover{
+    transform: scale(1.1);
+}
+
+/* -------------------------------------------- */
 /* Media Queries */
 /* -------------------------------------------- */
 
@@ -607,6 +676,19 @@ body::-webkit-scrollbar-thumb{
         position: absolute;
         margin-left: 15px;
         margin-top: 2em;
+    }
+
+    .register-logo{
+        width: 120px;
+    }
+
+    .register-container{
+        width: 300px;
+        height: 650px;
+    }
+
+    .form-register input{
+        width: 250px;
     }
 }
 
