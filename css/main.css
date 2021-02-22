@@ -496,7 +496,7 @@ body::-webkit-scrollbar-thumb{
 
 .register-container{
     width: 500px;
-    height: 700px;
+    height: 820px;
     background: var(--deep-taupe);
     border-radius: 10px;
     margin: 28px auto;
@@ -684,7 +684,7 @@ body::-webkit-scrollbar-thumb{
 
     .register-container{
         width: 300px;
-        height: 650px;
+        height: 800px;
     }
 
     .form-register input{
