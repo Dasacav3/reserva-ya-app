@@ -17,31 +17,32 @@
             <a href="../../static/login.html"><i class="fas fa-arrow-circle-left return-icon"></i></a>
         </div>
         <div class="register-logo">
-            <img src="../../img/favicon.png" alt="">
+            <img src="../../img/ReservaYa.gif" alt="">
         </div>
         <div class="register-title">
             <h2>Formulario de Registro</h2>
         </div>
         <div class="form-register">
-            <form action="../../static/login.html">
+            <form id="form" action="../../static/login.html">
                 <label for="">Nombres</label> <br>
-                <input type="text"> <br>
+                <input type="text" name="nombre"> <br>
                 <label for="">Apellidos</label> <br>
-                <input type="text"> <br>
+                <input type="text" name="apellido"> <br>
                 <label for="">Fecha de nacimiento</label> <br>
-                <input type="date" name="" id=""> <br>
+                <input type="date" name="nacimiento" id=""> <br>
                 <label for="">Celular</label> <br>
-                <input type="tel"> <br>
+                <input type="tel" name="cel"> <br>
                 <label for="">Correo electronico</label> <br>
-                <input type="email" name="" id=""> <br>
+                <input type="email" name="email" id=""> <br>
                 <label for="">Contraseña</label> <br>
-                <input type="password" name="" id=""> <br>
+                <input type="password" name="password" id=""> <br>
                 <label for="">Repetir contraseña</label> <br>
-                <input type="password" name="" id=""> <br>
-                <input type="submit" value="Enviar">
-                
+                <input type="password" name="password2" id=""> <br>
+                <input type="checkbox" name="terminos" id=""> Acepto los términos y condiciones <br>
+                <input type="submit" value="Enviar">             
             </form>
         </div>
     </div>
+    <script src="../../js/formulario.js"></script>
 </body>
 </html>
