@@ -3,6 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Siging with Google API -->
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<meta name="google-signin-client_id" content="194022587292-n9k668si3qh80jrus1asqripqi8uin6i.apps.googleusercontent.com">
 		<link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
 		<link rel="stylesheet" href="./css/normalize.css" />
 		<link rel="stylesheet" href="./css/main.css" />
@@ -34,7 +37,8 @@
 			</div>
 			<div class="btn-other-sesion">
 				<button class="btn">
-					<a href=""><i class="fab fa-google"></i> Continuar con Google</a>
+					<!-- <a href=""><i class="fab fa-google"></i> Continuar con Google</a> -->
+					<div class="g-signin2" data-onsuccess="onSignIn"></div>
 				</button>
 			</div>
 			<div class="register">
@@ -42,6 +46,15 @@
 					<a href="./templates/usuarios/registro.html">¿No tienes cuenta? Crea tu cuenta</a>
 				</p>
 			</div>
-		</div>	
+		</div>
+		<script>
+			function onSignIn(googleUser) {
+				var profile = googleUser.getBasicProfile();
+				console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+				console.log('Name: ' + profile.getName());
+				console.log('Image URL: ' + profile.getImageUrl());
+				console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+			}
+		</script>
 	</body>
 </html>
