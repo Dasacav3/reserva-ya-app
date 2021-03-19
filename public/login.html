@@ -16,6 +16,27 @@
 		<title>Inicio de Sesión</title>
 	</head>
 	<body class="body-login">
+		<script>
+			window.fbAsyncInit = function() {
+			FB.init({
+				appId      : '{your-app-id}',
+				cookie     : true,
+				xfbml      : true,
+				version    : '{api-version}'
+			});
+				
+			FB.AppEvents.logPageView();   
+				
+			};
+		
+			(function(d, s, id){
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) {return;}
+				js = d.createElement(s); js.id = id;
+				js.src = "https://connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
 		<div class="login-container">
 			<div class="return">
 				<a href="../index.html"><i class="fas fa-arrow-circle-left return-icon"></i></a>
@@ -36,10 +57,35 @@
 				</form>
 			</div>
 			<div class="btn-other-sesion">
-				<button class="btn">
+				<!-- <button class="btn"> -->
 					<!-- <a href=""><i class="fab fa-google"></i> Continuar con Google</a> -->
-					<div class="g-signin2" data-onsuccess="onSignIn"></div>
-				</button>
+					<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+					<a href="#" onclick="signOut();">Sign out</a>
+					<script>
+					function signOut() {
+						var auth2 = gapi.auth2.getAuthInstance();
+						auth2.signOut().then(function () {
+						console.log('User signed out.');
+						});
+					}
+					</script>
+				<!-- </button> -->
+				<script>
+					function onSignIn(googleUser) {
+					  // Useful data for your client-side scripts:
+					  var profile = googleUser.getBasicProfile();
+					  console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+					  console.log('Full Name: ' + profile.getName());
+					  console.log('Given Name: ' + profile.getGivenName());
+					  console.log('Family Name: ' + profile.getFamilyName());
+					  console.log("Image URL: " + profile.getImageUrl());
+					  console.log("Email: " + profile.getEmail());
+			  
+					  // The ID token you need to pass to your backend:
+					  var id_token = googleUser.getAuthResponse().id_token;
+					  console.log("ID Token: " + id_token);
+					}
+				  </script>
 			</div>
 			<div class="register">
 				<p>
@@ -47,14 +93,5 @@
 				</p>
 			</div>
 		</div>
-		<script>
-			function onSignIn(googleUser) {
-				var profile = googleUser.getBasicProfile();
-				console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-				console.log('Name: ' + profile.getName());
-				console.log('Image URL: ' + profile.getImageUrl());
-				console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-			}
-		</script>
 	</body>
 </html>
