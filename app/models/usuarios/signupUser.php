@@ -43,7 +43,7 @@
                 icon: 'success'
               }).then(
                 function(){
-                    window.location='http://localhost:8080/reservaya-mvc/app/views/login.html';
+                    window.location='http://localhost:8080/reservaya-mvc/app/views/login.php';
                 }
               );
             

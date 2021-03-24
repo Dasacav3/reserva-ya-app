@@ -20,7 +20,7 @@
 				<img class="nav-bar__img" src="./app/views/dist/img/logo-reservaya.png" alt="Logo Reserva Ya" />
 				<nav class="nav-bar__nav">
 					<ul class="nav-bar__nav-ul">
-						<li class="nav-bar__nav-ul-li"><a href="index.html" class="nav-bar-link">Inicio</a></li>
+						<li class="nav-bar__nav-ul-li"><a href="index.php" class="nav-bar-link">Inicio</a></li>
 						<li class="nav-bar__nav-ul-li">
 							<a href="#navServices" class="nav-bar-link">Servicios</a>
 						</li>
@@ -31,7 +31,7 @@
 							<a href="#navContacto" class="nav-bar-link">Contacto</a>
 						</li>
 						<li class="nav-bar__nav-ul-li">
-							<a href="./app/views/login.html" class="nav-bar-link">Iniciar sesión</a>
+							<a href="./app/views/login.php" class="nav-bar-link">Iniciar sesión</a>
 						</li>
 					</ul>
 				</nav>

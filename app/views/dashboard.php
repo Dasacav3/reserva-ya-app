@@ -23,13 +23,13 @@
 					<h4>¡Bienvenido!</h4>
 				</div>
 				<div class="navbar__right">
-					<a href="./informacion/soporte.html">
+					<a href="./informacion/soporte.php">
 						<i class="fa fa-question-circle" aria-hidden="true"></i>
 					</a>
-					<a href="./login.html">
+					<a href="./login.php">
 						<i class="fa fa-power-off" aria-hidden="true"></i>
 					</a>
-					<a href="./usuarios/updateInfo.html">
+					<a href="./usuarios/updateInfo.php">
 						<img width="30" src="./dist/img/assets/avatar.svg" alt="" />
 						<!-- <i class="fa fa-user-circle-o" aria-hidden="true"></i> -->
 					</a>
@@ -60,43 +60,43 @@
 				<div class="sidebar__menu">
 					<div class="sidebar__link active_menu_link">
 						<i class="fa fa-home"></i>
-						<a href="./dashboard.html">Inicio</a>
+						<a href="./dashboard.php">Inicio</a>
 					</div>
 					<div class="sidebar__link">
 						<i class="fa fa-id-card" aria-hidden="true"></i>
-						<a href="./usuarios/updateInfo.html">Actualizar información</a>
+						<a href="./usuarios/updateInfo.php">Actualizar información</a>
 					</div>
 					<div class="sidebar__link">
 						<i class="fas fa-book"></i>
-						<a href="./reservas/reserva.html">Reservaciones</a>
+						<a href="./reservas/reserva.php">Reservaciones</a>
 					</div>
 					<div class="sidebar__link">
 						<i class="fa fa-archive"></i>
-						<a href="./mesas/mesas.html">Mesas</a>
+						<a href="./mesas/mesas.php">Mesas</a>
 					</div>
 					<div class="sidebar__link">
 						<i class="fa fa-utensils"></i>
-						<a href="./productos/productos.html">Productos</a>
+						<a href="./productos/productos.php">Productos</a>
 					</div>
 					<div class="sidebar__link">
 						<i class="fa fa-check-circle"></i>
-						<a href="./insumos/insumos.html">Insumos</a>
+						<a href="./insumos/insumos.php">Insumos</a>
 					</div>
 					<div class="sidebar__link">
 						<i class="fa fa-truck"></i>
-						<a href="./proveedores/proveedores.html">Proveedores</a>
+						<a href="./proveedores/proveedores.php">Proveedores</a>
 					</div>
 					<div class="sidebar__link">
 						<i class="fa fa-user"></i>
-						<a href="./usuarios/usuarios.html">Usuarios</a>
+						<a href="./usuarios/usuarios.php">Usuarios</a>
 					</div>
 					<div class="sidebar__link">
 						<i class="fa fa-address-book"></i>
-						<a href="./informacion/informacion.html">información</a>
+						<a href="./informacion/informacion.php">información</a>
 					</div>
 					<div class="sidebar__link">
 						<i class="fa fa-question-circle"></i>
-						<a href="./informacion/soporte.html">Soporte</a>
+						<a href="./informacion/soporte.php">Soporte</a>
 					</div>
 
 					<div class="sidebar__divider">
