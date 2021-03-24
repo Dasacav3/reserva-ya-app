@@ -1,0 +1,69 @@
+@import url("colors_fonts.css");
+@import url("datatable.css");
+
+/* Formulario de añadir reserva */
+
+.form-reserva {
+	font-family: var(--montserrat);
+	font-size: 16px;
+}
+
+.form-reserva > form{
+    width: 290px;
+}
+
+.form-reserva > form > .form-title {
+	margin: 1.5em 0;
+	text-align: center;
+}
+
+.form-reserva > form > input {
+	width: 250px;
+	height: 2em;
+	border: 1px solid var(--highlight-color);
+	border-radius: 5px;
+}
+
+.form-reserva > form > input[type="submit"] {
+	margin-top: 1em;
+	font-weight: bold;
+	background: var(--highlight-color);
+}
+
+.modal-contenido {
+	background-color: var(--primary-color);
+    border-radius: var(--dt-border-radius);
+	width: 300px;
+	padding: 10px 20px;
+	margin: 20% auto;
+	position: relative;
+}
+.modal {
+	background-color: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	top: -200px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+	pointer-events: none;
+	transition: all 1s;
+}
+
+.closeModal{
+    text-decoration: none;
+    background: var(--red-dark);
+    color: var(--primary-color);
+    padding: 1px 4px;
+    border-radius: 2px;
+}
+
+#modal-añadir-reserva:target {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+#modal-editar-reserva:target {
+	opacity: 1;
+	pointer-events: auto;
+}

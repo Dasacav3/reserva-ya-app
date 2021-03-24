@@ -24,37 +24,28 @@
         if (!$result) {
             die('Query Failed.');
         }
-?>
+    ?>
         <script>
-            if(true){
+            if (true) {
                 Swal.fire({
                     title: 'Reserva añadida satisfactoriamente',
                     icon: 'success',
                     showConfirmButton: false,
                     timer: 2000
                 })
-            }else{
-                console.log("Error");
-            }
-        </script>
-<?php
-    } else {
-?>
-        <script>
-            if(true){
+            } else {
                 Swal.fire({
                     title: 'Vuelve a intertarlo',
                     icon: 'error',
                     showConfirmButton: false,
                     timer: 2000
                 });
-            }else{
-                console.log("Error");
             }
         </script>
-<?php
+    <?php
     }
-?>
+    ?>
 
 </body>
+
 </html>

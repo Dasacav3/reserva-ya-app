@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="../dist/css/normalize.css" />
 		<link rel="stylesheet" href="../dist/css/dashboard.css" />
 		<link rel="stylesheet" href="../dist/css/datatable.css" />
+		<link rel="stylesheet" href="../dist/css/modals.css" />
 		<!-- FontAwesome -->
 		<link rel="stylesheet" href="../../../lib/fontawesome-5.15.2/css/fontawesome.min.css" />
 		<script src="../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
@@ -52,16 +53,13 @@
 									<span><input type="checkbox" name="" id="" /></span>
 								</li>
 								<li>
-									<button><i class="fas fa-plus-circle"></i></button>
+									<button class="add"><a href="#modal-añadir-reserva"><i class="fas fa-plus-circle"></i></a></button>
 								</li>
 								<li>
-									<button class="edit"><i class="fas fa-edit"></i></button>
+									<button class="edit"><a href="#modal-editar-reserva"><i class="fas fa-edit"></i></a></button>
 								</li>
 								<li>
 									<button class="delete"><i class="fas fa-trash"></i></button>
-								</li>
-								<li>
-									<button><i class="fas fa-share-alt"></i></button>
 								</li>
 							</ul>
 						</div>
@@ -83,86 +81,7 @@
 							</tr>
 						</thead>
 						<tbody id="reservas">
-							<tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td><span class="available"></span></td>
-                <td>01</td>
-                <td>Daniel</td>
-                <td>Carrillo</td>
-                <td>21/10/2021</td>
-                <td>17:10</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td><span class="canceled"></span></td>
-                <td>02</td>
-                <td>Allan</td>
-                <td>Paez</td>
-                <td>14/03/2021</td>
-                <td>16:00</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td><span class="offline"></span></td>
-                <td>03</td>
-                <td>Sergio</td>
-                <td>Ayala</td>
-                <td>25/01/2021</td>
-                <td>17:00</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td><span class="available"></span></td>
-                <td>04</td>
-                <td>Maria</td>
-                <td>Niño</td>
-                <td>30/05/2021</td>
-                <td>14:00</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td><span class="canceled"></span></td>
-                <td>05</td>
-                <td>Oscar</td>
-                <td>Barajas</td>
-                <td>28/02/2021</td>
-                <td>21:00</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td><span class="canceled"></span></td>
-                <td>06</td>
-                <td>Fabian</td>
-                <td>Combita</td>
-                <td>27/07/2021</td>
-                <td>13:00</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td><span class="available"></span></td>
-                <td>07</td>
-                <td>Javier</td>
-                <td>Vargas</td>
-                <td>03/04/2021</td>
-                <td>12:00</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td><span class="offline"></span></td>
-                <td>08</td>
-                <td>Eduardo</td>
-                <td>Diaz</td>
-                <td>15/02/2021</td>
-                <td>15:30</td>
-                <td>30</td>
-              </tr>
+							
 						</tbody>
 					</table>
 					<div class="footer-tools">
@@ -188,19 +107,53 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-añadir-reserva">
-					<form id="form-reserva" method="POST">
-						<h4 class="form-title">Añadir reservas</h4>
+
+				
+
+				<!-- Modal Añadir reservas -->
+				<div id="modal-añadir-reserva" class="modal form-reserva">
+					<form id="form-add-reserva" class="modal-contenido" method="POST">
+						<a href="#" class="closeModal">x</a>
+						<h4 class="form-title">Añadir reserva</h4>
 						<label for="">Fecha</label> <br />
-						<input type="date" name="fecha-reserva" id="fecha-reserva" /> <br />
+						<input type="date" name="fecha-reserva" id="add-fecha-reserva" /> <br />
 						<label for="">Hora</label> <br />
-						<input type="time" name="hora-reserva" id="hora-reserva" /> <br />
+						<input type="time" name="hora-reserva" id="add-hora-reserva" /> <br />
 						<label for="">Mesa</label> <br />
-						<input type="number" name="numero-mesa" id="numero-mesa" /> <br />
+						<input type="number" name="numero-mesa" id="add-numero-mesa" /> <br />
 						<input type="submit" value="Registrar" />
 						<div class="warnings" id="warnings"></div>
 					</form>
 				</div>
+
+
+
+				<!-- Modal Editar reservas -->
+				<div id="modal-editar-reserva" class="modal form-reserva">
+					<form id="form-edit-reserva" class="modal-contenido" method="POST">
+						<a href="#" class="closeModal">x</a>
+						<h4 class="form-title">Editar reserva</h4>
+						<label for="">Fecha</label> <br />
+						<input type="date" name="fecha-reserva" id="edit-fecha-reserva" /> <br />
+						<label for="">Hora</label> <br />
+						<input type="time" name="hora-reserva" id="edit-hora-reserva" /> <br />
+						<label for="">Mesa</label> <br />
+						<input type="number" name="numero-mesa" id="edit-numero-mesa" /> <br />
+						<input type="submit" value="Registrar" />
+						<div class="warnings" id="warnings"></div>
+					</form>
+				</div>
+
+				<!-- Modal Eliminar reservas -->
+				<!-- <script>
+					Swal.fire({
+						title: 'Reserva añadida satisfactoriamente',
+						icon: 'success',
+						showConfirmButton: false,
+						timer: 2000
+					})
+				</script> -->
+
 			</main>
 
 			<div id="sidebar">
