@@ -17,7 +17,7 @@
         $hora_reserva = $_POST['hora_reserva'];
         $numero_mesa = $_POST['numero_mesa'];
 
-        $query = "INSERT INTO reservacion(id_cliente,fecha_reservacion,hora_reservacion,estado_reservacion) VALUES(1,'$fecha_reserva','$hora_reserva','A')";
+        $query = "INSERT INTO reservacion(id_cliente,fecha_reservacion,hora_reservacion,estado_reservacion) VALUES(1,'$fecha_reserva','$hora_reserva',1)";
 
         $result = mysqli_query($conn, $query);
 

@@ -6,7 +6,7 @@
     --highlight-color: #3282B8;
 
     --dt-status-available-color: greenyellow;
-    --dt-status-away-color: lightsalmon;
+    --dt-status-canceled-color: lightsalmon;
     --dt-status-offline-color: lightgray;
 
     --dt-padding: 12px;
@@ -171,12 +171,18 @@
 }
 
 .datatable-container .datatable tbody tr .offline::after{
-    content: 'Inactiva';
+    content: 'Completada';
     color: var(--dt-status-offline-color);
 }
 
+.datatable-container .datatable tbody tr .canceled::after{
+    content: 'Cancelada';
+    color: var(--dt-status-canceled-color);
+}
+
 .datatable-container .datatable tbody tr .available::before,
-.datatable-container .datatable tbody tr .offline::before{
+.datatable-container .datatable tbody tr .offline::before,
+.datatable-container .datatable tbody tr .canceled::before{
     content: '';
     display: inline-block;
     width: 10px;
@@ -192,6 +198,10 @@
 
 .datatable-container .datatable tbody tr .offline::before{
     background-color: var(--dt-status-offline-color);
+}
+
+.datatable-container .datatable tbody tr .canceled::before{
+    background-color: var(--dt-status-canceled-color);
 }
 
 

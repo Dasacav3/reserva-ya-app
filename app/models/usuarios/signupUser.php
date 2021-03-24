@@ -18,11 +18,11 @@
         <?php
             include("../../controller/database.php");
 
-            $queryInsertUsuario = "INSERT INTO usuario (nombre_usuario,clave_usuario,tipo_usuario,estado_usuario) VALUES ('$_REQUEST[email]','$_REQUEST[password]','Cliente','A')";
+            $queryInsertUsuario = "INSERT INTO usuario (nombre_usuario,clave_usuario,tipo_usuario,estado_usuario) VALUES ('$_REQUEST[email]','$_REQUEST[password]','1','1')";
 
             $result2 = $conn->query($queryInsertUsuario);
 
-            if(!$result2) die ("Falla al acceder a la BD 2");
+            if(!$result2) die ("Falla al acceder a la BD (USUARIO)");
 
 
             $consulta_id_usuario = "SELECT id_usuario as id_usuario FROM usuario WHERE nombre_usuario='$_REQUEST[email]'";
@@ -35,7 +35,7 @@
 
             $result = $conn->query($queryInsertCliente);
 
-            if(!$result) die ("Falla al acceder a la BD");
+            if(!$result) die ("Falla al acceder a la BD (CLIENTE)");
 
             echo "<script>
             Swal.fire({

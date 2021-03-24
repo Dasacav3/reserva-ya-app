@@ -2,11 +2,12 @@ $(document).ready(function () {
 	console.log("jQuery is working");
 	fetchReservas();
 
+	// Consultar reservas
 	$("#search-input").keyup(function (e) {
 		if ($("#search-input").val()) {
 			let search = $("#search-input").val();
 			$.ajax({
-				url: "../../../models/reservas/consultarReserva.php",
+				url: "../../models/reservas/listadoReserva.php",
 				type: "POST",
 				data: { search },
 				success: function (response) {
@@ -33,26 +34,32 @@ $(document).ready(function () {
 		}
 	});
 
+	// Añadir reservaciones
 	$("#form-reserva").submit((e) => {
-		e.preventDefault();
 		const postData = {
 			fecha: $("#fecha-reserva").val(),
 			hora: $("#hora-reserva").val(),
 			mesa: $("#numero-mesa").val(),
 		};
-		console.log(postData);
-		// e.preventDefault();
-		// const url = edit === false ? '../../../app/models/reservas/añadirReserva.php' : '../../../app/models/reservas/actualizarReserva.php';
-		// console.log(postData, url);
-		$.post("../../../models/reservas/añadirReserva.php", postData, (response) => {
-			console.log(response);
-			$("#form-reserva").trigger("reset");
+		$.ajax({
+			type: "POST",
+			url: "../../models/reservas/añadirReserva.php",
+			data: postData,
+			success: function (response) {
+				let reservas = JSON.parse(response);
+				reservas.forEach((reserva) => {
+					console.log(reserva);
+					$('#form-reserva').trigger('reset');
+      				fetchTasks();
+				});
+			},
 		});
 	});
 
+	// Listar reservaciones
 	function fetchReservas() {
 		$.ajax({
-			url: "../../../models/reservas/listadoReserva.php",
+			url: "../../models/reservas/listadoReserva.php",
 			type: "GET",
 			success: function (response) {
 				console.log(response);
@@ -77,4 +84,6 @@ $(document).ready(function () {
 			},
 		});
 	}
+
+	//
 });
