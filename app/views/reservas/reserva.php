@@ -15,9 +15,6 @@
 		<!-- Sweer Alert -->
 		<script src="../../../lib/sweetaler2/sweetalert2.all.min.js"></script>
 		<link rel="stylesheet" href="../../../lib/sweetaler2/sweetalert2.min.css" />
-		<!-- jQuery -->
-		<script src="../../../lib/jquery/jquery-3.6.0.min.js"></script>
-		<script src="../dist/js/app.js"></script>
 		<title>Gestión de Reservaciones</title>
 	</head>
 	<body id="body">
@@ -53,10 +50,10 @@
 									<span><input type="checkbox" name="" id="" /></span>
 								</li>
 								<li>
-									<button class="add"><a href="#modal-añadir-reserva"><i class="fas fa-plus-circle"></i></a></button>
+									<button id="abrirPopup-add" class="add"><i class="fas fa-plus-circle"></i></button>
 								</li>
 								<li>
-									<button class="edit"><a href="#modal-editar-reserva"><i class="fas fa-edit"></i></a></button>
+									<button id="abrirPopup-edit" class="edit"><i class="fas fa-edit"></i></button>
 								</li>
 								<li>
 									<button class="delete"><i class="fas fa-trash"></i></button>
@@ -111,48 +108,36 @@
 				
 
 				<!-- Modal Añadir reservas -->
-				<div id="modal-añadir-reserva" class="modal form-reserva">
-					<form id="form-add-reserva" class="modal-contenido" method="POST">
-						<a href="#" class="closeModal">x</a>
+				<div id="pop-up-add" class="pop-up form-reserva">
+					<form id="pop_up_wrap_add" class="pop-up-wrap" method="POST">
+						<a href="#" id="closePopup-add" class="closePopup"><i class="fas fa-times-circle"></i></a>
 						<h4 class="form-title">Añadir reserva</h4>
 						<label for="">Fecha</label> <br />
-						<input type="date" name="fecha-reserva" id="add-fecha-reserva" /> <br />
+						<input type="date" name="fecha_reserva" id="add-fecha-reserva" /> <br />
 						<label for="">Hora</label> <br />
-						<input type="time" name="hora-reserva" id="add-hora-reserva" /> <br />
+						<input type="time" name="hora_reserva" id="add-hora-reserva" /> <br />
 						<label for="">Mesa</label> <br />
-						<input type="number" name="numero-mesa" id="add-numero-mesa" /> <br />
-						<input type="submit" value="Registrar" />
-						<div class="warnings" id="warnings"></div>
+						<input type="number" name="numero_mesa" id="add-numero-mesa" /> <br />
+						<input type="button" value="Registrar" id="registrar"/>
 					</form>
 				</div>
 
 
 
 				<!-- Modal Editar reservas -->
-				<div id="modal-editar-reserva" class="modal form-reserva">
-					<form id="form-edit-reserva" class="modal-contenido" method="POST">
-						<a href="#" class="closeModal">x</a>
+				<div id="pop-up-edit" class="pop-up form-reserva">
+					<form id="pop-up-wrap-edit" class="pop-up-wrap" method="POST">
+						<a href="#" id="closePopup-edit" class="closePopup"><i class="fas fa-times-circle"></i></a>
 						<h4 class="form-title">Editar reserva</h4>
 						<label for="">Fecha</label> <br />
-						<input type="date" name="fecha-reserva" id="edit-fecha-reserva" /> <br />
+						<input type="date" name="fecha_reserva" id="edit-fecha-reserva" /> <br />
 						<label for="">Hora</label> <br />
-						<input type="time" name="hora-reserva" id="edit-hora-reserva" /> <br />
+						<input type="time" name="hora_reserva" id="edit-hora-reserva" /> <br />
 						<label for="">Mesa</label> <br />
-						<input type="number" name="numero-mesa" id="edit-numero-mesa" /> <br />
-						<input type="submit" value="Registrar" />
-						<div class="warnings" id="warnings"></div>
+						<input type="number" name="numero_mesa" id="edit-numero-mesa" /> <br />
+						<input type="button" value="Guardar" id="edit" />
 					</form>
 				</div>
-
-				<!-- Modal Eliminar reservas -->
-				<!-- <script>
-					Swal.fire({
-						title: 'Reserva añadida satisfactoriamente',
-						icon: 'success',
-						showConfirmButton: false,
-						timer: 2000
-					})
-				</script> -->
 
 			</main>
 
@@ -217,5 +202,6 @@
 			</div>
 		</div>
 		<script src="../dist/js/sidebarDashboard.js"></script>
+		<script src="../dist/js/reservas.js"></script>
 	</body>
 </html>

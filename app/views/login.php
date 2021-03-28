@@ -15,7 +15,7 @@
 	<body class="body-login">
 		<div class="login-container">
 			<div class="return">
-				<a href="../../index.php"><i class="fas fa-arrow-circle-left return-icon"></i></a>
+				<a href="../../index.html"><i class="fas fa-arrow-circle-left return-icon"></i></a>
 			</div>
 			<div class="login">
 				<div class="login-img">

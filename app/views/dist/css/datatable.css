@@ -111,11 +111,6 @@
 	cursor: pointer;
 }
 
-.datatable-container .header-tools .tools ul li a,
-.datatable-container .footer-tools .pages ul li a{
-    color: var(--primary-color);
-}
-
 .datatable-container .footer-tools .pages ul li button:hover,
 .datatable-container .header-tools .tools ul li button:hover {
 	background: var(--highlight-color);

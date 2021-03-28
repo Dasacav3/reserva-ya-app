@@ -31,7 +31,7 @@
                     timer: 2000
                 }).then(
                     function(){
-                        window.location='http://localhost:8080/reservaya-mvc/app/views/dashboard.php';
+                        window.location='http://localhost/reservaya-mvc/app/views/dashboard.php';
                     }
                 );
             </script>

@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="../dist/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../dist/css/normalize.css">
     <link rel="stylesheet" href="../dist/css/dashboard.css">
+    <link rel="stylesheet" href="../dist/css/datatable.css" />
+    <link rel="stylesheet" href="../dist/css/modals.css" />
     <!-- FontAwesome -->
     <link rel="stylesheet" href="../../../lib/fontawesome-5.15.2/css/fontawesome.min.css">
     <script src="../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
@@ -40,8 +42,66 @@
       <main class="main__container">
         <div>
             <h2 class="title_table">Modulo de Gestión de Usuarios</h2>
-            
         </div>
+        <div class="datatable-container">
+					<div class="header-tools">
+						<div class="tools">
+							<ul>
+								<li>
+									<span><input type="checkbox" name="" id="" /></span>
+								</li>
+								<li>
+									<button id="abrirPopup-add" class="add"><i class="fas fa-plus-circle"></i></button>
+								</li>
+								<li>
+									<button id="abrirPopup-edit" class="edit"><i class="fas fa-edit"></i></button>
+								</li>
+								<li>
+									<button class="delete"><i class="fas fa-trash"></i></button>
+								</li>
+							</ul>
+						</div>
+						<div class="search">
+							<input type="text" class="search-input" id="search-input" />
+						</div>
+					</div>
+					<table class="datatable">
+						<thead>
+							<tr>
+								<th></th>
+								<th>ID USUARIO</th>
+								<th>NOMBRE DE USUARIO</th>
+								<th>TIPO USUARIO</th>
+								<th>ESTADO USUARIO</th>
+							</tr>
+						</thead>
+						<tbody id="usuarios">
+							
+						</tbody>
+					</table>
+					<div class="footer-tools">
+						<div class="list-items">
+							Mostrar
+							<select name="n-entries" id="n-entries" class="n-entries">
+								<option value="5">5</option>
+								<option value="10">10</option>
+								<option value="15">15</option>
+							</select>
+							entradas
+						</div>
+						<div class="pages">
+							<ul>
+								<li><span class="active">1</span></li>
+								<li><button>2</button></li>
+								<li><button>3</button></li>
+								<li><button>4</button></li>
+								<li><button>...</button></li>
+								<li><button>9</button></li>
+								<li><button>10</button></li>
+							</ul>
+						</div>
+					</div>
+				</div>
       </main>
 
       <div id="sidebar">
@@ -112,5 +172,6 @@
       </div>
     </div>
     <script src="../dist/js/sidebarDashboard.js"></script>
+    <script src="../dist/js/usuarios.js"></script>
   </body>
 </html>

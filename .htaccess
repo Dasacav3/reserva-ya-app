@@ -1,1 +1,1 @@
-ErrorDocument 404 http://localhost:8080/reservaya-mvc/app/views/errors/error404.php
+ErrorDocument 404 http://localhost/reservaya-mvc/app/views/errors/error404.php
