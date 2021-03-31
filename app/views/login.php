@@ -21,7 +21,7 @@
 				<div class="login-img">
 					<img src="./dist/img/favicon.png" alt="" class="login-img__img" />
 				</div>
-				<form class="form-login" id="form" method="POST" action="../models/usuarios/loginUser.php">
+				<form class="form-login" id="form" method="POST" action="../models/loginUser.php">
 					<label for="user_name">Nombre de usuario</label> <br />
 					<input type="email"	id="user_name" name="user_name"	required placeholder="example@domain.com"/>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -39,7 +39,7 @@
 			</div>
 			<div class="register">
 				<p>
-					<a href="./usuarios/registro.php">¿No tienes cuenta? Crea tu cuenta</a>
+					<a href="./registro.php">¿No tienes cuenta? Crea tu cuenta</a>
 				</p>
 			</div>
 		</div>
