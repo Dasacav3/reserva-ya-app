@@ -28,17 +28,16 @@
     $password = $_POST['password'];
 
     $consulta = mysqli_query($conn, "SELECT id_usuario,tipo_usuario FROM usuario WHERE nombre_usuario = '$nombre'");
-
     $data = mysqli_fetch_array($consulta);
-
-
-    $_SESSION['datos'] = $data;
 
     echo $data[1];
 
     $registros = mysqli_query($conn, "SELECT * FROM usuario WHERE nombre_usuario = '$nombre' AND clave_usuario = '$password'");
     if ($reg = mysqli_fetch_array($registros)) {
             if($data[1] == 'Administrador'){
+                $consulta2 = mysqli_query($conn,"SELECT usuario.id_usuario, usuario.nombre_usuario, usuario.tipo_usuario, administrador.nombre_admin, administrador.apellido_admin, administrador.id_admin FROM administrador INNER JOIN usuario ON administrador.id_usuario = usuario.id_usuario WHERE nombre_usuario = '$nombre'");
+                $user_data = mysqli_fetch_array($consulta2);
+                $_SESSION['datos'] = $user_data;
                 echo "<script>
                 Swal.fire({
                     title: 'Ingreso exitoso',
@@ -52,6 +51,9 @@
                 );
                 </script>";
             }else if($data[1] == "Empleado"){
+                $consulta2 = mysqli_query($conn,"SELECT usuario.id_usuario, usuario.nombre_usuario, usuario.tipo_usuario, empleado.nombre_empleado, empleado.apellido_empleado, empleado.id_empleado FROM empleado INNER JOIN usuario ON empleado.id_usuario = usuario.id_usuario WHERE nombre_usuario = '$nombre'");
+                $user_data = mysqli_fetch_array($consulta2);
+                $_SESSION['datos'] = $user_data;
                 echo "<script>
                 Swal.fire({
                     title: 'Ingreso exitoso',
@@ -65,6 +67,9 @@
                 );
                 </script>";
             }else{
+                $consulta2 = mysqli_query($conn,"SELECT usuario.id_usuario, usuario.nombre_usuario, usuario.tipo_usuario, cliente.nombre_cliente, cliente.apellido_cliente, cliente.id_cliente FROM cliente INNER JOIN usuario ON cliente.id_usuario = usuario.id_usuario WHERE nombre_usuario = '$nombre'");
+                $user_data = mysqli_fetch_array($consulta2);
+                $_SESSION['datos'] = $user_data;
                 echo "<script>
                 Swal.fire({
                     title: 'Ingreso exitoso',
@@ -93,6 +98,7 @@
         );
         </script>";
     }
+
     ?>
 </body>
 

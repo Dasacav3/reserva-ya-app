@@ -27,7 +27,7 @@
 	background-color: var(--dt-background-color-container);
 	border-radius: var(--dt-border-radius);
 	color: var(--primary-color);
-	width: 800px;
+	width: 1000px;
 	margin: 0 auto;
 	font-size: 16px;
 }
@@ -143,11 +143,12 @@
 
 .datatable-container .datatable th {
 	font-weight: bolder;
-	text-align: left;
+	text-align: center;
 	border-bottom: solid 1px var(--secondary-color);
 }
 
 .datatable-container .datatable td {
+	text-align: center;
 	border-bottom: solid 1px var(--secondary-color);
 }
 
