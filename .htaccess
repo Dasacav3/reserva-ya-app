@@ -1,1 +1,0 @@
-ErrorDocument 404 http://localhost/reservaya-mvc/app/views/errors/error404.php

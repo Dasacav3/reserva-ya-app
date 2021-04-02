@@ -134,12 +134,18 @@ if ($sesion == null || $sesion = '') {
 				<form id="pop_up_wrap_add" class="pop-up-wrap" method="POST">
 					<a href="#" id="closePopup-add" class="closePopup"><i class="fas fa-times-circle"></i></a>
 					<h4 class="form-title">Añadir reserva</h4>
+					<label for="">Cliente</label> <br />
+					<select name="cliente" id="cliente">
+					</select>
 					<label for="">Fecha</label> <br />
 					<input type="date" name="fecha_reserva" id="add-fecha-reserva" /> <br />
 					<label for="">Hora</label> <br />
 					<input type="time" name="hora_reserva" id="add-hora-reserva" /> <br />
 					<label for="">Mesa</label> <br />
-					<input type="number" name="numero_mesa" id="add-numero-mesa" /> <br />
+					<select name="mesa" id="mesa">
+					</select>
+					<label for="">Asientos</label> <br />
+					<input type="number" name="asientos" id="add-asientos" /> <br />
 					<input type="button" value="Registrar" id="registrar" />
 				</form>
 			</div>
@@ -148,15 +154,28 @@ if ($sesion == null || $sesion = '') {
 
 			<!-- Modal Editar reservas -->
 			<div id="pop-up-edit" class="pop-up form-reserva">
-				<form id="pop-up-wrap-edit" class="pop-up-wrap" method="POST">
+				<form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
 					<a href="#" id="closePopup-edit" class="closePopup"><i class="fas fa-times-circle"></i></a>
 					<h4 class="form-title">Editar reserva</h4>
+					<label for="">ID Reserva</label> <br />
+					<input type="text" id="id_reserva" name="id_reserva" readonly> <br>
+					<label for="">Cliente</label> <br />
+					<input type="text" id="cliente1" name="cliente1" readonly> <br>
+					<label for="">Estado</label> <br />
+					<select name="estado" id="estado">
+						<option value=""></option>
+						<option value="Activa">Activa</option>
+						<option value="Completada">Completada</option>
+						<option value="Cancelada">Cancelada</option>
+					</select>
 					<label for="">Fecha</label> <br />
-					<input type="date" name="fecha_reserva" id="edit-fecha-reserva" /> <br />
+					<input type="date" name="edit_fecha_reserva" id="edit_fecha_reserva" /> <br />
 					<label for="">Hora</label> <br />
-					<input type="time" name="hora_reserva" id="edit-hora-reserva" /> <br />
+					<input type="time" name="edit_hora_reserva" id="edit_hora_reserva" /> <br />
 					<label for="">Mesa</label> <br />
-					<input type="number" name="numero_mesa" id="edit-numero-mesa" /> <br />
+					<input type="text" id="edit_mesa" name="edit_mesa" readonly>
+					<label for="">Asientos</label> <br />
+					<input type="number" name="edit_asientos" id="edit_asientos" /> <br />
 					<input type="button" value="Guardar" id="edit" />
 				</form>
 			</div>
