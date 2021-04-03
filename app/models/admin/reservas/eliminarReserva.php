@@ -13,7 +13,7 @@
         die();
     }
     
-    $query = "SELECT reservacion.ID_RESERVACION
+    $query = "SELECT reservacion.ID_RESERVACION, mesa.ID_MESA
      FROM reservacion_reserva_mesa
      INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
      INNER JOIN mesa ON reservacion_reserva_mesa.ID_MESA = mesa.ID_MESA
@@ -30,6 +30,17 @@
 
     foreach($resultado as $dat){
         $id_reserva = $dat['ID_RESERVACION'];
+        $id_mesa = $dat['ID_MESA'];
+    }
+
+    $query4 = "UPDATE mesa SET estado_mesa = 'Disponible' WHERE id_mesa = $id_mesa";
+
+    $result4 = mysqli_query($conn, $query4);
+
+    if(!$result4) {
+        die('Query Failed 4 '. mysqli_error($conn));
+    }else{
+        echo "ok";
     }
 
     $query2 = "DELETE FROM reservacion_reserva_mesa WHERE id_reservacion_reserva_mesa = $data";

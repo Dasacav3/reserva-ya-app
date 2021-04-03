@@ -19,15 +19,43 @@
     $hora = $_POST['edit_hora_reserva'];
     $asientos = $_POST['edit_asientos'];
     $estado = $_POST['estado'];
+    $mesa = $_POST['edit_mesa'];
 
-    $query = "UPDATE reservacion SET fecha_reservacion = '$fecha', hora_reservacion = '$hora', estado_reservacion = '$estado', asiento = '$asientos' WHERE id_reservacion = $id";
+    if($estado == 'Cancelada' || $estado == 'Completada'){
+        $query = "UPDATE reservacion SET fecha_reservacion = '$fecha', hora_reservacion = '$hora', estado_reservacion = '$estado', asiento = '$asientos' WHERE id_reservacion = $id";
 
-    $result = mysqli_query($conn,$query);
+        $result = mysqli_query($conn,$query);
 
-    if(!$result) {
-        die('Query Failed '. mysqli_error($conn));
+        if(!$result) {
+            die('Query Failed '. mysqli_error($conn));
+        }else{
+            echo "ok";
+        }
+
+        $queryUpdateMesa = "UPDATE mesa SET estado_mesa = 'Disponible' WHERE id_mesa = $mesa";
+        $resultado5 = $conn->query($queryUpdateMesa);
+
+
     }else{
-        echo "ok";
+        $query = "UPDATE reservacion SET fecha_reservacion = '$fecha', hora_reservacion = '$hora', estado_reservacion = '$estado', asiento = '$asientos' WHERE id_reservacion = $id";
+
+        $result = mysqli_query($conn,$query);
+    
+        if(!$result) {
+            die('Query Failed '. mysqli_error($conn));
+        }else{
+            echo "ok";
+        }
     }
+
+    // $query = "UPDATE reservacion SET fecha_reservacion = '$fecha', hora_reservacion = '$hora', estado_reservacion = '$estado', asiento = '$asientos' WHERE id_reservacion = $id";
+
+    // $result = mysqli_query($conn,$query);
+
+    // if(!$result) {
+    //     die('Query Failed '. mysqli_error($conn));
+    // }else{
+    //     echo "ok";
+    // }
     
 ?>

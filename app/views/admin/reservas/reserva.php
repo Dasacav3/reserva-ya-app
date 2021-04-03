@@ -138,7 +138,7 @@ if ($sesion == null || $sesion = '') {
 					<select name="cliente" id="cliente">
 					</select>
 					<label for="">Fecha</label> <br />
-					<input type="date" min="2021-04-01" name="fecha_reserva" id="add_fecha_reserva" /> <br />
+					<input type="date" min="<?php echo date("Y-m-d");?>" name="fecha_reserva" id="add_fecha_reserva" /> <br />
 					<label for="">Hora</label> <br />
 					<input type="time" min="12:00" max="22:00" name="hora_reserva" id="add_hora_reserva" /> <br />
 					<label for="">Mesa</label> <br />
@@ -169,9 +169,9 @@ if ($sesion == null || $sesion = '') {
 						<option value="Cancelada">Cancelada</option>
 					</select>
 					<label for="">Fecha</label> <br />
-					<input type="date" name="edit_fecha_reserva" id="edit_fecha_reserva" /> <br />
+					<input type="date" min="<?php echo date("Y-m-d");?>" name="edit_fecha_reserva" id="edit_fecha_reserva" /> <br />
 					<label for="">Hora</label> <br />
-					<input type="time" name="edit_hora_reserva" id="edit_hora_reserva" /> <br />
+					<input type="time" min="12:00" max="22:00" name="edit_hora_reserva" id="edit_hora_reserva" /> <br />
 					<label for="">Mesa</label> <br />
 					<input type="text" id="edit_mesa" name="edit_mesa" readonly>
 					<label for="">Asientos</label> <br />
@@ -243,7 +243,6 @@ if ($sesion == null || $sesion = '') {
 		</div>
 	</div>
 	<script src="../../dist/js/sidebarDashboard.js"></script>
-	<!-- <script src="../../dist/js/validacionReserva.js"></script> -->
 	<script src="../../dist/js/reservas.js"></script>
 </body>
 

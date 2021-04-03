@@ -35,6 +35,9 @@
         $queryInsertReserva2 = "INSERT INTO reservacion_reserva_mesa (id_reservacion,id_mesa) VALUES ($id_reserva,$id_mesa)";
         $resultado4 = $conn->query($queryInsertReserva2);
 
+        $queryUpdateMesa = "UPDATE mesa SET estado_mesa = 'Ocupada' WHERE id_mesa = $mesa";
+        $resultado5 = $conn->query($queryUpdateMesa);
+
         echo "ok";
         $conn->close();
     }

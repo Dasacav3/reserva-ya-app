@@ -87,50 +87,52 @@ registrar.addEventListener("click", () => {
 	const mesa_reserva = document.getElementById("mesa");
 	const asientos_reserva = document.getElementById("add_asientos");
 
-	const dateNow = new Date();
 
-
-	if(fecha_reserva.value == "" && hora_reserva.value == "" && cliente_reserva.value == "" && mesa_reserva.value == "" && asientos_reserva.value == ""){
+	if (
+		fecha_reserva.value == "" &&
+		hora_reserva.value == "" &&
+		cliente_reserva.value == "" &&
+		mesa_reserva.value == "" &&
+		asientos_reserva.value == ""
+	) {
 		Swal.fire({
 			title: "Error",
 			text: "Diligencia todos los campos",
 			icon: "error",
 		});
-	}else 
-
-	if (fecha_reserva.value < dateNow || fecha_reserva.value == "") {
+	} else if (fecha_reserva.value == "") {
 		Swal.fire({
 			title: "Error",
-			text: "El campo no pude estar vacio ni puede hacer una reservacion en el pasado",
+			text: "La fecha de reserva no pude estar vacia",
 			icon: "error",
 		});
-	}else
-
-	if (cliente_reserva.value < 0 || cliente_reserva.value == "") {
+	} else if (cliente_reserva.value < 0 || cliente_reserva.value == "") {
 		Swal.fire({
 			title: "Error",
 			text: "El cliente no puede estar vacio",
 			icon: "error",
 		});
-	}else
-
-	if (hora_reserva.value < "12:00" || hora_reserva.value > "22:00" || hora_reserva.value == "") {
+	} else if (
+		hora_reserva.value < "12:00" ||
+		hora_reserva.value > "22:00" ||
+		hora_reserva.value == ""
+	) {
 		Swal.fire({
 			title: "Error",
 			text: "La hora de reservacion debe estar entre 12:00 pm y 10:00 pm",
 			icon: "error",
 		});
-	}else
-
-	if (mesa_reserva.value < 0 || mesa_reserva.value == "") {
+	} else if (mesa_reserva.value < 0 || mesa_reserva.value == "") {
 		Swal.fire({
 			title: "Error",
 			text: "El numero de mesa no puede estar vacio",
 			icon: "error",
 		});
-	}else
-
-	if (asientos_reserva.value < 0 || asientos_reserva.value > 8 || asientos_reserva.value == "") {
+	} else if (
+		asientos_reserva.value < 0 ||
+		asientos_reserva.value > 8 ||
+		asientos_reserva.value == ""
+	) {
 		Swal.fire({
 			title: "Error",
 			text: "El numero de asientos no puede estar vacio ni ser mayor a 8 por reservación",
@@ -153,6 +155,7 @@ registrar.addEventListener("click", () => {
 				});
 				pop_up_wrap_add.reset();
 				listarReservas();
+				mostrarMesa();
 				pop_up_add.classList.remove("show");
 				pop_up_wrap_add.classList.remove("show");
 			}
@@ -182,10 +185,7 @@ edit.addEventListener("click", () => {
 	const estado_reserva = document.getElementById("estado");
 	const asientos_reserva1 = document.getElementById("edit_asientos");
 
-	const dateNow = new Date();
-
 	if (
-		fecha_reserva1.value < dateNow ||
 		fecha_reserva1.value == "" ||
 		fecha_reserva1.value == "0000-00-00"
 	) {
@@ -237,6 +237,7 @@ edit.addEventListener("click", () => {
 					});
 					pop_up_wrap_edit.reset();
 					listarReservas();
+					mostrarMesa();
 					pop_up_edit.classList.remove("show");
 					pop_up_wrap_edit.classList.remove("show");
 				}
@@ -263,6 +264,7 @@ function eliminarReserva(id) {
 				.then((response) => {
 					console.log(response);
 					listarReservas();
+					mostrarMesa();
 					Swal.fire({
 						icon: "success",
 						title: "Eliminado",
