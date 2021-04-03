@@ -46,6 +46,9 @@
         }else{
             echo "ok";
         }
+
+        $queryUpdateMesa = "UPDATE mesa SET estado_mesa = 'Ocupada' WHERE id_mesa = $mesa";
+        $resultado5 = $conn->query($queryUpdateMesa);
     }
 
     // $query = "UPDATE reservacion SET fecha_reservacion = '$fecha', hora_reservacion = '$hora', estado_reservacion = '$estado', asiento = '$asientos' WHERE id_reservacion = $id";
