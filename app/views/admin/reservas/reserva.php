@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="../../dist/css/datatable.css" />
 	<link rel="stylesheet" href="../../dist/css/modals.css" />
 	<!-- FontAwesome -->
-	<link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/fontawesome.min.css" />
+	<link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/all.min.css" />
 	<script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
 	<!-- Sweer Alert -->
 	<script src="../../../../lib/sweetaler2/sweetalert2.all.min.js"></script>
@@ -138,14 +138,14 @@ if ($sesion == null || $sesion = '') {
 					<select name="cliente" id="cliente">
 					</select>
 					<label for="">Fecha</label> <br />
-					<input type="date" name="fecha_reserva" id="add-fecha-reserva" /> <br />
+					<input type="date" min="2021-04-01" name="fecha_reserva" id="add_fecha_reserva" /> <br />
 					<label for="">Hora</label> <br />
-					<input type="time" name="hora_reserva" id="add-hora-reserva" /> <br />
+					<input type="time" min="12:00" max="22:00" name="hora_reserva" id="add_hora_reserva" /> <br />
 					<label for="">Mesa</label> <br />
 					<select name="mesa" id="mesa">
 					</select>
 					<label for="">Asientos</label> <br />
-					<input type="number" name="asientos" id="add-asientos" /> <br />
+					<input type="number" min="1" name="asientos" id="add_asientos" /> <br />
 					<input type="button" value="Registrar" id="registrar" />
 				</form>
 			</div>
@@ -175,7 +175,7 @@ if ($sesion == null || $sesion = '') {
 					<label for="">Mesa</label> <br />
 					<input type="text" id="edit_mesa" name="edit_mesa" readonly>
 					<label for="">Asientos</label> <br />
-					<input type="number" name="edit_asientos" id="edit_asientos" /> <br />
+					<input type="number" min="1" name="edit_asientos" id="edit_asientos" /> <br />
 					<input type="button" value="Guardar" id="edit" />
 				</form>
 			</div>
@@ -243,6 +243,7 @@ if ($sesion == null || $sesion = '') {
 		</div>
 	</div>
 	<script src="../../dist/js/sidebarDashboard.js"></script>
+	<!-- <script src="../../dist/js/validacionReserva.js"></script> -->
 	<script src="../../dist/js/reservas.js"></script>
 </body>
 
