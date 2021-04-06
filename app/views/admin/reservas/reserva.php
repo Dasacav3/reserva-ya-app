@@ -68,21 +68,12 @@ if ($sesion == null || $sesion = '') {
 					<div class="tools">
 						<ul>
 							<li>
-								<span><input type="checkbox" name="" id="" /></span>
-							</li>
-							<li>
-								<button id="abrirPopup-add" class="add"><i class="fas fa-plus-circle"></i></button>
-							</li>
-							<li>
-								<button id="abrirPopup-edit" class="edit"><i class="fas fa-edit"></i></button>
-							</li>
-							<li>
-								<button class="delete"><i class="fas fa-trash"></i></button>
+								<button id="abrirPopup-add" class="add"><i class="fas fa-plus-circle"></i> Añadir</button>
 							</li>
 						</ul>
 					</div>
 					<div class="search">
-						<input type="text" class="search-input" id="search_input" />
+						<input type="text" class="search-input" id="search_input" placeholder="Busqueda" />
 					</div>
 				</div>
 				<table class="datatable">
@@ -130,7 +121,7 @@ if ($sesion == null || $sesion = '') {
 
 
 			<!-- Modal Añadir reservas -->
-			<div id="pop-up-add" class="pop-up form-reserva">
+			<div id="pop-up-add" class="pop-up form-modal">
 				<form id="pop_up_wrap_add" class="pop-up-wrap" method="POST">
 					<a href="#" id="closePopup-add" class="closePopup"><i class="fas fa-times-circle"></i></a>
 					<h4 class="form-title">Añadir reserva</h4>
@@ -153,7 +144,7 @@ if ($sesion == null || $sesion = '') {
 
 
 			<!-- Modal Editar reservas -->
-			<div id="pop-up-edit" class="pop-up form-reserva">
+			<div id="pop-up-edit" class="pop-up form-modal">
 				<form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
 					<a href="#" id="closePopup-edit" class="closePopup"><i class="fas fa-times-circle"></i></a>
 					<h4 class="form-title">Editar reserva</h4>

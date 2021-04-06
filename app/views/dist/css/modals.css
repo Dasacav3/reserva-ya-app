@@ -3,28 +3,28 @@
 
 /* Formulario de añadir reserva */
 
-.form-reserva {
+.form-modal {
 	font-family: var(--montserrat);
 	font-size: 16px;
 }
 
-.form-reserva > form{
+.form-modal > form{
     width: 290px;
 }
 
-.form-reserva > form > .form-title {
+.form-modal > form > .form-title {
 	margin: 1.5em 0;
 	text-align: center;
 }
 
-.form-reserva > form > input {
+.form-modal > form > input {
 	width: 250px;
 	height: 2em;
 	border: 1px solid var(--highlight-color);
 	border-radius: 5px;
 }
 
-.form-reserva > form > input[type="button"] {
+.form-modal > form > input[type="button"] {
 	margin-top: 1em;
 	font-weight: bold;
 	background: var(--highlight-color);
