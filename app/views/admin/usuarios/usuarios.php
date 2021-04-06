@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../../dist/css/datatable.css" />
   <link rel="stylesheet" href="../../dist/css/modals.css" />
   <!-- FontAwesome -->
-  <link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/fontawesome.min.css">
+  <link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/all.min.css">
   <script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
   <!-- Sweer Alert -->
   <script src="../../../../lib/sweetaler2/sweetalert2.all.min.js"></script>
@@ -69,31 +69,22 @@ if ($sesion == null || $sesion = '') {
           <div class="tools">
             <ul>
               <li>
-                <span><input type="checkbox" name="" id="" /></span>
-              </li>
-              <li>
-                <button id="abrirPopup-add" class="add"><i class="fas fa-plus-circle"></i></button>
-              </li>
-              <li>
-                <button id="abrirPopup-edit" class="edit"><i class="fas fa-edit"></i></button>
-              </li>
-              <li>
-                <button class="delete"><i class="fas fa-trash"></i></button>
+                <button id="abrirPopup-add" class="add"><i class="fas fa-plus-circle"></i> Añadir</button>
               </li>
             </ul>
           </div>
           <div class="search">
-            <input type="text" class="search-input" id="search-input" />
+            <input type="text" class="search-input" id="search_input" placeholder="Busqueda" />
           </div>
         </div>
         <table class="datatable">
           <thead>
             <tr>
-              <th></th>
               <th>ID USUARIO</th>
               <th>NOMBRE DE USUARIO</th>
               <th>TIPO USUARIO</th>
               <th>ESTADO USUARIO</th>
+              <th>ACCIONES</th>
             </tr>
           </thead>
           <tbody id="usuarios">
@@ -123,6 +114,73 @@ if ($sesion == null || $sesion = '') {
           </div>
         </div>
       </div>
+
+
+      <!-- Modal Añadir Usuarios -->
+      <div id="pop-up-add" class="pop-up form-modal">
+        <form id="pop_up_wrap_add" class="pop-up-wrap" method="POST">
+          <a href="#" id="closePopup-add" class="closePopup"><i class="fas fa-times-circle"></i></a>
+          <h4 class="form-title">Añadir usuario empleado</h4>
+          <label for="">N° Documento</label> <br />
+          <input type="text" name="doc_emp" id="doc_emp" /> <br />
+          <label for="">Nombre</label> <br />
+          <input type="text" name="name_emp" id="name_emp" /> <br />
+          <label for="">Apellido</label> <br />
+          <input type="text" name="last_emp" id="last_emp" /> <br />
+          <label for="">Email</label> <br />
+          <input type="email" name="email" id="email" /> <br />
+          <label for="">Celular</label> <br />
+          <input type="tel" name="cel_emp" id="cel_emp" /> <br />
+          <label for="">Contraseña</label> <br />
+          <input type="password" name="pass_emp" id="pass_emp" /> <br />
+          <label for="">Repetir Contraseña</label> <br />
+          <input type="password" name="pass_emp2" id="pass_emp2" /> <br />
+          <input type="button" value="Registrar" id="registrar" />
+        </form>
+      </div>
+
+
+
+      <!-- Modal Editar Usuarios Empleados -->
+      <div id="pop-up-edit" class="pop-up form-modal">
+        <form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
+
+        </form>
+      </div>
+
+      <!-- Modal Editar Usuarios Clientes
+      <div id="pop-up-edit" class="pop-up form-modal">
+        <form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
+          <a href="#" class="closePopup-edit closePopup" onclick="cerrar()"><i class="fas fa-times-circle"></i></a>
+          <h4 class="form-title">Editar cliente</h4>
+          <label for="">ID usuario</label> <br />
+          <input type="text" name="id_cliente" readonly /> <br />
+          <label for="">Tipo de usuario</label> <br />
+          <input type="text" name="tipo_usuario"  readonly /> <br />
+          <label for="">Estado de usuario</label> <br />
+          <select name="estado_usuario">
+            <option value=""></option>
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+          </select>
+          <label for="">Nombre</label> <br />
+          <input type="text" name="name_cliente_1" /> <br />
+          <label for="">Apellido</label> <br />
+          <input type="text" name="last_cliente_1"  /> <br />
+          <label for="">Fecha nacimiento</label> <br />
+          <input type="date" name="fecha_cliente_1" /> <br />
+          <label for="">Email</label> <br />
+          <input type="email" name="email_cliente_1"  /> <br />
+          <label for="">Celular</label> <br />
+          <input type="tel" name="cel_cliente_1" /> <br />
+          <label for="">Contraseña Actual</label> <br />
+          <input type="text" name="pass_old_cliente_1"  readonly /> <br />
+          <label for="">Contraseña Nueva</label> <br />
+          <input type="text" name="pass_new_cliente_1" /> <br />
+          <input type="button" value="Guardar" onclick="editarCliente()" />
+        </form>
+      </div> -->
+
     </main>
 
     <div id="sidebar">
@@ -188,6 +246,7 @@ if ($sesion == null || $sesion = '') {
     </div>
   </div>
   <script src="../../dist/js/sidebarDashboard.js"></script>
+  <script src="../../dist/js/regularExpression.js"></script>
   <script src="../../dist/js/usuarios.js"></script>
 </body>
 
