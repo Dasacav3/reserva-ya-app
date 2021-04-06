@@ -40,7 +40,7 @@ INSERT INTO `administrador` (`ID_ADMIN`, `NOMBRE_ADMIN`, `APELLIDO_ADMIN`, `EMAI
 -- Volcando estructura para tabla reservaya2.categoria_insumo
 CREATE TABLE IF NOT EXISTS `categoria_insumo` (
   `ID_CATEGORIA_INSUMO` int(11) NOT NULL,
-  `NOMBRE_CATEGORIA_INSUMO` varchar(100) DEFAULT NULL,
+  `NOMBRE_CATEGORIA_INSUMO` varchar(100) NOT NULL,
   PRIMARY KEY (`ID_CATEGORIA_INSUMO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `categoria_insumo` (
 -- Volcando estructura para tabla reservaya2.categoria_producto
 CREATE TABLE IF NOT EXISTS `categoria_producto` (
   `ID_CATEGORIA_PRODUCTO` int(11) NOT NULL,
-  `NOMBRE_CATEGORIA_PRODUCTO` char(100) DEFAULT NULL,
+  `NOMBRE_CATEGORIA_PRODUCTO` varchar(50) NOT NULL,
   PRIMARY KEY (`ID_CATEGORIA_PRODUCTO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -73,14 +73,16 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   UNIQUE KEY `CELULAR_CLIENTE` (`CELULAR_CLIENTE`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuario` (`ID_USUARIO`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla reservaya2.cliente: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla reservaya2.cliente: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
 INSERT INTO `cliente` (`ID_CLIENTE`, `NOMBRE_CLIENTE`, `APELLIDO_CLIENTE`, `FECHA_NACIMIENTO_CLIENTE`, `EMAIL_CLIENTE`, `CELULAR_CLIENTE`, `ID_USUARIO`) VALUES
 	(3, 'Valentina', 'Velasquez', '2002-02-11', 'valentina@gmail.com', '3194601235', 3),
 	(4, 'Alejandra', 'Niño', '1998-08-13', 'alejandra@gmail.com', '3154789635', 4),
-	(5, 'Sergio', 'Ayala', '2002-04-06', 'sergio@gmail.com', '3114235876', 5);
+	(5, 'Sergio', 'Ayala', '2002-04-06', 'sergio@gmail.com', '3114235876', 5),
+	(8, 'Mario', 'Bross', '1985-09-13', 'mario@gmail.com', '3114568796', 10),
+	(9, 'Luigi', 'GG', '1983-09-21', 'luigi@gmail.com', '3574896574', 11);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya2.empleado
@@ -98,12 +100,13 @@ CREATE TABLE IF NOT EXISTS `empleado` (
   UNIQUE KEY `CELULAR_EMPLEADO` (`CELULAR_EMPLEADO`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuario` (`ID_USUARIO`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla reservaya2.empleado: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla reservaya2.empleado: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
 INSERT INTO `empleado` (`ID_EMPLEADO`, `DOC_EMPLEADO`, `NOMBRE_EMPLEADO`, `APELLIDO_EMPLEADO`, `EMAIL_EMPLEADO`, `CELULAR_EMPLEADO`, `ID_USUARIO`) VALUES
-	(1, '3256897', 'Fabian', 'Combita', 'fabian@gmail.com', '3174568742', 2);
+	(1, '394564', 'Fabian', 'Combita', 'fabian@resevaya.com', '3104608272', 2),
+	(4, '52583114', 'Ana', 'Velasquez', 'ana.velasquez2010@gmail.com', '3103456985', 12);
 /*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya2.insumo
@@ -139,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `mesa` (
 INSERT INTO `mesa` (`ID_MESA`, `CAPACIDAD_MESA`, `ESTADO_MESA`) VALUES
 	(1, 4, 'Disponible'),
 	(2, 2, 'Disponible'),
-	(3, 8, 'Disponible'),
+	(3, 8, 'Ocupada'),
 	(4, 6, 'Disponible');
 /*!40000 ALTER TABLE `mesa` ENABLE KEYS */;
 
@@ -151,8 +154,10 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `DESCRIPCION_PRODUCTO` varchar(255) NOT NULL,
   `CANTIDAD_PRODUCTO` int(11) NOT NULL,
   `VALOR_PRODUCTO` double NOT NULL,
+  `IMAGEN_PRODUCTO` longblob NOT NULL,
   PRIMARY KEY (`ID_PRODUCTO`),
   KEY `ID_CATEGORIA_PRODUCTO` (`ID_CATEGORIA_PRODUCTO`),
+  KEY `verProducto` (`ID_PRODUCTO`,`NOMBRE_PRODUCTO`,`VALOR_PRODUCTO`),
   CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`ID_CATEGORIA_PRODUCTO`) REFERENCES `categoria_producto` (`ID_CATEGORIA_PRODUCTO`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -185,20 +190,21 @@ CREATE TABLE IF NOT EXISTS `reservacion` (
   PRIMARY KEY (`ID_RESERVACION`),
   KEY `ID_CLIENTE` (`ID_CLIENTE`),
   CONSTRAINT `reservacion_ibfk_1` FOREIGN KEY (`ID_CLIENTE`) REFERENCES `cliente` (`ID_CLIENTE`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
 
 -- Volcando datos para la tabla reservaya2.reservacion: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `reservacion` DISABLE KEYS */;
 INSERT INTO `reservacion` (`ID_RESERVACION`, `ID_CLIENTE`, `FECHA_RESERVACION`, `HORA_RESERVACION`, `ESTADO_RESERVACION`, `ASIENTO`) VALUES
-	(1, 3, '2021-04-03', '20:00:34', 'Activa', 4),
-	(2, 4, '2021-04-08', '14:20:35', 'Cancelada', 2),
 	(3, 5, '2021-04-11', '15:20:00', 'Activa', 6),
-	(4, 5, '2021-04-21', '22:04:00', 'Activa', 3),
-	(5, 4, '2021-04-13', '21:06:00', 'Activa', 6),
-	(6, 4, '2021-04-20', '21:07:00', 'Activa', 3),
+	(4, 5, '2021-04-21', '22:00:00', 'Activa', 3),
 	(7, 3, '2021-04-30', '19:10:00', 'Activa', 8),
 	(8, 4, '2021-05-08', '19:13:00', 'Activa', 3),
-	(10, 5, '2021-04-20', '19:27:00', 'Activa', 3);
+	(10, 5, '2021-04-20', '19:27:00', 'Activa', 3),
+	(13, 3, '2021-04-14', '12:00:00', 'Activa', 8),
+	(18, 4, '2021-04-15', '21:00:00', 'Activa', 3),
+	(19, 3, '2021-04-20', '15:00:00', 'Activa', 4),
+	(31, 3, '2021-04-05', '22:00:00', 'Cancelada', 3),
+	(32, 5, '2021-04-06', '14:30:00', 'Activa', 8);
 /*!40000 ALTER TABLE `reservacion` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya2.reservacion_reserva_mesa
@@ -211,46 +217,53 @@ CREATE TABLE IF NOT EXISTS `reservacion_reserva_mesa` (
   KEY `ID_MESA` (`ID_MESA`),
   CONSTRAINT `reservacion_reserva_mesa_ibfk_1` FOREIGN KEY (`ID_RESERVACION`) REFERENCES `reservacion` (`ID_RESERVACION`) ON UPDATE CASCADE,
   CONSTRAINT `reservacion_reserva_mesa_ibfk_2` FOREIGN KEY (`ID_MESA`) REFERENCES `mesa` (`ID_MESA`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
 
 -- Volcando datos para la tabla reservaya2.reservacion_reserva_mesa: ~9 rows (aproximadamente)
 /*!40000 ALTER TABLE `reservacion_reserva_mesa` DISABLE KEYS */;
 INSERT INTO `reservacion_reserva_mesa` (`ID_RESERVACION_RESERVA_MESA`, `ID_RESERVACION`, `ID_MESA`) VALUES
-	(1, 2, 2),
 	(2, 3, 4),
-	(3, 1, 1),
-	(4, 5, 1),
-	(5, 6, 2),
 	(6, 4, 3),
 	(7, 7, 4),
 	(8, 8, 1),
-	(9, 10, 3);
+	(9, 10, 3),
+	(12, 13, 3),
+	(17, 18, 1),
+	(18, 19, 3),
+	(30, 31, 1),
+	(31, 32, 3);
 /*!40000 ALTER TABLE `reservacion_reserva_mesa` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya2.usuario
 CREATE TABLE IF NOT EXISTS `usuario` (
   `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT,
   `NOMBRE_USUARIO` varchar(70) NOT NULL,
-  `CLAVE_USUARIO` varchar(20) NOT NULL,
+  `CLAVE_USUARIO` varchar(100) NOT NULL,
   `TIPO_USUARIO` enum('Cliente','Empleado','Administrador') NOT NULL,
   `ESTADO_USUARIO` enum('Activo','Inactivo') NOT NULL,
-  PRIMARY KEY (`ID_USUARIO`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`ID_USUARIO`),
+  UNIQUE KEY `NOMBRE_USUARIO` (`NOMBRE_USUARIO`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla reservaya2.usuario: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla reservaya2.usuario: ~9 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
 INSERT INTO `usuario` (`ID_USUARIO`, `NOMBRE_USUARIO`, `CLAVE_USUARIO`, `TIPO_USUARIO`, `ESTADO_USUARIO`) VALUES
-	(1, 'dscv3719@gmail.com', '1234', 'Administrador', 'Activo'),
-	(2, 'fabian@gmail.com', '1234', 'Empleado', 'Activo'),
-	(3, 'valentina@gmail.com', '1234', 'Cliente', 'Activo'),
-	(4, 'alejandra@gmail.com', '1234', 'Cliente', 'Activo'),
-	(5, 'sergio@gmail.com', '1234', 'Cliente', 'Activo');
+	(1, 'dscv3719@gmail.com', '$2y$10$oAa/c87mykaAWtv6nkL0B.9l5MuQYou7PPm08x0Ip0RXR1UJ2/CVS', 'Administrador', 'Activo'),
+	(2, 'fabian@gmail.com', '$2y$10$gElnDs0Tq6S05QnCd5IRPeoJFv0PK8SE6UY.BYJNhOAEIuKAwv3n.', 'Empleado', 'Activo'),
+	(3, 'valentina@gmail.com', '$2y$10$J6/0ZLVx9oTsFsp0ik42B.43PTvb1uVtpRqxoHodqn0BmLDR6eoI6', 'Cliente', 'Activo'),
+	(4, 'alejandra@gmail.com', '$2y$10$xTWIe0cVjW2DiyngxZ5HpusRe0dH32dsJ7pceyQo1hvpQyuf/RJ92', 'Cliente', 'Activo'),
+	(5, 'sergio@gmail.com', '$2y$10$0J1l4vkRd6w/QRhbucUbn.WFZeQSojVGifsutRW4pJFJ.MlgL3MNK', 'Cliente', 'Activo'),
+	(10, 'mario@gmail.com', '$2y$10$OXmHTFZscxrBlRBoO.vmJ.GoNZurx862oLgrZzT8tQyc2.vtk2iDa', 'Cliente', 'Activo'),
+	(11, 'luigi@gmail.com', '$2y$10$Opl04G8s/4UVwb/ZYOdBLuSwKddsx6hpl/xz05QPCf8ipTJGgN82u', 'Cliente', 'Inactivo'),
+	(12, 'ana.velasquez2010@hotmail.com', '$2y$10$MblgpNiwGaVukhgtzUq3EO4IEjk8xNh.GBEydkj2L3pDq5R2//1X6', 'Empleado', 'Inactivo');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya2.usuario_accede_insumo
 CREATE TABLE IF NOT EXISTS `usuario_accede_insumo` (
   `ID_USUARIO` int(11) NOT NULL,
   `ID_INSUMO` int(11) NOT NULL,
+  `ID_USUARIO_ACCEDE_INSUMO` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`ID_USUARIO_ACCEDE_INSUMO`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   KEY `ID_INSUMO` (`ID_INSUMO`),
   CONSTRAINT `usuario_accede_insumo_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuario` (`ID_USUARIO`) ON UPDATE CASCADE,
@@ -265,6 +278,8 @@ CREATE TABLE IF NOT EXISTS `usuario_accede_insumo` (
 CREATE TABLE IF NOT EXISTS `usuario_visualiza_producto` (
   `ID_USUARIO` int(11) NOT NULL,
   `ID_PRODUCTO` int(11) NOT NULL,
+  `ID_USUARIO_VISUALIZA_PRODUCTO` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`ID_USUARIO_VISUALIZA_PRODUCTO`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   KEY `ID_PRODUCTO` (`ID_PRODUCTO`),
   CONSTRAINT `usuario_visualiza_producto_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuario` (`ID_USUARIO`) ON UPDATE CASCADE,
