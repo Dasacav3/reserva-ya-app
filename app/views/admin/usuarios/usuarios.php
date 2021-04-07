@@ -36,6 +36,8 @@ if ($sesion == null || $sesion = '') {
   die();
 }
 
+$img = $_SESSION['datos'][6];
+
 ?>
 
 <body id="body">
@@ -55,7 +57,7 @@ if ($sesion == null || $sesion = '') {
           <i class="fa fa-power-off" aria-hidden="true"></i>
         </a>
         <a href="../usuarios/updateInfo.php">
-          <img width="30" src="../../dist/img/assets/avatar.svg" alt="" />
+          <img class="foto_perfil" src="data:image/png;base64,<?php echo base64_encode($img); ?>" />
         </a>
       </div>
     </nav>
@@ -141,45 +143,12 @@ if ($sesion == null || $sesion = '') {
 
 
 
-      <!-- Modal Editar Usuarios Empleados -->
+      <!-- Modal Editar Usuarios -->
       <div id="pop-up-edit" class="pop-up form-modal">
         <form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
 
         </form>
       </div>
-
-      <!-- Modal Editar Usuarios Clientes
-      <div id="pop-up-edit" class="pop-up form-modal">
-        <form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
-          <a href="#" class="closePopup-edit closePopup" onclick="cerrar()"><i class="fas fa-times-circle"></i></a>
-          <h4 class="form-title">Editar cliente</h4>
-          <label for="">ID usuario</label> <br />
-          <input type="text" name="id_cliente" readonly /> <br />
-          <label for="">Tipo de usuario</label> <br />
-          <input type="text" name="tipo_usuario"  readonly /> <br />
-          <label for="">Estado de usuario</label> <br />
-          <select name="estado_usuario">
-            <option value=""></option>
-            <option value="Activo">Activo</option>
-            <option value="Inactivo">Inactivo</option>
-          </select>
-          <label for="">Nombre</label> <br />
-          <input type="text" name="name_cliente_1" /> <br />
-          <label for="">Apellido</label> <br />
-          <input type="text" name="last_cliente_1"  /> <br />
-          <label for="">Fecha nacimiento</label> <br />
-          <input type="date" name="fecha_cliente_1" /> <br />
-          <label for="">Email</label> <br />
-          <input type="email" name="email_cliente_1"  /> <br />
-          <label for="">Celular</label> <br />
-          <input type="tel" name="cel_cliente_1" /> <br />
-          <label for="">Contraseña Actual</label> <br />
-          <input type="text" name="pass_old_cliente_1"  readonly /> <br />
-          <label for="">Contraseña Nueva</label> <br />
-          <input type="text" name="pass_new_cliente_1" /> <br />
-          <input type="button" value="Guardar" onclick="editarCliente()" />
-        </form>
-      </div> -->
 
     </main>
 

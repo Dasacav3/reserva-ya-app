@@ -34,6 +34,8 @@ if ($sesion == null || $sesion = '') {
   die();
 }
 
+$img = $_SESSION['datos'][6];
+
 ?>
 
 <body id="body">
@@ -53,8 +55,7 @@ if ($sesion == null || $sesion = '') {
           <i class="fa fa-power-off" aria-hidden="true"></i>
         </a>
         <a href="../usuarios/updateInfo.php">
-          <img width="30" src="../../dist/img/assets/avatar.svg" alt="" />
-          <!-- <i class="fa fa-user-circle-o" aria-hidden="true"></i> -->
+          <img class="foto_perfil" src="data:image/png;base64,<?php echo base64_encode($img); ?>" />
         </a>
       </div>
     </nav>

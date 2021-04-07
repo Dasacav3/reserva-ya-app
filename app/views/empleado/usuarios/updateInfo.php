@@ -34,6 +34,8 @@ if ($sesion == null || $sesion = '') {
   die();
 }
 
+$img = $_SESSION['datos'][6];
+
 ?>
 
 <body id="body">
@@ -53,7 +55,7 @@ if ($sesion == null || $sesion = '') {
           <i class="fa fa-power-off" aria-hidden="true"></i>
         </a>
         <a href="../usuarios/updateInfo.php">
-          <img width="30" src="../../dist/img/assets/avatar.svg" alt="" />
+          <img class="foto_perfil" src="data:image/png;base64,<?php echo base64_encode($img); ?>" />
         </a>
       </div>
     </nav>
@@ -79,7 +81,18 @@ if ($sesion == null || $sesion = '') {
             <input type="button" value="Actualizar">
           </form>
         </div>
-        <div></div>
+        <div>
+        <form class="updatedata_container" enctype="multipart/form-data" id="photo_user_form" method="POST">
+          <!-- <div class="drag_area">
+            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <header id="text_drag">Arrastra y sube tu archivo</header>
+            <span>Ó</span>
+            <button id="btn_drag">Selecciona tu archivo</button> -->
+            <input type="file" id="file_control" name="photo_user">
+            <input type="button" value="Subir" id="subir_photo">
+          <!-- </div> -->
+        </form>
+        </div>
       </div>
     </main>
 
@@ -126,6 +139,7 @@ if ($sesion == null || $sesion = '') {
     </div>
   </div>
   <script src="../../dist/js/sidebarDashboard.js"></script>
+  <script src="../../dist/js/updateinfo_emp.js"></script>
 </body>
 
 </html>
