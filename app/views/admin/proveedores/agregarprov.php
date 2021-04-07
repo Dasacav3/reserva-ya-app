@@ -2,14 +2,11 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="../../dist/img/favicon.png" type="image/x-icon">
-  <link rel="stylesheet" href="../../dist/css/normalize.css">
-  <link rel="stylesheet" href="../../dist/css/dashboard.css">
-  <link rel="stylesheet" href="../../dist/css/datatable.css" />
-  <link rel="stylesheet" href="../../dist/css/modals.css" />
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../../views/dist/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../../views/dist/css/normalize.css">
+    <link rel="stylesheet" href="../../../views/dist/css/dashboard.css">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/fontawesome.min.css">
     <script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
@@ -19,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
  
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <title>Gestión de Proveedores</title>
+    <title>Agregar Proveedores</title>
   </head>
   <body id="body">
     <div class="container">
@@ -38,7 +35,7 @@
             <i class="fa fa-power-off" aria-hidden="true"></i>
           </a>
           <a href="../usuarios/updateInfo.php">
-            <img width="30" src="../../dist/img/assets/avatar.svg" alt="" />
+            <img width="30" src="../../../views/dist/img/assets/avatar.svg" alt="" />
             <!-- <i class="fa fa-user-circle-o" aria-hidden="true"></i> -->
           </a>
         </div>
@@ -46,64 +43,26 @@
 
       <main class="main__container">
         <div>
-            <h2 class="title_table">Modulo de Gestión de Proveedores</h2>
+            <h2 class="title_table">Agregar Proveedores</h2>
         </div>
-        <?php
-          include('../../../controller/database.php');
-          $registros = mysqli_query ($conn, "SELECT * FROM proveedor ") or die ("Problemas en el select". mysqli_error($conn));
-        ?>
-        <div class="datatable-container">
-        <table class="datatable">
-          <thead>
-          <tr>
-            <th colspan="4">AGREGAR</th>
-            <th colspan="3" style="text-align: center;"><a href="http://localhost/reservaya-mvc/app/views/admin/proveedores/agregarprov.php"><input type="button" value="AGREGAR" style=" width: 200px;"></a></th>
-          </tr>
-        <tr>
-          <th>ID</th>
-          <th>NOMBRE</th>
-          <th>DIRECCION</th>
-          <th>PERSONA ENCARGADA</th>
-          <th>TELEFONO</th>
-          <th colspan="2">ACCIONES</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-  while ($row = mysqli_fetch_array($registros)) {
-?>
-  <tr>
-    <th>
-      <?php 
-      echo $row['ID_PROVEEDOR'];
-    ?>
-    </th>
-    <td><?php 
-      echo $row['NOMBRE_PROVEEDOR'];
-    ?></td>
-    <td><?php 
-      echo $row['DIRECCION_PROVEEDOR'];
-    ?></td>
-    <td><?php 
-      echo $row['PERSONA_ENCARGADA'];
-    ?></td>
-    <td><?php 
-      echo $row['TELEFONO_PROVEEDOR'];
-    ?></td>
-    <td><a href="http://localhost/reservaya-mvc/app/models/admin/proveedores/actualizaprov.php?id=<?php echo $row['ID_PROVEEDOR'];?>&NP=<?php echo $row['NOMBRE_PROVEEDOR'];?>&DP=<?php echo $row['DIRECCION_PROVEEDOR'];?>&PE=<?php echo $row['PERSONA_ENCARGADA'];?>&TP=<?php echo $row['TELEFONO_PROVEEDOR'];?>"><input type="button" value="Modificar" style="background-color: green;color: white;"></a></td>
-    <td><a href="http://localhost/reservaya-mvc/app/models/admin/proveedores/eliminaprov.php?id=<?php echo $row['ID_PROVEEDOR'];?>&NP=<?php echo $row['NOMBRE_PROVEEDOR'];?>&DP=<?php echo $row['DIRECCION_PROVEEDOR'];?>&PE=<?php echo $row['PERSONA_ENCARGADA'];?>&TP=<?php echo $row['TELEFONO_PROVEEDOR'];?>"><input type="button" value="Eliminar" style="background-color: red;color: white;"></a></td>
-  </tr>
-  </tbody>
-  <?php
-  }
-?>
-      </table>
-      </div>
+        <div style="background-color: white;">
+          <form action="../../../models/admin/proveedores/aggprov.php" method="post">
+            <label>Nombre Proveedor:</label><br>
+            <input type="text" name="NOMBRE_PROVEEDOR"> <br><br>
+            <label>Direccion Proveedor:</label> <br>
+            <input type="text" name="DIRECCION_PROVEEDOR"> <br><br>
+            <label>Persona Encargada:</label> <br>
+            <input type="text" name="PERSONA_ENCARGADA"> <br><br>
+            <label>Telefono Proveedor:</label> <br>
+            <input type="text" name="TELEFONO_PROVEEDOR"><br><br>
+            <input type="submit" value="Agregar">
+          </form>
+        </div>
       </main>
       <div id="sidebar">
         <div class="sidebar__title">
           <div class="sidebar__img">
-            <img src="../../dist/img/logo-reservaya.png" alt="logo" />
+            <img src="../../../views/dist/img/logo-reservaya.png" alt="logo" />
           </div>
           <i
             onclick="closeSidebar()"
