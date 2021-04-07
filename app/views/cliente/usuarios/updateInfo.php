@@ -8,8 +8,9 @@
   <link rel="shortcut icon" href="../../dist/img/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="../../dist/css/normalize.css">
   <link rel="stylesheet" href="../../dist/css/dashboard.css">
+  <link rel="stylesheet" href="../../dist/css/modals.css">
   <!-- FontAwesome -->
-  <link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/fontawesome.min.css">
+  <link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/all.min.css">
   <script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
   <!-- Sweer Alert -->
   <script src="../../../../lib/sweetaler2/sweetalert2.all.min.js"></script>
@@ -20,6 +21,7 @@
 session_start();
 
 $sesion = $_SESSION['datos'];
+
 
 if ($sesion == null || $sesion = '') {
 ?>
@@ -33,6 +35,9 @@ if ($sesion == null || $sesion = '') {
 <?php
   die();
 }
+
+$img = $_SESSION['datos'][6];
+
 
 ?>
 
@@ -53,7 +58,7 @@ if ($sesion == null || $sesion = '') {
           <i class="fa fa-power-off" aria-hidden="true"></i>
         </a>
         <a href="../usuarios/updateInfo.php">
-          <img width="30" src="../../dist/img/assets/avatar.svg" alt="" />
+          <img class="foto_perfil" src="data:image/png;base64,<?php echo base64_encode($img); ?>" />
         </a>
       </div>
     </nav>
@@ -61,8 +66,53 @@ if ($sesion == null || $sesion = '') {
     <main class="main__container">
       <div>
         <h2 class="title_table">Actualización de información</h2>
-
       </div>
+      <div class="updateinfo_container">
+        <div class="form_info">
+          <h4 class="fom_update__h4">Datos básicos</h4>
+          <form method="POST" id="form_update_info">
+            <label for="">Nombres</label> <br>
+            <input type="text" name="nombre" id="nombre"> <br>
+            <label for="">Apellidos</label> <br>
+            <input type="text" name="apellido" id="apellido"> <br>
+            <label for="">Fecha de nacimiento</label> <br>
+            <input type="date" name="fecha" id="fecha"> <br>
+            <label for="">Correo electronico</label> <br>
+            <input type="email" name="email" id="email"> <br>
+            <label for="">Celular</label> <br>
+            <input type="tel" name="cel" id="cel"> <br>
+            <input type="button" value="Actualizar" onclick="editarInfo()">
+          </form>
+          <div>
+            <button class="change_pass" onclick="changePassword()">Cambiar contraseña</button>
+          </div>
+        </div>
+        <form class="updatedata_container" enctype="multipart/form-data" id="photo_user_form" method="POST">
+          <div class="drag_area">
+            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <p id="text_drag">Arrastra y sube tu archivo</p>
+            <span>Ó</span>
+            <!-- <button id="btn_drag">Selecciona tu archivo</button> -->
+            <input type="file" id="file_control" name="photo_user">
+            <input type="button" value="Subir" id="subir_photo">
+          </div>
+        </form>
+      </div>
+
+      <div id="pop-up-edit" class="pop-up form-modal">
+				<form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
+					<a href="#" id="closePopup-edit" class="closePopup"><i class="fas fa-times-circle"></i></a>
+					<h4 class="form-title">Actualizar contraseña</h4>
+					<label for="">Contraseña Actual</label> <br />
+					<input type="password" id="pass_old" name="pass_old"> <br>
+          <label for="">Contraseña Nueva</label> <br />
+					<input type="password" id="pass_new" name="pass_new"> <br>
+          <label for="">Repetir Contraseña Nueva</label> <br />
+					<input type="password" id="pass_new2" name="pass_new2"> <br>
+					<input type="button" value="Guardar" id="edit" />
+				</form>
+			</div>
+
     </main>
 
     <div id="sidebar">
@@ -104,6 +154,7 @@ if ($sesion == null || $sesion = '') {
     </div>
   </div>
   <script src="../../dist/js/sidebarDashboard.js"></script>
+  <script src="../../dist/js/updateinfo.js"></script>
 </body>
 
 </html>

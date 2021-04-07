@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../../dist/css/normalize.css">
   <link rel="stylesheet" href="../../dist/css/dashboard.css">
   <!-- FontAwesome -->
-  <link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/fontawesome.min.css">
+  <link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/all.min.css">
   <script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
   <!-- Sweer Alert -->
   <script src="../../../../lib/sweetaler2/sweetalert2.all.min.js"></script>
@@ -61,7 +61,23 @@ if ($sesion == null || $sesion = '') {
     <main class="main__container">
       <div>
         <h2 class="title_table">Actualización de información</h2>
-
+      </div>
+      <div class="updateinfo_container">
+        <div class="form_info">
+          <h4 class="fom_update__h4">Datos básicos</h4>
+          <form method="POST">
+            <label for="">Nombres</label> <br>
+            <input type="text"> <br>
+            <label for="">Apellidos</label> <br>
+            <input type="text"> <br>
+            <label for="">Correo electronico</label> <br>
+            <input type="email"> <br>
+            <label for="">Celular</label> <br>
+            <input type="tel"> <br>
+            <input type="button" value="Actualizar">
+          </form>
+        </div>
+        <div></div>
       </div>
     </main>
 
