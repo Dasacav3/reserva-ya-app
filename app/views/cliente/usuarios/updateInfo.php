@@ -88,30 +88,39 @@ $img = $_SESSION['datos'][6];
           </div>
         </div>
         <form class="updatedata_container" enctype="multipart/form-data" id="photo_user_form" method="POST">
-          <div class="drag_area">
+          <!-- <div class="drag_area">
             <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-            <p id="text_drag">Arrastra y sube tu archivo</p>
+            <header id="text_drag">Arrastra y sube tu archivo</header>
             <span>Ó</span>
-            <!-- <button id="btn_drag">Selecciona tu archivo</button> -->
+            <button id="btn_drag">Selecciona tu archivo</button> -->
             <input type="file" id="file_control" name="photo_user">
             <input type="button" value="Subir" id="subir_photo">
-          </div>
+          <!-- </div> -->
         </form>
+        <!-- <div class="drag-area">
+          <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+          <header>Drag & Drop to Upload File</header>
+          <span>OR</span>
+          <button>Browse File</button>
+          <input type="file" hidden>
+        </div> -->
       </div>
 
+
+
       <div id="pop-up-edit" class="pop-up form-modal">
-				<form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
-					<a href="#" id="closePopup-edit" class="closePopup"><i class="fas fa-times-circle"></i></a>
-					<h4 class="form-title">Actualizar contraseña</h4>
-					<label for="">Contraseña Actual</label> <br />
-					<input type="password" id="pass_old" name="pass_old"> <br>
+        <form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
+          <a href="#" id="closePopup-edit" class="closePopup"><i class="fas fa-times-circle"></i></a>
+          <h4 class="form-title">Actualizar contraseña</h4>
+          <label for="">Contraseña Actual</label> <br />
+          <input type="password" id="pass_old" name="pass_old"> <br>
           <label for="">Contraseña Nueva</label> <br />
-					<input type="password" id="pass_new" name="pass_new"> <br>
+          <input type="password" id="pass_new" name="pass_new"> <br>
           <label for="">Repetir Contraseña Nueva</label> <br />
-					<input type="password" id="pass_new2" name="pass_new2"> <br>
-					<input type="button" value="Guardar" id="edit" />
-				</form>
-			</div>
+          <input type="password" id="pass_new2" name="pass_new2"> <br>
+          <input type="button" value="Guardar" id="edit" />
+        </form>
+      </div>
 
     </main>
 
@@ -155,6 +164,7 @@ $img = $_SESSION['datos'][6];
   </div>
   <script src="../../dist/js/sidebarDashboard.js"></script>
   <script src="../../dist/js/updateinfo.js"></script>
+  <script src="../../dist/js/drag_and_drop.js"></script>
 </body>
 
 </html>

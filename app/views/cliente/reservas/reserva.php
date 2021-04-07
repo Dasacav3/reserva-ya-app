@@ -5,7 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="shortcut icon" href="/../../dist/img/favicon.png" type="image/x-icon" />
+	<link rel="shortcut icon" href="../../dist/img/favicon.png" type="image/x-icon" />
 	<link rel="stylesheet" href="../../dist/css/normalize.css" />
 	<link rel="stylesheet" href="../../dist/css/dashboard.css" />
 	<link rel="stylesheet" href="../../dist/css/datatable.css" />
@@ -70,34 +70,24 @@ $img = $_SESSION['datos'][6];
 					<div class="tools">
 						<ul>
 							<li>
-								<span><input type="checkbox" name="" id="" /></span>
-							</li>
-							<li>
-								<button id="abrirPopup-add" class="add"><i class="fas fa-plus-circle"></i></button>
-							</li>
-							<li>
-								<button id="abrirPopup-edit" class="edit"><i class="fas fa-edit"></i></button>
-							</li>
-							<li>
-								<button class="delete"><i class="fas fa-trash"></i></button>
+								<button id="abrirPopup-add" class="add"><i class="fas fa-plus-circle"></i> Añadir</button>
 							</li>
 						</ul>
 					</div>
 					<div class="search">
-						<input type="text" class="search-input" id="search-input" />
+						<input type="text" class="search-input" id="search_input" placeholder="Busqueda" />
 					</div>
 				</div>
 				<table class="datatable">
 					<thead>
 						<tr>
-							<th></th>
 							<th>ESTADO</th>
 							<th>ID RESERVA</th>
-							<th>NOMBRES</th>
-							<th>APELLIDOS</th>
 							<th>FECHA</th>
 							<th>HORA</th>
 							<th>MESA</th>
+							<th>ASIENTOS</th>
+							<th>ACCIONES</th>
 						</tr>
 					</thead>
 					<tbody id="reservas">
@@ -131,16 +121,19 @@ $img = $_SESSION['datos'][6];
 
 
 			<!-- Modal Añadir reservas -->
-			<div id="pop-up-add" class="pop-up form-reserva">
+			<div id="pop-up-add" class="pop-up form-modal">
 				<form id="pop_up_wrap_add" class="pop-up-wrap" method="POST">
 					<a href="#" id="closePopup-add" class="closePopup"><i class="fas fa-times-circle"></i></a>
 					<h4 class="form-title">Añadir reserva</h4>
 					<label for="">Fecha</label> <br />
-					<input type="date" name="fecha_reserva" id="add-fecha-reserva" /> <br />
+					<input type="date" min="<?php echo date("Y-m-d");?>" name="fecha_reserva" id="add_fecha_reserva" /> <br />
 					<label for="">Hora</label> <br />
-					<input type="time" name="hora_reserva" id="add-hora-reserva" /> <br />
+					<input type="time" min="12:00" max="22:00" name="hora_reserva" id="add_hora_reserva" /> <br />
 					<label for="">Mesa</label> <br />
-					<input type="number" name="numero_mesa" id="add-numero-mesa" /> <br />
+					<select name="mesa" id="mesa">
+					</select>
+					<label for="">Asientos</label> <br />
+					<input type="number" min="1" name="asientos" id="add_asientos" /> <br />
 					<input type="button" value="Registrar" id="registrar" />
 				</form>
 			</div>
@@ -148,16 +141,20 @@ $img = $_SESSION['datos'][6];
 
 
 			<!-- Modal Editar reservas -->
-			<div id="pop-up-edit" class="pop-up form-reserva">
-				<form id="pop-up-wrap-edit" class="pop-up-wrap" method="POST">
+			<div id="pop-up-edit" class="pop-up form-modal">
+				<form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
 					<a href="#" id="closePopup-edit" class="closePopup"><i class="fas fa-times-circle"></i></a>
 					<h4 class="form-title">Editar reserva</h4>
+					<label for="">ID Reserva</label> <br />
+					<input type="text" id="id_reserva" name="id_reserva" readonly> <br>
+					<label for="">Estado</label> <br />
+					<input type="text" id="estado" name="estado" readonly> <br>
 					<label for="">Fecha</label> <br />
-					<input type="date" name="fecha_reserva" id="edit-fecha-reserva" /> <br />
+					<input type="date" min="<?php echo date("Y-m-d");?>" name="edit_fecha_reserva" id="edit_fecha_reserva" /> <br />
 					<label for="">Hora</label> <br />
-					<input type="time" name="hora_reserva" id="edit-hora-reserva" /> <br />
-					<label for="">Mesa</label> <br />
-					<input type="number" name="numero_mesa" id="edit-numero-mesa" /> <br />
+					<input type="time" min="12:00" max="22:00" name="edit_hora_reserva" id="edit_hora_reserva" /> <br />
+					<label for="">Asientos</label> <br />
+					<input type="number" min="1" name="edit_asientos" id="edit_asientos" /> <br />
 					<input type="button" value="Guardar" id="edit" />
 				</form>
 			</div>
@@ -201,7 +198,7 @@ $img = $_SESSION['datos'][6];
 		</div>
 	</div>
 	<script src="../../dist/js/sidebarDashboard.js"></script>
-	<script src="../../dist/js/reservas.js"></script>
+	<script src="../../dist/js/reservas_cli.js"></script>
 </body>
 
 </html>
