@@ -68,27 +68,17 @@ if ($sesion == null || $sesion = '') {
 					<div class="tools">
 						<ul>
 							<li>
-								<span><input type="checkbox" name="" id="" /></span>
-							</li>
-							<li>
-								<button id="abrirPopup-add" class="add"><i class="fas fa-plus-circle"></i></button>
-							</li>
-							<li>
-								<button id="abrirPopup-edit" class="edit"><i class="fas fa-edit"></i></button>
-							</li>
-							<li>
-								<button class="delete"><i class="fas fa-trash"></i></button>
+								<button id="abrirPopup-add" class="add"><i class="fas fa-plus-circle"></i> Añadir</button>
 							</li>
 						</ul>
 					</div>
 					<div class="search">
-						<input type="text" class="search-input" id="search-input" />
+						<input type="text" class="search-input" id="search_input" placeholder="Busqueda" />
 					</div>
 				</div>
 				<table class="datatable">
 					<thead>
 						<tr>
-							<th></th>
 							<th>ESTADO</th>
 							<th>ID RESERVA</th>
 							<th>NOMBRES</th>
@@ -96,6 +86,8 @@ if ($sesion == null || $sesion = '') {
 							<th>FECHA</th>
 							<th>HORA</th>
 							<th>MESA</th>
+							<th>ASIENTOS</th>
+							<th>ACCIONES</th>
 						</tr>
 					</thead>
 					<tbody id="reservas">
@@ -129,16 +121,22 @@ if ($sesion == null || $sesion = '') {
 
 
 			<!-- Modal Añadir reservas -->
-			<div id="pop-up-add" class="pop-up form-reserva">
+			<div id="pop-up-add" class="pop-up form-modal">
 				<form id="pop_up_wrap_add" class="pop-up-wrap" method="POST">
 					<a href="#" id="closePopup-add" class="closePopup"><i class="fas fa-times-circle"></i></a>
 					<h4 class="form-title">Añadir reserva</h4>
+					<label for="">Cliente</label> <br />
+					<select name="cliente" id="cliente">
+					</select>
 					<label for="">Fecha</label> <br />
-					<input type="date" name="fecha_reserva" id="add-fecha-reserva" /> <br />
+					<input type="date" min="<?php echo date("Y-m-d");?>" name="fecha_reserva" id="add_fecha_reserva" /> <br />
 					<label for="">Hora</label> <br />
-					<input type="time" name="hora_reserva" id="add-hora-reserva" /> <br />
+					<input type="time" min="12:00" max="22:00" name="hora_reserva" id="add_hora_reserva" /> <br />
 					<label for="">Mesa</label> <br />
-					<input type="number" name="numero_mesa" id="add-numero-mesa" /> <br />
+					<select name="mesa" id="mesa">
+					</select>
+					<label for="">Asientos</label> <br />
+					<input type="number" min="1" name="asientos" id="add_asientos" /> <br />
 					<input type="button" value="Registrar" id="registrar" />
 				</form>
 			</div>
@@ -146,16 +144,29 @@ if ($sesion == null || $sesion = '') {
 
 
 			<!-- Modal Editar reservas -->
-			<div id="pop-up-edit" class="pop-up form-reserva">
-				<form id="pop-up-wrap-edit" class="pop-up-wrap" method="POST">
+			<div id="pop-up-edit" class="pop-up form-modal">
+				<form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
 					<a href="#" id="closePopup-edit" class="closePopup"><i class="fas fa-times-circle"></i></a>
 					<h4 class="form-title">Editar reserva</h4>
+					<label for="">ID Reserva</label> <br />
+					<input type="text" id="id_reserva" name="id_reserva" readonly> <br>
+					<label for="">Cliente</label> <br />
+					<input type="text" id="cliente1" name="cliente1" readonly> <br>
+					<label for="">Estado</label> <br />
+					<select name="estado" id="estado">
+						<option value=""></option>
+						<option value="Activa">Activa</option>
+						<option value="Completada">Completada</option>
+						<option value="Cancelada">Cancelada</option>
+					</select>
 					<label for="">Fecha</label> <br />
-					<input type="date" name="fecha_reserva" id="edit-fecha-reserva" /> <br />
+					<input type="date" min="<?php echo date("Y-m-d");?>" name="edit_fecha_reserva" id="edit_fecha_reserva" /> <br />
 					<label for="">Hora</label> <br />
-					<input type="time" name="hora_reserva" id="edit-hora-reserva" /> <br />
+					<input type="time" min="12:00" max="22:00" name="edit_hora_reserva" id="edit_hora_reserva" /> <br />
 					<label for="">Mesa</label> <br />
-					<input type="number" name="numero_mesa" id="edit-numero-mesa" /> <br />
+					<input type="text" id="edit_mesa" name="edit_mesa" readonly>
+					<label for="">Asientos</label> <br />
+					<input type="number" min="1" name="edit_asientos" id="edit_asientos" /> <br />
 					<input type="button" value="Guardar" id="edit" />
 				</form>
 			</div>
@@ -203,7 +214,7 @@ if ($sesion == null || $sesion = '') {
 		</div>
 	</div>
 	<script src="../../dist/js/sidebarDashboard.js"></script>
-	<script src="../../dist/js/reservas.js"></script>
+	<script src="../../dist/js/reservas_emp.js"></script>
 </body>
 
 </html>
