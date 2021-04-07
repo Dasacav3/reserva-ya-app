@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./dist/css/normalize.css">
     <link rel="stylesheet" href="./dist/css/main.css">
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="../../lib/fontawesome-5.15.2/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../../lib/fontawesome-5.15.2/css/all.min.css">
     <script src="../../lib/fontawesome-5.15.2/js/all.min.js"></script>
     <!-- Sweer Alert -->
     <script src="../../lib/sweetaler2/sweetalert2.all.min.js"></script>
@@ -27,7 +27,7 @@
             <h2>Formulario de Registro</h2>
         </div>
         <div class="form-register">
-            <form id="form" action="../models/signupUser.php" method="POST">
+            <form id="form" method="POST">
                 <label for="">Nombres</label> <br>
                 <input type="text" name="nombre" id="nombre"> <br>
                 <label for="">Apellidos</label> <br>
@@ -43,7 +43,7 @@
                 <label for="">Repetir contraseña</label> <br>
                 <input type="password" name="password2" id="password2"> <br>
                 <input type="checkbox" name="terminos" id="terminos"> Acepto los términos y condiciones <br>
-                <input type="submit" value="Enviar">  
+                <input type="button" value="Enviar" id="registrar">  
                 <div class="warnings" id="warnings"></div>           
             </form>
         </div>

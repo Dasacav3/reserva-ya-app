@@ -1,61 +1,31 @@
-<html>
-    <head>
-        <title></title>
-        <!-- Sweer Alert -->
-        <script src="../../lib/sweetaler2/sweetalert2.all.min.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="../../lib/sweetaler2/sweetalert2.min.css">
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-            *{
-                font-family: 'Poppins', sans-serif;
-            }
-            body{
-                background: #7fd1b9ff;
-            }
-        </style>
-    </head>
-    <body>
-        <?php
-            include("../controller/database.php");
+<?php
+    include("../controller/database.php");
 
-            $password = $_POST['password'];
+    $password = $_POST['password'];
 
-            $pass_hash = password_hash($password,PASSWORD_BCRYPT);
+    $pass_hash = password_hash($password, PASSWORD_BCRYPT);
 
-            $queryInsertUsuario = "INSERT INTO usuario (nombre_usuario,clave_usuario,tipo_usuario,estado_usuario) VALUES ('$_POST[email]','$pass_hash','1','1')";
+    $queryInsertUsuario = "INSERT INTO usuario (nombre_usuario,clave_usuario,tipo_usuario,estado_usuario) VALUES ('$_POST[email]','$pass_hash','1','1')";
 
-            $result2 = $conn->query($queryInsertUsuario);
+    $result2 = $conn->query($queryInsertUsuario);
 
-            if(!$result2) die ("Falla al acceder a la BD (USUARIO)");
+    if (!$result2) die("Falla al acceder a la BD (USUARIO)");
 
 
-            $consulta_id_usuario = "SELECT id_usuario as id_usuario FROM usuario WHERE nombre_usuario='$_POST[email]'";
-            $result3 = mysqli_query($conn,$consulta_id_usuario);
-            $row = mysqli_fetch_assoc($result3);
+    $consulta_id_usuario = "SELECT id_usuario as id_usuario FROM usuario WHERE nombre_usuario='$_POST[email]'";
+    $result3 = mysqli_query($conn, $consulta_id_usuario);
+    $row = mysqli_fetch_assoc($result3);
 
-            $id_usuario = $row['id_usuario'];
+    $id_usuario = $row['id_usuario'];
 
-            $queryInsertCliente = "INSERT INTO cliente (nombre_cliente,apellido_cliente,fecha_nacimiento_cliente,celular_cliente,email_cliente,id_usuario) VALUES ('$_POST[nombre]','$_POST[apellido]','$_POST[nacimiento]','$_POST[cel]','$_POST[email]',$id_usuario)";
+    $queryInsertCliente = "INSERT INTO cliente (nombre_cliente,apellido_cliente,fecha_nacimiento_cliente,celular_cliente,email_cliente,id_usuario) VALUES ('$_POST[nombre]','$_POST[apellido]','$_POST[nacimiento]','$_POST[cel]','$_POST[email]',$id_usuario)";
 
-            $result = $conn->query($queryInsertCliente);
+    $result = $conn->query($queryInsertCliente);
 
-            if(!$result) die ("Falla al acceder a la BD (CLIENTE)");
+    if (!$result) {
+        die("Falla al acceder a la BD (CLIENTE)");
+    } else {
+        echo "ok";
+    }
 
-            echo "<script>
-            Swal.fire({
-                title: 'Registro exitoso',
-                icon: 'success'
-              }).then(
-                function(){
-                    window.location='http://localhost/reservaya-mvc/app/views/login.php';
-                }
-              );
-            
-            </script>";
-
-
-            $conn->close();
-
-        ?>
-    </body>
-</html>
+    $conn->close();
