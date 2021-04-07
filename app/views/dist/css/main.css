@@ -564,7 +564,7 @@ button.btn {
 	border: none;
 }
 
-.form-register input[type="submit"]{
+.form-register input[type="button"]{
     background: var(--middle-blue-green);
     transition: transform 0.7s;
 }

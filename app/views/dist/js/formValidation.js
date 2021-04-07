@@ -11,8 +11,7 @@ const pass2 = document.getElementById("password2");
 const terminos = document.getElementById("terminos");
 const error = document.getElementById("warnings");
 
-formulario.addEventListener("submit", (e) => {
-	e.preventDefault();
+registrar.addEventListener("click", () => {
 	let warnings = "";
 	let registrar = false;
 	error.innerHTML = "";
@@ -62,6 +61,32 @@ formulario.addEventListener("submit", (e) => {
 		error.innerHTML = warnings;
 	} else {
 		error.innerHTML = "";
-		e.currentTarget.submit();
+		fetch("../models/signupUser.php", {
+			method: "POST",
+			body: new FormData(form),
+		})
+			.then((response) => response.text())
+			.then((response) => {
+				console.log(response);
+				if (response == "ok") {
+					Swal.fire({
+						title: "Usuario registrado exitosamente",
+						icon: "success",
+						showConfirmButton: false,
+						timer: 2000,
+					}).then(() => {
+						form.reset();
+						window.location = "http://localhost/reservaya-mvc/app/views/login.php";
+					});
+				}else {
+					Swal.fire({
+						title: "El nombre de usuario (email) ya ha sido registrado",
+						icon: "error",
+						showConfirmButton: false,
+						timer: 2000,
+					});
+					form.reset();
+				}
+			});
 	}
 });
