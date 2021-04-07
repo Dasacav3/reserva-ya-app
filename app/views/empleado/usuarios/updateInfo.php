@@ -8,6 +8,7 @@
   <link rel="shortcut icon" href="../../dist/img/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="../../dist/css/normalize.css">
   <link rel="stylesheet" href="../../dist/css/dashboard.css">
+  <link rel="stylesheet" href="../../dist/css/modals.css">
   <!-- FontAwesome -->
   <link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/all.min.css">
   <script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
@@ -67,33 +68,49 @@ $img = $_SESSION['datos'][6];
       <div class="updateinfo_container">
         <div class="form_info">
           <h4 class="fom_update__h4">Datos básicos</h4>
-          <form method="POST">
+          <form method="POST" id="form_update_info">
             <label for="">Documento de identidad</label> <br>
-            <input type="text"> <br>
+            <input type="text" id="doc" name="doc"> <br>
             <label for="">Nombres</label> <br>
-            <input type="text"> <br>
+            <input type="text" id="nombre" name="nombre"><br>
             <label for="">Apellidos</label> <br>
-            <input type="text"> <br>
+            <input type="text" id="apellido" name="apellido"> <br>
             <label for="">Correo electronico</label> <br>
-            <input type="email"> <br>
+            <input type="email" id="email" name="email"> <br>
             <label for="">Celular</label> <br>
-            <input type="tel"> <br>
-            <input type="button" value="Actualizar">
+            <input type="tel" id="cel" name="cel"> <br>
+            <input type="button" value="Actualizar" onclick="editarInfo()">
           </form>
+          <div>
+            <button class="change_pass" onclick="changePassword()">Cambiar contraseña</button>
+          </div>
         </div>
-        <div>
-        <form class="updatedata_container" enctype="multipart/form-data" id="photo_user_form" method="POST">
-          <!-- <div class="drag_area">
+          <form class="updatedata_container" enctype="multipart/form-data" id="photo_user_form" method="POST">
+            <!-- <div class="drag_area">
             <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
             <header id="text_drag">Arrastra y sube tu archivo</header>
             <span>Ó</span>
             <button id="btn_drag">Selecciona tu archivo</button> -->
             <input type="file" id="file_control" name="photo_user">
             <input type="button" value="Subir" id="subir_photo">
-          <!-- </div> -->
-        </form>
-        </div>
+            <!-- </div> -->
+          </form>
       </div>
+
+      <div id="pop-up-edit" class="pop-up form-modal">
+        <form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
+          <a href="#" id="closePopup-edit" class="closePopup"><i class="fas fa-times-circle"></i></a>
+          <h4 class="form-title">Actualizar contraseña</h4>
+          <label for="">Contraseña Actual</label> <br />
+          <input type="password" id="pass_old" name="pass_old"> <br>
+          <label for="">Contraseña Nueva</label> <br />
+          <input type="password" id="pass_new" name="pass_new"> <br>
+          <label for="">Repetir Contraseña Nueva</label> <br />
+          <input type="password" id="pass_new2" name="pass_new2"> <br>
+          <input type="button" value="Guardar" id="edit" />
+        </form>
+      </div>
+
     </main>
 
     <div id="sidebar">
