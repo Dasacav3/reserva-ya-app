@@ -24,10 +24,8 @@
 				<form class="form-login" id="form" method="POST" action="../models/loginUser.php">
 					<label for="user_name">Nombre de usuario</label> <br />
 					<input type="email"	id="user_name" name="user_name"	required placeholder="example@domain.com"/>
-					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					<label for="password">Contraseña</label> <br />
 					<input type="password" id="password" name="password" required maxlength="30" />
-					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					<input type="checkbox" name="" id="remember" /> Recordar <br />
 					<input type="submit" value="Iniciar sesión" id="submit"/>
 				</form>

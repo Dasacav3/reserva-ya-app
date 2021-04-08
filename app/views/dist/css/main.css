@@ -19,7 +19,7 @@ body::-webkit-scrollbar{
 }
 
 body::-webkit-scrollbar-thumb{
-    background: var(--china-pink);
+    background: var(--emerald);
     border-radius: 20px;
 }
 
@@ -188,7 +188,7 @@ body::-webkit-scrollbar-thumb{
 
 .service-item > .icon{
     font-size: 100px;
-    color: var(--burnt-sienna);
+    color: var(--popstar);
 }
 
 .service-title{
@@ -472,7 +472,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 button.btn {
-	background: #de6e4b;
+	background: var(--popstar);
 	padding: 10px;
 	font-weight: 600;
 	margin-bottom: 1.8em;
@@ -482,26 +482,6 @@ button.btn {
 	font-size: large;
 	font-weight: 700;
 }
-
-.formulario__validacion-estado {
-	position: absolute;
-	right: 10px;
-	bottom: 15px;
-	z-index: 100;
-	font-size: 16px;
-	opacity: 0;
-}
-
-.formulario__input-error {
-	font-size: 12px;
-	margin-bottom: 0;
-	display: none;
-}
-
-.formulario__input-error-activo {
-	display: block;
-}
-
 
 /* -------------------------------------------- */
 /* Registro */
@@ -523,10 +503,13 @@ button.btn {
     color: var(--champagne-pink);
     text-decoration: none;
     font-weight: 600;
+    transition: font-size 0.75s ease-in-out;
 }
 
 .register a:hover{
-    color: var(--china-pink);
+    border-bottom: 3px solid var(--gray-light);
+    filter: drop-shadow(1px 2px 1px var(--gray-light));
+    font-size: 1.1em;
 }
 
 .register p{
