@@ -52,6 +52,11 @@ registrar.addEventListener("click", () => {
 		registrar = true;
 	}
 
+	if (pass.value.length < 12) {
+		warnings += `<p>La contraseña debe tener 12 caracteres como minimo <i class="fas fa-times-circle"></i><p/>`;
+		registrar = true;
+	}
+
 	if (pass.value != pass2.value) {
 		warnings += `<p>Las contraseñas no coinciden <i class="fas fa-times-circle"></i><p/>`;
 		registrar = true;

@@ -12,26 +12,84 @@ function listarUsuarios(busqueda) {
 }
 
 registrar.addEventListener("click", () => {
-	fetch("../../../models/admin/usuarios/añadirUser.php", {
-		method: "POST",
-		body: new FormData(pop_up_wrap_add),
-	})
-		.then((response) => response.text())
-		.then((response) => {
-			console.log(response);
-			if (response == "ok") {
-				Swal.fire({
-					icon: "success",
-					title: "Registrado",
-					showConfirmButton: false,
-					timer: 1500,
-				});
-				pop_up_wrap_add.reset();
-				listarUsuarios();
-				pop_up_add.classList.remove("show");
-				pop_up_wrap_add.classList.remove("show");
-			}
+	const doc = document.getElementById("doc_emp");
+	const nombre = document.getElementById("name_emp");
+	const apellido = document.getElementById("last_emp");
+	const email = document.getElementById("email_emp");
+	const cel = document.getElementById("cel_emp");
+	const pass = document.getElementById("pass_emp");
+	const pass2 = document.getElementById("pass_emp2");
+
+	if(doc.value == "" && nombre.value == "" && apellido.value == "" && email.value == "" && cel.value == "" && pass.value == "" && pass2.value == ""){
+		Swal.fire({
+			title: "Error",
+			text: "Diligencia todos los campos",
+			icon: "error",
 		});
+	}else if (doc.value == "") {
+		Swal.fire({
+			title: "Error",
+			text: "El documento del usuario no puede estar vacio",
+			icon: "error",
+		});
+	} else if (nombre.value == "") {
+		Swal.fire({
+			title: "Error",
+			text: "El nombre del empleado no puede estar vacio",
+			icon: "error",
+		});
+	} else if (apellido.value == "") {
+		Swal.fire({
+			title: "Error",
+			text: "El apellido del empleado no puede estar vacio",
+			icon: "error",
+		});
+	} else if (email.value == "" || !expresiones.correo.test(email.value)) {
+		Swal.fire({
+			title: "Error",
+			text: "El email del empleado debe ser valido y no puede estar vacio",
+			icon: "error",
+		});
+	} else if (cel.value == "" || !expresiones.telefono.test(cel.value)) {
+		Swal.fire({
+			title: "Error",
+			text: "El numero de celular del empleado no puede estar vacio",
+			icon: "error",
+		});
+	}else if(pass.value == "" || pass.value.length < 12){
+		Swal.fire({
+			title: "Error",
+			text: "La contraseña no debe estar vacia y debe tener minimo 12 caracteres",
+			icon: "error",
+		});
+	} else if(pass2.value == "" || pass2.value != pass.value){
+		Swal.fire({
+			title: "Error",
+			text: "La contraseña no coinciden",
+			icon: "error",
+		});
+	} else {
+		fetch("../../../models/admin/usuarios/añadirUser.php", {
+			method: "POST",
+			body: new FormData(pop_up_wrap_add),
+		})
+			.then((response) => response.text())
+			.then((response) => {
+				console.log(response);
+				if (response == "ok") {
+					Swal.fire({
+						icon: "success",
+						title: "Registrado",
+						showConfirmButton: false,
+						timer: 1500,
+					});
+					pop_up_wrap_add.reset();
+					listarUsuarios();
+					pop_up_add.classList.remove("show");
+					pop_up_wrap_add.classList.remove("show");
+				}
+			});
+	}
 });
 
 function Editar(id) {
