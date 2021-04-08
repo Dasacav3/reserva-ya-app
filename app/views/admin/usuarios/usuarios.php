@@ -123,20 +123,27 @@ $img = $_SESSION['datos'][6];
         <form id="pop_up_wrap_add" class="pop-up-wrap" method="POST">
           <a href="#" id="closePopup-add" class="closePopup"><i class="fas fa-times-circle"></i></a>
           <h4 class="form-title">Añadir usuario empleado</h4>
-          <label for="">N° Documento</label> <br />
-          <input type="text" name="doc_emp" id="doc_emp" /> <br />
-          <label for="">Nombre</label> <br />
-          <input type="text" name="name_emp" id="name_emp" /> <br />
-          <label for="">Apellido</label> <br />
-          <input type="text" name="last_emp" id="last_emp" /> <br />
-          <label for="">Email</label> <br />
-          <input type="email" name="email" id="email" /> <br />
-          <label for="">Celular</label> <br />
-          <input type="tel" name="cel_emp" id="cel_emp" /> <br />
-          <label for="">Contraseña</label> <br />
-          <input type="password" name="pass_emp" id="pass_emp" /> <br />
-          <label for="">Repetir Contraseña</label> <br />
-          <input type="password" name="pass_emp2" id="pass_emp2" /> <br />
+          <div class="form-fields">
+            <div>
+              <label for="">N° Documento</label> <br>
+              <input type="text" name="doc_emp" id="doc_emp" /> <br>
+              <label for="">Nombre</label> <br>
+              <input type="text" name="name_emp" id="name_emp" /> <br>
+              <label for="">Apellido</label> <br>
+              <input type="text" name="last_emp" id="last_emp" /> <br>
+              <label for="">Email</label> <br>
+              <input type="email" name="email" id="email_emp" /> <br>
+            </div>
+            <div>
+              <label for="">Celular</label> <br>
+              <input type="tel" name="cel_emp" id="cel_emp" /> <br>
+              <label for="">Contraseña</label> <br>
+              <input type="password" name="pass_emp" id="pass_emp" /> <br>
+              <label for="">Repetir Contraseña</label> <br>
+              <input type="password" name="pass_emp2" id="pass_emp2" /> <br>
+            </div>
+          </div>
+
           <input type="button" value="Registrar" id="registrar" />
         </form>
       </div>
@@ -216,7 +223,7 @@ $img = $_SESSION['datos'][6];
   </div>
   <script src="../../dist/js/sidebarDashboard.js"></script>
   <script src="../../dist/js/regularExpression.js"></script>
-  <script src="../../dist/js/usuarios.js"></script>
+  <script src="../../dist/js/usuarios_admin.js"></script>
 </body>
 
 </html>

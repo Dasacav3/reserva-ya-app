@@ -163,7 +163,7 @@ $img = $_SESSION['datos'][6];
     </div>
   </div>
   <script src="../../dist/js/sidebarDashboard.js"></script>
-  <script src="../../dist/js/updateinfo.js"></script>
+  <script src="../../dist/js/updateinfo_cli.js"></script>
   <script src="../../dist/js/drag_and_drop.js"></script>
 </body>
 

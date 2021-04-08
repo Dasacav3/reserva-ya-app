@@ -9,7 +9,7 @@
 }
 
 .form-modal > form{
-    width: 290px;
+    width: 700px;
 }
 
 .form-modal > form > .form-title {
@@ -17,14 +17,22 @@
 	text-align: center;
 }
 
-.form-modal > form > input {
+.form-modal .form-fields{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.form-modal > form input,
+.form-modal > form select {
 	width: 250px;
 	height: 2em;
-	border: 1px solid var(--highlight-color);
+	border: 1px solid var(--emerald);
 	border-radius: 5px;
 }
 
-.form-modal > form > input[type="button"] {
+.form-modal > form input[type="button"] {
 	margin-top: 1em;
 	font-weight: bold;
 	background: var(--highlight-color);
