@@ -75,8 +75,7 @@ $img = $_SESSION['datos'][6];
         <table class="datatable">
           <thead>
             <tr>
-              <th colspan="4">AGREGAR</th>
-              <th colspan="3" style="text-align: center;"><a href="http://localhost/reservaya-mvc/app/views/admin/proveedores/agregarprov.php"><input type="button" value="AGREGAR" style=" width: 200px;"></a></th>
+              <th colspan="1" style="text-align: center;"><a href="http://localhost/reservaya-mvc/app/views/admin/proveedores/agregarprov.php"><input type="button" value="AGREGAR" style="background: none; color: #fff; border: none;"></a></th>
             </tr>
             <tr>
               <th>ID</th>
@@ -109,8 +108,8 @@ $img = $_SESSION['datos'][6];
                 <td><?php
                     echo $row['TELEFONO_PROVEEDOR'];
                     ?></td>
-                <td><a href="http://localhost/reservaya-mvc/app/models/admin/proveedores/actualizaprov.php?id=<?php echo $row['ID_PROVEEDOR']; ?>&NP=<?php echo $row['NOMBRE_PROVEEDOR']; ?>&DP=<?php echo $row['DIRECCION_PROVEEDOR']; ?>&PE=<?php echo $row['PERSONA_ENCARGADA']; ?>&TP=<?php echo $row['TELEFONO_PROVEEDOR']; ?>"><input type="button" value="Modificar" style="background-color: green;color: white;"></a></td>
-                <td><a href="http://localhost/reservaya-mvc/app/models/admin/proveedores/eliminaprov.php?id=<?php echo $row['ID_PROVEEDOR']; ?>&NP=<?php echo $row['NOMBRE_PROVEEDOR']; ?>&DP=<?php echo $row['DIRECCION_PROVEEDOR']; ?>&PE=<?php echo $row['PERSONA_ENCARGADA']; ?>&TP=<?php echo $row['TELEFONO_PROVEEDOR']; ?>"><input type="button" value="Eliminar" style="background-color: red;color: white;"></a></td>
+                <td><a href="http://localhost/reservaya-mvc/app/models/admin/proveedores/actualizaprov.php?id=<?php echo $row['ID_PROVEEDOR']; ?>&NP=<?php echo $row['NOMBRE_PROVEEDOR']; ?>&DP=<?php echo $row['DIRECCION_PROVEEDOR']; ?>&PE=<?php echo $row['PERSONA_ENCARGADA']; ?>&TP=<?php echo $row['TELEFONO_PROVEEDOR']; ?>"><input type="button" value="Modificar" class="btn-edit"></a>
+                <a href="http://localhost/reservaya-mvc/app/models/admin/proveedores/eliminaprov.php?id=<?php echo $row['ID_PROVEEDOR']; ?>&NP=<?php echo $row['NOMBRE_PROVEEDOR']; ?>&DP=<?php echo $row['DIRECCION_PROVEEDOR']; ?>&PE=<?php echo $row['PERSONA_ENCARGADA']; ?>&TP=<?php echo $row['TELEFONO_PROVEEDOR']; ?>"><input type="button" value="Eliminar" class="btn-delete"></a></td>
               </tr>
           </tbody>
         <?php
