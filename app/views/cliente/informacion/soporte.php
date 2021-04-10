@@ -45,7 +45,7 @@ $img = $_SESSION['datos'][6];
         <i class="fa fa-bars" aria-hidden="true"></i>
       </div>
       <div class="navbar__left">
-        <h4>¡Bienvenido <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</h4>
+        <h4>¡Bienvenid<i class="fas fa-at"></i> <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</h4>
       </div>
       <div class="navbar__right">
         <a href="../informacion/soporte.php">
@@ -55,7 +55,7 @@ $img = $_SESSION['datos'][6];
           <i class="fa fa-power-off" aria-hidden="true"></i>
         </a>
         <a href="../usuarios/updateInfo.php">
-          <img class="foto_perfil" src="data:image/png;base64,<?php echo base64_encode($img); ?>" />
+          <img class="foto_perfil" src="<?php echo $img; ?>" />
         </a>
       </div>
     </nav>
