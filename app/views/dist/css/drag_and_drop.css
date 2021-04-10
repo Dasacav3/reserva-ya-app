@@ -1,0 +1,66 @@
+@import url("colors_fonts.css");
+
+.drag-area{
+    border: 2px dashed #fff;
+    height: 400px;
+    width: 600px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .drag-area.active{
+    border: 2px solid #fff;
+  }
+  .drag-area .icon{
+    font-size: 100px;
+    color: #fff;
+  }
+  
+  .drag-area .icon.none{
+    display: none;
+  }
+  
+  .drag-area header{
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+  }
+  
+  .drag-area header.none{
+    display: none;
+  }
+  
+  
+  .drag-area span{
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+    margin: 10px 0 15px 0;
+  }
+  
+  .drag-area span{
+    display: none;
+  }
+  
+  .drag-area button{
+    padding: 10px 25px;
+    margin-top: 2em;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: var(--gray-light);
+    color: var(--deep-taupe);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .drag-area button.none{
+    display: none;
+  }
+
+  #foto{
+    height: 400px;
+  }

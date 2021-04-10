@@ -1,9 +1,24 @@
 listarInfo();
 
-subir_photo.addEventListener("click", () => {
+enviar.addEventListener("click", () => {
+	// Verificar que se agregó un archivo
+	if (!file) {
+		alert("Agrega un archivo");
+		return;
+	}
+
+	// Crea un objeto FormData
+	let data = new FormData();
+
+	// Agrega el archivo
+	data.append("photo_user", file);
+
+	// Solo para ver que sí se agregó el archivo
+	// console.log(...data);
+
 	fetch("../../../models/admin/usuarios/añadirFotoPerfil.php", {
 		method: "POST",
-		body: new FormData(photo_user_form),
+		body: data,
 	})
 		.then((response) => response.text())
 		.then((response) => {
@@ -12,10 +27,18 @@ subir_photo.addEventListener("click", () => {
 				Swal.fire({
 					icon: "success",
 					title: "Foto de perfil actualizada",
+					text: "Los cambios se veran reflejados cuando vuelvas a iniciar sesión",
 					showConfirmButton: false,
 					timer: 1500,
 				});
-				photo_user_form.reset();
+				let foto = document.getElementById("foto");
+				img.removeChild(foto);
+				dragText.classList.remove("none");
+				button.classList.remove("none");
+				icon.classList.remove("none");
+				dropArea.classList.remove("active");
+				dragText.textContent = "Arrastra y suelta tu imagen";
+				file = "";
 			} else {
 				Swal.fire({
 					icon: "error",
@@ -23,7 +46,14 @@ subir_photo.addEventListener("click", () => {
 					showConfirmButton: false,
 					timer: 1500,
 				});
-				photo_user_form.reset();
+				let foto = document.getElementById("foto");
+				img.removeChild(foto);
+				dragText.classList.remove("none");
+				button.classList.remove("none");
+				icon.classList.remove("none");
+				dropArea.classList.remove("active");
+				dragText.textContent = "Arrastra y suelta tu imagen";
+				file = "";
 			}
 		});
 });
@@ -77,7 +107,7 @@ function editarInfo() {
 	})
 		.then((response) => response.text())
 		.then((response) => {
-            console.log(response);
+			console.log(response);
 			if (response == "ok") {
 				const Toast = Swal.mixin({
 					toast: true,
@@ -95,7 +125,7 @@ function editarInfo() {
 					icon: "success",
 					title: "Información actualizada satisfactoriamente",
 				});
-                listarInfo()
+				listarInfo();
 			} else {
 				const Toast = Swal.mixin({
 					toast: true,
@@ -113,7 +143,7 @@ function editarInfo() {
 					icon: "error",
 					title: "No se pudo actualizar la información",
 				});
-                listarInfo()
+				listarInfo();
 			}
 		});
 }

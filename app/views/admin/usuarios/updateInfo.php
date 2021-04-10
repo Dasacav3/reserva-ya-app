@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../../dist/css/normalize.css">
   <link rel="stylesheet" href="../../dist/css/dashboard.css">
   <link rel="stylesheet" href="../../dist/css/modals.css">
+  <link rel="stylesheet" href="../../dist/css/drag_and_drop.css">
   <!-- FontAwesome -->
   <link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/all.min.css">
   <script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
@@ -46,7 +47,7 @@ $img = $_SESSION['datos'][6];
         <i class="fa fa-bars" aria-hidden="true"></i>
       </div>
       <div class="navbar__left">
-        <h4>¡Bienvenido <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</h4>
+        <h4>¡Bienvenid<i class="fas fa-at"></i> <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</h4>
       </div>
       <div class="navbar__right">
         <a href="../informacion/soporte.php">
@@ -56,7 +57,7 @@ $img = $_SESSION['datos'][6];
           <i class="fa fa-power-off" aria-hidden="true"></i>
         </a>
         <a href="../usuarios/updateInfo.php">
-          <img class="foto_perfil" src="data:image/png;base64,<?php echo base64_encode($img); ?>" />
+          <img class="foto_perfil" src="<?php echo ($img);?>" />
         </a>
       </div>
     </nav>
@@ -83,16 +84,21 @@ $img = $_SESSION['datos'][6];
             <button class="change_pass" onclick="changePassword()">Cambiar contraseña</button>
           </div>
         </div>
-        <form class="updatedata_container" enctype="multipart/form-data" id="photo_user_form" method="POST">
-          <!-- <div class="drag_area">
-            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-            <header id="text_drag">Arrastra y sube tu archivo</header>
-            <span>Ó</span>
-            <button id="btn_drag">Selecciona tu archivo</button> -->
-          <input type="file" id="file_control" name="photo_user">
-          <input type="button" value="Subir" id="subir_photo">
-          <!-- </div> -->
-        </form>
+        <div class="updatedata_container">
+        <div class="drag-area">
+          <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+          <div class="img"></div>
+          <header>Arrastra y suelta tu imagen</header>
+          <span>OR</span>
+          <button>Examinar</button>
+          <input type="file" name="photo_user" id="photo_user" hidden />
+        </div>
+        <div>
+          <input id="enviar" type="button" value="Subir" />
+          <input id="limpiar" type="reset" value="Cancelar" />
+        </div>
+        </div>
+
       </div>
 
       <div id="pop-up-edit" class="pop-up form-modal">
@@ -174,6 +180,7 @@ $img = $_SESSION['datos'][6];
     </div>
   </div>
   <script src="../../dist/js/sidebarDashboard.js"></script>
+  <script src="../../dist/js/drag_and_drop.js"></script>
   <script src="../../dist/js/updateinfo_admin.js"></script>
 </body>
 

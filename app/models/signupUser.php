@@ -5,7 +5,9 @@
 
     $pass_hash = password_hash($password, PASSWORD_BCRYPT);
 
-    $queryInsertUsuario = "INSERT INTO usuario (nombre_usuario,clave_usuario,tipo_usuario,estado_usuario) VALUES ('$_POST[email]','$pass_hash','1','1')";
+    $img_default = "../../public/profile_photo/user_default_reservaya.png";
+
+    $queryInsertUsuario = "INSERT INTO usuario (nombre_usuario,clave_usuario,tipo_usuario,estado_usuario,foto_perfil) VALUES ('$_POST[email]','$pass_hash','1','1','$img_default')";
 
     $result2 = $conn->query($queryInsertUsuario);
 
