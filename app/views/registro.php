@@ -21,7 +21,7 @@
             <a href="./login.php"><i class="fas fa-arrow-circle-left return-icon"></i></a>
         </div>
         <div class="register-logo">
-            <img src="./dist/img/ReservaYa.gif" alt="">
+            <img src="./dist/img/favicon.png" alt="">
         </div>
         <div class="register-title">
             <h2>Formulario de Registro</h2>
