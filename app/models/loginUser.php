@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,6 +22,7 @@
         }
     </style>
 </head>
+
 <body>
     <?php
 
@@ -32,17 +34,27 @@
     $password = $_POST['password'];
 
 
-    $consulta = mysqli_query($conn, "SELECT id_usuario,tipo_usuario,clave_usuario,estado_usuario,nombre_usuario FROM usuario WHERE nombre_usuario = '$nombre'");
-    $data = mysqli_fetch_array($consulta);
-   
+    try {
+        $query = $pdo->prepare("SELECT id_usuario,tipo_usuario,clave_usuario,estado_usuario,nombre_usuario FROM usuario WHERE nombre_usuario = :nombre");
+        $query->bindParam(":nombre", $nombre);
+        $query->execute();
+        $data = $query->fetch(PDO::FETCH_NUM);
+    } catch (Exception $e) {
+        echo "Conexion fallida " . $e->getMessage();
+    }
 
-    $registros = mysqli_query($conn, "SELECT * FROM usuario WHERE nombre_usuario = '$nombre'");
-    if ($reg = mysqli_fetch_array($registros)) {
-            if($data[1] == 'Administrador' AND password_verify($password,$data[2]) AND $data[3] == 'Activo'){
-                $consulta2 = mysqli_query($conn,"SELECT usuario.id_usuario, usuario.nombre_usuario, usuario.tipo_usuario, administrador.nombre_admin, administrador.apellido_admin, administrador.id_admin, usuario.foto_perfil FROM administrador INNER JOIN usuario ON administrador.id_usuario = usuario.id_usuario WHERE nombre_usuario = '$nombre'");
-                $user_data = mysqli_fetch_array($consulta2);
-                $_SESSION['datos'] = $user_data;
-                echo "<script>
+    if ($data) {
+        if ($data[1] == 'Administrador' and password_verify($password, $data[2]) and $data[3] == 'Activo') {
+            try {
+                $query = $pdo->prepare("SELECT usuario.id_usuario, usuario.nombre_usuario, usuario.tipo_usuario, administrador.nombre_admin, administrador.apellido_admin, administrador.id_admin, usuario.foto_perfil FROM administrador INNER JOIN usuario ON administrador.id_usuario = usuario.id_usuario WHERE nombre_usuario = :nombre");
+                $query->bindParam(":nombre", $nombre);
+                $query->execute();
+                $user_data = $query->fetch(PDO::FETCH_NUM);
+            } catch (Exception $e) {
+                echo "Conexion fallida " . $e->getMessage();
+            }
+            $_SESSION['datos'] = $user_data;
+            echo "<script>
                 Swal.fire({
                     title: 'Ingreso exitoso',
                     icon: 'success',
@@ -54,11 +66,17 @@
                     }         
                 );
                 </script>";
-            }else if($data[1] == "Empleado" AND password_verify($password,$data[2]) AND $data[3] == 'Activo'){
-                $consulta2 = mysqli_query($conn,"SELECT usuario.id_usuario, usuario.nombre_usuario, usuario.tipo_usuario, empleado.nombre_empleado, empleado.apellido_empleado, empleado.id_empleado, usuario.foto_perfil FROM empleado INNER JOIN usuario ON empleado.id_usuario = usuario.id_usuario WHERE nombre_usuario = '$nombre'");
-                $user_data = mysqli_fetch_array($consulta2);
-                $_SESSION['datos'] = $user_data;
-                echo "<script>
+        } else if ($data[1] == "Empleado" and password_verify($password, $data[2]) and $data[3] == 'Activo') {
+            try {
+                $query = $pdo->prepare("SELECT usuario.id_usuario, usuario.nombre_usuario, usuario.tipo_usuario, empleado.nombre_empleado, empleado.apellido_empleado, empleado.id_empleado, usuario.foto_perfil FROM empleado INNER JOIN usuario ON empleado.id_usuario = usuario.id_usuario WHERE nombre_usuario = :nombre");
+                $query->bindParam(":nombre", $nombre);
+                $query->execute();
+                $user_data = $query->fetch(PDO::FETCH_NUM);
+            } catch (Exception $e) {
+                echo "Conexion fallida " . $e->getMessage();
+            }
+            $_SESSION['datos'] = $user_data;
+            echo "<script>
                 Swal.fire({
                     title: 'Ingreso exitoso',
                     icon: 'success',
@@ -70,11 +88,17 @@
                     }         
                 );
                 </script>";
-            }else if($data[1] == "Cliente" AND password_verify($password,$data[2]) AND $data[3] == 'Activo'){
-                $consulta2 = mysqli_query($conn,"SELECT usuario.id_usuario, usuario.nombre_usuario, usuario.tipo_usuario, cliente.nombre_cliente, cliente.apellido_cliente, cliente.id_cliente, usuario.foto_perfil FROM cliente INNER JOIN usuario ON cliente.id_usuario = usuario.id_usuario WHERE nombre_usuario = '$nombre'");
-                $user_data = mysqli_fetch_array($consulta2);
-                $_SESSION['datos'] = $user_data;
-                echo "<script>
+        } else if ($data[1] == "Cliente" and password_verify($password, $data[2]) and $data[3] == 'Activo') {
+            try {
+                $query = $pdo->prepare("SELECT usuario.id_usuario, usuario.nombre_usuario, usuario.tipo_usuario, cliente.nombre_cliente, cliente.apellido_cliente, cliente.id_cliente, usuario.foto_perfil FROM cliente INNER JOIN usuario ON cliente.id_usuario = usuario.id_usuario WHERE nombre_usuario = :nombre");
+                $query->bindParam(":nombre", $nombre);
+                $query->execute();
+                $user_data = $query->fetch(PDO::FETCH_NUM);
+            } catch (Exception $e) {
+                echo "Conexion fallida " . $e->getMessage();
+            }
+            $_SESSION['datos'] = $user_data;
+            echo "<script>
                 Swal.fire({
                     title: 'Ingreso exitoso',
                     icon: 'success',
@@ -86,8 +110,8 @@
                     }         
                 );
                 </script>";
-            }else if($data[4] != $nombre || $data[2] != $password){
-                echo "<script>
+        } else if ($data[4] != $nombre || $data[2] != $password) {
+            echo "<script>
                         Swal.fire({
                             title: 'Vuelve a intentarlo',
                             text: 'Usuario o contraseña incorrectos',
@@ -100,8 +124,8 @@
                             }
                         );
                     </script>";
-            }else{
-                echo "<script>
+        } else {
+            echo "<script>
                         Swal.fire({
                             title: 'Su usuario no esta activo en el sistema',
                             text: 'Comunicate con el administrador, si consideras que es un error',
@@ -114,7 +138,7 @@
                             }
                         );
                     </script>";
-            }
+        }
     } else {
         echo "<script>
         Swal.fire({
