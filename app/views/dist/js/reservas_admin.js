@@ -87,7 +87,6 @@ registrar.addEventListener("click", () => {
 	const mesa_reserva = document.getElementById("mesa");
 	const asientos_reserva = document.getElementById("add_asientos");
 
-
 	if (
 		fecha_reserva.value == "" &&
 		hora_reserva.value == "" &&
@@ -161,6 +160,29 @@ registrar.addEventListener("click", () => {
 				pop_up_wrap_add.classList.remove("show");
 			}
 		});
+	fetch("../../../controller/sendMail.php", {
+		method: "POST",
+		body: new FormData(pop_up_wrap_add),
+	})
+		.then((response) => response.text())
+		.then((response) => {
+			console.log(response);
+			if (response == "ok") {
+				Swal.fire({
+					icon: "success",
+					title: "Correo enviado satisfactoriamente",
+					showConfirmButton: false,
+					timer: 1500,
+				});
+			} else {
+				Swal.fire({
+					icon: "error",
+					title: "Fallo al enviar el correo",
+					showConfirmButton: false,
+					timer: 1500,
+				});
+			}
+		});
 });
 
 function Editar(id) {
@@ -186,10 +208,7 @@ edit.addEventListener("click", () => {
 	const estado_reserva = document.getElementById("estado");
 	const asientos_reserva1 = document.getElementById("edit_asientos");
 
-	if (
-		fecha_reserva1.value == "" ||
-		fecha_reserva1.value == "0000-00-00"
-	) {
+	if (fecha_reserva1.value == "" || fecha_reserva1.value == "0000-00-00") {
 		Swal.fire({
 			title: "Error",
 			text: "El campo no pude estar vacio ni puede hacer una reservacion en el pasado",
