@@ -5,7 +5,7 @@
 
     require("../../../controller/database.php");
 
-    $id = $_SESSION['datos'][0];
+    $id = $_SESSION['datos'][5];
  
     if(isset($_POST)){
 
