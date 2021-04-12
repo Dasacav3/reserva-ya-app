@@ -13,54 +13,48 @@
         die();
     }
     
-    $query = "SELECT reservacion.ID_RESERVACION, mesa.ID_MESA
-     FROM reservacion_reserva_mesa
-     INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
-     INNER JOIN mesa ON reservacion_reserva_mesa.ID_MESA = mesa.ID_MESA
-     INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE
-     WHERE reservacion_reserva_mesa.ID_RESERVACION_RESERVA_MESA = '$data'";
+    try{
+        $pdo->beginTransaction();
 
-    $result = mysqli_query($conn, $query);
+        $querySelect = "SELECT reservacion.ID_RESERVACION, mesa.ID_MESA
+        FROM reservacion_reserva_mesa
+        INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
+        INNER JOIN mesa ON reservacion_reserva_mesa.ID_MESA = mesa.ID_MESA
+        INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE
+        WHERE reservacion_reserva_mesa.ID_RESERVACION_RESERVA_MESA = :id";
+        $query = $pdo->prepare($querySelect);
+        $query->bindValue(":id",$data);
+        $query->execute();
+        $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
+        foreach($resultado as $dat){
+            $id_reserva = $dat['ID_RESERVACION'];
+            $id_mesa = $dat['ID_MESA'];
+        }
+        
+        $queryUpdateMesa = "UPDATE mesa SET estado_mesa = 'Disponible' WHERE id_mesa = :id_mesa";
+        $query = $pdo->prepare($queryUpdateMesa);
+        $query->bindValue(":id_mesa",$id_mesa);
+        $query->execute();
 
-    if(!$result) {
-        die('Query Failed '. mysqli_error($conn));
+        $queryDeleteReservaMesa = "DELETE FROM reservacion_reserva_mesa WHERE id_reservacion_reserva_mesa = :id";
+        $query = $pdo->prepare($queryDeleteReservaMesa);
+        $query->bindValue(":id",$data);
+        $query->execute();
+
+        $queryDeleteReserva = "DELETE FROM reservacion WHERE id_reservacion = :id_reserva";
+        $query = $pdo->prepare($queryDeleteReserva);
+        $query->bindValue(":id_reserva",$id_reserva);
+        $query->execute();
+
+        $pdo->commit();
+
+    }catch(Exception $e){
+        $pdo->rollBack();
+        echo "Conexion fallida " . $e->getMessage();
+        die();
     }
-  
-    $resultado = $result->fetch_all(MYSQLI_ASSOC);
 
-    foreach($resultado as $dat){
-        $id_reserva = $dat['ID_RESERVACION'];
-        $id_mesa = $dat['ID_MESA'];
-    }
-
-    $query4 = "UPDATE mesa SET estado_mesa = 'Disponible' WHERE id_mesa = $id_mesa";
-
-    $result4 = mysqli_query($conn, $query4);
-
-    if(!$result4) {
-        die('Query Failed 4 '. mysqli_error($conn));
-    }else{
-        echo "ok";
-    }
-
-    $query2 = "DELETE FROM reservacion_reserva_mesa WHERE id_reservacion_reserva_mesa = $data";
-
-    $result2 = mysqli_query($conn, $query2);
-
-    if(!$result2) {
-        die('Query Failed 2 '. mysqli_error($conn));
-    }else{
-        echo "ok";
-    }
-
-    $query3 = "DELETE FROM reservacion WHERE id_reservacion = $id_reserva";
-
-    $result3 = mysqli_query($conn, $query3);
-
-    if(!$result3) {
-        die('Query Failed 3 '. mysqli_error($conn));
-    }else{
-        echo "ok";
-    }
+    echo "ok";
+    $pdo=null;
 
 ?>

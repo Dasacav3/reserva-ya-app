@@ -155,6 +155,8 @@
         </script>";
     }
 
+    $pdo=null;
+
     ?>
 </body>
 

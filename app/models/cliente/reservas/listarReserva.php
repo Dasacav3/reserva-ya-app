@@ -9,34 +9,33 @@ $sesion = [$_SESSION['datos']];
 
 $id = $_SESSION['datos'][0];
 
-$query = "SELECT reservacion.ESTADO_RESERVACION, reservacion.ID_RESERVACION, 
-     reservacion.FECHA_RESERVACION, reservacion.HORA_RESERVACION, mesa.ID_MESA, reservacion.ASIENTO, reservacion_reserva_mesa.ID_RESERVACION_RESERVA_MESA
-     FROM reservacion_reserva_mesa
-     INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
-     INNER JOIN mesa ON reservacion_reserva_mesa.ID_MESA = mesa.ID_MESA
-     INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE
-     WHERE cliente.ID_USUARIO = '$id'
-     ORDER BY reservacion.FECHA_RESERVACION ASC";
+try {
+    $query = $pdo->prepare("SELECT reservacion.ESTADO_RESERVACION, reservacion.ID_RESERVACION, 
+    reservacion.FECHA_RESERVACION, reservacion.HORA_RESERVACION, mesa.ID_MESA, reservacion.ASIENTO, reservacion_reserva_mesa.ID_RESERVACION_RESERVA_MESA
+    FROM reservacion_reserva_mesa
+    INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
+    INNER JOIN mesa ON reservacion_reserva_mesa.ID_MESA = mesa.ID_MESA
+    INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE
+    WHERE cliente.ID_USUARIO = :id
+    ORDER BY reservacion.FECHA_RESERVACION ASC");
+    $query->bindParam(":id",$id);
+    $query->execute();
 
-$result = mysqli_query($conn, $query);
-
-if ($data != "") {
-    $query = "SELECT reservacion.ESTADO_RESERVACION, reservacion.ID_RESERVACION, reservacion.FECHA_RESERVACION, reservacion.HORA_RESERVACION, mesa.ID_MESA, reservacion.ASIENTO,reservacion_reserva_mesa.ID_RESERVACION_RESERVA_MESA
+    if($data != ""){
+        $query = $pdo->prepare("SELECT reservacion.ESTADO_RESERVACION, reservacion.ID_RESERVACION, reservacion.FECHA_RESERVACION, reservacion.HORA_RESERVACION, mesa.ID_MESA, reservacion.ASIENTO,reservacion_reserva_mesa.ID_RESERVACION_RESERVA_MESA
         FROM reservacion_reserva_mesa
         INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
         INNER JOIN mesa ON reservacion_reserva_mesa.ID_MESA = mesa.ID_MESA
         INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE
         WHERE cliente.ID_USUARIO = '$id'
-        WHERE reservacion.ESTADO_RESERVACION LIKE '%" . $data . "%' OR reservacion.ID_RESERVACION LIKE '%" . $data . "%' OR reservacion.FECHA_RESERVACION LIKE '%" . $data . "%' OR reservacion.HORA_RESERVACION LIKE '%" . $data . "%' OR mesa.ID_MESA LIKE '%" . $data . "%' OR reservacion.ASIENTO LIKE '%" . $data . "%'";
-    $result = mysqli_query($conn, $query);
+        WHERE reservacion.ESTADO_RESERVACION LIKE '%" . $data . "%' OR reservacion.ID_RESERVACION LIKE '%" . $data . "%' OR reservacion.FECHA_RESERVACION LIKE '%" . $data . "%' OR reservacion.HORA_RESERVACION LIKE '%" . $data . "%' OR mesa.ID_MESA LIKE '%" . $data . "%' OR reservacion.ASIENTO LIKE '%" . $data . "%'");
+        $query->execute();
+    }
+    $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
+}catch (Exception $e) {
+    echo "Conexion fallida " . $e->getMessage();
+    die();
 }
-
-if (!$result) {
-    die('Query Failed' . mysqli_error($conn));
-}
-
-$resultado = $result->fetch_all(MYSQLI_ASSOC);
-
 
 foreach ($resultado as $dat) {
     echo "<tr>
@@ -52,3 +51,5 @@ foreach ($resultado as $dat) {
                 </td>   
             </tr>";
 }
+
+$pdo=null;

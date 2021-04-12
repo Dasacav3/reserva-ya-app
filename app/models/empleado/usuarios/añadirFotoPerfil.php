@@ -32,12 +32,15 @@
         echo 'No se pudo subir el archivo';
     }
 
-    $query = "UPDATE usuario SET foto_perfil = '$url' WHERE id_usuario = '$id_user'";
-
-    $result = $conn->query($query);
-
-    if(!$result){
-        die("Query Failed: " . mysqli_error($conn));
-    }else{
-        echo "ok";
+    try{
+        $query = $pdo->prepare("UPDATE usuario SET foto_perfil = :link WHERE id_usuario = :id");
+        $query->bindParam(":link",$url);
+        $query->bindParam(":id",$id_user);
+        $query->execute();
+    }catch(Exception $e){
+        echo "Conexión fallida " . $e->getMessage();
+        die();
     }
+
+    echo "ok";
+    $pdo=null;

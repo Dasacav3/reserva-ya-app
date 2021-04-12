@@ -22,16 +22,20 @@
     $estado = $_POST['estado'];
 
 
-    
-    $query = "UPDATE reservacion SET fecha_reservacion = '$fecha', hora_reservacion = '$hora', estado_reservacion = '$estado', asiento = '$asientos' WHERE id_reservacion = $id";
-
-    $result = mysqli_query($conn,$query);
-
-    if(!$result) {
-        die('Query Failed '. mysqli_error($conn));
-    }else{
-        echo "ok";
+    try {
+        $query = $pdo->prepare("UPDATE reservacion SET fecha_reservacion = :fecha, hora_reservacion = :hora, estado_reservacion = :estado, asiento = :asientos WHERE id_reservacion = :id");
+        $query->bindParam(":fecha",$fecha);
+        $query->bindParam(":hora",$hora);
+        $query->bindParam(":estado",$estado);
+        $query->bindParam(":asientos",$asientos);
+        $query->bindParam(":id",$id);
+        $query->execute();
+    }catch (Exception $e) {
+        echo "Conexion fallida " . $e->getMessage();
+        die();
     }
 
+    echo "ok";
+    $pdo=null;
     
 ?>
