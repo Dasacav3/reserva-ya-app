@@ -27,4 +27,6 @@
 
     echo json_encode($result);
 
+    $pdo=null;
+
 ?>

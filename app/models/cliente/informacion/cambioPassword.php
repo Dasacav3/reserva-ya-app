@@ -44,4 +44,6 @@
         echo "Las verificación de contraseña fallo";
     }
 
+    $pdo=null;
+
 ?>

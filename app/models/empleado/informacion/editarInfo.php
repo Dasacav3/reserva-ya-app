@@ -38,4 +38,6 @@
 
     echo "ok";
 
+    $pdo=null;
+
 ?>

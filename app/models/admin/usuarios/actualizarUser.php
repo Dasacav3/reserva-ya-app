@@ -14,29 +14,29 @@
         die();
     }
 
-    $query1 = "SELECT * FROM usuario WHERE id_usuario = $data";
-    $result1 = mysqli_query($conn, $query1);
-
-    if(!$result1){
-        die('Seleccion fallida: ' . mysqli_error($conn));
-    }
-
-    $resultado1 = $result1->fetch_all(MYSQLI_ASSOC);
-
-    foreach($resultado1 as $dat){
-        $tipo = $dat['TIPO_USUARIO'];
+    try {
+        $query = $pdo->prepare("SELECT tipo_usuario FROM usuario WHERE id_usuario = :id");
+        $query->bindParam(":id",$data);
+        $query->execute();
+        $resultado = $query->fetch(PDO::FETCH_NUM);
+        foreach($resultado as $dat){
+            $tipo = $dat;
+        }
+    }catch (Exception $e) {
+        echo "Conexion fallida " . $e->getMessage();
+        die();
     }
 
     if($tipo == 'Empleado'){
-        $query2 = "SELECT usuario.ID_USUARIO, usuario.TIPO_USUARIO, empleado.DOC_EMPLEADO, empleado.NOMBRE_EMPLEADO, empleado.APELLIDO_EMPLEADO, empleado.EMAIL_EMPLEADO, empleado.CELULAR_EMPLEADO, usuario.CLAVE_USUARIO,usuario.ESTADO_USUARIO FROM empleado INNER JOIN usuario ON empleado.ID_USUARIO = usuario.ID_USUARIO WHERE usuario.ID_USUARIO = $data";
-
-        $result2 = mysqli_query($conn,$query2);
-
-        if(!$result2){
-            die('Query failed' . mysqli_error($conn));
+        try {
+            $querySelectEmp = $pdo->prepare("SELECT usuario.ID_USUARIO, usuario.TIPO_USUARIO, empleado.DOC_EMPLEADO, empleado.NOMBRE_EMPLEADO, empleado.APELLIDO_EMPLEADO, empleado.EMAIL_EMPLEADO, empleado.CELULAR_EMPLEADO, usuario.CLAVE_USUARIO,usuario.ESTADO_USUARIO FROM empleado INNER JOIN usuario ON empleado.ID_USUARIO = usuario.ID_USUARIO WHERE usuario.ID_USUARIO = :id");
+            $querySelectEmp->bindParam(":id",$data);
+            $querySelectEmp->execute();
+            $resultado2 = $querySelectEmp->fetchAll(PDO::FETCH_ASSOC);
+        }catch (Exception $e) {
+            echo "Conexion fallida " . $e->getMessage();
+            die();
         }
-    
-        $resultado2 = $result2->fetch_all(MYSQLI_ASSOC);
 
         foreach($resultado2 as $dat){
             echo '
@@ -72,15 +72,15 @@
             ';
         }
     }else if($tipo == 'Cliente'){
-        $query2 = "SELECT usuario.ID_USUARIO, usuario.TIPO_USUARIO, usuario.ESTADO_USUARIO, cliente.NOMBRE_CLIENTE, cliente.APELLIDO_CLIENTE, cliente.FECHA_NACIMIENTO_CLIENTE, cliente.EMAIL_CLIENTE, cliente.CELULAR_CLIENTE, usuario.CLAVE_USUARIO FROM cliente INNER JOIN usuario ON cliente.ID_USUARIO = usuario.ID_USUARIO WHERE usuario.ID_USUARIO = $data";
-
-        $result2 = mysqli_query($conn,$query2);
-
-        if(!$result2){
-            die('Query failed' . mysqli_error($conn));
+        try {
+            $querySelectCli = $pdo->prepare("SELECT usuario.ID_USUARIO, usuario.TIPO_USUARIO, usuario.ESTADO_USUARIO, cliente.NOMBRE_CLIENTE, cliente.APELLIDO_CLIENTE, cliente.FECHA_NACIMIENTO_CLIENTE, cliente.EMAIL_CLIENTE, cliente.CELULAR_CLIENTE, usuario.CLAVE_USUARIO FROM cliente INNER JOIN usuario ON cliente.ID_USUARIO = usuario.ID_USUARIO WHERE usuario.ID_USUARIO = :id");
+            $querySelectCli->bindParam(":id",$data);
+            $querySelectCli->execute();
+            $resultado2 = $querySelectCli->fetchAll(PDO::FETCH_ASSOC);
+        }catch (Exception $e) {
+            echo "Conexion fallida " . $e->getMessage();
+            die();
         }
-    
-        $resultado2 = $result2->fetch_all(MYSQLI_ASSOC);
 
         foreach($resultado2 as $dat){
             echo '
@@ -117,5 +117,7 @@
         }
 
     }
+
+    $pdo=null;
 
 ?>

@@ -35,5 +35,7 @@
 
     echo "ok";
 
+    $pdo=null;
+
 
 ?>

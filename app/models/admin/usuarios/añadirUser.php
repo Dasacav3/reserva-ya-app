@@ -16,28 +16,41 @@
         $password = $_POST['pass_emp'];
         $tipo = 'Empleado';
         $estado = 1;
+        $foto = '../../../../public/profile_photo/user_default_reservaya.png';
 
         $pass_hash = password_hash($password,PASSWORD_BCRYPT);
 
-        $queryInsertUser = "INSERT INTO usuario (nombre_usuario,clave_usuario,tipo_usuario,estado_usuario) VALUES ('$email', '$pass_hash', '$tipo', $estado)";
-        $resultado1 = mysqli_query($conn,$queryInsertUser);
-
-        if (!$resultado1 ) {
-            die ("Conexión fallida: 1 "  . mysqli_error($conn));  
+        try {
+            $queryUser = $pdo->prepare("INSERT INTO usuario (nombre_usuario,clave_usuario,tipo_usuario,estado_usuario,foto_perfil) VALUES (:email, :pass_hash, :tipo, :estado, :foto)");
+            $queryUser->bindParam(":email",$email);
+            $queryUser->bindParam(":pass_hash",$pass_hash);
+            $queryUser->bindParam(":tipo",$tipo);
+            $queryUser->bindParam(":estado",$estado);
+            $queryUser->bindParam(":foto",$foto);
+            $queryUser->execute();
+            $id_User = $pdo->lastInsertId();
+        }catch (Exception $e) {
+            echo "Conexion fallida " . $e->getMessage();
+            die();
         }
 
-        $id_usuario = $conn->insert_id;
-
-
-        $queryInsertEmpleado= "INSERT INTO empleado (doc_empleado, nombre_empleado, apellido_empleado, email_empleado, celular_empleado, id_usuario) VALUES ('$doc','$nombre','$apellido','$email','$cel',$id_usuario)";
-        $resultado2 = $conn->query($queryInsertEmpleado);
-
-        if (!$resultado2 ) {
-            die ("Conexión fallida: 2 "  . mysqli_error($conn));  
+        try {
+            $queryEmpleado = $pdo->prepare("INSERT INTO empleado (doc_empleado, nombre_empleado, apellido_empleado, email_empleado, celular_empleado, id_usuario) VALUES (:doc,:nombre,:apellido,:email,:cel,:id)");
+            $queryEmpleado->bindParam(":doc",$doc);
+            $queryEmpleado->bindParam(":nombre",$nombre);
+            $queryEmpleado->bindParam(":apellido",$apellido);
+            $queryEmpleado->bindParam(":email",$email);
+            $queryEmpleado->bindParam(":cel",$cel);
+            $queryEmpleado->bindParam(":id",$id_User);
+            $queryEmpleado->execute();
+        }catch (Exception $e) {
+            echo "Conexion fallida " . $e->getMessage();
+            die();
         }
 
         echo "ok";
-        $conn->close();
     }
+
+    $pdo=null;
     
 ?>

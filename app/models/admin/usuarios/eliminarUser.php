@@ -14,36 +14,66 @@
         die();
     }
 
-    $query1 = "SELECT * FROM usuario WHERE id_usuario = $data";
-    $result1 = mysqli_query($conn, $query1);
-
-    if(!$result1){
-        die('Seleccion fallida: ' . mysqli_error($conn));
-    }
-
-    $resultado = $result1->fetch_all(MYSQLI_ASSOC);
-
-    foreach($resultado as $dat){
-        $tipo = $dat['TIPO_USUARIO'];
+    try {
+        $query = $pdo->prepare("SELECT tipo_usuario FROM usuario WHERE id_usuario = :id");
+        $query->bindParam(":id",$data);
+        $query->execute();
+        $resultado = $query->fetch(PDO::FETCH_NUM);
+        foreach($resultado as $dat){
+            $tipo = $dat;
+        }
+    }catch (Exception $e) {
+        echo "Conexion fallida " . $e->getMessage();
+        die();
     }
 
     if($tipo == 'Empleado'){
-        $query = "DELETE FROM empleado WHERE id_usuario = $data";
-        $result2 = mysqli_query($conn, $query);
-        $query2 = "DELETE FROM usuario WHERE id_usuario = $data";
-        $result3 = mysqli_query($conn, $query2);
+        try{
+            $pdo->beginTransaction();
+
+            $queryDeleteEmpleado = "DELETE FROM empleado WHERE id_usuario = :id";
+            $query = $pdo->prepare($queryDeleteEmpleado);
+            $query->bindValue(":id",$data);
+            $query->execute();
+
+            $queryDeleteUser = "DELETE FROM usuario WHERE id_usuario = :id";
+            $query = $pdo->prepare($queryDeleteUser);
+            $query->bindValue(":id",$data);
+            $query->execute();
+
+            $pdo->commit();
+
+        }catch(Exception $e){
+            $pdo->rollBack();
+            echo "Conexion fallida " . $e->getMessage();
+            die();
+        }
+
     }else if($tipo == 'Cliente'){
-        $query = "DELETE FROM cliente WHERE id_usuario = $data";
-        $result2 = mysqli_query($conn, $query);
-        $query2 = "DELETE FROM usuario WHERE id_usuario = $data";
-        $result3 = mysqli_query($conn, $query2);
+        try{
+            $pdo->beginTransaction();
+
+            $queryDeleteCliente = "DELETE FROM cliente WHERE id_usuario = :id";
+            $query = $pdo->prepare($queryDeleteCliente);
+            $query->bindValue(":id",$data);
+            $query->execute();
+
+            $queryDeleteUser = "DELETE FROM usuario WHERE id_usuario = :id";
+            $query = $pdo->prepare($queryDeleteUser);
+            $query->bindValue(":id",$data);
+            $query->execute();
+
+            $pdo->commit();
+
+        }catch(Exception $e){
+            $pdo->rollBack();
+            echo "Conexion fallida " . $e->getMessage();
+            die();
+        }
     }
 
 
-    if(!$result3){
-        die('Eliminación fallida: 1 ' . mysqli_error($conn));
-    }else{
-        echo "ok";
-    }
+    echo "ok";
+    $pdo=null;
 
 ?>
