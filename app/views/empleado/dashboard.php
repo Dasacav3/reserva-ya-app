@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="../dist/img/favicon.png" type="image/x-icon" />
 	<!-- FontAwesome -->
-	<link rel="stylesheet" href="../../../lib/fontawesome-5.15.2/css/all.css" />
-	<script src="../../../lib/fontawesome-5.15.2/js/all.js"></script>
+	<link rel="stylesheet" href="../../../lib/fontawesome-5.15.2/css/all.min.css" />
+	<script src="../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
 	<!-- Styles CSS -->
 	<link rel="stylesheet" href="../dist/css/normalize.css" />
 	<link rel="stylesheet" href="../dist/css/dashboard.css" />

@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="../../dist/css/datatable.css" />
 	<link rel="stylesheet" href="../../dist/css/modals.css" />
 	<!-- FontAwesome -->
-	<link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/fontawesome.min.css" />
+	<link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/all.min.css" />
 	<script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
 	<!-- Sweer Alert -->
 	<script src="../../../../lib/sweetaler2/sweetalert2.all.min.js"></script>

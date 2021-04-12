@@ -8,8 +8,8 @@
 	<link rel="stylesheet" href="./dist/css/normalize.css" />
 	<link rel="stylesheet" href="./dist/css/main.css" />
 	<link rel="stylesheet" href="./dist/css/checkbox_comp.css" />
-	<link rel="stylesheet" href="../../lib/fontawesome-5.15.2/css/all.css" />
-	<script src="../../lib/fontawesome-5.15.2/js/all.js"></script>
+	<link rel="stylesheet" href="../../lib/fontawesome-5.15.2/css/all.min.css" />
+	<script src="../../lib/fontawesome-5.15.2/js/all.min.js"></script>
 	<script src="../../lib/sweetaler2/sweetalert2.all.min.js"></script>
 	<link rel="stylesheet" href="../../lib/sweetaler2/sweetalert2.min.css">
 	<title>Inicio de Sesión</title>
