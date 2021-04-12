@@ -87,7 +87,6 @@ registrar.addEventListener("click", () => {
 	const mesa_reserva = document.getElementById("mesa");
 	const asientos_reserva = document.getElementById("add_asientos");
 
-
 	if (
 		fecha_reserva.value == "" &&
 		hora_reserva.value == "" &&
@@ -138,28 +137,36 @@ registrar.addEventListener("click", () => {
 			text: "El numero de asientos no puede estar vacio ni ser mayor a 8 por reservación",
 			icon: "error",
 		});
+	} else {
+		fetch("../../../models/empleado/reservas/añadirReserva.php", {
+			method: "POST",
+			body: new FormData(pop_up_wrap_add),
+		})
+			.then((response) => response.text())
+			.then((response) => {
+				if (response == "ok") {
+					Swal.fire({
+						icon: "success",
+						title: "Registrado",
+						showConfirmButton: false,
+						timer: 1500,
+					});
+					pop_up_wrap_add.reset();
+					listarReservas();
+					mostrarMesa();
+					pop_up_add.classList.remove("show");
+					pop_up_wrap_add.classList.remove("show");
+				}
+			});
+		fetch("../../../controller/sendMail_add.php", {
+			method: "POST",
+			body: new FormData(pop_up_wrap_add),
+		})
+			.then((response) => response.text())
+			.then((response) => {
+				console.log(response);
+			});
 	}
-
-	fetch("../../../models/empleado/reservas/añadirReserva.php", {
-		method: "POST",
-		body: new FormData(pop_up_wrap_add),
-	})
-		.then((response) => response.text())
-		.then((response) => {
-			if (response == "ok") {
-				Swal.fire({
-					icon: "success",
-					title: "Registrado",
-					showConfirmButton: false,
-					timer: 1500,
-				});
-				pop_up_wrap_add.reset();
-				listarReservas();
-				mostrarMesa();
-				pop_up_add.classList.remove("show");
-				pop_up_wrap_add.classList.remove("show");
-			}
-		});
 });
 
 function Editar(id) {
@@ -185,10 +192,7 @@ edit.addEventListener("click", () => {
 	const estado_reserva = document.getElementById("estado");
 	const asientos_reserva1 = document.getElementById("edit_asientos");
 
-	if (
-		fecha_reserva1.value == "" ||
-		fecha_reserva1.value == "0000-00-00"
-	) {
+	if (fecha_reserva1.value == "" || fecha_reserva1.value == "0000-00-00") {
 		Swal.fire({
 			title: "Error",
 			text: "El campo no pude estar vacio ni puede hacer una reservacion en el pasado",
@@ -242,6 +246,14 @@ edit.addEventListener("click", () => {
 					pop_up_wrap_edit.classList.remove("show");
 				}
 			});
+		fetch("../../../controller/sendMail_edit.php", {
+			method: "POST",
+			body: new FormData(pop_up_wrap_edit),
+		})
+			.then((response) => response.text())
+			.then((response) => {
+				console.log(response);
+			});
 	}
 });
 
@@ -284,4 +296,3 @@ search_input.addEventListener("keyup", () => {
 		listarReservas(valor);
 	}
 });
-

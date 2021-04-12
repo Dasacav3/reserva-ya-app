@@ -63,12 +63,22 @@ function mostrarMesa() {
 		});
 }
 
+function sendEmail_add(){
+	fetch("../../../controller/sendMail_add.php", {
+		method: "POST",
+		body: new FormData(pop_up_wrap_add),
+	})
+		.then((response) => response.text())
+		.then((response) => {
+			console.log(response);
+		});
+}
+
 registrar.addEventListener("click", () => {
 	const fecha_reserva = document.getElementById("add_fecha_reserva");
 	const hora_reserva = document.getElementById("add_hora_reserva");
 	const mesa_reserva = document.getElementById("mesa");
 	const asientos_reserva = document.getElementById("add_asientos");
-
 
 	if (
 		fecha_reserva.value == "" &&
@@ -113,28 +123,29 @@ registrar.addEventListener("click", () => {
 			text: "El numero de asientos no puede estar vacio ni ser mayor a 8 por reservación",
 			icon: "error",
 		});
+	} else {
+		fetch("../../../models/cliente/reservas/añadirReserva.php", {
+			method: "POST",
+			body: new FormData(pop_up_wrap_add),
+		})
+			.then((response) => response.text())
+			.then((response) => {
+				if (response == "ok") {
+					Swal.fire({
+						icon: "success",
+						title: "Registrado",
+						showConfirmButton: false,
+						timer: 1500,
+					});
+					pop_up_wrap_add.reset();
+					listarReservas();
+					mostrarMesa();
+					pop_up_add.classList.remove("show");
+					pop_up_wrap_add.classList.remove("show");
+				}
+			});
 	}
-
-	fetch("../../../models/cliente/reservas/añadirReserva.php", {
-		method: "POST",
-		body: new FormData(pop_up_wrap_add),
-	})
-		.then((response) => response.text())
-		.then((response) => {
-			if (response == "ok") {
-				Swal.fire({
-					icon: "success",
-					title: "Registrado",
-					showConfirmButton: false,
-					timer: 1500,
-				});
-				pop_up_wrap_add.reset();
-				listarReservas();
-				mostrarMesa();
-				pop_up_add.classList.remove("show");
-				pop_up_wrap_add.classList.remove("show");
-			}
-		});
+	sendEmail_add();
 });
 
 function cancelarReserva(id) {
@@ -163,6 +174,14 @@ function cancelarReserva(id) {
 						showConfirmButton: false,
 						timer: 1500,
 					});
+				});
+			fetch("../../../controller/sendMail_delete.php", {
+				method: "POST",
+				body: id,
+			})
+				.then((response) => response.text())
+				.then((response) => {
+					console.log(response);
 				});
 		}
 	});

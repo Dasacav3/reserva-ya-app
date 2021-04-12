@@ -6,29 +6,43 @@ session_start();
 
 $sesion = $_SESSION['datos'];
 
-$nombre_usuario = $_SESSION['datos'][1];
+$id = $_POST['cliente1'];
+$id_reserva = $_POST['id_reserva'];
+$fecha = $_POST['edit_fecha_reserva'];
+$hora = $_POST['edit_hora_reserva'];
+$asientos = $_POST['edit_asientos'];
+$estado = $_POST['estado'];
+$mesa = $_POST['edit_mesa'];
 
-$id_cliente = $_POST['cliente'];
-$fecha = $_POST['fecha_reserva'];
-$hora = $_POST['hora_reserva'];
-$mesa = $_POST['mesa'];
-$asiento = $_POST['asientos'];
+if ($estado == 'Activa') {
+    $estado1 = 'Actualizada';
+} else if ($estado == 'Cancelada') {
+    $estado1 = $estado;
+} else {
+    die();
+}
 
-try{
-    $query = $pdo->prepare("SELECT * FROM cliente WHERE id_cliente = :id");
-    $query->bindParam(":id",$id_cliente);
+try {
+    $query = $pdo->prepare("SELECT reservacion.ESTADO_RESERVACION, reservacion.ID_RESERVACION, cliente.NOMBRE_CLIENTE, cliente.APELLIDO_CLIENTE, cliente.EMAIL_CLIENTE,
+    reservacion.FECHA_RESERVACION, reservacion.HORA_RESERVACION, mesa.ID_MESA, reservacion.ASIENTO, reservacion_reserva_mesa.ID_RESERVACION_RESERVA_MESA
+    FROM reservacion_reserva_mesa
+    INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
+    INNER JOIN mesa ON reservacion_reserva_mesa.ID_MESA = mesa.ID_MESA
+    INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE WHERE cliente.ID_CLIENTE = :id AND reservacion.ID_RESERVACION = :id2");
+    $query->bindParam(":id", $id);
+    $query->bindParam(":id2", $id_reserva);
     $query->execute();
-    $result = $query->fetch(PDO::FETCH_ASSOC);
-}catch(Exception $e){
+} catch (Exception $e) {
     echo "Conexion Fallida " . $e->getMessage();
     die();
 }
 
-foreach($result as $dat){
-    $email_cliente = $result['EMAIL_CLIENTE'];
-    $nombre = $result['NOMBRE_CLIENTE'];
-    $apellido = $result['APELLIDO_CLIENTE']; 
-}
+    while ($dat = $query->fetch(PDO::FETCH_ASSOC)) {
+        $email_cliente = $dat['EMAIL_CLIENTE'];
+        $nombre = $dat['NOMBRE_CLIENTE'];
+        $apellido = $dat['APELLIDO_CLIENTE'];
+        $id_reserva = $dat['ID_RESERVACION'];
+    }
 
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -66,10 +80,10 @@ try {
 
     //Content
     $mail->CharSet = 'UTF-8';
-    $mail->isHTML(true);       
-    $mail->addEmbeddedImage('../views/dist/img/logo-reservaya.png','logo','logo-reservaya.png'); 
-    $mail->addEmbeddedImage('../views/dist/img/email_banner.png','banner','email_banner.png');                       //Set email format to HTML
-    $mail->Subject = 'Noticación ReservaYa - Reservación agendada para '.$fecha;
+    $mail->isHTML(true);
+    $mail->addEmbeddedImage('../views/dist/img/logo-reservaya.png', 'logo', 'logo-reservaya.png');
+    $mail->addEmbeddedImage('../views/dist/img/email_banner.png', 'banner', 'email_banner.png');                       //Set email format to HTML
+    $mail->Subject = 'Reservación #00876' . $id_reserva . ' ' . $estado1;
     $mail->Body   = ' <!DOCTYPE html>
     <html lang="es">
         <head>
@@ -143,15 +157,17 @@ try {
                     <img src="cid:banner" alt="" /> 
                 </div>
                 <div class="main">
-                    <h1>Reservación</h1> <br>
-                    <p>Se ha registrado una reservación para <b>'.$nombre.'  '.$apellido.'</b>  con el correo electronico ' . $email_cliente . '</p> <br>
-                    <p>Los datos de la reservación son los siguientes:</p>
+                    <h1>Reservación Sephia PUB</h1> <br>
+                    <p>Se ha modificado una reservación para <b>' . $nombre . '  ' . $apellido . '</b>  con el correo electronico ' . $email_cliente . '</p> <br>
+                    <p>Los datos nuevos de la reservación son los siguientes:</p>
                     <br />
                     <ul>
+                        <li>ID: 00876' . $id_reserva . '</li>
                         <li>Fecha: ' . $fecha . '</li>
-                        <li>Hora: ' . date("h:i A",strtotime($hora)) . '</li>
+                        <li>Hora: ' . date("h:i A", strtotime($hora)) . '</li>
                         <li>Mesa: ' . $mesa . '</li>
-                        <li>Asientos: ' . $asiento . '</li>
+                        <li>Asientos: ' . $asientos . '</li>
+                        <li>Estado: ' . $estado . '</li>
                     </ul>
                 </div>
                 <div class="info">
@@ -172,7 +188,9 @@ try {
     // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-    echo 'ok';
+    echo 'Correo enviado';
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
+
+$pdo = null;
