@@ -138,26 +138,51 @@ registrar.addEventListener("click", () => {
 			icon: "error",
 		});
 	} else {
-		fetch("../../../models/empleado/reservas/añadirReserva.php", {
-			method: "POST",
-			body: new FormData(pop_up_wrap_add),
-		})
-			.then((response) => response.text())
-			.then((response) => {
-				if (response == "ok") {
+		async function añadirReserva() {
+			try {
+				const url = "../../../models/empleado/reservas/añadirReserva.php";
+				const fetchAdd = await fetch(url, { method: "POST", body: new FormData(pop_up_wrap_add) });
+				const texto = await fetchAdd.text();
+				if (texto == "ok") {
 					Swal.fire({
 						icon: "success",
 						title: "Registrado",
 						showConfirmButton: false,
 						timer: 1500,
 					});
-					pop_up_wrap_add.reset();
-					listarReservas();
-					mostrarMesa();
-					pop_up_add.classList.remove("show");
-					pop_up_wrap_add.classList.remove("show");
 				}
-			});
+				pop_up_wrap_add.reset();
+				listarReservas();
+				mostrarMesa();
+				pop_up_add.classList.remove("show");
+				pop_up_wrap_add.classList.remove("show");
+			} catch (err) {
+				console.log(err);
+			}
+		}
+
+		añadirReserva();
+
+		// fetch("../../../models/empleado/reservas/añadirReserva.php", {
+		// 	method: "POST",
+		// 	body: new FormData(pop_up_wrap_add),
+		// })
+		// 	.then((response) => response.text())
+		// 	.then((response) => {
+		// 		if (response == "ok") {
+		// 			Swal.fire({
+		// 				icon: "success",
+		// 				title: "Registrado",
+		// 				showConfirmButton: false,
+		// 				timer: 1500,
+		// 			});
+		// 			pop_up_wrap_add.reset();
+		// 			listarReservas();
+		// 			mostrarMesa();
+		// 			pop_up_add.classList.remove("show");
+		// 			pop_up_wrap_add.classList.remove("show");
+		// 		}
+		// 	});
 		fetch("../../../controller/sendMail_add.php", {
 			method: "POST",
 			body: new FormData(pop_up_wrap_add),
@@ -284,6 +309,18 @@ function eliminarReserva(id) {
 						timer: 1500,
 					});
 				});
+			async function emailDelete() {
+				try {
+					const url = "../../../controller/sendMail_delete.php";
+					const fetchEmail = await fetch(url, { method: "POST", body: id });
+					const texto = await fetchEmail.text();
+					console.log(texto);
+				} catch (err) {
+					console.log(err);
+				}
+			}
+
+			emailDelete();
 		}
 	});
 }

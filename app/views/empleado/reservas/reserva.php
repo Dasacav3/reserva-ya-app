@@ -127,18 +127,24 @@ $img = $_SESSION['datos'][6];
 				<form id="pop_up_wrap_add" class="pop-up-wrap" method="POST">
 					<a href="#" id="closePopup-add" class="closePopup"><i class="fas fa-times-circle"></i></a>
 					<h4 class="form-title">Añadir reserva</h4>
-					<label for="">Cliente</label> <br />
-					<select name="cliente" id="cliente">
-					</select>
-					<label for="">Fecha</label> <br />
-					<input type="date" min="<?php echo date("Y-m-d");?>" name="fecha_reserva" id="add_fecha_reserva" /> <br />
-					<label for="">Hora</label> <br />
-					<input type="time" min="12:00" max="22:00" name="hora_reserva" id="add_hora_reserva" /> <br />
-					<label for="">Mesa</label> <br />
-					<select name="mesa" id="mesa">
-					</select>
-					<label for="">Asientos</label> <br />
-					<input type="number" min="1" name="asientos" id="add_asientos" /> <br />
+					<div class="form-fields">
+						<div>
+							<label for="">Cliente</label> <br />
+							<select name="cliente" id="cliente">
+							</select> <br>
+							<label for="">Fecha</label> <br />
+							<input type="date" min="<?php echo date("Y-m-d"); ?>" name="fecha_reserva" id="add_fecha_reserva" /> <br />
+							<label for="">Hora</label> <br />
+							<input type="time" min="12:00" max="22:00" name="hora_reserva" id="add_hora_reserva" /> <br />
+						</div>
+						<div>
+							<label for="">Mesa</label> <br />
+							<select name="mesa" id="mesa">
+							</select> <br>
+							<label for="">Asientos</label> <br />
+							<input type="number" min="1" name="asientos" id="add_asientos" /> <br />
+						</div>
+					</div>
 					<input type="button" value="Registrar" id="registrar" />
 				</form>
 			</div>
@@ -150,25 +156,31 @@ $img = $_SESSION['datos'][6];
 				<form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
 					<a href="#" id="closePopup-edit" class="closePopup"><i class="fas fa-times-circle"></i></a>
 					<h4 class="form-title">Editar reserva</h4>
-					<label for="">ID Reserva</label> <br />
-					<input type="text" id="id_reserva" name="id_reserva" readonly> <br>
-					<label for="">Cliente</label> <br />
-					<input type="text" id="cliente1" name="cliente1" readonly> <br>
-					<label for="">Estado</label> <br />
-					<select name="estado" id="estado">
-						<option value=""></option>
-						<option value="Activa">Activa</option>
-						<option value="Completada">Completada</option>
-						<option value="Cancelada">Cancelada</option>
-					</select>
-					<label for="">Fecha</label> <br />
-					<input type="date" min="<?php echo date("Y-m-d");?>" name="edit_fecha_reserva" id="edit_fecha_reserva" /> <br />
-					<label for="">Hora</label> <br />
-					<input type="time" min="12:00" max="22:00" name="edit_hora_reserva" id="edit_hora_reserva" /> <br />
-					<label for="">Mesa</label> <br />
-					<input type="text" id="edit_mesa" name="edit_mesa" readonly>
-					<label for="">Asientos</label> <br />
-					<input type="number" min="1" name="edit_asientos" id="edit_asientos" /> <br />
+					<div class="form-fields">
+						<div>
+							<label for="">ID Reserva</label> <br />
+							<input type="text" id="id_reserva" name="id_reserva" readonly> <br>
+							<label for="">Cliente</label> <br />
+							<input type="text" id="cliente1" name="cliente1" readonly> <br>
+							<label for="">Estado</label> <br />
+							<select name="estado" id="estado">
+								<option value=""></option>
+								<option value="Activa">Activa</option>
+								<option value="Completada">Completada</option>
+								<option value="Cancelada">Cancelada</option>
+							</select> <br>
+							<label for="">Fecha</label> <br />
+							<input type="date" min="<?php echo date("Y-m-d"); ?>" name="edit_fecha_reserva" id="edit_fecha_reserva" /> <br />
+						</div>
+						<div>
+							<label for="">Hora</label> <br />
+							<input type="time" min="12:00" max="22:00" name="edit_hora_reserva" id="edit_hora_reserva" /> <br />
+							<label for="">Mesa</label> <br />
+							<input type="text" id="edit_mesa" name="edit_mesa" readonly> <br>
+							<label for="">Asientos</label> <br />
+							<input type="number" min="1" name="edit_asientos" id="edit_asientos" /> <br />
+						</div>
+					</div>
 					<input type="button" value="Guardar" id="edit" />
 				</form>
 			</div>

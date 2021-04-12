@@ -63,17 +63,6 @@ function mostrarMesa() {
 		});
 }
 
-function sendEmail_add(){
-	fetch("../../../controller/sendMail_add.php", {
-		method: "POST",
-		body: new FormData(pop_up_wrap_add),
-	})
-		.then((response) => response.text())
-		.then((response) => {
-			console.log(response);
-		});
-}
-
 registrar.addEventListener("click", () => {
 	const fecha_reserva = document.getElementById("add_fecha_reserva");
 	const hora_reserva = document.getElementById("add_hora_reserva");
@@ -124,28 +113,61 @@ registrar.addEventListener("click", () => {
 			icon: "error",
 		});
 	} else {
-		fetch("../../../models/cliente/reservas/añadirReserva.php", {
-			method: "POST",
-			body: new FormData(pop_up_wrap_add),
-		})
-			.then((response) => response.text())
-			.then((response) => {
-				if (response == "ok") {
+		async function añadirReserva() {
+			try {
+				const url = "../../../models/cliente/reservas/añadirReserva.php";
+				const fetchAdd = await fetch(url, { method: "POST", body: new FormData(pop_up_wrap_add) });
+				const texto = await fetchAdd.text();
+				if (texto == "ok") {
 					Swal.fire({
 						icon: "success",
 						title: "Registrado",
 						showConfirmButton: false,
 						timer: 1500,
 					});
-					pop_up_wrap_add.reset();
-					listarReservas();
-					mostrarMesa();
-					pop_up_add.classList.remove("show");
-					pop_up_wrap_add.classList.remove("show");
 				}
+				pop_up_wrap_add.reset();
+				listarReservas();
+				mostrarMesa();
+				pop_up_add.classList.remove("show");
+				pop_up_wrap_add.classList.remove("show");
+			} catch (err) {
+				console.log(err);
+			}
+		}
+
+		añadirReserva();
+
+		fetch("../../../controller/sendMail_add.php", {
+			method: "POST",
+			body: new FormData(pop_up_wrap_add),
+		})
+			.then((response) => response.text())
+			.then((response) => {
+				console.log(response);
 			});
+
+		// fetch("../../../models/cliente/reservas/añadirReserva.php", {
+		// 	method: "POST",
+		// 	body: new FormData(pop_up_wrap_add),
+		// })
+		// 	.then((response) => response.text())
+		// 	.then((response) => {
+		// 		if (response == "ok") {
+		// 			Swal.fire({
+		// 				icon: "success",
+		// 				title: "Registrado",
+		// 				showConfirmButton: false,
+		// 				timer: 1500,
+		// 			});
+		// 			pop_up_wrap_add.reset();
+		// 			listarReservas();
+		// 			mostrarMesa();
+		// 			pop_up_add.classList.remove("show");
+		// 			pop_up_wrap_add.classList.remove("show");
+		// 		}
+		// 	});
 	}
-	sendEmail_add();
 });
 
 function cancelarReserva(id) {
@@ -159,31 +181,66 @@ function cancelarReserva(id) {
 		cancelButtonText: "NO",
 	}).then((result) => {
 		if (result.isConfirmed) {
-			fetch("../../../models/cliente/reservas/cancelarReserva.php", {
-				method: "POST",
-				body: id,
-			})
-				.then((response) => response.text())
-				.then((response) => {
-					console.log(response);
-					listarReservas();
-					mostrarMesa();
-					Swal.fire({
-						icon: "success",
-						title: "Reserva cancelada",
-						showConfirmButton: false,
-						timer: 1500,
-					});
-				});
-			fetch("../../../controller/sendMail_delete.php", {
-				method: "POST",
-				body: id,
-			})
-				.then((response) => response.text())
-				.then((response) => {
-					console.log(response);
-				});
+			async function peticionReserva() {
+				try {
+					const url = "../../../models/cliente/reservas/cancelarReserva.php";
+					const fetchAdd = await fetch(url, { method: "POST", body: id });
+					const texto = await fetchAdd.text();
+					if (texto == "ok") {
+						Swal.fire({
+							icon: "success",
+							title: "Reserva cancelada",
+							showConfirmButton: false,
+							timer: 1500,
+						});
+						listarReservas();
+						mostrarMesa();
+					}
+				} catch (err) {
+					console.log(err);
+				}
+			}
+
+			peticionReserva();
+
+			// fetch("../../../models/cliente/reservas/cancelarReserva.php", {
+			// 	method: "POST",
+			// 	body: id,
+			// })
+			// 	.then((response) => response.text())
+			// 	.then((response) => {
+			// 		console.log(response);
+			// 		listarReservas();
+			// 		mostrarMesa();
+			// 		Swal.fire({
+			// 			icon: "success",
+			// 			title: "Reserva cancelada",
+			// 			showConfirmButton: false,
+			// 			timer: 1500,
+			// 		});
+			// 	});
+			// fetch("../../../controller/sendMail_delete.php", {
+			// 	method: "POST",
+			// 	body: id,
+			// })
+			// 	.then((response) => response.text())
+			// 	.then((response) => {
+			// 		console.log(response);
+			// 	});
 		}
+
+		async function emailDelete() {
+			try {
+				const url = "../../../controller/sendMail_delete.php";
+				const fetchEmail = await fetch(url, { method: "POST", body: id });
+				const texto = await fetchEmail.text();
+				console.log(texto);
+			} catch (err) {
+				console.log(err);
+			}
+		}
+
+		emailDelete();
 	});
 }
 
