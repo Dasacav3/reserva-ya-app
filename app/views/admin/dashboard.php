@@ -32,6 +32,7 @@ if ($sesion == null || $sesion = '') {
 }
 
 $img = $_SESSION['datos'][6];
+$result = str_replace("../../../../","../../../",$img);
 
 ?>
 <body id="body">
@@ -51,7 +52,7 @@ $img = $_SESSION['datos'][6];
 					<i class="fa fa-power-off" aria-hidden="true"></i>
 				</a>
 				<a href="./usuarios/updateInfo.php">
-					<img class="foto_perfil" src="<?php echo $img; ?>" />
+					<img class="foto_perfil" src="<?php echo $result; ?>" />
 				</a>
 			</div>
 		</nav>
