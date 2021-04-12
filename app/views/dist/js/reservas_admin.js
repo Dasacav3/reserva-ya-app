@@ -146,6 +146,7 @@ registrar.addEventListener("click", () => {
 	})
 		.then((response) => response.text())
 		.then((response) => {
+			console.log(response);
 			if (response == "ok") {
 				Swal.fire({
 					icon: "success",

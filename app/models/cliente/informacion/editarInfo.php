@@ -21,15 +21,22 @@
     $email = $_POST['email'];
     $cel = $_POST['cel'];
 
-    $query = "UPDATE cliente SET nombre_cliente = '$nombre',apellido_cliente = '$apellido',fecha_nacimiento_cliente = '$fecha',email_cliente = '$email',celular_cliente = '$cel' WHERE id_usuario = '$id'";
 
-    $result = mysqli_query($conn,$query);
-
-    if(!$result) {
-        die('Query Failed '. mysqli_error($conn));
-    }else{
-        echo "ok";
+    try {
+        $query = $pdo->prepare("UPDATE cliente SET nombre_cliente = :nom,apellido_cliente = :ape,fecha_nacimiento_cliente = :fecha,email_cliente = :mail,celular_cliente = :cel WHERE id_usuario = :id");
+        $query->bindParam(":nom",$nombre);
+        $query->bindParam(":ape",$apellido);
+        $query->bindParam(":fecha",$fecha);
+        $query->bindParam(":mail",$email);
+        $query->bindParam(":cel",$cel);
+        $query->bindParam(":id",$id);
+        $query->execute();
+    }catch (Exception $e) {
+        echo "Conexion fallida " . $e->getMessage();
+        die();
     }
+
+    echo "ok";
 
 
 ?>

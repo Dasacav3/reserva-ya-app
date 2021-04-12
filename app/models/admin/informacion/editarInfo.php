@@ -20,15 +20,20 @@
     $email = $_POST['email'];
     $cel = $_POST['cel'];
 
-    $query = "UPDATE administrador SET nombre_admin = '$nombre',apellido_admin = '$apellido',email_admin = '$email',celular_admin = '$cel' WHERE id_usuario = '$id'";
-
-    $result = mysqli_query($conn,$query);
-
-    if(!$result) {
-        die('Query Failed '. mysqli_error($conn));
-    }else{
-        echo "ok";
+    try {
+        $query = $pdo->prepare("UPDATE administrador SET nombre_admin = :nom,apellido_admin = :ape,email_admin = :mail,celular_admin = :cel WHERE id_usuario = :id");
+        $query->bindParam(":nom",$nombre);
+        $query->bindParam(":ape",$apellido);
+        $query->bindParam(":mail",$email);
+        $query->bindParam(":cel",$cel);
+        $query->bindParam(":id",$id);
+        $query->execute();
+    }catch (Exception $e) {
+        echo "Conexion fallida " . $e->getMessage();
+        die();
     }
+
+    echo "ok";
 
 
 ?>

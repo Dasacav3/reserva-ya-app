@@ -15,17 +15,17 @@
 
     $id = $_SESSION['datos'][0];
 
-    $query = "SELECT nombre_cliente,apellido_cliente,fecha_nacimiento_cliente,email_cliente,celular_cliente FROM cliente WHERE id_usuario = '$id'";
-
-    $result = mysqli_query($conn,$query);
-
-    if(!$result) {
-        die('Query Failed '. mysqli_error($conn));
+    try {
+        $query = $pdo->prepare("SELECT nombre_cliente,apellido_cliente,fecha_nacimiento_cliente,email_cliente,celular_cliente FROM cliente WHERE id_usuario = :id");
+        $query->bindParam(":id",$id);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        echo "Conexion fallida " . $e->getMessage();
+        die();
     }
-    
-    $resultado = $result->fetch_assoc();
 
 
-    echo json_encode($resultado);
+    echo json_encode($result);
 
 ?>

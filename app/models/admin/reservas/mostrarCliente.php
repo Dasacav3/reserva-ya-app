@@ -4,11 +4,19 @@ $data = file_get_contents("php://input");
 require("../../../controller/database.php");
 
 
-$consulta = mysqli_query($conn, "SELECT id_cliente,nombre_cliente,apellido_cliente FROM cliente");
+try {
+    $query = $pdo->prepare("SELECT id_cliente,nombre_cliente,apellido_cliente FROM cliente");
+    $query->execute();
+}catch (Exception $e) {
+    echo "Conexion fallida " . $e->getMessage();
+    die();
+}
 
 echo "<option value=''></option>";
-while ($cliente = mysqli_fetch_array($consulta)){
+while ($cliente = $query->fetch(PDO::FETCH_ASSOC)){
     echo "<option value=".$cliente['id_cliente'].">".$cliente['id_cliente']." - ".$cliente['nombre_cliente']." ".$cliente['apellido_cliente']."</option>";
 }
+
+$pdo=null;
 
 ?>
