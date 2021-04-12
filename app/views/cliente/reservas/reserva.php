@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="../../dist/css/datatable.css" />
 	<link rel="stylesheet" href="../../dist/css/modals.css" />
 	<!-- FontAwesome -->
-	<link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/fontawesome.min.css" />
+	<link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/all.min.css" />
 	<script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
 	<!-- Sweer Alert -->
 	<script src="../../../../lib/sweetaler2/sweetalert2.all.min.js"></script>
@@ -57,7 +57,7 @@ $img = $_SESSION['datos'][6];
 					<i class="fa fa-power-off" aria-hidden="true"></i>
 				</a>
 				<a href="../usuarios/updateInfo.php">
-				<img class="foto_perfil" src="<?php echo $img; ?>" />
+					<img class="foto_perfil" src="<?php echo $img; ?>" />
 				</a>
 			</div>
 		</nav>
@@ -125,37 +125,22 @@ $img = $_SESSION['datos'][6];
 				<form id="pop_up_wrap_add" class="pop-up-wrap" method="POST">
 					<a href="#" id="closePopup-add" class="closePopup"><i class="fas fa-times-circle"></i></a>
 					<h4 class="form-title">Añadir reserva</h4>
-					<label for="">Fecha</label> <br />
-					<input type="date" min="<?php echo date("Y-m-d");?>" name="fecha_reserva" id="add_fecha_reserva" /> <br />
-					<label for="">Hora</label> <br />
-					<input type="time" min="12:00" max="22:00" name="hora_reserva" id="add_hora_reserva" /> <br />
-					<label for="">Mesa</label> <br />
-					<select name="mesa" id="mesa">
-					</select>
-					<label for="">Asientos</label> <br />
-					<input type="number" min="1" name="asientos" id="add_asientos" /> <br />
+					<div class="form-fields">
+						<div>
+							<label for="">Fecha</label> <br />
+							<input type="date" min="<?php echo date("Y-m-d"); ?>" name="fecha_reserva" id="add_fecha_reserva" /> <br />
+							<label for="">Hora</label> <br />
+							<input type="time" min="12:00" max="22:00" name="hora_reserva" id="add_hora_reserva" /> <br />
+						</div>
+						<div>
+							<label for="">Mesa</label> <br />
+							<select name="mesa" id="mesa">
+							</select> <br>
+							<label for="">Asientos</label> <br />
+							<input type="number" min="1" name="asientos" id="add_asientos" /> <br />
+						</div>
+					</div>
 					<input type="button" value="Registrar" id="registrar" />
-				</form>
-			</div>
-
-
-
-			<!-- Modal Editar reservas -->
-			<div id="pop-up-edit" class="pop-up form-modal">
-				<form id="pop_up_wrap_edit" class="pop-up-wrap" method="POST">
-					<a href="#" id="closePopup-edit" class="closePopup"><i class="fas fa-times-circle"></i></a>
-					<h4 class="form-title">Editar reserva</h4>
-					<label for="">ID Reserva</label> <br />
-					<input type="text" id="id_reserva" name="id_reserva" readonly> <br>
-					<label for="">Estado</label> <br />
-					<input type="text" id="estado" name="estado" readonly> <br>
-					<label for="">Fecha</label> <br />
-					<input type="date" min="<?php echo date("Y-m-d");?>" name="edit_fecha_reserva" id="edit_fecha_reserva" /> <br />
-					<label for="">Hora</label> <br />
-					<input type="time" min="12:00" max="22:00" name="edit_hora_reserva" id="edit_hora_reserva" /> <br />
-					<label for="">Asientos</label> <br />
-					<input type="number" min="1" name="edit_asientos" id="edit_asientos" /> <br />
-					<input type="button" value="Guardar" id="edit" />
 				</form>
 			</div>
 

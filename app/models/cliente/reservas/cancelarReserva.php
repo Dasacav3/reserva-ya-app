@@ -36,13 +36,8 @@
         $query->bindValue(":id_mesa",$id_mesa);
         $query->execute();
 
-        $queryDeleteReservaMesa = "DELETE FROM reservacion_reserva_mesa WHERE id_reservacion_reserva_mesa = :id";
-        $query = $pdo->prepare($queryDeleteReservaMesa);
-        $query->bindValue(":id",$data);
-        $query->execute();
-
-        $queryDeleteReserva = "DELETE FROM reservacion WHERE id_reservacion = :id_reserva";
-        $query = $pdo->prepare($queryDeleteReserva);
+        $queryUpdateReserva = "UPDATE reservacion SET estado_reservacion = 'Cancelada' WHERE id_reservacion = :id_reserva";
+        $query = $pdo->prepare($queryUpdateReserva);
         $query->bindValue(":id_reserva",$id_reserva);
         $query->execute();
 

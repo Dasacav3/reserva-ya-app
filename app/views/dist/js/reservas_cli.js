@@ -31,16 +31,10 @@ abrir_add.addEventListener("click", () => {
 });
 
 var cerrar_add = document.getElementById("closePopup-add");
-var cerrar_edit = document.getElementById("closePopup-edit");
 
 cerrar_add.addEventListener("click", () => {
 	pop_up_add.classList.remove("show");
 	pop_up_wrap_add.classList.remove("show");
-});
-
-cerrar_edit.addEventListener("click", () => {
-	pop_up_edit.classList.remove("show");
-	pop_up_wrap_edit.classList.remove("show");
 });
 
 // Peticiones fetch
@@ -143,83 +137,9 @@ registrar.addEventListener("click", () => {
 		});
 });
 
-function Editar(id) {
-	fetch("../../../models/cliente/reservas/actualizarReserva.php", {
-		method: "POST",
-		body: id,
-	})
-		.then((response) => response.json())
-		.then((response) => {
-			id_reserva.value = response.ID_RESERVACION;
-			estado.value = response.ESTADO_RESERVACION;
-			edit_fecha_reserva.value = response.FECHA_RESERVACION;
-			edit_hora_reserva.value = response.HORA_RESERVACION;
-			edit_asientos.value = response.ASIENTO;
-		});
-}
-
-edit.addEventListener("click", () => {
-	const fecha_reserva1 = document.getElementById("edit_fecha_reserva");
-	const hora_reserva1 = document.getElementById("edit_hora_reserva");
-	const asientos_reserva1 = document.getElementById("edit_asientos");
-
-	if (
-		fecha_reserva1.value == "" ||
-		fecha_reserva1.value == "0000-00-00"
-	) {
-		Swal.fire({
-			title: "Error",
-			text: "El campo no pude estar vacio ni puede hacer una reservacion en el pasado",
-			icon: "error",
-		});
-	} else if (
-		hora_reserva1.value < "12:00:00" ||
-		hora_reserva1.value > "22:00:00" ||
-		hora_reserva1.value == ""
-	) {
-		Swal.fire({
-			title: "Error",
-			text: "La hora de reservacion debe estar entre 12:00 pm y 10:00 pm",
-			icon: "error",
-		});
-	} else if (
-		asientos_reserva1.value <= 0 ||
-		asientos_reserva1.value > 8 ||
-		asientos_reserva1.value == ""
-	) {
-		Swal.fire({
-			title: "Error",
-			text: "El numero de asientos no puede estar vacio ni ser mayor a 8 por reservación",
-			icon: "error",
-		});
-	} else {
-		fetch("../../../models/cliente/reservas/editarReserva.php", {
-			method: "POST",
-			body: new FormData(pop_up_wrap_edit),
-		})
-			.then((response) => response.text())
-			.then((response) => {
-				console.log(response);
-				if (response == "ok") {
-					Swal.fire({
-						icon: "success",
-						title: "Modificación",
-						showConfirmButton: false,
-						timer: 1500,
-					});
-					pop_up_wrap_edit.reset();
-					listarReservas();
-					mostrarMesa();
-					pop_up_edit.classList.remove("show");
-					pop_up_wrap_edit.classList.remove("show");
-				}
-			});
-	}
-});
-
-function eliminarReserva(id) {
+function cancelarReserva(id) {
 	Swal.fire({
-		title: "¿Esta seguro de eliminar?",
+		title: "¿Esta seguro de que desea cancelar la reserva?",
 		icon: "warning",
 		showCancelButton: true,
 		confirmButtonColor: "#3085d6",
@@ -228,7 +148,7 @@ function eliminarReserva(id) {
 		cancelButtonText: "NO",
 	}).then((result) => {
 		if (result.isConfirmed) {
-			fetch("../../../models/cliente/reservas/eliminarReserva.php", {
+			fetch("../../../models/cliente/reservas/cancelarReserva.php", {
 				method: "POST",
 				body: id,
 			})
@@ -239,7 +159,7 @@ function eliminarReserva(id) {
 					mostrarMesa();
 					Swal.fire({
 						icon: "success",
-						title: "Eliminado",
+						title: "Reserva cancelada",
 						showConfirmButton: false,
 						timer: 1500,
 					});

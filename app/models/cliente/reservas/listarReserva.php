@@ -17,7 +17,7 @@ try {
     INNER JOIN mesa ON reservacion_reserva_mesa.ID_MESA = mesa.ID_MESA
     INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE
     WHERE cliente.ID_USUARIO = :id
-    ORDER BY reservacion.FECHA_RESERVACION ASC");
+    ORDER BY reservacion.ESTADO_RESERVACION ASC");
     $query->bindParam(":id",$id);
     $query->execute();
 
@@ -44,12 +44,14 @@ foreach ($resultado as $dat) {
                 <td>" . $dat['FECHA_RESERVACION'] . "</td>
                 <td>" . $dat['HORA_RESERVACION'] . "</td>
                 <td>" . $dat['ID_MESA'] . "</td>
-                <td>" . $dat['ASIENTO'] . "</td> 
-                <td>
-                    <button class='abrirPopup-edit btn-edit' type='button' onclick=Editar('" . $dat['ID_RESERVACION_RESERVA_MESA'] . "');abrir()>Editar</button>
-                    <button class='btn-delete' type='button' onclick=eliminarReserva('" . $dat['ID_RESERVACION_RESERVA_MESA'] . "')>Eliminar</button>
+                <td>" . $dat['ASIENTO'] . "</td>
+                <td>";
+        if($dat['ESTADO_RESERVACION'] == 'Activa'){
+            echo"
+                    <button class='btn-delete' type='button' onclick=cancelarReserva('" . $dat['ID_RESERVACION_RESERVA_MESA'] . "')>Cancelar</button>
                 </td>   
             </tr>";
+        }
 }
 
 $pdo=null;
