@@ -40,11 +40,6 @@
 				<input type="submit" value="Iniciar sesión" id="submit" />
 			</form>
 		</div>
-		<div class="btn-other-sesion">
-			<button class="btn">
-				<a href=""><i class="fab fa-google"></i> Continuar con Google</a>
-			</button>
-		</div>
 		<div class="register">
 			<p>
 				<a href="./registro.php">¿No tienes cuenta? Crea tu cuenta</a>

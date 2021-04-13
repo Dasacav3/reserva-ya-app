@@ -459,22 +459,6 @@ body::-webkit-scrollbar-thumb {
 	filter: drop-shadow(2px 2px 50px var(--champagne-pink));
 }
 
-.btn-other-sesion {
-	display: flex;
-	justify-content: center;
-}
-
-.btn-other-sesion > button {
-	border-radius: 0.5em;
-	border: none;
-	transition: all 0.5s;
-}
-
-.btn-other-sesion button a {
-	color: #000;
-	text-decoration: none;
-}
-
 #submit {
 	background: var(--emerald);
 	transition: all 0.5s;
