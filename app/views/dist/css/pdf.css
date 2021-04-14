@@ -1,0 +1,56 @@
+body {
+	background: #c1c5ca;
+	font-family: "Poppins";
+	height: 100%;
+}
+
+.header_img_container {
+	width: 100%;
+	height: 4.1em;
+	margin: auto;
+	background: #b4656f !important;
+	border-radius: 1em;
+}
+
+.header_img {
+	width: 200px;
+	margin: auto;
+}
+
+.periodo{
+    width: 100%;
+    text-align: right;
+}
+
+.header_title {
+	text-align: center;
+}
+
+.tabla thead tr {
+	background: #b4656f;
+}
+
+.tabla {
+	width: 100%;
+}
+
+.tabla th,
+.tabla tr,
+.tabla td {
+	text-align: center;
+	border: 1px solid #453f3f;
+}
+
+.footer {
+	width: 100%;
+	background: #b4656f;
+	border-radius: 1em;
+	text-align: center;
+	color: #c1c5ca;
+	font-weight: bold;
+	font-size: 1em;
+}
+
+.footer p{
+    padding-bottom: 1em;
+}

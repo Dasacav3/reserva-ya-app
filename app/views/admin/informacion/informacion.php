@@ -8,6 +8,7 @@
   <link rel="shortcut icon" href="../../dist/img/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="../../dist/css/normalize.css">
   <link rel="stylesheet" href="../../dist/css/dashboard.css">
+  <link rel="stylesheet" href="../../dist/css/modals.css">
   <!-- FontAwesome -->
   <link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/all.min.css">
   <script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
@@ -55,7 +56,7 @@ $img = $_SESSION['datos'][6];
           <i class="fa fa-power-off" aria-hidden="true"></i>
         </a>
         <a href="../usuarios/updateInfo.php">
-          <img class="foto_perfil" src="<?php echo $img;?>" />
+          <img class="foto_perfil" src="<?php echo $img; ?>" />
         </a>
       </div>
     </nav>
@@ -63,7 +64,42 @@ $img = $_SESSION['datos'][6];
     <main class="main__container">
       <div>
         <h2 class="title_table">Información</h2>
+        <div class="reportes_container">
 
+          <div class="reporte_card">
+            <div class="icon_reporte"><i class="fas fa-scroll"></i></div>
+            <h4>Insumos</h4>
+            <button class="btn_generar">Generar reporte</button>
+          </div>
+          <div class="reporte_card">
+            <div class="icon_reporte"><i class="fas fa-book"></i></div>
+            <h4>Reservaciones</h4>
+            <button class="btn_generar" onclick="showPopup_add()">Generar reporte</button>
+          </div>
+
+
+
+          <div id="pop-up-add" class="pop-up form-modal">
+            <form id="pop_up_wrap_add" class="pop-up-wrap" method="POST">
+              <a href="#" id="closePopup-add" class="closePopup"><i class="fas fa-times-circle"></i></a>
+              <h4 class="form-title">Rango de reporte</h4>
+              <div class="form-fields">
+                <div>
+                  <label for="">Fecha inicio</label> <br />
+                  <input type="date" name="fecha_inicio" id="fecha_inicio"> <br>
+                </div>
+                <div>
+                  <label for="">Fecha final</label> <br />
+                  <input type="date" name="fecha_final" id="fecha_final">
+                </div>
+              </div>
+              <input type="button" value="Generar" onclick="generarReporteReserva()" />
+            </form>
+          </div>
+
+
+
+        </div>
       </div>
     </main>
 
@@ -130,6 +166,7 @@ $img = $_SESSION['datos'][6];
     </div>
   </div>
   <script src="../../dist/js/sidebarDashboard.js"></script>
+  <script src="../../dist/js/informacion.js"></script>
 </body>
 
 </html>

@@ -389,3 +389,50 @@ body {
 #limpiar{
 	background: var(--popstar);
 }
+
+
+/*---------------------------->*/
+/* MODULO DE REPORTES */
+/*---------------------------->*/
+
+.reportes_container{
+	display: grid;
+	gap: 1em;
+	width: 100%;
+	grid-template-columns: repeat(2,1fr);
+	justify-items: center;
+	align-items: center;
+}
+
+.reportes_container .reporte_card{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 400px;
+	height: 400px;
+	background: var(--emerald);
+	border-radius: 1em;
+	filter: drop-shadow(0 0 25px rgba(255,255,255,0.4));
+}
+
+.reportes_container .reporte_card .icon_reporte{
+	font-size: 4em;
+	color:  var(--champagne-pink);
+	filter: drop-shadow(0 0 25px rgba(255,255,255,0.5));
+}
+
+.reportes_container .reporte_card h4{
+	color: var(--champagne-pink);
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.reportes_container .reporte_card button{
+	background: var(--popstar);
+	color:  var(--champagne-pink);
+	border: none;
+	border-radius: 0.2em;
+	cursor: pointer;
+	padding: 0.2em 0.5em;
+}
