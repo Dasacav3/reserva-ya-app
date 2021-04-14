@@ -185,14 +185,14 @@ registrar.addEventListener("click", () => {
 		// 		}
 		// 	});
 
-		fetch("../../../controller/sendMail_add.php", {
-			method: "POST",
-			body: new FormData(pop_up_wrap_add),
-		})
-			.then((response) => response.text())
-			.then((response) => {
-				console.log(response);
-			});
+		// fetch("../../../controller/sendMail_add.php", {
+		// 	method: "POST",
+		// 	body: new FormData(pop_up_wrap_add),
+		// })
+		// 	.then((response) => response.text())
+		// 	.then((response) => {
+		// 		console.log(response);
+		// 	});
 	}
 });
 
@@ -273,14 +273,14 @@ edit.addEventListener("click", () => {
 					pop_up_wrap_edit.classList.remove("show");
 				}
 			});
-		fetch("../../../controller/sendMail_edit.php", {
-			method: "POST",
-			body: new FormData(pop_up_wrap_edit),
-		})
-			.then((response) => response.text())
-			.then((response) => {
-				console.log(response);
-			});
+		// fetch("../../../controller/sendMail_edit.php", {
+		// 	method: "POST",
+		// 	body: new FormData(pop_up_wrap_edit),
+		// })
+		// 	.then((response) => response.text())
+		// 	.then((response) => {
+		// 		console.log(response);
+		// 	});
 	}
 });
 
@@ -311,18 +311,18 @@ function eliminarReserva(id) {
 						timer: 1500,
 					});
 				});
-			async function emailDelete() {
-				try {
-					const url = "../../../controller/sendMail_delete.php";
-					const fetchEmail = await fetch(url, { method: "POST", body: id });
-					const texto = await fetchEmail.text();
-					console.log(texto);
-				} catch (err) {
-					console.log(err);
-				}
-			}
+			// async function emailDelete() {
+			// 	try {
+			// 		const url = "../../../controller/sendMail_delete.php";
+			// 		const fetchEmail = await fetch(url, { method: "POST", body: id });
+			// 		const texto = await fetchEmail.text();
+			// 		console.log(texto);
+			// 	} catch (err) {
+			// 		console.log(err);
+			// 	}
+			// }
 
-			emailDelete();
+			// emailDelete();
 		}
 	});
 }

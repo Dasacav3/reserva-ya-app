@@ -138,14 +138,14 @@ registrar.addEventListener("click", () => {
 
 		añadirReserva();
 
-		fetch("../../../controller/sendMail_add.php", {
-			method: "POST",
-			body: new FormData(pop_up_wrap_add),
-		})
-			.then((response) => response.text())
-			.then((response) => {
-				console.log(response);
-			});
+		// fetch("../../../controller/sendMail_add.php", {
+		// 	method: "POST",
+		// 	body: new FormData(pop_up_wrap_add),
+		// })
+		// 	.then((response) => response.text())
+		// 	.then((response) => {
+		// 		console.log(response);
+		// 	});
 
 		// fetch("../../../models/cliente/reservas/añadirReserva.php", {
 		// 	method: "POST",
@@ -229,18 +229,18 @@ function cancelarReserva(id) {
 			// 	});
 		}
 
-		async function emailDelete() {
-			try {
-				const url = "../../../controller/sendMail_delete.php";
-				const fetchEmail = await fetch(url, { method: "POST", body: id });
-				const texto = await fetchEmail.text();
-				console.log(texto);
-			} catch (err) {
-				console.log(err);
-			}
-		}
+		// async function emailDelete() {
+		// 	try {
+		// 		const url = "../../../controller/sendMail_delete.php";
+		// 		const fetchEmail = await fetch(url, { method: "POST", body: id });
+		// 		const texto = await fetchEmail.text();
+		// 		console.log(texto);
+		// 	} catch (err) {
+		// 		console.log(err);
+		// 	}
+		// }
 
-		emailDelete();
+		// emailDelete();
 	});
 }
 

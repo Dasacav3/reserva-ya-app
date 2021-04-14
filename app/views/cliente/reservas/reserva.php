@@ -38,6 +38,13 @@ if ($sesion == null || $sesion = '') {
 
 $img = $_SESSION['datos'][6];
 
+// Estableciendo fechas para validacion de formulario
+$fecha_actual = date("Y-m-d");
+
+$fecha_actual = date("Y-m-d"); 
+
+$mod_date = strtotime($fecha_actual."+ 30 days"); 
+
 ?>
 
 <body id="body">
@@ -128,7 +135,7 @@ $img = $_SESSION['datos'][6];
 					<div class="form-fields">
 						<div>
 							<label for="">Fecha</label> <br />
-							<input type="date" min="<?php echo date("Y-m-d"); ?>" name="fecha_reserva" id="add_fecha_reserva" /> <br />
+							<input type="date" min="<?php echo $fecha_actual ?>" max="<?php echo date("Y-m-d",$mod_date); ?>" name="fecha_reserva" id="add_fecha_reserva" /> <br />
 							<label for="">Hora</label> <br />
 							<input type="time" min="12:00" max="22:00" name="hora_reserva" id="add_hora_reserva" /> <br />
 						</div>

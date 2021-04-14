@@ -40,9 +40,11 @@
                 <td>" . $dat['HORA_RESERVACION'] . "</td>
                 <td>" . $dat['ID_MESA'] . "</td>
                 <td>" . $dat['ASIENTO'] . "</td> 
-                <td>
-                    <button class='abrirPopup-edit btn-edit' type='button' onclick=Editar('" . $dat['ID_RESERVACION_RESERVA_MESA'] . "');abrir()>Editar</button>
-                    <button class='btn-delete' type='button' onclick=eliminarReserva('" . $dat['ID_RESERVACION_RESERVA_MESA'] ."')>Eliminar</button>
+                <td>";
+            if($dat['ESTADO_RESERVACION'] === 'Activa'){
+                echo  "<button class='abrirPopup-edit btn-edit' type='button' onclick=Editar('" . $dat['ID_RESERVACION_RESERVA_MESA'] . "');abrir()>Editar</button>";
+            }
+                echo   "<button class='btn-delete' type='button' onclick=eliminarReserva('" . $dat['ID_RESERVACION_RESERVA_MESA'] ."')>Eliminar</button>
                 </td>   
             </tr>";
     }
