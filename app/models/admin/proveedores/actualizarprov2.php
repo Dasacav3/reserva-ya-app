@@ -8,11 +8,24 @@
 <body>
 	<?php
 	include('../../../controller/database.php');
-$registros = mysqli_query($conn, "SELECT * FROM proveedor");
-		if ($reg = mysqli_fetch_array($registros)) {
-			mysqli_query($conn, "UPDATE proveedor SET NOMBRE_PROVEEDOR='$_REQUEST[newname]',DIRECCION_PROVEEDOR='$_REQUEST[newdireccion]',PERSONA_ENCARGADA='$_REQUEST[newpersona]',TELEFONO_PROVEEDOR=$_REQUEST[newtelefono] WHERE ID_PROVEEDOR=$_REQUEST[id]") or die ("Problemas en el SELECT" . mysqli_error($conn));
+
+
+	try{
+		$query=$pdo->prepare("SELECT * FROM proveedor");
+		$query->execute();
+	}catch(Exception $e){
+		echo "Conexion Fallida: " . $e->getMessage();
+	}
+
+	if ($result = $query->fetchAll(PDO::FETCH_ASSOC)) {
+		try{
+			$query=$pdo->prepare("UPDATE proveedor SET NOMBRE_PROVEEDOR='$_REQUEST[newname]',DIRECCION_PROVEEDOR='$_REQUEST[newdireccion]',PERSONA_ENCARGADA='$_REQUEST[newpersona]',TELEFONO_PROVEEDOR=$_REQUEST[newtelefono] WHERE ID_PROVEEDOR=$_REQUEST[id]");
+			$query->execute();
 			echo "<script>alert('Se actualizo correctamente');</script>";
-			?>
+		}catch(Exception $e){
+			echo "Conexion Fallida: " . $e->getMessage();
+		}
+	?>
       <script>
          top.location.href="http://localhost/reservaya-mvc/app/views/admin/dashboard.php";
       </script>

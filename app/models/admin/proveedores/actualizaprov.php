@@ -13,9 +13,6 @@
     <!-- Sweer Alert -->
     <script src="../../../../lib/sweetaler2/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="../../../../lib/sweetaler2/sweetalert2.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
- 
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <title>Actualiza Proveedores</title>
   </head>
   <body id="body">
@@ -47,6 +44,7 @@
       	$direccion=$_REQUEST['DP'];
       	$persona=$_REQUEST['PE'];
       	$telefono=$_REQUEST['TP'];
+
       ?>
       <main class="main__container">
         <div>

@@ -8,12 +8,18 @@
 <body>
 	<?php
 	include('../../../controller/database.php');
- $query = "INSERT INTO PROVEEDOR (NOMBRE_PROVEEDOR,DIRECCION_PROVEEDOR,PERSONA_ENCARGADA,TELEFONO_PROVEEDOR) VALUES ('$_REQUEST[NOMBRE_PROVEEDOR]','$_REQUEST[DIRECCION_PROVEEDOR]','$_REQUEST[PERSONA_ENCARGADA]',$_REQUEST[TELEFONO_PROVEEDOR])";	
+	try{
+		$query=$pdo->prepare("INSERT INTO PROVEEDOR (NOMBRE_PROVEEDOR,DIRECCION_PROVEEDOR,PERSONA_ENCARGADA,TELEFONO_PROVEEDOR) VALUES (:nombre,:direccion,:persona,:cel)");
+		$query->bindParam(":nombre",$_REQUEST['NOMBRE_PROVEEDOR']);
+		$query->bindParam(":direccion",$_REQUEST['DIRECCION_PROVEEDOR']);
+		$query->bindParam(":persona",$_REQUEST['PERSONA_ENCARGADA']);
+		$query->bindParam(":cel",$_REQUEST['TELEFONO_PROVEEDOR']);
+		$query->execute();
+	}catch(Exception $e){
+		echo "Conexion Fallida: " . $e->getMessage();
+	}	
  	echo "<script>alert('Se agrego correctamente');</script>";
 
-	$result = $conn -> query($query);
-
-	if (!$result) die ("Falla al acceder a la base de datos");
 ?>
 
 	<script>
@@ -21,7 +27,7 @@
       </script>
 
 <?php
-	$conn -> close();
+	$pdo=null;
 ?>
 </body>
 </html>

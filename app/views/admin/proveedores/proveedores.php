@@ -69,7 +69,12 @@ $img = $_SESSION['datos'][6];
       </div>
       <?php
       include('../../../controller/database.php');
-      $registros = mysqli_query($conn, "SELECT * FROM proveedor ") or die("Problemas en el select" . mysqli_error($conn));
+      try{
+        $query=$pdo->prepare("SELECT * FROM proveedor");
+        $query->execute();
+      }catch(Exception $e){
+        echo "Conexion Fallida: " . $e->getMessage();
+      }
       ?>
       <div class="datatable-container">
         <table class="datatable">
@@ -88,7 +93,7 @@ $img = $_SESSION['datos'][6];
           </thead>
           <tbody>
             <?php
-            while ($row = mysqli_fetch_array($registros)) {
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
             ?>
               <tr>
                 <th>
