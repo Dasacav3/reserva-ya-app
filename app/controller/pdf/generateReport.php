@@ -29,13 +29,48 @@ try {
     die();
 }
 
+
+try {
+    $queryFecha = $pdo->prepare("SELECT reservacion.FECHA_RESERVACION
+    FROM reservacion_reserva_mesa
+    INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
+    INNER JOIN mesa ON reservacion_reserva_mesa.ID_MESA = mesa.ID_MESA
+    INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE
+    WHERE reservacion.FECHA_RESERVACION >= '$fecha_inicio' AND reservacion.FECHA_RESERVACION <= '$fecha_final'
+    ORDER BY reservacion.FECHA_RESERVACION ASC");
+    $queryFecha->execute();
+    $fechaMasReservada = $queryFecha->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    echo "Conexion fallida " . $e->getMessage();
+    die();
+}
+
+try {
+    $queryMesa = $pdo->prepare("SELECT mesa.ID_MESA
+    FROM reservacion_reserva_mesa
+    INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
+    INNER JOIN mesa ON reservacion_reserva_mesa.ID_MESA = mesa.ID_MESA
+    INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE
+    WHERE reservacion.FECHA_RESERVACION >= '$fecha_inicio' AND reservacion.FECHA_RESERVACION <= '$fecha_final'
+    ORDER BY reservacion.FECHA_RESERVACION ASC");
+    $queryMesa->execute();
+    $mesaMasReservada = $queryMesa->fetchAll(PDO::FETCH_NUM);
+} catch (Exception $e) {
+    echo "Conexion fallida " . $e->getMessage();
+    die();
+}
+
+
+// Creando objeto para PDF
+
+
 $mpdf = new \Mpdf\Mpdf([
     'mode' => 'utf-8',
     'format' => [279, 216],
     'orientation' => 'L'
 ]);
 
-$plantilla = getPlantilla($reservas, $fecha_inicio, $fecha_final,$today);
+$plantilla = getPlantilla($reservas, $fecha_inicio, $fecha_final,$today,$fechaMasReservada,$mesaMasReservada);
 
 $css = file_get_contents("../../views/dist/css/pdf.css");
 

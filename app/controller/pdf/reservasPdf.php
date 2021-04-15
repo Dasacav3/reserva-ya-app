@@ -1,5 +1,9 @@
 <?php
-function getPlantilla($reservas,$fecha_inicio, $fecha_final,$today){
+function getPlantilla($reservas, $fecha_inicio, $fecha_final,$today,$fechaMasReservada,$mesaMasReservada){
+
+
+// $valores = array_count_values($fechaMasReservada);
+
 
 $plantilla="
 <!DOCTYPE html>
@@ -19,8 +23,8 @@ $plantilla="
             <p>Fecha de creación: ".$today."</p>
             <p>Dia más reservado: </p> 
             <p>Mesa más reservada: </p>
-            <p>Conteo de reservaciones: </p>
-            <p class='periodo'>Período: ".$fecha_inicio." | ".$fecha_final."</p>
+            <p>Conteo de reservaciones: ".count($reservas)."</p>
+            <p class='periodo'>Período: (".$fecha_inicio.") | (".$fecha_final.")</p>
             <table class='tabla'>
                 <thead>
                     <tr>
