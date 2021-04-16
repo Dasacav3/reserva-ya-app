@@ -48,37 +48,78 @@ function mostrarCliente() {
 }
 
 function generarReporteInsumo() {
-	fetch("../../../controller/pdf/generateReport.php", {
-		method: "POST",
-		body: new FormData(reporte_insumo),
-	})
-		.then((res) => res.text())
-		.then((response) => {
-			console.log(response);
-			(window.location.href = "http://localhost/reservaya-mvc/" + response), "_blank";
+	const fecha_inicio = document.getElementById("fecha_inicio_insumo");
+	const fecha_final = document.getElementById("fecha_final_insumo");
+	if (fecha_inicio.value == "") {
+		Swal.fire({
+			icon: "error",
+			title: "Error",
+			text: "La fecha inicio no puede estar vacia",
 		});
+	} else if (fecha_final.value == "") {
+		Swal.fire({
+			icon: "error",
+			title: "Error",
+			text: "La fecha final no puede estar vacia",
+		});
+	} else {
+		fetch("../../../controller/pdf/generateReport.php", {
+			method: "POST",
+			body: new FormData(reporte_insumo),
+		})
+			.then((res) => res.text())
+			.then((response) => {
+				console.log(response);
+				(window.location.href = "http://localhost/reservaya-mvc/" + response), "_blank";
+			});
+	}
 }
 
 function generarReporteReserva() {
-	fetch("../../../controller/pdf/generateReport.php", {
-		method: "POST",
-		body: new FormData(reporte_reserva),
-	})
-		.then((res) => res.text())
-		.then((response) => {
-			console.log(response);
-			(window.location.href = "http://localhost/reservaya-mvc/" + response), "_blank";
+	const fecha_inicio = document.getElementById("fecha_inicio_reserva");
+	const fecha_final = document.getElementById("fecha_final_reserva");
+	if (fecha_inicio.value == "") {
+		Swal.fire({
+			icon: "error",
+			title: "Error",
+			text: "La fecha inicio no puede estar vacia",
 		});
+	} else if (fecha_final.value == "") {
+		Swal.fire({
+			icon: "error",
+			title: "Error",
+			text: "La fecha final no puede estar vacia",
+		});
+	} else {
+		fetch("../../../controller/pdf/generateReport.php", {
+			method: "POST",
+			body: new FormData(reporte_reserva),
+		})
+			.then((res) => res.text())
+			.then((response) => {
+				console.log(response);
+				(window.location.href = "http://localhost/reservaya-mvc/" + response), "_blank";
+			});
+	}
 }
 
 function generarReporteUsuario() {
-	fetch("../../../controller/pdf/generateReport.php", {
-		method: "POST",
-		body: new FormData(reporte_usuario),
-	})
-		.then((res) => res.text())
-		.then((response) => {  
-			console.log(response);
-			(window.location.href = "http://localhost/reservaya-mvc/" + response), "_blank";
+	const cliente = document.getElementById("cliente");
+	if (cliente.value == "") {
+		Swal.fire({
+			icon: "error",
+			title: "Error",
+			text: "Debe seleccionar un cliente",
 		});
+	} else {
+		fetch("../../../controller/pdf/generateReport.php", {
+			method: "POST",
+			body: new FormData(reporte_usuario),
+		})
+			.then((res) => res.text())
+			.then((response) => {
+				console.log(response);
+				(window.location.href = "http://localhost/reservaya-mvc/" + response), "_blank";
+			});
+	}
 }
