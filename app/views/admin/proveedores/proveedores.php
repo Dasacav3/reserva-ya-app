@@ -37,6 +37,7 @@ if ($sesion == null || $sesion = '') {
   die();
 }
 
+
 $img = $_SESSION['datos'][6];
 
 ?>
@@ -113,8 +114,8 @@ $img = $_SESSION['datos'][6];
                 <td><?php
                     echo $row['TELEFONO_PROVEEDOR'];
                     ?></td>
-                <td><a href="http://localhost/reservaya-mvc/app/models/admin/proveedores/actualizaprov.php?id=<?php echo $row['ID_PROVEEDOR']; ?>&NP=<?php echo $row['NOMBRE_PROVEEDOR']; ?>&DP=<?php echo $row['DIRECCION_PROVEEDOR']; ?>&PE=<?php echo $row['PERSONA_ENCARGADA']; ?>&TP=<?php echo $row['TELEFONO_PROVEEDOR']; ?>"><input type="button" value="Modificar" class="btn-edit"></a>
-                <a href="http://localhost/reservaya-mvc/app/models/admin/proveedores/eliminaprov.php?id=<?php echo $row['ID_PROVEEDOR']; ?>&NP=<?php echo $row['NOMBRE_PROVEEDOR']; ?>&DP=<?php echo $row['DIRECCION_PROVEEDOR']; ?>&PE=<?php echo $row['PERSONA_ENCARGADA']; ?>&TP=<?php echo $row['TELEFONO_PROVEEDOR']; ?>"><input type="button" value="Eliminar" class="btn-delete"></a></td>
+                <td><a href="http://localhost/reservaya-mvc/app/models/admin/proveedores/actualizaprov.php?id=<?php echo $row['ID_PROVEEDOR']; ?>&NP=<?php echo $row['NOMBRE_PROVEEDOR']; ?>&DP=<?php echo $row['DIRECCION_PROVEEDOR']; ?>&PE=<?php echo $row['PERSONA_ENCARGADA']; ?>&TP=<?php echo $row['TELEFONO_PROVEEDOR']; ?>"><button class="btn-edit"><i class='fas fa-edit'></i></button></a>
+                <a href="http://localhost/reservaya-mvc/app/models/admin/proveedores/eliminaprov.php?id=<?php echo $row['ID_PROVEEDOR']; ?>&NP=<?php echo $row['NOMBRE_PROVEEDOR']; ?>&DP=<?php echo $row['DIRECCION_PROVEEDOR']; ?>&PE=<?php echo $row['PERSONA_ENCARGADA']; ?>&TP=<?php echo $row['TELEFONO_PROVEEDOR']; ?>"><button class="btn-delete"><i class='fas fa-trash-alt'></i></button></a></td>
               </tr>
           </tbody>
         <?php
