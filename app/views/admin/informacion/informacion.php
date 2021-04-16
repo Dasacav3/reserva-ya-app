@@ -69,21 +69,46 @@ $img = $_SESSION['datos'][6];
           <div class="reporte_card">
             <div class="icon_reporte"><i class="fas fa-scroll"></i></div>
             <h4>Insumos</h4>
-            <button class="btn_generar">Generar reporte</button>
+            <button class="btn_generar" onclick="showPopup_add_insumo()">Generar reporte</button>
           </div>
           <div class="reporte_card">
             <div class="icon_reporte"><i class="fas fa-book"></i></div>
             <h4>Reservaciones</h4>
-            <button class="btn_generar" onclick="showPopup_add()">Generar reporte</button>
+            <button class="btn_generar" onclick="showPopup_add_reserva()">Generar reporte</button>
+          </div>
+          <div class="reporte_card">
+            <div class="icon_reporte"><i class="fas fa-user-alt"></i></div>
+            <h4>Clientes</h4>
+            <button class="btn_generar" onclick="showPopup_add_usuario()">Generar reporte</button>
+          </div>
+
+          <div id="reporte_insumo_container" class="pop-up form-modal">
+            <form id="reporte_insumo" class="pop-up-wrap" method="POST">
+              <a href="#" class="closePopup closePopup-add"><i class="fas fa-times-circle"></i></a>
+              <h4 class="form-title">Rango de reporte insumos</h4>
+              <div class="form-fields">
+                <input type="hidden" value="insumos" name="insumos">
+                <div>
+                  <label for="">Fecha inicio</label> <br />
+                  <input type="date" name="fecha_inicio" id="fecha_inicio"> <br>
+                </div>
+                <div>
+                  <label for="">Fecha final</label> <br />
+                  <input type="date" name="fecha_final" id="fecha_final">
+                </div>
+              </div>
+              <input type="button" value="Generar" onclick="generarReporteInsumo()" />
+            </form>
           </div>
 
 
 
-          <div id="pop-up-add" class="pop-up form-modal">
-            <form id="pop_up_wrap_add" class="pop-up-wrap" method="POST">
-              <a href="#" id="closePopup-add" class="closePopup"><i class="fas fa-times-circle"></i></a>
-              <h4 class="form-title">Rango de reporte</h4>
+          <div id="reporte_reserva_container" class="pop-up form-modal">
+            <form id="reporte_reserva" class="pop-up-wrap" method="POST">
+              <a href="#" class="closePopup closePopup-add"><i class="fas fa-times-circle"></i></a>
+              <h4 class="form-title">Rango de reporte reservas</h4>
               <div class="form-fields">
+                <input type="hidden" value="reservas" name="reservas">
                 <div>
                   <label for="">Fecha inicio</label> <br />
                   <input type="date" name="fecha_inicio" id="fecha_inicio"> <br>
@@ -94,6 +119,22 @@ $img = $_SESSION['datos'][6];
                 </div>
               </div>
               <input type="button" value="Generar" onclick="generarReporteReserva()" />
+            </form>
+          </div>
+
+
+          <div id="reporte_usuario_container" class="pop-up form-modal">
+            <form id="reporte_usuario" class="pop-up-wrap" method="POST">
+              <a href="#" class="closePopup closePopup-add"><i class="fas fa-times-circle"></i></a>
+              <h4 class="form-title">Seleccione el cliente</h4>
+              <div class="form-fields">
+                <div>
+                  <select name="cliente" id="cliente">
+                    <option value=""></option>
+                  </select> <br>
+                </div>
+              </div>
+              <input type="button" value="Generar" onclick="generarReporteUsuario()" />
             </form>
           </div>
 

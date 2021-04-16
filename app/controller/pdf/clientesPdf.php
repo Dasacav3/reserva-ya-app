@@ -1,5 +1,5 @@
 <?php
-function getPlantillaReservas($reservas, $fecha_inicio, $fecha_final,$today,$fechaMasReservada,$mesaMasReservada){
+function getPlantillaClientes($listadoCliente, $today){
 
 $plantilla="
 <!DOCTYPE html>
@@ -13,21 +13,22 @@ $plantilla="
             <div class='header_img_container'>
                 <img class='header_img' src='../../views/dist/img/logo-reservaya.png' />
             </div>
-            <h1 class='header_title'>Reporte Reservaciones</h1>
+            <h1 class='header_title'>Reporte Reservaciones Cliente</h1>
         </header>
-        <main>
+        <main>";
+        foreach ($listadoCliente as $dat){
+            $plantilla .= "
+                        <p>Nombre: " . $dat['NOMBRE_CLIENTE'] . "</p>
+                        <p>Apellido: " . $dat['APELLIDO_CLIENTE'] . "</p>";
+            } 
+            $plantilla .= "
+            <p>Conteo de reservaciones: ".count($listadoCliente)."</p>
             <p>Fecha de creación: ".$today."</p>
-            <p>Dia más reservado: </p> 
-            <p>Mesa más reservada: </p>
-            <p>Conteo de reservaciones: ".count($reservas)."</p>
-            <p class='periodo'>Período: (".$fecha_inicio.") | (".$fecha_final.")</p>
             <table class='tabla'>
                 <thead>
                     <tr>
                         <th>Estado</th>
                         <th>ID</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Mesa</th>
@@ -35,17 +36,15 @@ $plantilla="
                     </tr>
                 </thead>
                 <tbody>";
-                foreach ($reservas as $dat){
+                foreach ($listadoCliente as $dat){
                 $plantilla .= "
                         <tr>
                             <td>" . $dat['ESTADO_RESERVACION'] . "</td>
                             <td>" . $dat['ID_RESERVACION'] . "</td>
-                            <td>" . $dat['NOMBRE_CLIENTE'] . "</td>
-                            <td>" . $dat['APELLIDO_CLIENTE'] . "</td>
                             <td>" . $dat['FECHA_RESERVACION'] . "</td>
                             <td>" . $dat['HORA_RESERVACION'] . "</td>
                             <td>" . $dat['ID_MESA'] . "</td>
-                            <td>" . $dat['ASIENTO'] . "</td>  
+                            <td>" . $dat['ASIENTO'] . "</td>
                         </tr>";
                 }        
                 $plantilla .= "</tbody>
