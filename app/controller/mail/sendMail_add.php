@@ -1,6 +1,6 @@
 <?php
 
-require "database.php";
+require "../database.php";
 
 session_start();
 
@@ -44,16 +44,16 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../../lib/PHPmailer/Exception.php';
-require '../../lib/PHPmailer/PHPMailer.php';
-require '../../lib/PHPmailer/SMTP.php';
+require '../../../lib/PHPmailer/Exception.php';
+require '../../../lib/PHPmailer/PHPMailer.php';
+require '../../../lib/PHPmailer/SMTP.php';
 
 
 try {
     //Server settings
     $mail = new PHPMailer(true);
     $mail->SMTPDebug = 0;                                       //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
+    $mail->isSMTP(true);                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = '';               //SMTP username
@@ -76,8 +76,8 @@ try {
     //Content
     $mail->CharSet = 'UTF-8';
     $mail->isHTML(true);       
-    $mail->addEmbeddedImage('../views/dist/img/logo-reservaya.png','logo','logo-reservaya.png'); 
-    $mail->addEmbeddedImage('../views/dist/img/email_banner.png','banner','email_banner.png');                       //Set email format to HTML
+    $mail->addEmbeddedImage('../../views/dist/img/logo-reservaya.png','logo','logo-reservaya.png'); 
+    $mail->addEmbeddedImage('../../views/dist/img/email_banner.png','banner','email_banner.png');                       //Set email format to HTML
     $mail->Subject = 'Reservación #00876'.$id_reserva.' agendada para '.$fecha;
     $mail->Body   = ' <!DOCTYPE html>
     <html lang="es">

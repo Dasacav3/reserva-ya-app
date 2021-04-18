@@ -1,6 +1,6 @@
 <?php
 
-require "database.php";
+require "../database.php";
 
 session_start();
 
@@ -32,39 +32,38 @@ try {
     $query->bindParam(":id", $id);
     $query->bindParam(":id2", $id_reserva);
     $query->execute();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
 } catch (Exception $e) {
     echo "Conexion Fallida " . $e->getMessage();
     die();
 }
 
-    while ($dat = $query->fetch(PDO::FETCH_ASSOC)) {
-        $email_cliente = $dat['EMAIL_CLIENTE'];
-        $nombre = $dat['NOMBRE_CLIENTE'];
-        $apellido = $dat['APELLIDO_CLIENTE'];
-        $id_reserva = $dat['ID_RESERVACION'];
-    }
+    $email_cliente = $result['EMAIL_CLIENTE'];
+    $nombre = $result['NOMBRE_CLIENTE'];
+    $apellido = $result['APELLIDO_CLIENTE'];
+    $id_reserva = $result['ID_RESERVACION'];
 
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../../lib/PHPmailer/Exception.php';
-require '../../lib/PHPmailer/PHPMailer.php';
-require '../../lib/PHPmailer/SMTP.php';
+require '../../../lib/PHPmailer/Exception.php';
+require '../../../lib/PHPmailer/PHPMailer.php';
+require '../../../lib/PHPmailer/SMTP.php';
 
 
 try {
     //Server settings
     $mail = new PHPMailer(true);
     $mail->SMTPDebug = 0;                                       //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
+    $mail->isSMTP(true);                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = '';               //SMTP username
     $mail->Password   = '';              //SMTP password
     $mail->SMTPSecure = 'tls';                                  //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-    $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+    $mail->Port       = 587;                                                   //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
     $mail->setFrom('micuenta3719@gmail.com', 'ReservaYaNotifications');
@@ -81,8 +80,8 @@ try {
     //Content
     $mail->CharSet = 'UTF-8';
     $mail->isHTML(true);
-    $mail->addEmbeddedImage('../views/dist/img/logo-reservaya.png', 'logo', 'logo-reservaya.png');
-    $mail->addEmbeddedImage('../views/dist/img/email_banner.png', 'banner', 'email_banner.png');                       //Set email format to HTML
+    $mail->addEmbeddedImage('../../views/dist/img/logo-reservaya.png', 'logo', 'logo-reservaya.png');
+    $mail->addEmbeddedImage('../../views/dist/img/email_banner.png', 'banner', 'email_banner.png');                       //Set email format to HTML
     $mail->Subject = 'Reservación #00876' . $id_reserva . ' ' . $estado1;
     $mail->Body   = ' <!DOCTYPE html>
     <html lang="es">

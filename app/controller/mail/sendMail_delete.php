@@ -1,6 +1,6 @@
 <?php
 
-require "database.php";
+require "../database.php";
 
 session_start();
 
@@ -9,25 +9,23 @@ $sesion = $_SESSION['datos'];
 $id = file_get_contents("php://input");
 
 try{
-    $query = $pdo->prepare("SELECT reservacion.ESTADO_RESERVACION, reservacion.ID_RESERVACION, cliente.NOMBRE_CLIENTE, cliente.APELLIDO_CLIENTE, cliente.EMAIL_CLIENTE,
-    reservacion.FECHA_RESERVACION, reservacion.HORA_RESERVACION, mesa.ID_MESA, reservacion.ASIENTO, reservacion_reserva_mesa.ID_RESERVACION_RESERVA_MESA
+    $query = $pdo->prepare("SELECT reservacion.ID_RESERVACION, cliente.NOMBRE_CLIENTE, cliente.APELLIDO_CLIENTE, cliente.EMAIL_CLIENTE
     FROM reservacion_reserva_mesa
     INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
     INNER JOIN mesa ON reservacion_reserva_mesa.ID_MESA = mesa.ID_MESA
     INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE WHERE reservacion_reserva_mesa.ID_RESERVACION_RESERVA_MESA = :id");
     $query->bindParam(":id",$id);
     $query->execute();
-    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
 }catch(Exception $e){
     echo "Conexion Fallida " . $e->getMessage();
     die();
 }
-
-    foreach ($result as $dat) {
-        $email_cliente = $dat['EMAIL_CLIENTE'];
-        $nombre = $dat['NOMBRE_CLIENTE'];
-        $apellido = $dat['APELLIDO_CLIENTE'];
-        $id_reserva = $dat['ID_RESERVACION'];
+    while($result){
+        $email_cliente = $result['EMAIL_CLIENTE'];
+        $nombre = $result['NOMBRE_CLIENTE'];
+        $apellido = $result['APELLIDO_CLIENTE'];
+        $id_reserva = $result['ID_RESERVACION'];
     }
 
 
@@ -35,22 +33,22 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../../lib/PHPmailer/Exception.php';
-require '../../lib/PHPmailer/PHPMailer.php';
-require '../../lib/PHPmailer/SMTP.php';
+require '../../../lib/PHPmailer/Exception.php';
+require '../../../lib/PHPmailer/PHPMailer.php';
+require '../../../lib/PHPmailer/SMTP.php';
 
 
 try {
     //Server settings
     $mail = new PHPMailer(true);
     $mail->SMTPDebug = 0;                                       //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
+    $mail->isSMTP(true);                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = '';               //SMTP username
     $mail->Password   = '';              //SMTP password
     $mail->SMTPSecure = 'tls';                                  //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-    $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+    $mail->Port       = 587;                                                  //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
     $mail->setFrom('micuenta3719@gmail.com', 'ReservaYaNotifications');
@@ -67,8 +65,8 @@ try {
     //Content
     $mail->CharSet = 'UTF-8';
     $mail->isHTML(true);       
-    $mail->addEmbeddedImage('../views/dist/img/logo-reservaya.png','logo','logo-reservaya.png'); 
-    $mail->addEmbeddedImage('../views/dist/img/email_banner.png','banner','email_banner.png');                       //Set email format to HTML
+    $mail->addEmbeddedImage('../../views/dist/img/logo-reservaya.png','logo','logo-reservaya.png'); 
+    $mail->addEmbeddedImage('../../views/dist/img/email_banner.png','banner','email_banner.png');                       //Set email format to HTML
     $mail->Subject = 'Reservación #00876'.$id_reserva.' Cancelada' ;
     $mail->Body   = ' <!DOCTYPE html>
     <html lang="es">
