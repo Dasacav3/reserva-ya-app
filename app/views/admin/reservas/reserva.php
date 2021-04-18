@@ -41,9 +41,9 @@ $img = $_SESSION['datos'][6];
 // Estableciendo fechas para validacion de formulario
 $fecha_actual = date("Y-m-d");
 
-$fecha_actual = date("Y-m-d"); 
+$fecha_actual = date("Y-m-d");
 
-$mod_date = strtotime($fecha_actual."+ 30 days"); 
+$mod_date = strtotime($fecha_actual . "+ 30 days");
 
 ?>
 
@@ -140,7 +140,7 @@ $mod_date = strtotime($fecha_actual."+ 30 days");
 							<select name="cliente" id="cliente">
 							</select> <br>
 							<label for="">Fecha</label> <br />
-							<input type="date" min="<?php echo $fecha_actual ?>" max="<?php echo date("Y-m-d",$mod_date); ?>" name="fecha_reserva" id="add_fecha_reserva" /> <br />
+							<input type="date" min="<?php echo $fecha_actual ?>" max="<?php echo date("Y-m-d", $mod_date); ?>" name="fecha_reserva" id="add_fecha_reserva" /> <br />
 							<label for="">Hora</label> <br />
 							<input type="time" min="12:00" max="22:00" name="hora_reserva" id="add_hora_reserva" /> <br />
 						</div>
@@ -175,9 +175,9 @@ $mod_date = strtotime($fecha_actual."+ 30 days");
 								<option value="Activa">Activa</option>
 								<option value="Completada">Completada</option>
 								<option value="Cancelada">Cancelada</option>
-							</select>  <br />
+							</select> <br />
 							<label for="">Fecha</label> <br />
-							<input type="date" min="<?php echo $fecha_actual ?>" max="<?php echo date("Y-m-d",$mod_date); ?>" name="edit_fecha_reserva" id="edit_fecha_reserva" /> <br />
+							<input type="date" min="<?php echo $fecha_actual ?>" max="<?php echo date("Y-m-d", $mod_date); ?>" name="edit_fecha_reserva" id="edit_fecha_reserva" /> <br />
 						</div>
 						<div>
 							<label for="">Hora</label> <br />
@@ -254,8 +254,14 @@ $mod_date = strtotime($fecha_actual."+ 30 days");
 			</div>
 		</div>
 	</div>
+	<script src="../../dist/js/app.js"></script>
 	<script src="../../dist/js/sidebarDashboard.js"></script>
 	<script src="../../dist/js/reservas_admin.js"></script>
+	<script>
+		window.onload = (() => {
+			updateStateReserva();
+		})
+	</script>
 </body>
 
 </html>

@@ -189,8 +189,14 @@ $mod_date = strtotime($fecha_actual."+ 30 days");
 			</div>
 		</div>
 	</div>
+	<script src="../../dist/js/app.js"></script>
 	<script src="../../dist/js/sidebarDashboard.js"></script>
 	<script src="../../dist/js/reservas_cli.js"></script>
+	<script>
+		window.onload = (() => {
+			updateStateReserva();
+		})
+	</script>
 </body>
 
 </html>
