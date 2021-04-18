@@ -90,11 +90,11 @@ $img = $_SESSION['datos'][6];
                 <input type="hidden" value="insumos" name="insumos">
                 <div>
                   <label for="">Fecha inicio</label> <br />
-                  <input type="date" name="fecha_inicio" id="fecha_inicio"> <br>
+                  <input type="date" name="fecha_inicio" id="fecha_inicio_insumo"> <br>
                 </div>
                 <div>
                   <label for="">Fecha final</label> <br />
-                  <input type="date" name="fecha_final" id="fecha_final">
+                  <input type="date" name="fecha_final" id="fecha_final_insumo">
                 </div>
               </div>
               <input type="button" value="Generar" onclick="generarReporteInsumo()" />
@@ -111,11 +111,11 @@ $img = $_SESSION['datos'][6];
                 <input type="hidden" value="reservas" name="reservas">
                 <div>
                   <label for="">Fecha inicio</label> <br />
-                  <input type="date" name="fecha_inicio" id="fecha_inicio"> <br>
+                  <input type="date" name="fecha_inicio" id="fecha_inicio_reserva"> <br>
                 </div>
                 <div>
                   <label for="">Fecha final</label> <br />
-                  <input type="date" name="fecha_final" id="fecha_final">
+                  <input type="date" name="fecha_final" id="fecha_final_reserva">
                 </div>
               </div>
               <input type="button" value="Generar" onclick="generarReporteReserva()" />

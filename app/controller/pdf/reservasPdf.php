@@ -1,6 +1,12 @@
 <?php
 function getPlantillaReservas($reservas, $fecha_inicio, $fecha_final,$today,$fechaMasReservada,$mesaMasReservada){
-
+    print_r($mesaMasReservada);
+    // usort($mesaMasReservada, function($a, $b) {
+    //     return $a['VECES'] <=> $b['VECES'];
+    // });
+    arsort($fechaMasReservada);
+    arsort($mesaMasReservada);
+    print_r($mesaMasReservada);
 $plantilla="
 <!DOCTYPE html>
 <html lang='es'>
@@ -16,9 +22,20 @@ $plantilla="
             <h1 class='header_title'>Reporte Reservaciones</h1>
         </header>
         <main>
-            <p>Fecha de creación: ".$today."</p>
-            <p>Dia más reservado: </p> 
-            <p>Mesa más reservada: </p>
+            <p>Fecha de creación: ".$today."</p>";
+            foreach($fechaMasReservada as $dat){
+                $plantilla .= "
+                    <p>Dia más reservado: ".$dat['FECHA_RESERVACION']."</p> 
+                ";
+                break;
+            }
+            foreach($mesaMasReservada as $dat){
+                $plantilla .= "
+                    <p>Mesa más reservada: ".$dat['ID_MESA']."</p> 
+                ";
+                break;
+            }
+            $plantilla .= "
             <p>Conteo de reservaciones: ".count($reservas)."</p>
             <p class='periodo'>Período: (".$fecha_inicio.") | (".$fecha_final.")</p>
             <table class='tabla'>
