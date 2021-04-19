@@ -1,0 +1,72 @@
+@import url(colors_fonts.css);
+
+* {
+	font-family: var(--poppins);
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--gray-medium);
+	color: var(--champagne-pink);
+	text-align: center;
+}
+
+.title_error {
+	font-size: 2.2em;
+	margin: 2em;
+}
+
+.img_error img {
+	width: 700px;
+	filter: drop-shadow(0 0 100px #fff);
+}
+
+.info_error {
+	font-size: 1.5em;
+}
+
+.button_return {
+	background: rgba(255, 255, 255, 0.2);
+	border: none;
+	padding: 5px 8px;
+	border-radius: 4px;
+	margin: 2em;
+}
+
+.button_return a {
+	text-decoration: none;
+	color: var(--champagne-pink);
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.button_return a:hover {
+	font-size: 1.8em;
+	transition: 0.6s;
+}
+
+@media only screen and (max-width: 360px) {
+	.title_error {
+		font-size: 1.5em;
+	}
+
+	.img_error img {
+		width: 400px;
+	}
+
+	.info_error,
+	.button_return a {
+		font-size: 1em;
+	}
+
+    .button_return a:hover {
+		font-size: 1.2em;
+	}
+}
