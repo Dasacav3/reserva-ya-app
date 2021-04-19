@@ -42,14 +42,44 @@ cerrar_add.addEventListener("click", () => {
 listarReservas();
 mostrarMesa();
 
+function DisplayList(items, wrapper, rows_per_page, page) {
+	wrapper.innerHTML = "";
+	page--;
+
+	let start = rows_per_page * page;
+	let end = start + rows_per_page;
+	let paginatedItems = items.slice(start, end);
+
+	var output = "";
+	for (let i = 0; i < paginatedItems.length; i++) {
+		var item = new Array();
+		item[i] = paginatedItems[i];
+		output += `
+					<tr>
+						<td> ${item[i].ESTADO_RESERVACION}  </td>
+						<td> ${item[i].ID_RESERVACION}  </td>
+						<td> ${item[i].FECHA_RESERVACION}  </td>
+						<td> ${item[i].HORA_RESERVACION}  </td>
+						<td> ${item[i].ID_MESA}  </td>
+						<td> ${item[i].ASIENTO}  </td>
+						<td>`;
+		if (item[i].ESTADO_RESERVACION === "Activa") {
+		output += `<button class='btn-delete' type='button' onclick=eliminarReserva('${item[i].ID_RESERVACION_RESERVA_MESA}')><i class='fas fa-trash-alt'></i></button>
+							</td>   
+					</tr>`;
+		}
+		wrapper.innerHTML = output;
+	}
+}
+
 function listarReservas(search) {
 	fetch("../../../models/cliente/reservas/listarReserva.php", {
 		method: "POST",
 		body: search,
 	})
-		.then((response) => response.text())
+		.then((response) => response.json())
 		.then((response) => {
-			reservas.innerHTML = response;
+			paginationTable(response);
 		});
 }
 

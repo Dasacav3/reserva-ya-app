@@ -1,13 +1,40 @@
 listarUsuarios();
 
+function DisplayList(items, wrapper, rows_per_page, page) {
+	wrapper.innerHTML = "";
+	page--;
+
+	let start = rows_per_page * page;
+	let end = start + rows_per_page;
+	let paginatedItems = items.slice(start, end);
+
+	var output = "";
+	for (let i = 0; i < paginatedItems.length; i++) {
+		var item = new Array();
+		item[i] = paginatedItems[i];
+		output += `
+					<tr>
+						<td> ${item[i].ID_USUARIO}  </td>
+						<td> ${item[i].NOMBRE_USUARIO}  </td>
+						<td> ${item[i].TIPO_USUARIO}  </td>
+						<td> ${item[i].ESTADO_USUARIO}  </td>
+						<td>
+							<button class='abrirPopup-edit btn-edit' type='button' onclick=Editar('${item[i].ID_USUARIO}');abrir()><i class='fas fa-edit'></i></button>
+							<button class='btn-delete' type='button' onclick=eliminarReserva('${item[i].ID_USUARIO}')><i class='fas fa-trash-alt'></i></button>
+						</td>   
+					</tr>`;
+		wrapper.innerHTML = output;
+	}
+}
+
 function listarUsuarios(busqueda) {
 	fetch("../../../models/admin/usuarios/listarUser.php", {
 		method: "POST",
 		body: busqueda,
 	})
-		.then((response) => response.text())
+		.then((response) => response.json())
 		.then((response) => {
-			usuarios.innerHTML = response;
+			paginationTable(response);
 		});
 }
 

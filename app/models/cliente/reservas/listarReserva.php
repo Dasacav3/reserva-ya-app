@@ -18,10 +18,10 @@ try {
     INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE
     WHERE cliente.ID_USUARIO = :id
     ORDER BY reservacion.ESTADO_RESERVACION ASC");
-    $query->bindParam(":id",$id);
+    $query->bindParam(":id", $id);
     $query->execute();
 
-    if($data != ""){
+    if ($data != "") {
         $query = $pdo->prepare("SELECT reservacion.ESTADO_RESERVACION, reservacion.ID_RESERVACION, reservacion.FECHA_RESERVACION, reservacion.HORA_RESERVACION, mesa.ID_MESA, reservacion.ASIENTO,reservacion_reserva_mesa.ID_RESERVACION_RESERVA_MESA
         FROM reservacion_reserva_mesa
         INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
@@ -32,26 +32,28 @@ try {
         $query->execute();
     }
     $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
-}catch (Exception $e) {
+} catch (Exception $e) {
     echo "Conexion fallida " . $e->getMessage();
     die();
 }
 
-foreach ($resultado as $dat) {
-    echo "<tr>
-                <td>" . $dat['ESTADO_RESERVACION'] . "</td>
-                <td>" . $dat['ID_RESERVACION'] . "</td>
-                <td>" . $dat['FECHA_RESERVACION'] . "</td>
-                <td>" . $dat['HORA_RESERVACION'] . "</td>
-                <td>" . $dat['ID_MESA'] . "</td>
-                <td>" . $dat['ASIENTO'] . "</td>
-                <td>";
-        if($dat['ESTADO_RESERVACION'] == 'Activa'){
-            echo"
-                    <button class='btn-delete' type='button' onclick=cancelarReserva('" . $dat['ID_RESERVACION_RESERVA_MESA'] . "')>Cancelar</button>
-                </td>   
-            </tr>";
-        }
-}
+echo json_encode($resultado);
 
-$pdo=null;
+// foreach ($resultado as $dat) {
+//     echo "<tr>
+//                 <td>" . $dat['ESTADO_RESERVACION'] . "</td>
+//                 <td>" . $dat['ID_RESERVACION'] . "</td>
+//                 <td>" . $dat['FECHA_RESERVACION'] . "</td>
+//                 <td>" . $dat['HORA_RESERVACION'] . "</td>
+//                 <td>" . $dat['ID_MESA'] . "</td>
+//                 <td>" . $dat['ASIENTO'] . "</td>
+//                 <td>";
+//     if ($dat['ESTADO_RESERVACION'] == 'Activa') {
+//         echo "
+//                     <button class='btn-delete' type='button' onclick=cancelarReserva('" . $dat['ID_RESERVACION_RESERVA_MESA'] . "')>Cancelar</button>
+//                 </td>   
+//             </tr>";
+//     }
+// }
+
+$pdo = null;

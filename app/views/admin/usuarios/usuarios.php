@@ -89,7 +89,7 @@ $img = $_SESSION['datos'][6];
               <th>ACCIONES</th>
             </tr>
           </thead>
-          <tbody id="usuarios">
+          <tbody id="table_elements">
 
           </tbody>
         </table>
@@ -105,13 +105,7 @@ $img = $_SESSION['datos'][6];
           </div>
           <div class="pages">
             <ul>
-              <li><span class="active">1</span></li>
-              <li><button>2</button></li>
-              <li><button>3</button></li>
-              <li><button>4</button></li>
-              <li><button>...</button></li>
-              <li><button>9</button></li>
-              <li><button>10</button></li>
+              <div class="pagenumbers" id="pagination"></div>
             </ul>
           </div>
         </div>
@@ -221,6 +215,7 @@ $img = $_SESSION['datos'][6];
       </div>
     </div>
   </div>
+  <script src="../../dist/js/datatable.js"></script>
   <script src="../../dist/js/sidebarDashboard.js"></script>
   <script src="../../dist/js/regularExpression.js"></script>
   <script src="../../dist/js/usuarios_admin.js"></script>

@@ -69,6 +69,39 @@ function mostrarMesa() {
 		});
 }
 
+function DisplayList(items, wrapper, rows_per_page, page) {
+	wrapper.innerHTML = "";
+	page--;
+
+	let start = rows_per_page * page;
+	let end = start + rows_per_page;
+	let paginatedItems = items.slice(start, end);
+
+	var output = "";
+	for (let i = 0; i < paginatedItems.length; i++) {
+		var item = new Array();
+		item[i] = paginatedItems[i];
+		output += `
+					<tr>
+						<td> ${item[i].ESTADO_RESERVACION}  </td>
+						<td> ${item[i].ID_RESERVACION}  </td>
+						<td> ${item[i].NOMBRE_CLIENTE}  </td>
+						<td> ${item[i].APELLIDO_CLIENTE}  </td>
+						<td> ${item[i].FECHA_RESERVACION}  </td>
+						<td> ${item[i].HORA_RESERVACION}  </td>
+						<td> ${item[i].ID_MESA}  </td>
+						<td> ${item[i].ID_RESERVACION}  </td>
+						<td>`;
+		if (item[i].ESTADO_RESERVACION === "Activa") {
+			output += `<button class='abrirPopup-edit btn-edit' type='button' onclick=Editar('${item[i].ID_RESERVACION_RESERVA_MESA}');abrir()><i class='fas fa-edit'></i></button>`;
+		}
+		output += `<button class='btn-delete' type='button' onclick=eliminarReserva('${item[i].ID_RESERVACION_RESERVA_MESA}')><i class='fas fa-trash-alt'></i></button>
+							</td>   
+					</tr>`;
+		wrapper.innerHTML = output;
+	}
+}
+
 function listarReservas(search) {
 	fetch("../../../models/admin/reservas/listarReserva.php", {
 		method: "POST",

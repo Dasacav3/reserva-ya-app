@@ -18,18 +18,8 @@
         echo "Conexion fallida " . $e->getMessage();
         die();
     }
-    
-    foreach ($resultado as $dat) {
-    echo "<tr>
-            <td>" . $dat['ID_USUARIO'] . "</td>
-            <td>" . $dat['NOMBRE_USUARIO'] . "</td>
-            <td>" . $dat['TIPO_USUARIO'] . "</td>
-            <td>" . $dat['ESTADO_USUARIO'] . "</td>
-            <td>
-                <button class='abrirPopup-edit btn-edit' type='button' onclick=Editar('" . $dat['ID_USUARIO'] . "');abrir()><i class='fas fa-edit'></i></button>
-                <button class='btn-delete' type='button' onclick=eliminarUser('" . $dat['ID_USUARIO'] ."')><i class='fas fa-trash-alt'></i></button>
-            </td>
-        </tr>";
-    }
+
+    echo json_encode($resultado);
+
 
     $pdo=null;

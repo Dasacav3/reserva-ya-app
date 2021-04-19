@@ -99,14 +99,14 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 							<th>ACCIONES</th>
 						</tr>
 					</thead>
-					<tbody id="reservas">
+					<tbody id="table_elements">
 
 					</tbody>
 				</table>
 				<div class="footer-tools">
 					<div class="list-items">
 						Mostrar
-						<select name="n-entries" id="n-entries" class="n-entries" onclick="showRows()">
+						<select name="n-entries" id="n-entries" class="n-entries">
 							<option class="select_rows" value="5" >5</option>
 							<option class="select_rows" value="10" >10</option>
 							<option class="select_rows" value="15" >15</option>
@@ -120,13 +120,6 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 					</div>
 				</div>
 			</div>
-
-			
-			<!-- <div class="pagination_container">
-				<div class="list" id="list"></div>
-				<div class="pagenumbers" id="pagination"></div>
-			</div> -->
-
 
 
 			<!-- Modal Añadir reservas -->

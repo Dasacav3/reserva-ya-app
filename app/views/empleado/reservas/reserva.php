@@ -99,7 +99,7 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 							<th>ACCIONES</th>
 						</tr>
 					</thead>
-					<tbody id="reservas">
+					<tbody id="table_elements">
 
 					</tbody>
 				</table>
@@ -115,13 +115,7 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 					</div>
 					<div class="pages">
 						<ul>
-							<li><span class="active">1</span></li>
-							<li><button>2</button></li>
-							<li><button>3</button></li>
-							<li><button>4</button></li>
-							<li><button>...</button></li>
-							<li><button>9</button></li>
-							<li><button>10</button></li>
+							<div class="pagenumbers" id="pagination"></div>
 						</ul>
 					</div>
 				</div>
@@ -235,6 +229,7 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 		</div>
 	</div>
 	<script src="../../dist/js/app.js"></script>
+	<script src="../../dist/js/datatable.js"></script>
 	<script src="../../dist/js/sidebarDashboard.js"></script>
 	<script src="../../dist/js/reservas_emp.js"></script>
 	<script>

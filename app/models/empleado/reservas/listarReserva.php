@@ -29,26 +29,6 @@
         die();
     }
 
-
-    foreach ($resultado as $dat){
-        echo "<tr>
-                <td>" . $dat['ESTADO_RESERVACION'] . "</td>
-                <td>" . $dat['ID_RESERVACION'] . "</td>
-                <td>" . $dat['NOMBRE_CLIENTE'] . "</td>
-                <td>" . $dat['APELLIDO_CLIENTE'] . "</td>
-                <td>" . $dat['FECHA_RESERVACION'] . "</td>
-                <td>" . $dat['HORA_RESERVACION'] . "</td>
-                <td>" . $dat['ID_MESA'] . "</td>
-                <td>" . $dat['ASIENTO'] . "</td> 
-                <td>";
-            if($dat['ESTADO_RESERVACION'] === 'Activa'){
-                echo  "<button class='abrirPopup-edit btn-edit' type='button' onclick=Editar('" . $dat['ID_RESERVACION_RESERVA_MESA'] . "');abrir()><i class='fas fa-edit'></i></button>";
-            }
-                echo   "<button class='btn-delete' type='button' onclick=eliminarReserva('" . $dat['ID_RESERVACION_RESERVA_MESA'] ."')><i class='fas fa-trash-alt'></i></button>
-                </td>   
-            </tr>";
-    }
+    echo json_encode($resultado);
 
     $pdo=null;
-
-?>

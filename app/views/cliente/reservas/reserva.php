@@ -41,9 +41,9 @@ $img = $_SESSION['datos'][6];
 // Estableciendo fechas para validacion de formulario
 $fecha_actual = date("Y-m-d");
 
-$fecha_actual = date("Y-m-d"); 
+$fecha_actual = date("Y-m-d");
 
-$mod_date = strtotime($fecha_actual."+ 30 days"); 
+$mod_date = strtotime($fecha_actual . "+ 30 days");
 
 ?>
 
@@ -97,7 +97,7 @@ $mod_date = strtotime($fecha_actual."+ 30 days");
 							<th>ACCIONES</th>
 						</tr>
 					</thead>
-					<tbody id="reservas">
+					<tbody id="table_elements">
 
 					</tbody>
 				</table>
@@ -113,13 +113,7 @@ $mod_date = strtotime($fecha_actual."+ 30 days");
 					</div>
 					<div class="pages">
 						<ul>
-							<li><span class="active">1</span></li>
-							<li><button>2</button></li>
-							<li><button>3</button></li>
-							<li><button>4</button></li>
-							<li><button>...</button></li>
-							<li><button>9</button></li>
-							<li><button>10</button></li>
+							<div class="pagenumbers" id="pagination"></div>
 						</ul>
 					</div>
 				</div>
@@ -135,7 +129,7 @@ $mod_date = strtotime($fecha_actual."+ 30 days");
 					<div class="form-fields">
 						<div>
 							<label for="">Fecha</label> <br />
-							<input type="date" min="<?php echo $fecha_actual ?>" max="<?php echo date("Y-m-d",$mod_date); ?>" name="fecha_reserva" id="add_fecha_reserva" /> <br />
+							<input type="date" min="<?php echo $fecha_actual ?>" max="<?php echo date("Y-m-d", $mod_date); ?>" name="fecha_reserva" id="add_fecha_reserva" /> <br />
 							<label for="">Hora</label> <br />
 							<input type="time" min="12:00" max="22:00" name="hora_reserva" id="add_hora_reserva" /> <br />
 						</div>
@@ -190,6 +184,7 @@ $mod_date = strtotime($fecha_actual."+ 30 days");
 		</div>
 	</div>
 	<script src="../../dist/js/app.js"></script>
+	<script src="../../dist/js/datatable.js"></script>
 	<script src="../../dist/js/sidebarDashboard.js"></script>
 	<script src="../../dist/js/reservas_cli.js"></script>
 	<script>
