@@ -49,17 +49,6 @@ listarReservas();
 mostrarCliente();
 mostrarMesa();
 
-function listarReservas(search) {
-	fetch("../../../models/admin/reservas/listarReserva.php", {
-		method: "POST",
-		body: search,
-	})
-		.then((response) => response.text())
-		.then((response) => {
-			reservas.innerHTML = response;
-		});
-}
-
 function mostrarCliente() {
 	fetch("../../../models/admin/reservas/mostrarCliente.php", {
 		method: "POST",
@@ -77,6 +66,17 @@ function mostrarMesa() {
 		.then((response) => response.text())
 		.then((response) => {
 			mesa.innerHTML = response;
+		});
+}
+
+function listarReservas(search) {
+	fetch("../../../models/admin/reservas/listarReserva.php", {
+		method: "POST",
+		body: search,
+	})
+		.then((response) => response.json())
+		.then((response) => {
+			paginationTable(response);
 		});
 }
 

@@ -106,26 +106,26 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 				<div class="footer-tools">
 					<div class="list-items">
 						Mostrar
-						<select name="n-entries" id="n-entries" class="n-entries">
-							<option value="5">5</option>
-							<option value="10">10</option>
-							<option value="15">15</option>
+						<select name="n-entries" id="n-entries" class="n-entries" onclick="showRows()">
+							<option class="select_rows" value="5" >5</option>
+							<option class="select_rows" value="10" >10</option>
+							<option class="select_rows" value="15" >15</option>
 						</select>
 						entradas
 					</div>
 					<div class="pages">
 						<ul>
-							<li><span class="active">1</span></li>
-							<li><button>2</button></li>
-							<li><button>3</button></li>
-							<li><button>4</button></li>
-							<li><button>...</button></li>
-							<li><button>9</button></li>
-							<li><button>10</button></li>
-						</ul>
+							<div class="pagenumbers" id="pagination"></div>
+						</ul>	
 					</div>
 				</div>
 			</div>
+
+			
+			<!-- <div class="pagination_container">
+				<div class="list" id="list"></div>
+				<div class="pagenumbers" id="pagination"></div>
+			</div> -->
 
 
 
@@ -255,6 +255,7 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 		</div>
 	</div>
 	<script src="../../dist/js/app.js"></script>
+	<script src="../../dist/js/datatable.js"></script>
 	<script src="../../dist/js/sidebarDashboard.js"></script>
 	<script src="../../dist/js/reservas_admin.js"></script>
 	<script>
