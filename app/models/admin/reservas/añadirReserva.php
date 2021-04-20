@@ -15,6 +15,7 @@
         $asiento = $_POST['asientos'];
         $estado = 1;
 
+
         try {
             $queryReserva = $pdo->prepare("INSERT INTO reservacion (id_cliente, fecha_reservacion, hora_reservacion, estado_reservacion, asiento) VALUES (:id, :fecha, :hora, :estado, :asiento)");
             $queryReserva->bindParam(":id",$id_cliente);
@@ -29,24 +30,24 @@
             die();
         }
 
-        try {
-            $queryMesa = $pdo->prepare("SELECT id_mesa FROM mesa WHERE id_mesa = :mesa");
-            $queryMesa->bindParam(":mesa",$mesa);
-            $queryMesa->execute();
-            $resultMesa = $queryMesa->fetch(PDO::FETCH_NUM);
-            foreach($resultMesa as $dat){
-                $id_mesa = $dat[0];
-            }
+        // try {
+        //     $queryMesa = $pdo->prepare("SELECT id_mesa FROM mesa WHERE id_mesa = :mesa");
+        //     $queryMesa->bindParam(":mesa",$mesa);
+        //     $queryMesa->execute();
+        //     $resultMesa = $queryMesa->fetch(PDO::FETCH_NUM);
+        //     foreach($resultMesa as $dat){
+        //         $id_mesa = $dat[0];
+        //     }
            
-        }catch (Exception $e) {
-            echo "Conexion fallida " . $e->getMessage();
-            die();
-        }
+        // }catch (Exception $e) {
+        //     echo "Conexion fallida " . $e->getMessage();
+        //     die();
+        // }
 
         try {
             $queryReservaMesa = $pdo->prepare("INSERT INTO reservacion_reserva_mesa (id_reservacion,id_mesa) VALUES (:id_reserva, :id_mesa)");
             $queryReservaMesa->bindParam(":id_reserva",$id_reserva);
-            $queryReservaMesa->bindParam(":id_mesa",$id_mesa);
+            $queryReservaMesa->bindParam(":id_mesa",$mesa);
             $queryReservaMesa->execute();
         }catch (Exception $e) {
             echo "Conexion fallida " . $e->getMessage();

@@ -36,17 +36,14 @@
             $estado_reserva = $dat['ESTADO_RESERVACION'];
         }
         
-        $today = new DateTime();
-        $datetimeBD = new Datetime($fecha.' '.$hora);
+        $fecha_actual = date("Y-m-d");
 
-
-        $diferencia = $today->diff($datetimeBD);
-        $diferencia_format = $diferencia->format("%R%a");
-        
-        if(intval($diferencia_format) > 0 && $estado_reserva != 'Activa' && $estado_mesa != 'Ocupada'){
+        $hora_actual = date("H:i:s");
+    
+        if ($fecha >= $fecha_actual && $hora > $hora_actual) {
             $queryUpdateMesa = "UPDATE mesa SET estado_mesa = 'Disponible' WHERE id_mesa = :id_mesa";
             $query = $pdo->prepare($queryUpdateMesa);
-            $query->bindValue(":id_mesa",$id_mesa);
+            $query->bindValue(":id_mesa", $id_mesa);
             $query->execute();
         }
 
