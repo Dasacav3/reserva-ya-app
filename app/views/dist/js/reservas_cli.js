@@ -64,7 +64,7 @@ function DisplayList(items, wrapper, rows_per_page, page) {
 						<td> ${item[i].ASIENTO}  </td>
 						<td>`;
 		if (item[i].ESTADO_RESERVACION === "Activa") {
-		output += `<button class='btn-delete' type='button' onclick=eliminarReserva('${item[i].ID_RESERVACION_RESERVA_MESA}')><i class='fas fa-trash-alt'></i></button>
+			output += `<button class='btn-delete' type='button' onclick=cancelarReserva('${item[i].ID_RESERVACION_RESERVA_MESA}')><i class='fas fa-trash-alt'></i></button>
 							</td>   
 					</tr>`;
 		}
@@ -145,22 +145,29 @@ registrar.addEventListener("click", () => {
 	} else {
 		async function añadirReserva() {
 			try {
-				const url = "../../../models/cliente/reservas/añadirReserva.php";
-				const fetchAdd = await fetch(url, { method: "POST", body: new FormData(pop_up_wrap_add) });
-				const texto = await fetchAdd.text();
-				if (texto == "ok") {
-					Swal.fire({
-						icon: "success",
-						title: "Registrado",
-						showConfirmButton: false,
-						timer: 1500,
+				console.time("tasks time");
+				const add = await fetch("../../../models/cliente/reservas/añadirReserva.php", {
+					method: "POST",
+					body: new FormData(pop_up_wrap_add),
+				})
+					.then((response) => response.text())
+					.then((response) => {
+						if (response == "ok") {
+							Swal.fire({
+								icon: "success",
+								title: "Registrado",
+								showConfirmButton: false,
+								timer: 1500,
+							});
+						}
+						pop_up_wrap_add.reset();
+						listarReservas();
+						mostrarMesa();
+						pop_up_add.classList.remove("show");
+						pop_up_wrap_add.classList.remove("show");
 					});
-				}
-				pop_up_wrap_add.reset();
-				listarReservas();
-				mostrarMesa();
-				pop_up_add.classList.remove("show");
-				pop_up_wrap_add.classList.remove("show");
+
+				console.timeEnd("tasks time");
 			} catch (err) {
 				console.log(err);
 			}
@@ -168,35 +175,18 @@ registrar.addEventListener("click", () => {
 
 		añadirReserva();
 
-		// fetch("../../../controller/sendMail_add.php", {
-		// 	method: "POST",
-		// 	body: new FormData(pop_up_wrap_add),
-		// })
-		// 	.then((response) => response.text())
-		// 	.then((response) => {
-		// 		console.log(response);
-		// 	});
+		function sendMail() {
+			fetch("../../../controller/mail/sendMail_add.php", {
+				method: "POST",
+				body: new FormData(pop_up_wrap_add),
+			})
+				.then((response) => response.text())
+				.then((response) => {
+					console.log(response);
+				});
+		}
 
-		// fetch("../../../models/cliente/reservas/añadirReserva.php", {
-		// 	method: "POST",
-		// 	body: new FormData(pop_up_wrap_add),
-		// })
-		// 	.then((response) => response.text())
-		// 	.then((response) => {
-		// 		if (response == "ok") {
-		// 			Swal.fire({
-		// 				icon: "success",
-		// 				title: "Registrado",
-		// 				showConfirmButton: false,
-		// 				timer: 1500,
-		// 			});
-		// 			pop_up_wrap_add.reset();
-		// 			listarReservas();
-		// 			mostrarMesa();
-		// 			pop_up_add.classList.remove("show");
-		// 			pop_up_wrap_add.classList.remove("show");
-		// 		}
-		// 	});
+		sendMail();
 	}
 });
 
@@ -233,45 +223,21 @@ function cancelarReserva(id) {
 
 			peticionReserva();
 
-			// fetch("../../../models/cliente/reservas/cancelarReserva.php", {
-			// 	method: "POST",
-			// 	body: id,
-			// })
-			// 	.then((response) => response.text())
-			// 	.then((response) => {
-			// 		console.log(response);
-			// 		listarReservas();
-			// 		mostrarMesa();
-			// 		Swal.fire({
-			// 			icon: "success",
-			// 			title: "Reserva cancelada",
-			// 			showConfirmButton: false,
-			// 			timer: 1500,
-			// 		});
-			// 	});
-			// fetch("../../../controller/sendMail_delete.php", {
-			// 	method: "POST",
-			// 	body: id,
-			// })
-			// 	.then((response) => response.text())
-			// 	.then((response) => {
-			// 		console.log(response);
-			// 	});
+			// async function emailCancel() {
+			// 	try {
+			// 		const url = "../../../controller/mail/sendMail_delete.php";
+			// 		const fetchEmail = await fetch(url, { method: "POST", body: id });
+			// 		const texto = await fetchEmail.text();
+			// 		console.log(texto);
+			// 	} catch (err) {
+			// 		console.log(err);
+			// 	}
+			// }
+		
+			// emailCancel();
 		}
-
-		// async function emailDelete() {
-		// 	try {
-		// 		const url = "../../../controller/sendMail_delete.php";
-		// 		const fetchEmail = await fetch(url, { method: "POST", body: id });
-		// 		const texto = await fetchEmail.text();
-		// 		console.log(texto);
-		// 	} catch (err) {
-		// 		console.log(err);
-		// 	}
-		// }
-
-		// emailDelete();
 	});
+
 }
 
 search_input.addEventListener("keyup", () => {

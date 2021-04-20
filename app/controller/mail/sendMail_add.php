@@ -6,10 +6,10 @@ session_start();
 
 $sesion = $_SESSION['datos'];
 
-if($_SESSION['datos'][2] == 'Administrador' || $_SESSION['datos'][2] == 'Empleado'){
+if ($_SESSION['datos'][2] == 'Administrador' || $_SESSION['datos'][2] == 'Empleado') {
     $id = $_POST['cliente'];
-}else{
-    $id= $_SESSION['datos'][5];
+} else {
+    $id = $_SESSION['datos'][5];
 }
 
 $fecha = $_POST['fecha_reserva'];
@@ -17,27 +17,27 @@ $hora = $_POST['hora_reserva'];
 $mesa = $_POST['mesa'];
 $asiento = $_POST['asientos'];
 
-try{
+try {
     $query = $pdo->prepare("SELECT reservacion.ESTADO_RESERVACION, MAX(reservacion.ID_RESERVACION) AS 'ID_RESERVACION', cliente.NOMBRE_CLIENTE, cliente.APELLIDO_CLIENTE, cliente.EMAIL_CLIENTE,
     reservacion.FECHA_RESERVACION, reservacion.HORA_RESERVACION, mesa.ID_MESA, reservacion.ASIENTO, reservacion_reserva_mesa.ID_RESERVACION_RESERVA_MESA
     FROM reservacion_reserva_mesa
     INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
     INNER JOIN mesa ON reservacion_reserva_mesa.ID_MESA = mesa.ID_MESA
     INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE WHERE cliente.ID_CLIENTE = :id");
-    $query->bindParam(":id",$id);
+    $query->bindParam(":id", $id);
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
-}catch(Exception $e){
+} catch (Exception $e) {
     echo "Conexion Fallida " . $e->getMessage();
     die();
 }
 
-    foreach ($result as $dat) {
-        $email_cliente = $dat['EMAIL_CLIENTE'];
-        $nombre = $dat['NOMBRE_CLIENTE'];
-        $apellido = $dat['APELLIDO_CLIENTE'];
-        $id_reserva = $dat['ID_RESERVACION'];
-    }
+foreach ($result as $dat) {
+    $email_cliente = $dat['EMAIL_CLIENTE'];
+    $nombre = $dat['NOMBRE_CLIENTE'];
+    $apellido = $dat['APELLIDO_CLIENTE'];
+    $id_reserva = $dat['ID_RESERVACION'];
+}
 
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -53,7 +53,7 @@ try {
     //Server settings
     $mail = new PHPMailer(true);
     $mail->SMTPDebug = 0;                                       //Enable verbose debug output
-    $mail->isSMTP(true);                                            //Send using SMTP
+    $mail->isSMTP(true);                                        //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = '';               //SMTP username
@@ -64,21 +64,13 @@ try {
     //Recipients
     $mail->setFrom('micuenta3719@gmail.com', 'ReservaYaNotifications');
     $mail->addAddress($email_cliente);                          //Add a recipient
-    // $mail->addAddress('ellen@example.com');                  //Name is optional
-    // $mail->addReplyTo('info@example.com', 'Information');
-    // $mail->addCC('cc@example.com');
-    // $mail->addBCC('bcc@example.com');
-
-    //Attachments
-    // $mail->addAttachment('../views/dist/img/logo-reservaya.png');         //Add attachments
-    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
     //Content
     $mail->CharSet = 'UTF-8';
-    $mail->isHTML(true);       
-    $mail->addEmbeddedImage('../../views/dist/img/logo-reservaya.png','logo','logo-reservaya.png'); 
-    $mail->addEmbeddedImage('../../views/dist/img/email_banner.png','banner','email_banner.png');                       //Set email format to HTML
-    $mail->Subject = 'Reservación #00876'.$id_reserva.' agendada para '.$fecha;
+    $mail->isHTML(true);
+    $mail->addEmbeddedImage('../../views/dist/img/logo-reservaya.png', 'logo', 'logo-reservaya.png');
+    $mail->addEmbeddedImage('../../views/dist/img/email_banner.png', 'banner', 'email_banner.png');
+    $mail->Subject = 'Reservación #00890' . $id_reserva . ' agendada para ' . $fecha;
     $mail->Body   = ' <!DOCTYPE html>
     <html lang="es">
         <head>
@@ -153,13 +145,13 @@ try {
                 </div>
                 <div class="main">
                     <h1>Reservación Sephia PUB</h1> <br>
-                    <p>Se ha registrado una reservación para <b>'.$nombre.'  '.$apellido.'</b>  con el correo electronico ' . $email_cliente . '</p> <br>
+                    <p>Se ha registrado una reservación para <b>' . $nombre . '  ' . $apellido . '</b>  con el correo electronico ' . $email_cliente . '</p> <br>
                     <p>Los datos de la reservación son los siguientes:</p>
                     <br />
                     <ul>
                         <li>ID: 00876' . $id_reserva . '</li>
                         <li>Fecha: ' . $fecha . '</li>
-                        <li>Hora: ' . date("h:i A",strtotime($hora)) . '</li>
+                        <li>Hora: ' . date("h:i A", strtotime($hora)) . '</li>
                         <li>Mesa: ' . $mesa . '</li>
                         <li>Asientos: ' . $asiento . '</li>
                         <li>Estado: Activa</li>
@@ -188,4 +180,4 @@ try {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 
-$pdo=null;
+$pdo = null;
