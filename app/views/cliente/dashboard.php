@@ -32,9 +32,10 @@ if ($sesion == null || $sesion = '') {
 }
 
 $img = $_SESSION['datos'][6];
-$result = str_replace("../../../../","../../../",$img);
+$result = str_replace("../../../../", "../../../", $img);
 
 ?>
+
 <body id="body">
 	<div class="container">
 		<nav class="navbar">
@@ -52,7 +53,7 @@ $result = str_replace("../../../../","../../../",$img);
 					<i class="fa fa-power-off" aria-hidden="true"></i>
 				</a>
 				<a href="./usuarios/updateInfo.php">
-				<img class="foto_perfil" src="<?php echo $result; ?>" />
+					<img class="foto_perfil" src="<?php echo $result; ?>" />
 				</a>
 			</div>
 		</nav>
@@ -77,7 +78,10 @@ $result = str_replace("../../../../","../../../",$img);
 				</div>
 				<i onclick="closeSidebar()" class="fa fa-times" id="sidebarIcon" aria-hidden="true"></i>
 			</div>
-
+			<div class="sidebar__menu sidebar__link sidebar__username">
+				<a>¡Bienvenid<i class="fas fa-at"></i> <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</a>
+				<hr>
+			</div>
 			<div class="sidebar__menu">
 				<div class="sidebar__link active_menu_link">
 					<i class="fa fa-home"></i>

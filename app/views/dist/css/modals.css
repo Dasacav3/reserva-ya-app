@@ -25,7 +25,8 @@
 }
 
 .form-modal > form input,
-.form-modal > form select {
+.form-modal > form select,
+.form-modal > form select option {
 	width: 250px;
 	height: 2em;
 	border: 1px solid var(--emerald);
@@ -93,4 +94,14 @@
 .pop-up-wrap.show{
     transform: scale(1);
     opacity: 1;
+}
+
+@media screen and (max-width:699px){
+    .form-modal > form{
+        width: 300px;
+    }
+
+    .form-modal .form-fields{
+        flex-direction: column;
+    }
 }

@@ -52,13 +52,13 @@ body {
 	transition: 0.6s;
 }
 
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 699px) {
 	.title_error {
 		font-size: 1.5em;
 	}
 
 	.img_error img {
-		width: 400px;
+		width: 360px;
 	}
 
 	.info_error,

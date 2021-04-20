@@ -154,7 +154,10 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 				</div>
 				<i onclick="closeSidebar()" class="fa fa-times" id="sidebarIcon" aria-hidden="true"></i>
 			</div>
-
+			<div class="sidebar__menu sidebar__link sidebar__username">
+				<a>¡Bienvenid<i class="fas fa-at"></i> <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</a>
+				<hr>
+			</div>
 			<div class="sidebar__menu">
 				<div class="sidebar__link">
 					<i class="fa fa-home"></i>

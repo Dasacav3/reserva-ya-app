@@ -107,16 +107,16 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 					<div class="list-items">
 						Mostrar
 						<select name="n-entries" id="n-entries" class="n-entries">
-							<option class="select_rows" value="5" >5</option>
-							<option class="select_rows" value="10" >10</option>
-							<option class="select_rows" value="15" >15</option>
+							<option class="select_rows" value="5">5</option>
+							<option class="select_rows" value="10">10</option>
+							<option class="select_rows" value="15">15</option>
 						</select>
 						entradas
 					</div>
 					<div class="pages">
 						<ul>
 							<div class="pagenumbers" id="pagination"></div>
-						</ul>	
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -194,7 +194,10 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 				</div>
 				<i onclick="closeSidebar()" class="fa fa-times" id="sidebarIcon" aria-hidden="true"></i>
 			</div>
-
+			<div class="sidebar__menu sidebar__link sidebar__username">
+				<a>¡Bienvenid<i class="fas fa-at"></i> <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</a>
+				<hr>
+			</div>
 			<div class="sidebar__menu">
 				<div class="sidebar__link">
 					<i class="fa fa-home"></i>

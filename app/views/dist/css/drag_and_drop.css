@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    text-align: center;
   }
   .drag-area.active{
     border: 2px solid #fff;
@@ -63,4 +64,23 @@
 
   #foto{
     height: 400px;
+  }
+
+
+  @media (max-width: 767px) {
+    .drag-area{
+      width: 400px;
+    }
+  }
+
+
+  @media only screen and (max-width: 480px) {
+    .drag-area{
+      width: 300px;
+      height: 300px
+    }
+
+    #foto{
+      height: 300px;
+    }
   }
