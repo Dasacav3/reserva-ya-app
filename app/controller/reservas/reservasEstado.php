@@ -2,6 +2,8 @@
 
 require_once "../database.php";
 
+error_reporting(0);
+
 $fecha_actual = date("Y-m-d");
 
 $hora_actual = date("H:i:s");
