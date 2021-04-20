@@ -6,7 +6,7 @@ require_once("insumosPdf.php");
 require_once("clientesPdf.php");
 require_once("../database.php");
 
-// error_reporting(0);
+error_reporting(0);
 
 $insumos = $_POST['insumos'];
 $cliente = $_POST['cliente'];

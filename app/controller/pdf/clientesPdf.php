@@ -20,6 +20,7 @@ $plantilla="
             $plantilla .= "
                         <p>Nombre: " . $dat['NOMBRE_CLIENTE'] . "</p>
                         <p>Apellido: " . $dat['APELLIDO_CLIENTE'] . "</p>";
+            break;
             } 
             $plantilla .= "
             <p>Conteo de reservaciones: ".count($listadoCliente)."</p>
@@ -56,7 +57,3 @@ $plantilla="
 return $plantilla;
 
 }
-
-
-
-?>
