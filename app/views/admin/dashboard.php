@@ -11,6 +11,7 @@
 	<!-- Styles CSS -->
 	<link rel="stylesheet" href="../dist/css/normalize.css" />
 	<link rel="stylesheet" href="../dist/css/dashboard.css" />
+	<link rel="stylesheet" href="../dist/css/whatsapp_comp.css" />
 	<title>Dashboard Reserva Ya</title>
 </head>
 <?php
@@ -134,6 +135,9 @@ $result = str_replace("../../../../", "../../../", $img);
 				</div>
 			</div>
 		</div>
+		<a href="https://api.whatsapp.com/send?phone=+573228306094&text=Hola!%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20reservaciones%20" class="float" target="_blank">
+			<i class="fab fa-whatsapp my-float"></i>
+		</a>
 	</div>
 	<script src="../dist/js/sidebarDashboard.js"></script>
 </body>
