@@ -24,7 +24,7 @@
 			<div class="login-img">
 				<img src="./dist/img/favicon.png" alt="" class="login-img__img" />
 			</div>
-			<form class="form-login" id="form" method="POST" action="../models/loginUser.php">
+			<form class="form-login" id="form" method="POST">
 				<label for="user_name">Nombre de usuario</label> <br />
 				<input type="email" id="user_name" name="user_name" required placeholder="example@domain.com" />
 				<label for="password">Contraseña</label> <br />
@@ -37,7 +37,7 @@
 						<i class="indicator"></i>
 					</label>
 				</div>
-				<input type="submit" value="Iniciar sesión" id="submit" />
+				<input type="button" value="Iniciar sesión" id="submit" onclick="loginUser()"/>
 			</form>
 		</div>
 		<div class="register">
@@ -46,6 +46,7 @@
 			</p>
 		</div>
 	</div>
+	<script src="dist/js/app.js"></script>
 </body>
 
 </html>
