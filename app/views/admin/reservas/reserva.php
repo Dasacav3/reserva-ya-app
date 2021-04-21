@@ -21,13 +21,14 @@
 <?php
 session_start();
 
+error_reporting(0);
+
 $sesion = $_SESSION['datos'];
 
-if ($sesion == null || $sesion = '') {
+if ($sesion == null || $sesion = '' || $_SESSION['datos'][2] != 'Administrador') {
 ?>
 	<script>
 		function Regresar() {
-			alert('El acceso esta prohibido');
 			window.history.go(-1);
 		}
 		Regresar();
