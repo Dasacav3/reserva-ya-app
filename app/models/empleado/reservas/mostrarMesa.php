@@ -14,7 +14,7 @@ try {
 
 echo "<option value=''></option>";
 while ($mesa = $query->fetch(PDO::FETCH_ASSOC)){
-    echo "<option value=".$mesa['id_mesa'].">".$mesa['id_mesa']." - ".$mesa['capacidad_mesa']." ".$mesa['estado_mesa']."</option>";
+    echo "<option value=".$mesa['id_mesa'].">Mesa #".$mesa['id_mesa']." - Asientos: ".$mesa['capacidad_mesa']."</option>";
 }
 
 $pdo=null;
