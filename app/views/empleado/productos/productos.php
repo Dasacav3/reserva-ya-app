@@ -8,6 +8,7 @@
   <link rel="shortcut icon" href="../../dist/img/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="../../dist/css/normalize.css">
   <link rel="stylesheet" href="../../dist/css/dashboard.css">
+  <link rel="stylesheet" href="../../dist/css/checkbox_comp.css">
   <!-- FontAwesome -->
   <link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/all.min.css">
   <script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
@@ -25,14 +26,14 @@ $sesion = $_SESSION['datos'];
 
 if ($sesion == null || $sesion = '' || $_SESSION['datos'][2] != 'Empleado') {
 ?>
-	<script>
-		function Regresar() {
-			window.history.go(-1);
-		}
-		Regresar();
-	</script>
+  <script>
+    function Regresar() {
+      window.history.go(-1);
+    }
+    Regresar();
+  </script>
 <?php
-	die();
+  die();
 }
 
 $img = $_SESSION['datos'][6];
@@ -49,6 +50,10 @@ $img = $_SESSION['datos'][6];
         <h4>¡Bienvenid<i class="fas fa-at"></i> <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</h4>
       </div>
       <div class="navbar__right">
+        <button class="switch" id="switch">
+          <span><i class="fas fa-sun"></i></span>
+          <span><i class="fas fa-moon"></i></span>
+        </button>
         <a href="../informacion/soporte.php">
           <i class="fa fa-question-circle" aria-hidden="true"></i>
         </a>
@@ -113,6 +118,7 @@ $img = $_SESSION['datos'][6];
       </div>
     </div>
   </div>
+  <script src="../../dist/js/app.js"></script>
   <script src="../../dist/js/sidebarDashboard.js"></script>
 </body>
 

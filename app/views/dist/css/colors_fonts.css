@@ -22,3 +22,11 @@
     --poppins: 'Poppins', sans-serif;
     --montserrat: 'Montserrat', sans-serif;
 }
+
+/* body.dark{
+    filter: invert(100%);
+}
+
+body.dark img{
+    filter: invert(100%);
+} */

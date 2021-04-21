@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="../../dist/css/dashboard.css" />
 	<link rel="stylesheet" href="../../dist/css/datatable.css" />
 	<link rel="stylesheet" href="../../dist/css/modals.css" />
+	<link rel="stylesheet" href="../../dist/css/checkbox_comp.css" />
 	<!-- FontAwesome -->
 	<link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/all.min.css" />
 	<script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
@@ -58,6 +59,10 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 				<h4>¡Bienvenid<i class="fas fa-at"></i> <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</h4>
 			</div>
 			<div class="navbar__right">
+				<button class="switch" id="switch">
+					<span><i class="fas fa-sun"></i></span>
+					<span><i class="fas fa-moon"></i></span>
+				</button>
 				<a href="../informacion/soporte.php">
 					<i class="fa fa-question-circle" aria-hidden="true"></i>
 				</a>
@@ -105,15 +110,6 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 					</tbody>
 				</table>
 				<div class="footer-tools">
-					<div class="list-items">
-						Mostrar
-						<select name="n-entries" id="n-entries" class="n-entries">
-							<option class="select_rows" value="5">5</option>
-							<option class="select_rows" value="10">10</option>
-							<option class="select_rows" value="15">15</option>
-						</select>
-						entradas
-					</div>
 					<div class="pages">
 						<ul>
 							<div class="pagenumbers" id="pagination"></div>

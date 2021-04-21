@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="../dist/css/normalize.css" />
 	<link rel="stylesheet" href="../dist/css/dashboard.css" />
 	<link rel="stylesheet" href="../dist/css/whatsapp_comp.css" />
+	<link rel="stylesheet" href="../dist/css/checkbox_comp.css">
 	<title>Dashboard Reserva Ya</title>
 </head>
 <?php
@@ -48,6 +49,10 @@ $result = str_replace("../../../../", "../../../", $img);
 				<h4>¡Bienvenid<i class="fas fa-at"></i> <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</h4>
 			</div>
 			<div class="navbar__right">
+				<button class="switch" id="switch">
+					<span><i class="fas fa-sun"></i></span>
+					<span><i class="fas fa-moon"></i></span>
+				</button>
 				<a href="./informacion/soporte.php">
 					<i class="fa fa-question-circle" aria-hidden="true"></i>
 				</a>
@@ -119,6 +124,7 @@ $result = str_replace("../../../../", "../../../", $img);
 			<i class="fab fa-whatsapp my-float"></i>
 		</a>
 	</div>
+	<script src="../dist/js/app.js"></script>
 	<script src="../dist/js/sidebarDashboard.js"></script>
 </body>
 

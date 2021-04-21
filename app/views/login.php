@@ -29,15 +29,7 @@
 				<input type="email" id="user_name" name="user_name" required placeholder="example@domain.com" />
 				<label for="password">Contraseña</label> <br />
 				<input type="password" id="password" name="password" required maxlength="30" />
-				<!-- <input type="checkbox" name="" id="remember" /> Recordar <br /> -->
-				<div class="container_checkbox">
-					<label class="label_checkbox">
-						<input type="checkbox" class="input_checkbox">
-						<span class="span_checkbox"></span>
-						<i class="indicator"></i>
-					</label>
-				</div>
-				<input type="button" value="Iniciar sesión" id="submit" onclick="loginUser()"/>
+				<input type="button" value="Iniciar sesión" id="submit" onclick="loginUser()" />
 			</form>
 		</div>
 		<div class="register">

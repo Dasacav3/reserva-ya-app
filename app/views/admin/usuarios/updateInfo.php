@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../dist/css/dashboard.css">
   <link rel="stylesheet" href="../../dist/css/modals.css">
   <link rel="stylesheet" href="../../dist/css/drag_and_drop.css">
+  <link rel="stylesheet" href="../../dist/css/checkbox_comp.css" />
   <!-- FontAwesome -->
   <link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/all.min.css">
   <script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
@@ -27,14 +28,14 @@ $sesion = $_SESSION['datos'];
 
 if ($sesion == null || $sesion = '' || $_SESSION['datos'][2] != 'Administrador') {
 ?>
-	<script>
-		function Regresar() {
-			window.history.go(-1);
-		}
-		Regresar();
-	</script>
+  <script>
+    function Regresar() {
+      window.history.go(-1);
+    }
+    Regresar();
+  </script>
 <?php
-	die();
+  die();
 }
 
 $img = $_SESSION['datos'][6];
@@ -51,6 +52,10 @@ $img = $_SESSION['datos'][6];
         <h4>¡Bienvenid<i class="fas fa-at"></i> <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</h4>
       </div>
       <div class="navbar__right">
+        <button class="switch" id="switch">
+          <span><i class="fas fa-sun"></i></span>
+          <span><i class="fas fa-moon"></i></span>
+        </button>
         <a href="../informacion/soporte.php">
           <i class="fa fa-question-circle" aria-hidden="true"></i>
         </a>
@@ -58,7 +63,7 @@ $img = $_SESSION['datos'][6];
           <i class="fa fa-power-off" aria-hidden="true"></i>
         </a>
         <a href="../usuarios/updateInfo.php">
-          <img class="foto_perfil" src="<?php echo ($img);?>" />
+          <img class="foto_perfil" src="<?php echo ($img); ?>" />
         </a>
       </div>
     </nav>
@@ -86,18 +91,18 @@ $img = $_SESSION['datos'][6];
           </div>
         </div>
         <div class="updatedata_container">
-        <div class="drag-area">
-          <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-          <div class="img"></div>
-          <header>Arrastra y suelta tu imagen</header>
-          <span>OR</span>
-          <button>Examinar</button>
-          <input type="file" name="photo_user" id="photo_user" hidden />
-        </div>
-        <div>
-          <input id="enviar" type="button" value="Subir" />
-          <input id="limpiar" type="reset" value="Cancelar" />
-        </div>
+          <div class="drag-area">
+            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <div class="img"></div>
+            <header>Arrastra y suelta tu imagen</header>
+            <span>OR</span>
+            <button>Examinar</button>
+            <input type="file" name="photo_user" id="photo_user" hidden />
+          </div>
+          <div>
+            <input id="enviar" type="button" value="Subir" />
+            <input id="limpiar" type="reset" value="Cancelar" />
+          </div>
         </div>
 
       </div>
@@ -183,6 +188,7 @@ $img = $_SESSION['datos'][6];
       </div>
     </div>
   </div>
+  <script src="../../dist/js/app.js"></script>
   <script src="../../dist/js/sidebarDashboard.js"></script>
   <script src="../../dist/js/drag_and_drop.js"></script>
   <script src="../../dist/js/updateinfo_admin.js"></script>
