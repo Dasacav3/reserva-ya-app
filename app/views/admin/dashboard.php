@@ -134,13 +134,7 @@ $result = str_replace("../../../../", "../../../", $img);
 			</div>
 		</div>
 	</div>
-	<script src="../dist/js/app.js"></script>
 	<script src="../dist/js/sidebarDashboard.js"></script>
-	<script>
-		window.onload = (() => {
-			updateStateReserva();
-		})
-	</script>
 </body>
 
 </html>

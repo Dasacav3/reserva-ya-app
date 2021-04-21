@@ -21,12 +21,11 @@ try{
     echo "Conexion Fallida " . $e->getMessage();
     die();
 }
-    while($result){
-        $email_cliente = $result['EMAIL_CLIENTE'];
-        $nombre = $result['NOMBRE_CLIENTE'];
-        $apellido = $result['APELLIDO_CLIENTE'];
-        $id_reserva = $result['ID_RESERVACION'];
-    }
+
+    $email_cliente = $result['EMAIL_CLIENTE'];
+    $nombre = $result['NOMBRE_CLIENTE'];
+    $apellido = $result['APELLIDO_CLIENTE'];
+    $id_reserva = $result['ID_RESERVACION'];
 
 
 use PHPMailer\PHPMailer\PHPMailer;

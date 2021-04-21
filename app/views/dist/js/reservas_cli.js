@@ -64,7 +64,7 @@ function DisplayList(items, wrapper, rows_per_page, page) {
 						<td> ${item[i].ASIENTO}  </td>
 						<td>`;
 		if (item[i].ESTADO_RESERVACION === "Activa") {
-			output += `<button class='btn-delete' type='button' onclick=cancelarReserva('${item[i].ID_RESERVACION_RESERVA_MESA}')><i class='fas fa-trash-alt'></i></button>
+			output += `<button class='btn-delete' type='button' onclick=cancelarReserva('${item[i].ID_RESERVACION_RESERVA_MESA}');sendMailCancel('${item[i].ID_RESERVACION_RESERVA_MESA}')><i class='fas fa-trash-alt'></i></button>
 							</td>   
 					</tr>`;
 		}
@@ -201,44 +201,42 @@ function cancelarReserva(id) {
 		cancelButtonText: "NO",
 	}).then((result) => {
 		if (result.isConfirmed) {
-			async function peticionReserva() {
-				try {
-					const url = "../../../models/cliente/reservas/cancelarReserva.php";
-					const fetchAdd = await fetch(url, { method: "POST", body: id });
-					const texto = await fetchAdd.text();
-					if (texto == "ok") {
-						Swal.fire({
-							icon: "success",
-							title: "Reserva cancelada",
-							showConfirmButton: false,
-							timer: 1500,
-						});
-						listarReservas();
-						mostrarMesa();
-					}
-				} catch (err) {
-					console.log(err);
-				}
+			try {
+				fetch("../../../models/cliente/reservas/cancelarReserva.php", {
+					method: "POST",
+					body: id,
+				})
+					.then((response) => response.text())
+					.then((response) => {
+						console.log(response);
+					});
+				Swal.fire({
+					icon: "success",
+					title: "Reserva cancelada",
+					showConfirmButton: false,
+					timer: 1500,
+				});
+				listarReservas();
+				mostrarMesa();
+			} catch (err) {
+				console.log(err);
 			}
-
-			peticionReserva();
-
-			// async function emailCancel() {
-			// 	try {
-			// 		const url = "../../../controller/mail/sendMail_delete.php";
-			// 		const fetchEmail = await fetch(url, { method: "POST", body: id });
-			// 		const texto = await fetchEmail.text();
-			// 		console.log(texto);
-			// 	} catch (err) {
-			// 		console.log(err);
-			// 	}
-			// }
-		
-			// emailCancel();
 		}
 	});
-
 }
+
+
+function sendMailCancel(id){
+	fetch("../../../controller/mail/sendMail_delete.php", {
+		method: "POST",
+		body: id,
+	})
+		.then((response) => response.text())
+		.then((response) => {
+			console.log(response);
+		});
+}
+
 
 search_input.addEventListener("keyup", () => {
 	const valor = search_input.value;
