@@ -32,6 +32,15 @@
 	font-size: 16px;
 }
 
+body.dark .datatable-container{
+	box-shadow: -1px -1px 4px rgba(255,255,255,0.05),
+				4px 4px 6px rgba(0,0,0,0.2),
+				inset -1px -1px 4px rgba(255,255,255,0.05),
+				inset 1px 1px 1px rgba(0,0,0,0.2);
+	filter: drop-shadow(0,0,15px #00f3ff);
+	animation: animate 5s linear infinite;
+}
+
 .datatable-container .header-tools {
 	border-bottom: solid 1px var(--secondary-color);
 	padding: var(--dt-padding);

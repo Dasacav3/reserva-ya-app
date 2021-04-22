@@ -11,6 +11,7 @@
     flex-direction: column;
     text-align: center;
   }
+
   .drag-area.active{
     border: 2px solid #fff;
   }
