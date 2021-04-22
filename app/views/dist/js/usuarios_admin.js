@@ -20,7 +20,7 @@ function DisplayList(items, wrapper, rows_per_page, page) {
 						<td> ${item[i].ESTADO_USUARIO}  </td>
 						<td>
 							<button class='abrirPopup-edit btn-edit' type='button' onclick=Editar('${item[i].ID_USUARIO}');abrir()><i class='fas fa-edit'></i></button>
-							<button class='btn-delete' type='button' onclick=eliminarReserva('${item[i].ID_USUARIO}')><i class='fas fa-trash-alt'></i></button>
+							<button class='btn-delete' type='button' onclick=eliminarUser('${item[i].ID_USUARIO}')><i class='fas fa-trash-alt'></i></button>
 						</td>   
 					</tr>`;
 		wrapper.innerHTML = output;
