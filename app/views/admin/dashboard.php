@@ -31,6 +31,7 @@ if ($sesion == null || $sesion = '' || $_SESSION['datos'][2] != 'Administrador')
 		Regresar();
 	</script>
 <?php
+
 	die();
 }
 
@@ -39,7 +40,7 @@ $result = str_replace("../../../../", "../../../", $img);
 
 ?>
 
-<body id="body">
+<body id="body" onmousemove="mouseMovement(event)">
 	<div class="container">
 		<nav class="navbar">
 			<div class="nav_icon" onclick="toggleSidebar()">
@@ -49,7 +50,7 @@ $result = str_replace("../../../../", "../../../", $img);
 				<h4>¡Bienvenid<i class="fas fa-at"></i> <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</h4>
 			</div>
 			<div class="navbar__right">
-				<button class="switch" id="switch">
+				<button class="switch" id="switch" onclick="changeTheme()">
 					<span><i class="fas fa-sun"></i></span>
 					<span><i class="fas fa-moon"></i></span>
 				</button>
@@ -145,6 +146,15 @@ $result = str_replace("../../../../", "../../../", $img);
 		</a>
 	</div>
 	<script src="../dist/js/app.js"></script>
+	<script>
+		countdown.start();
+		function mouseMovement(event) {
+			var x = event.clientX;
+			var y = event.clientY;
+			// console.log(x);
+			countdown.update();
+		}
+	</script>
 	<script src="../dist/js/sidebarDashboard.js"></script>
 </body>
 

@@ -35,25 +35,25 @@ function loginUser() {
 				});
 			} else if (response == "usuario o contraseña incorrecto") {
 				Swal.fire({
-					title: 'Vuelve a intentarlo',
-					text: 'Usuario o contraseña incorrectos',
-					icon: 'error',
+					title: "Vuelve a intentarlo",
+					text: "Usuario o contraseña incorrectos",
+					icon: "error",
 					showConfirmButton: false,
 					timer: 1500,
-				})
-			}else if (response == "el usuario no esta activo en el sistema") {
+				});
+			} else if (response == "el usuario no esta activo en el sistema") {
 				Swal.fire({
-					title: 'Su usuario no esta activo en el sistema',
-					text: 'Comunicate con el administrador, si consideras que es un error',
-					icon: 'error',
+					title: "Su usuario no esta activo en el sistema",
+					text: "Comunicate con el administrador, si consideras que es un error",
+					icon: "error",
 					showConfirmButton: false,
 					timer: 1500,
-				})
-			}else {
+				});
+			} else {
 				Swal.fire({
-					title: 'Este usuario no existe',
-					text: 'Comunicate con el administrador, para obtener mas información',
-					icon: 'error',
+					title: "Este usuario no existe",
+					text: "Comunicate con el administrador, para obtener mas información",
+					icon: "error",
 					showConfirmButton: false,
 					timer: 1500,
 				});
@@ -62,6 +62,7 @@ function loginUser() {
 		});
 }
 
+// Actualización automatica de estado de reserva
 function updateStateReserva() {
 	fetch("../../../controller/reservas/reservasEstado.php", {
 		method: "POST",
@@ -72,26 +73,94 @@ function updateStateReserva() {
 		});
 }
 
+// Modo oscuro
 
-const btnSwitch = document.querySelector('#switch');
+function changeTheme() {
+	const btnSwitch = document.querySelector("#switch");
 
-btnSwitch.addEventListener('click', () => {
-	document.body.classList.toggle('dark');
-	btnSwitch.classList.toggle('active');
+	document.body.classList.toggle("dark");
+	btnSwitch.classList.toggle("active");
 
 	// Guardamos el modo en localstorage.
-	if(document.body.classList.contains('dark')){
-		localStorage.setItem('dark-mode', 'true');
+	if (document.body.classList.contains("dark")) {
+		localStorage.setItem("dark-mode", "true");
 	} else {
-		localStorage.setItem('dark-mode', 'false');
+		localStorage.setItem("dark-mode", "false");
 	}
-});
 
-// Obtenemos el modo actual.
-if(localStorage.getItem('dark-mode') === 'true'){
-	document.body.classList.add('dark');
-	btnSwitch.classList.add('active');
-} else {
-	document.body.classList.remove('dark');
-	btnSwitch.classList.remove('active');
+	// Obtenemos el modo actual.
+	if (localStorage.getItem("dark-mode") === "true") {
+		document.body.classList.add("dark");
+		btnSwitch.classList.add("active");
+	} else {
+		document.body.classList.remove("dark");
+		btnSwitch.classList.remove("active");
+	}
 }
+
+// Contador de inactividad
+
+function Counter(options) {
+	var timer;
+	var instance = this;
+	var segundos = options.seconds || 10;
+	var seconds = options.seconds || 10;
+	var onUpdateStatus = options.onUpdateStatus || function () {};
+	var onCounterEnd = options.onCounterEnd || function (seconds) {};
+	var onCounterStart = options.onCounterStart || function () {};
+
+	function decrementCounter() {
+		onUpdateStatus(seconds);
+		if (seconds === 0) {
+			stopCounter();
+			onCounterEnd(seconds);
+			return;
+		}
+		seconds--;
+	}
+
+	function startCounter() {
+		onCounterStart();
+		clearInterval(timer);
+		timer = 0;
+		decrementCounter();
+		timer = setInterval(decrementCounter, 1000);
+	}
+
+	function stopCounter() {
+		clearInterval(timer);
+	}
+
+	function updateCounter() {
+		seconds = segundos;
+	}
+
+	return {
+		start: function () {
+			startCounter();
+		},
+		stop: function () {
+			stopCounter();
+		},
+		update: function () {
+			updateCounter();
+		},
+	};
+}
+var countdown = new Counter({
+	// number of seconds to count down
+	seconds: 10,
+
+	onCounterStart: function () {},
+
+	// callback function for each second
+	onUpdateStatus: function (second) {
+		console.log(second);
+	},
+
+	// callback function for final action after countdown
+	onCounterEnd: function (seconds) {
+		alert("Sesión expirada por inactividad");
+		top.location.href = "http://localhost/reservaya-mvc/app/models/logout.php";
+	},
+});
