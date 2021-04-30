@@ -73,7 +73,7 @@ function DisplayList(items, wrapper, rows_per_page, page) {
 }
 
 function listarReservas(search) {
-	fetch("../../../models/cliente/reservas/listarReserva.php", {
+	fetch("http://localhost/reservaya-mvc/app/models/cliente/reservas/listarReserva.php", {
 		method: "POST",
 		body: search,
 	})
@@ -84,7 +84,7 @@ function listarReservas(search) {
 }
 
 function mostrarMesa() {
-	fetch("../../../models/cliente/reservas/mostrarMesa.php", {
+	fetch("http://localhost/reservaya-mvc/app/models/cliente/reservas/mostrarMesa.php", {
 		method: "POST",
 	})
 		.then((response) => response.text())
@@ -146,7 +146,7 @@ registrar.addEventListener("click", () => {
 		async function añadirReserva() {
 			try {
 				console.time("tasks time");
-				const add = await fetch("../../../models/cliente/reservas/añadirReserva.php", {
+				const add = await fetch("http://localhost/reservaya-mvc/app/models/cliente/reservas/añadirReserva.php", {
 					method: "POST",
 					body: new FormData(pop_up_wrap_add),
 				})
@@ -176,7 +176,7 @@ registrar.addEventListener("click", () => {
 		añadirReserva();
 
 		function sendMail() {
-			fetch("../../../controller/mail/sendMail_add.php", {
+			fetch("http://localhost/reservaya-mvc/app/controller/mail/sendMail_add.php", {
 				method: "POST",
 				body: new FormData(pop_up_wrap_add),
 			})
@@ -202,7 +202,7 @@ function cancelarReserva(id) {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			try {
-				fetch("../../../models/cliente/reservas/cancelarReserva.php", {
+				fetch("http://localhost/reservaya-mvc/app/models/cliente/reservas/cancelarReserva.php", {
 					method: "POST",
 					body: id,
 				})
@@ -227,7 +227,7 @@ function cancelarReserva(id) {
 
 
 function sendMailCancel(id){
-	fetch("../../../controller/mail/sendMail_delete.php", {
+	fetch("http://localhost/reservaya-mvc/app/controller/mail/sendMail_delete.php", {
 		method: "POST",
 		body: id,
 	})
