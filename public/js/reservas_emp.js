@@ -80,7 +80,7 @@ function DisplayList(items, wrapper, rows_per_page, page) {
 }
 
 function listarReservas(search) {
-	fetch("../../../models/empleado/reservas/listarReserva.php", {
+	fetch("http://localhost/reservaya-mvc/app/models/empleado/reservas/listarReserva.php", {
 		method: "POST",
 		body: search,
 	})
@@ -91,7 +91,7 @@ function listarReservas(search) {
 }
 
 function mostrarCliente() {
-	fetch("../../../models/empleado/reservas/mostrarCliente.php", {
+	fetch("http://localhost/reservaya-mvc/app/models/empleado/reservas/mostrarCliente.php", {
 		method: "POST",
 	})
 		.then((response) => response.text())
@@ -101,7 +101,7 @@ function mostrarCliente() {
 }
 
 function mostrarMesa() {
-	fetch("../../../models/empleado/reservas/mostrarMesa.php", {
+	fetch("http://localhost/reservaya-mvc/app/models/empleado/reservas/mostrarMesa.php", {
 		method: "POST",
 	})
 		.then((response) => response.text())
@@ -171,7 +171,7 @@ registrar.addEventListener("click", () => {
 		async function añadirReserva() {
 			try {
 				console.time("tasks time");
-				const add = await fetch("../../../models/empleado/reservas/añadirReserva.php", {
+				const add = await fetch("http://localhost/reservaya-mvc/app/models/empleado/reservas/añadirReserva.php", {
 					method: "POST",
 					body: new FormData(pop_up_wrap_add),
 				})
@@ -201,7 +201,7 @@ registrar.addEventListener("click", () => {
 		añadirReserva();
 
 		function sendMail() {
-			fetch("../../../controller/mail/sendMail_add.php", {
+			fetch("http://localhost/reservaya-mvc/app/controller/mail/sendMail_add.php", {
 				method: "POST",
 				body: new FormData(pop_up_wrap_add),
 			})
@@ -216,7 +216,7 @@ registrar.addEventListener("click", () => {
 });
 
 function Editar(id) {
-	fetch("../../../models/empleado/reservas/actualizarReserva.php", {
+	fetch("http://localhost/reservaya-mvc/app/models/empleado/reservas/actualizarReserva.php", {
 		method: "POST",
 		body: id,
 	})
@@ -271,7 +271,7 @@ edit.addEventListener("click", () => {
 			icon: "error",
 		});
 	} else {
-		fetch("../../../models/empleado/reservas/editarReserva.php", {
+		fetch("http://localhost/reservaya-mvc/app/models/empleado/reservas/editarReserva.php", {
 			method: "POST",
 			body: new FormData(pop_up_wrap_edit),
 		})
@@ -292,7 +292,7 @@ edit.addEventListener("click", () => {
 					pop_up_wrap_edit.classList.remove("show");
 				}
 			});
-		fetch("../../../controller/mail/sendMail_edit.php", {
+		fetch("http://localhost/reservaya-mvc/app/controller/mail/sendMail_edit.php", {
 			method: "POST",
 			body: new FormData(pop_up_wrap_edit),
 		})

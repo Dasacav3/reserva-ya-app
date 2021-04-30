@@ -16,7 +16,7 @@ enviar.addEventListener("click", () => {
 	// Solo para ver que sí se agregó el archivo
 	// console.log(...data);
 
-	fetch("../../../models/empleado/usuarios/añadirFotoPerfil.php", {
+	fetch("http://localhost/reservaya-mvc/app/models/empleado/usuarios/añadirFotoPerfil.php", {
 		method: "POST",
 		body: data,
 	})
@@ -59,7 +59,7 @@ enviar.addEventListener("click", () => {
 });
 
 edit.addEventListener("click", () => {
-	fetch("../../../models/empleado/informacion/cambioPassword.php", {
+	fetch("http://localhost/reservaya-mvc/app/models/empleado/informacion/cambioPassword.php", {
 		method: "POST",
 		body: new FormData(pop_up_wrap_edit),
 	})
@@ -88,7 +88,7 @@ edit.addEventListener("click", () => {
 });
 
 function listarInfo() {
-	fetch("../../../models/empleado/informacion/listarInfo.php", {
+	fetch("http://localhost/reservaya-mvc/app/models/empleado/informacion/listarInfo.php", {
 		method: "POST",
 	})
 		.then((response) => response.json())
@@ -102,7 +102,7 @@ function listarInfo() {
 }
 
 function editarInfo() {
-	fetch("../../../models/empleado/informacion/editarInfo.php", {
+	fetch("http://localhost/reservaya-mvc/app/models/empleado/informacion/editarInfo.php", {
 		method: "POST",
 		body: new FormData(form_update_info),
 	})

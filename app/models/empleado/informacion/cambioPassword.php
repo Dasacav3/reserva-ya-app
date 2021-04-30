@@ -9,7 +9,7 @@
 
     if($sesion == null || $sesion = ''){
         echo 'Usted no tiene autorización';
-        header("location: ../../views/login.php");
+        header("location: http://localhost/reservaya-mvc/login");
         die();
     }
 
@@ -32,8 +32,8 @@
     if(password_verify($pass_old,$data[1]) && $pass_new == $pass_new2){
         try {
             $queryupdate = $pdo->prepare("UPDATE usuario SET clave_usuario = '$pass_hash' WHERE id_usuario= :id");
-            $query->bindParam(":id", $id);
-            $query->execute();
+            $queryupdate->bindParam(":id", $id);
+            $queryupdate->execute();
         }catch (Exception $e) {
             echo "Conexion fallida " . $e->getMessage();
             die();
