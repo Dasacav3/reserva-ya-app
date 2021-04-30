@@ -1,5 +1,5 @@
 function loginUser() {
-	fetch("../models/loginUser.php", {
+	fetch("http://localhost/reservaya-mvc/app/models/loginUser.php", {
 		method: "POST",
 		body: new FormData(form),
 	})
@@ -13,7 +13,7 @@ function loginUser() {
 					showConfirmButton: false,
 					timer: 1500,
 				}).then(() => {
-					window.location = "http://localhost/reservaya-mvc/app/views/admin/dashboard.php";
+					window.location = "http://localhost/reservaya-mvc/admin";
 				});
 			} else if (response.trim() == "empleado") {
 				Swal.fire({
@@ -22,7 +22,7 @@ function loginUser() {
 					showConfirmButton: false,
 					timer: 1500,
 				}).then(() => {
-					window.location = "http://localhost/reservaya-mvc/app/views/empleado/dashboard.php";
+					window.location = "http://localhost/reservaya-mvc/empleado";
 				});
 			} else if (response.trim() == "cliente") {
 				Swal.fire({
@@ -31,7 +31,7 @@ function loginUser() {
 					showConfirmButton: false,
 					timer: 1500,
 				}).then(() => {
-					window.location = "http://localhost/reservaya-mvc/app/views/cliente/dashboard.php";
+					window.location = "http://localhost/reservaya-mvc/cliente";
 				});
 			} else if (response.trim() == "usuario o contraseña incorrecto") {
 				Swal.fire({
@@ -64,7 +64,7 @@ function loginUser() {
 
 // Actualización automatica de estado de reserva
 function updateStateReserva() {
-	fetch("../../../controller/reservas/reservasEstado.php", {
+	fetch("http://localhost/reservaya-mvc/app/controller/reservas/reservasEstado.php", {
 		method: "POST",
 	})
 		.then((res) => res.text())
