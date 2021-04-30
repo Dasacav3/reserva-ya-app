@@ -16,7 +16,7 @@ $plantilla="
     <div class='container'>
         <header class='header'>
             <div class='header_img_container'>
-                <img class='header_img' src='../../views/dist/img/logo-reservaya.png' />
+                <img class='header_img' src='http://localhost/reservaya-mvc/public/img/logo-reservaya.png' />
             </div>
             <h1 class='header_title'>Reporte Reservaciones</h1>
         </header>
