@@ -3,7 +3,7 @@
 session_start();
 
 
-include("../controller/database.php");
+require_once "../controller/database.php";
 
 $nombre = $_POST['user_name'];
 $password = $_POST['password'];
