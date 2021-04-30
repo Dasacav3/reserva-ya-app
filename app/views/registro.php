@@ -2,26 +2,23 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./dist/img/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="./dist/css/normalize.css">
-    <link rel="stylesheet" href="./dist/css/main.css">
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="../../lib/fontawesome-5.15.2/css/all.min.css">
-    <script src="../../lib/fontawesome-5.15.2/js/all.min.js"></script>
-    <!-- Sweer Alert -->
-    <script src="../../lib/sweetaler2/sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="../../lib/sweetaler2/sweetalert2.min.css">
+	<link rel="shortcut icon" href="<?= constant('URL') ?>app/views/dist/img/favicon.png" type="image/x-icon" />
+	<link rel="stylesheet" href="<?= constant('URL') ?>app/views/dist/css/normalize.css" />
+	<link rel="stylesheet" href="<?= constant('URL') ?>app/views/dist/css/main.css" />
+	<link rel="stylesheet" href="<?= constant('URL') ?>lib/fontawesome-5.15.2/css/all.min.css" />
+	<script src="<?= constant('URL') ?>lib/fontawesome-5.15.2/js/all.min.js"></script>
+	<script src="<?= constant('URL') ?>lib/sweetaler2/sweetalert2.all.min.js"></script>
+	<link rel="stylesheet" href="<?= constant('URL') ?>lib/sweetaler2/sweetalert2.min.css">
     <title>Registro</title>
 </head>
 <body class="body-login">
     <div class="register-container">
         <div class="return">
-            <a href="./login.php"><i class="fas fa-arrow-circle-left return-icon"></i></a>
+            <a href="<?= constant('URL') ?>login"><i class="fas fa-arrow-circle-left return-icon"></i></a>
         </div>
         <div class="register-logo">
-            <img src="./dist/img/favicon.png" alt="">
+            <img src="<?= constant('URL') ?>app/views/dist/img/favicon.png" alt="">
         </div>
         <div class="register-title">
             <h2>Formulario de Registro</h2>
@@ -48,7 +45,7 @@
             </form>
         </div>
     </div>
-    <script src="./dist/js/regularExpression.js"></script>
-    <script src="./dist/js/formValidation.js"></script>
+    <script src="<?= constant('URL') ?>app/views/dist/js/regularExpression.js"></script>
+    <script src="<?= constant('URL') ?>app/views/dist/js/formValidation.js"></script>
 </body>
 </html>
