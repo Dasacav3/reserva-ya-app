@@ -2,22 +2,8 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="../../dist/img/favicon.png" type="image/x-icon">
-  <link rel="stylesheet" href="../../dist/css/normalize.css">
-  <link rel="stylesheet" href="../../dist/css/dashboard.css">
-  <link rel="stylesheet" href="../../dist/css/modals.css">
-  <link rel="stylesheet" href="../../dist/css/drag_and_drop.css">
-  <link rel="stylesheet" href="../../dist/css/checkbox_comp.css" />
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="../../../../lib/fontawesome-5.15.2/css/all.min.css">
-  <script src="../../../../lib/fontawesome-5.15.2/js/all.min.js"></script>
-  <!-- Sweer Alert -->
-  <script src="../../../../lib/sweetaler2/sweetalert2.all.min.js"></script>
-  <link rel="stylesheet" href="../../../../lib/sweetaler2/sweetalert2.min.css">
-  <title>Actualización de información</title>
+  <?php require "head.php"; ?>
+  <title>Gestión de Reservaciones</title>
 </head>
 <?php
 session_start();

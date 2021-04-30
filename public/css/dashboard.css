@@ -1,5 +1,6 @@
 @import url("colors_fonts.css");
 
+
 * {
 	scroll-behavior: smooth;
 }
@@ -39,7 +40,7 @@ body.dark {
 .container {
 	display: grid;
 	height: 1080px;
-	grid-template-columns: 0.8fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 4fr;
 	grid-template-rows: 0.2fr 3fr;
 	grid-template-areas:
 		"sidebar nav nav nav"
@@ -76,8 +77,12 @@ body.dark .container {
 }
 
 .main__title {
-	grid-column: 2/5;
+	width: 320px;
 	padding: 3em;
+}
+
+body.dark .main__title{
+	color: var(--champagne-pink);
 }
 
 .title_table {
@@ -253,6 +258,7 @@ body.dark .active_menu_link a {
 	color: var(--middle-blue-green);
 	font-weight: 700;
 	text-transform: uppercase;
+	text-align: center;
 }
 
 body.dark .sidebar__role {
