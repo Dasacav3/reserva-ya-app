@@ -1,12 +1,15 @@
 
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
 
 ErrorDocument 400 http://localhost/reservaya-mvc/app/views/errors/400.php
 ErrorDocument 401 http://localhost/reservaya-mvc/app/views/errors/401.php
 ErrorDocument 403 http://localhost/reservaya-mvc/app/views/errors/403.php
-ErrorDocument 404 http://localhost/reservaya-mvc/app/views/errors/404.php
 ErrorDocument 500 http://localhost/reservaya-mvc/app/views/errors/500.php
 ErrorDocument 502 http://localhost/reservaya-mvc/app/views/errors/502.php
 ErrorDocument 503 http://localhost/reservaya-mvc/app/views/errors/503.php
