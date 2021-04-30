@@ -9,7 +9,7 @@
 
     if($sesion == null || $sesion = ''){
         echo 'Usted no tiene autorización';
-        header("location: ../../views/login.php");
+        header("location: http://localhost/reservaya-mvc/login");
         die();
     }
 

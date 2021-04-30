@@ -16,7 +16,7 @@
         $password = $_POST['pass_emp'];
         $tipo = 'Empleado';
         $estado = 1;
-        $foto = '../../../../public/profile_photo/user_default_reservaya.png';
+        $foto = 'http://localhost/reservaya-mvc/public/profile_photo/user_default_reservaya.png';
 
         $pass_hash = password_hash($password,PASSWORD_BCRYPT);
 

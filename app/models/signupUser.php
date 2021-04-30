@@ -1,5 +1,5 @@
 <?php
-    include("../controller/database.php");
+    require_once "../controller/database.php";
 
     $password = $_POST['password'];
 
@@ -12,7 +12,7 @@
     $fecha = $_POST['nacimiento'];
     $cel = $_POST['cel'];
 
-    $img_default = "../../../../public/profile_photo/user_default_reservaya.png";
+    $img_default = "http://localhost/reservaya-mvc/public/profile_photo/user_default_reservaya.png";
 
     try{
         $pdo->beginTransaction();
