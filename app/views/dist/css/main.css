@@ -1,4 +1,11 @@
+@import url("checkbox_comp.css");
 @import url("colors_fonts.css");
+@import url("dashboard.css");
+@import url("datatable.css");
+@import url("drag_and_drop.css");
+@import url("modals.css");
+@import url("pdf.css");
+@import url("whatsapp_comp.css");
 
 html {
 	scroll-behavior: smooth;
@@ -54,7 +61,7 @@ body::-webkit-scrollbar-thumb {
 	display: flex;
 	justify-content: space-between;
 	font-weight: 600;
-    z-index: 1000;
+	z-index: 1000;
 }
 
 .nav-bar__nav-ul-li {
