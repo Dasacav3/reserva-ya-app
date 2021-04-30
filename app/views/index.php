@@ -5,20 +5,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Favicon -->
-    <link rel="shortcut icon" href="<?= constant('URL') ?>app/views/dist/img/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?= constant('URL') ?>public/img/favicon.png" type="image/x-icon" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?= constant('URL') ?>lib/fontawesome-5.15.2/css/all.min.css" />
     <script src="<?= constant('URL') ?>lib/fontawesome-5.15.2/js/all.min.js"></script>
     <!-- Styles -->
-    <link rel="stylesheet" href="<?= constant('URL') ?>app/views/dist/css/normalize.css" />
-    <link rel="stylesheet" href="<?= constant('URL') ?>app/views/dist/css/main.css" />
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/normalize.css" />
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/main.css" />
     <title>Sistema de reservación de mesas, gestión de productos y proveedores | Reserva Ya</title>
 </head>
 
 <body class="body">
     <!-- Barra de navegación -->
     <header class="nav-bar">
-        <img class="nav-bar__img" src="<?= constant('URL') ?>app/views/dist/img/logo-reservaya.png" alt="Logo Reserva Ya" />
+        <img class="nav-bar__img" src="<?= constant('URL') ?>public/img/logo-reservaya.png" alt="Logo Reserva Ya" />
         <nav class="nav-bar__nav">
             <ul class="nav-bar__nav-ul">
                 <li class="nav-bar__nav-ul-li"><a href="index.html" class="nav-bar-link"><i class="fas fa-home"></i> Inicio</a></li>
@@ -49,7 +49,7 @@
             </h1>
             <div class="welcome-slide-container">
                 <h3 class="welcome-slide__h3">¡Bienvenido!</h3>
-                <img src="<?= constant('URL') ?>app/views/dist/img/illustration/special_event.svg" alt="" class="welcome-slide__img" />
+                <img src="<?= constant('URL') ?>public/img/illustration/special_event.svg" alt="" class="welcome-slide__img" />
                 <button class="welcome-button"><a href="#navServices">Conoce más</a></button>
             </div>
         </div>
@@ -128,7 +128,7 @@
                 </p>
             </div>
             <div class="nosotros-item | nosotros-item__img">
-                <img src="<?= constant('URL') ?>app/views/dist/img/Logo-Sephia_PUB.jpg" alt="" />
+                <img src="<?= constant('URL') ?>public/img/Logo-Sephia_PUB.jpg" alt="" />
             </div>
         </div>
     </section>

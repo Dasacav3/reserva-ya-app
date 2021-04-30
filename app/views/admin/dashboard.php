@@ -2,12 +2,10 @@
 <html lang="es">
 
 <head>
-	<?php require "head.php";?>
+	<?php require "head.php"; ?>
 	<title>Dashboard Reserva Ya</title>
 </head>
 <?php
-
-
 
 session_start();
 
@@ -29,15 +27,23 @@ if ($sesion == null || $sesion = '' || $_SESSION['datos'][2] != 'Administrador')
 }
 
 $img = $_SESSION['datos'][6];
-$result = str_replace("../../../../", "../../../", $img);
 
 ?>
 
 <body id="body" onmousemove="mouseMovement(event)">
-	<?php require "contenido.php";?>
-	<script src="<?= constant('URL') ?>app/views/dist/js/app.js"></script>
+	<?php require "contenido.php"; ?>
+	<div class="main__title">
+		<img src="<?= constant('URL') ?>public/img/assets/hello.svg" alt="" />
+		<div class="main__greeting">
+			<h1>¡Bienvenido!</h1>
+			<p>Este es tu dashboard Reserva Ya</p>
+		</div>
+	</div>
+	<?php require "footer.php"; ?>
+	<script src="<?= constant('URL') ?>public/js/app.js"></script>
 	<script>
 		countdown.start();
+
 		function mouseMovement(event) {
 			var x = event.clientX;
 			var y = event.clientY;
@@ -45,7 +51,7 @@ $result = str_replace("../../../../", "../../../", $img);
 			countdown.update();
 		}
 	</script>
-	<script src="<?= constant('URL') ?>app/views/dist/js/sidebarDashboard.js"></script>
+	<script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
 </body>
 
 </html>

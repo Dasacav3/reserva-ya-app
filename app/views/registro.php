@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="<?= constant('URL') ?>app/views/dist/img/favicon.png" type="image/x-icon" />
-	<link rel="stylesheet" href="<?= constant('URL') ?>app/views/dist/css/normalize.css" />
-	<link rel="stylesheet" href="<?= constant('URL') ?>app/views/dist/css/main.css" />
+	<link rel="shortcut icon" href="<?= constant('URL') ?>public/img/favicon.png" type="image/x-icon" />
+	<link rel="stylesheet" href="<?= constant('URL') ?>public/css/normalize.css" />
+	<link rel="stylesheet" href="<?= constant('URL') ?>public/css/main.css" />
 	<link rel="stylesheet" href="<?= constant('URL') ?>lib/fontawesome-5.15.2/css/all.min.css" />
 	<script src="<?= constant('URL') ?>lib/fontawesome-5.15.2/js/all.min.js"></script>
 	<script src="<?= constant('URL') ?>lib/sweetaler2/sweetalert2.all.min.js"></script>
@@ -18,7 +18,7 @@
             <a href="<?= constant('URL') ?>login"><i class="fas fa-arrow-circle-left return-icon"></i></a>
         </div>
         <div class="register-logo">
-            <img src="<?= constant('URL') ?>app/views/dist/img/favicon.png" alt="">
+            <img src="<?= constant('URL') ?>public/img/favicon.png" alt="">
         </div>
         <div class="register-title">
             <h2>Formulario de Registro</h2>
@@ -45,7 +45,7 @@
             </form>
         </div>
     </div>
-    <script src="<?= constant('URL') ?>app/views/dist/js/regularExpression.js"></script>
-    <script src="<?= constant('URL') ?>app/views/dist/js/formValidation.js"></script>
+    <script src="<?= constant('URL') ?>public/js/regularExpression.js"></script>
+    <script src="<?= constant('URL') ?>public/js/formValidation.js"></script>
 </body>
 </html>

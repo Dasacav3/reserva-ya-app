@@ -3,9 +3,10 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<link rel="shortcut icon" href="<?= constant('URL') ?>app/views/dist/img/favicon.png" type="image/x-icon" />
-	<link rel="stylesheet" href="<?= constant('URL') ?>app/views/dist/css/normalize.css" />
-	<link rel="stylesheet" href="<?= constant('URL') ?>app/views/dist/css/main.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="<?= constant('URL') ?>public/img/favicon.png" type="image/x-icon" />
+	<link rel="stylesheet" href="<?= constant('URL') ?>public/css/normalize.css" />
+	<link rel="stylesheet" href="<?= constant('URL') ?>public/css/main.css" />
 	<link rel="stylesheet" href="<?= constant('URL') ?>lib/fontawesome-5.15.2/css/all.min.css" />
 	<script src="<?= constant('URL') ?>lib/fontawesome-5.15.2/js/all.min.js"></script>
 	<script src="<?= constant('URL') ?>lib/sweetaler2/sweetalert2.all.min.js"></script>
@@ -20,7 +21,7 @@
 		</div>
 		<div class="login">
 			<div class="login-img">
-				<img src="<?= constant('URL') ?>app/views/dist/img/favicon.png" alt="" class="login-img__img" />
+				<img src="<?= constant('URL') ?>public/img/favicon.png" alt="" class="login-img__img" />
 			</div>
 			<form class="form-login" id="form" method="POST">
 				<label for="user_name">Nombre de usuario</label> <br />
@@ -36,7 +37,7 @@
 			</p>
 		</div>
 	</div>
-	<script src="<?= constant('URL') ?>app/views/dist/js/app.js"></script>
+	<script src="<?= constant('URL') ?>public/js/app.js"></script>
 </body>
 
 </html>

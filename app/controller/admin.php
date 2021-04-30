@@ -12,8 +12,48 @@ class Admin extends Controller
         $this->view->render('admin/dashboard');
     }
 
-    public function saludo()
+    public function updateInfo()
     {
-        echo "<p>Ejecutaste el metodo saludo</p>";
+        $this->view->render('admin/updateInfo');
+    }
+
+    public function reservas()
+    {
+        $this->view->render('admin/reserva');
+    }
+
+    public function mesas()
+    {
+        $this->view->render('admin/mesas');
+    }
+
+    public function productos()
+    {
+        $this->view->render('admin/productos');
+    }
+
+    public function insumos()
+    {
+        $this->view->render('admin/insumos');
+    }
+
+    public function proveedores()
+    {
+        $this->view->render('admin/proveedores');
+    }
+
+    public function usuarios()
+    {
+        $this->view->render('admin/usuarios');
+    }
+    
+    public function informacion()
+    {
+        $this->view->render('admin/informacion');
+    }
+
+    public function soporte()
+    {
+        $this->view->render('admin/soporte');
     }
 }
