@@ -1,5 +1,14 @@
+"use strict";
+
+import { URL } from "./modules.js";
+
+let btnSubmit = document.getElementById("submit");
+if (btnSubmit !== null) {
+	btnSubmit.addEventListener("click", loginUser, false);
+}
+
 function loginUser() {
-	fetch("http://localhost/reservaya-mvc/app/models/loginUser.php", {
+	fetch(URL + "app/models/loginUser.php", {
 		method: "POST",
 		body: new FormData(form),
 	})
@@ -13,7 +22,7 @@ function loginUser() {
 					showConfirmButton: false,
 					timer: 1500,
 				}).then(() => {
-					window.location = "http://localhost/reservaya-mvc/admin";
+					window.location = URL + "admin";
 				});
 			} else if (response.trim() == "empleado") {
 				Swal.fire({
@@ -22,7 +31,7 @@ function loginUser() {
 					showConfirmButton: false,
 					timer: 1500,
 				}).then(() => {
-					window.location = "http://localhost/reservaya-mvc/empleado";
+					window.location = URL + "empleado";
 				});
 			} else if (response.trim() == "cliente") {
 				Swal.fire({
@@ -31,7 +40,7 @@ function loginUser() {
 					showConfirmButton: false,
 					timer: 1500,
 				}).then(() => {
-					window.location = "http://localhost/reservaya-mvc/cliente";
+					window.location = URL + "cliente";
 				});
 			} else if (response.trim() == "usuario o contraseña incorrecto") {
 				Swal.fire({
@@ -64,7 +73,7 @@ function loginUser() {
 
 // Actualización automatica de estado de reserva
 function updateStateReserva() {
-	fetch("http://localhost/reservaya-mvc/app/controller/reservas/reservasEstado.php", {
+	fetch(URL + "app/controller/reservas/reservasEstado.php", {
 		method: "POST",
 	})
 		.then((res) => res.text())
@@ -76,7 +85,21 @@ function updateStateReserva() {
 // Modo oscuro
 
 const btnSwitch = document.querySelector("#switch");
-btnSwitch.addEventListener("click", () => {
+
+if (btnSwitch !== null) {
+	btnSwitch.addEventListener("click", darkMode, false);
+
+	// Obtenemos el modo actual.
+	if (localStorage.getItem("dark-mode") === "true") {
+		document.body.classList.add("dark");
+		btnSwitch.classList.add("active");
+	} else {
+		document.body.classList.remove("dark");
+		btnSwitch.classList.remove("active");
+	}
+}
+
+function darkMode() {
 	document.body.classList.toggle("dark");
 	btnSwitch.classList.toggle("active");
 
@@ -86,15 +109,6 @@ btnSwitch.addEventListener("click", () => {
 	} else {
 		localStorage.setItem("dark-mode", "false");
 	}
-});
-
-// Obtenemos el modo actual.
-if (localStorage.getItem("dark-mode") === "true") {
-	document.body.classList.add("dark");
-	btnSwitch.classList.add("active");
-} else {
-	document.body.classList.remove("dark");
-	btnSwitch.classList.remove("active");
 }
 
 // Contador de inactividad
@@ -154,12 +168,27 @@ var countdown = new Counter({
 
 	// callback function for each second
 	onUpdateStatus: function (second) {
-		// console.log(second);
+		console.log(second);
 	},
 
 	// callback function for final action after countdown
 	onCounterEnd: function (seconds) {
 		alert("Sesión expirada por inactividad");
-		top.location.href = "http://localhost/reservaya-mvc/app/models/logout.php";
+		top.location.href = URL + "app/models/logout.php";
 	},
 });
+
+const body = document.getElementById("body");
+
+if (body !== null) {
+	body.addEventListener("mousemove", mouseMovement, false);
+
+	countdown.start();
+
+	function mouseMovement(event) {
+		var x = event.clientX;
+		var y = event.clientY;
+		// console.log(x);
+		countdown.update();
+	}
+}
