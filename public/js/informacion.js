@@ -1,11 +1,27 @@
-var reporte_insumo_container = document.getElementById("reporte_insumo_container");
-var reporte_insumo = document.getElementById("reporte_insumo");
+"use strict";
 
-var reporte_reserva_container = document.getElementById("reporte_reserva_container");
-var reporte_reserva = document.getElementById("reporte_reserva");
+import { URL } from "./modules.js";
 
-var reporte_usuario_container = document.getElementById("reporte_usuario_container");
-var reporte_usuario = document.getElementById("reporte_usuario");
+let reporte_insumo_container = document.getElementById("reporte_insumo_container");
+let reporte_insumo = document.getElementById("reporte_insumo");
+let btn_reporte_insumo = document.getElementById("reporteInsumo");
+btn_reporte_insumo.addEventListener("click", showPopup_add_insumo, false);
+let btnGenInsumo = document.getElementById("generarReporteInsumo");
+btnGenInsumo.addEventListener("click", generarReporteInsumo, false);
+
+let reporte_reserva_container = document.getElementById("reporte_reserva_container");
+let reporte_reserva = document.getElementById("reporte_reserva");
+let btn_reporte_reserva = document.getElementById("reporteReserva");
+btn_reporte_reserva.addEventListener("click", showPopup_add_reserva, false);
+let btnGenReserva = document.getElementById("generarReporteReserva");
+btnGenReserva.addEventListener("click", generarReporteReserva, false);
+
+let reporte_usuario_container = document.getElementById("reporte_usuario_container");
+let reporte_usuario = document.getElementById("reporte_usuario");
+let btn_reporte_usuario = document.getElementById("reporteCliente");
+btn_reporte_usuario.addEventListener("click", showPopup_add_usuario, false);
+let btnGenUsuario = document.getElementById("generarReporteUsuario");
+btnGenUsuario.addEventListener("click", generarReporteUsuario, false);
 
 function showPopup_add_insumo() {
 	reporte_insumo.classList.add("show");
@@ -22,7 +38,7 @@ function showPopup_add_usuario() {
 	reporte_usuario_container.classList.add("show");
 }
 
-var cerrar_add = document.getElementsByClassName("closePopup-add");
+let cerrar_add = document.getElementsByClassName("closePopup-add");
 
 for (let i = 0; i < cerrar_add.length; i++) {
 	cerrar_add[i].addEventListener("click", () => {
@@ -38,7 +54,7 @@ for (let i = 0; i < cerrar_add.length; i++) {
 mostrarCliente();
 
 function mostrarCliente() {
-	fetch("http://localhost/reservaya-mvc/app/models/admin/reservas/mostrarCliente.php", {
+	fetch(URL + "app/models/admin/reservas/mostrarCliente.php", {
 		method: "POST",
 	})
 		.then((response) => response.text())
@@ -63,14 +79,14 @@ function generarReporteInsumo() {
 			text: "La fecha final no puede estar vacia",
 		});
 	} else {
-		fetch("http://localhost/reservaya-mvc/app/controller/pdf/generateReport.php", {
+		fetch(URL + "app/controller/pdf/generateReport.php", {
 			method: "POST",
 			body: new FormData(reporte_insumo),
 		})
 			.then((res) => res.text())
 			.then((response) => {
 				console.log(response);
-				(window.location.href = "http://localhost/reservaya-mvc/" + response), "_blank";
+				(window.location.href = URL + response), "_blank";
 			});
 	}
 }
@@ -91,14 +107,14 @@ function generarReporteReserva() {
 			text: "La fecha final no puede estar vacia",
 		});
 	} else {
-		fetch("http://localhost/reservaya-mvc/app/controller/pdf/generateReport.php", {
+		fetch(URL + "app/controller/pdf/generateReport.php", {
 			method: "POST",
 			body: new FormData(reporte_reserva),
 		})
 			.then((res) => res.text())
 			.then((response) => {
 				console.log(response);
-				(window.location.href = "http://localhost/reservaya-mvc/" + response), "_blank";
+				(window.location.href = URL + response), "_blank";
 			});
 	}
 }
@@ -112,14 +128,14 @@ function generarReporteUsuario() {
 			text: "Debe seleccionar un cliente",
 		});
 	} else {
-		fetch("http://localhost/reservaya-mvc/app/controller/pdf/generateReport.php", {
+		fetch(URL + "app/controller/pdf/generateReport.php", {
 			method: "POST",
 			body: new FormData(reporte_usuario),
 		})
 			.then((res) => res.text())
 			.then((response) => {
 				console.log(response);
-				(window.location.href = "http://localhost/reservaya-mvc/" + response), "_blank";
+				(window.location.href = URL + response), "_blank";
 			});
 	}
 }

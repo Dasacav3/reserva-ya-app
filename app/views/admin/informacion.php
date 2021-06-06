@@ -39,17 +39,17 @@ $img = $_SESSION['datos'][6];
         <div class="reporte_card">
           <div class="icon_reporte"><i class="fas fa-scroll"></i></div>
           <h4>Insumos</h4>
-          <button class="btn_generar" onclick="showPopup_add_insumo()">Generar reporte</button>
+          <button class="btn_generar" id="reporteInsumo">Generar reporte</button>
         </div>
         <div class="reporte_card">
           <div class="icon_reporte"><i class="fas fa-book"></i></div>
           <h4>Reservaciones</h4>
-          <button class="btn_generar" onclick="showPopup_add_reserva()">Generar reporte</button>
+          <button class="btn_generar" id="reporteReserva">Generar reporte</button>
         </div>
         <div class="reporte_card">
           <div class="icon_reporte"><i class="fas fa-user-alt"></i></div>
           <h4>Clientes</h4>
-          <button class="btn_generar" onclick="showPopup_add_usuario()">Generar reporte</button>
+          <button class="btn_generar" id="reporteCliente">Generar reporte</button>
         </div>
 
         <div id="reporte_insumo_container" class="pop-up form-modal">
@@ -67,7 +67,7 @@ $img = $_SESSION['datos'][6];
                 <input type="date" name="fecha_final" id="fecha_final_insumo">
               </div>
             </div>
-            <input type="button" value="Generar" onclick="generarReporteInsumo()" />
+            <input type="button" value="Generar" id="generarReporteInsumo" />
           </form>
         </div>
 
@@ -88,7 +88,7 @@ $img = $_SESSION['datos'][6];
                 <input type="date" name="fecha_final" id="fecha_final_reserva">
               </div>
             </div>
-            <input type="button" value="Generar" onclick="generarReporteReserva()" />
+            <input type="button" value="Generar" id="generarReporteReserva" />
           </form>
         </div>
 
@@ -104,7 +104,7 @@ $img = $_SESSION['datos'][6];
                 </select> <br>
               </div>
             </div>
-            <input type="button" value="Generar" onclick="generarReporteUsuario()" />
+            <input type="button" value="Generar" id="generarReporteUsuario" />
           </form>
         </div>
 
@@ -116,7 +116,7 @@ $img = $_SESSION['datos'][6];
   <?php require "footer.php"; ?>
   <script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
   <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
-  <script src="<?= constant('URL') ?>public/js/informacion.js"></script>
+  <script src="<?= constant('URL') ?>public/js/informacion.js" type="module"></script>
 </body>
 
 </html>
