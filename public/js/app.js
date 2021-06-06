@@ -71,17 +71,6 @@ function loginUser() {
 		});
 }
 
-// Actualización automatica de estado de reserva
-function updateStateReserva() {
-	fetch(URL + "app/controller/reservas/reservasEstado.php", {
-		method: "POST",
-	})
-		.then((res) => res.text())
-		.then((response) => {
-			console.log(response);
-		});
-}
-
 // Modo oscuro
 
 const btnSwitch = document.querySelector("#switch");
