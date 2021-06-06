@@ -42,11 +42,26 @@ class Admin extends Controller
         $this->view->render('admin/proveedores');
     }
 
+    public function agregarprov()
+    {
+        $this->view->render('admin/agregarprov');
+    }
+
+    public function eliminaprov()
+    {
+        $this->view->render('admin/eliminaprov');
+    }
+
+    public function actualizaprov()
+    {
+        $this->view->render('admin/actualizaprov');
+    }
+
     public function usuarios()
     {
         $this->view->render('admin/usuarios');
     }
-    
+
     public function informacion()
     {
         $this->view->render('admin/informacion');
