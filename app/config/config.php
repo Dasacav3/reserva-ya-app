@@ -3,7 +3,7 @@
     define('URL', 'http://localhost/reservaya-mvc/');
 
     define('HOST', 'localhost');
-    define('DB', 'reservaya2');
+    define('DB', 'reservaya');
     define('USER', 'root');
-    define('PASSWORD', '');
+    define('PASSWORD', 'mariadb');
     define('CHARSET', 'utf8');
