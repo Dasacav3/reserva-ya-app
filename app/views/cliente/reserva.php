@@ -35,7 +35,7 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 
 ?>
 
-<body id="body" onmousemove="mouseMovement(event)">
+<body id="body">
 	<?php require "contenido.php"; ?>
 	<main class="main__container">
 		<div>
@@ -116,17 +116,7 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 
 	</main>
 	<?php require "footer.php"; ?>
-	<script src="<?= constant('URL') ?>public/js/app.js"></script>
-	<script>
-		countdown.start();
-
-		function mouseMovement(event) {
-			var x = event.clientX;
-			var y = event.clientY;
-			// console.log(x);
-			countdown.update();
-		}
-	</script>
+	<script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
 	<script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
 	<script src="<?= constant('URL') ?>public/js/datatable.js"></script>
 	<script src="<?= constant('URL') ?>public/js/reservas_cli.js"></script>

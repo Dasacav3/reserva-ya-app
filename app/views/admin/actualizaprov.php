@@ -57,17 +57,7 @@ $img = $_SESSION['datos'][6];
         </div>
       </main>
       <?php require "footer.php"; ?>
-  <script src="<?= constant('URL') ?>public/js/app.js"></script>
-  <script>
-    countdown.start();
-
-    function mouseMovement(event) {
-      var x = event.clientX;
-      var y = event.clientY;
-      // console.log(x);
-      countdown.update();
-    }
-  </script>
+  <script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
   <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
   </body>
 </html>

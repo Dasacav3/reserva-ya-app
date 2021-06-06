@@ -30,7 +30,7 @@ $result = str_replace("../../../../", "../../../", $img);
 ?>
 
 
-<body id="body" onmousemove="mouseMovement(event)">
+<body id="body">
 	<?php require "contenido.php"; ?>
 	<main>
 		<div class="main__container">
@@ -46,17 +46,7 @@ $result = str_replace("../../../../", "../../../", $img);
 		</div>
 	</main>
 	<?php require "footer.php"; ?>
-	<script src="<?= constant('URL') ?>public/js/app.js"></script>
-	<script>
-		countdown.start();
-
-		function mouseMovement(event) {
-			var x = event.clientX;
-			var y = event.clientY;
-			// console.log(x);
-			countdown.update();
-		}
-	</script>
+	<script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
 	<script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
 </body>
 

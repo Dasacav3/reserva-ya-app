@@ -28,7 +28,7 @@
 				<input type="email" id="user_name" name="user_name" required placeholder="example@domain.com" />
 				<label for="password">Contraseña</label> <br />
 				<input type="password" id="password" name="password" required maxlength="30" />
-				<input type="button" value="Iniciar sesión" id="submit" onclick="loginUser()" />
+				<input type="button" value="Iniciar sesión" id="submit"/>
 			</form>
 		</div>
 		<div class="register">
@@ -37,7 +37,7 @@
 			</p>
 		</div>
 	</div>
-	<script src="<?= constant('URL') ?>public/js/app.js"></script>
+	<script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
 </body>
 
 </html>

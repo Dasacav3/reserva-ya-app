@@ -28,7 +28,7 @@ $img = $_SESSION['datos'][6];
 
 ?>
 
-<body id="body" onmousemove="mouseMovement(event)">
+<body id="body">
   <?php require "contenido.php"; ?>
 
   <main class="main__container">
@@ -114,17 +114,7 @@ $img = $_SESSION['datos'][6];
     </div>
   </main>
   <?php require "footer.php"; ?>
-  <script src="<?= constant('URL') ?>public/js/app.js"></script>
-  <script>
-    countdown.start();
-
-    function mouseMovement(event) {
-      var x = event.clientX;
-      var y = event.clientY;
-      // console.log(x);
-      countdown.update();
-    }
-  </script>
+  <script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
   <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
   <script src="<?= constant('URL') ?>public/js/informacion.js"></script>
 </body>
