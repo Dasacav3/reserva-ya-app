@@ -46,10 +46,10 @@ $img = $_SESSION['datos'][6];
           <input type="email" id="email" name="email"> <br>
           <label for="">Celular</label> <br>
           <input type="tel" id="cel" name="cel"> <br>
-          <input type="button" value="Actualizar" onclick="editarInfo()">
+          <input type="button" value="Actualizar" id="editarInfo">
         </form>
         <div>
-          <button class="change_pass" onclick="changePassword()">Cambiar contraseña</button>
+          <button class="change_pass" id="changePassword">Cambiar contraseña</button>
         </div>
       </div>
       <div class="updatedata_container">
@@ -88,7 +88,7 @@ $img = $_SESSION['datos'][6];
   <script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
   <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
   <script src="<?= constant('URL') ?>public/js/drag_and_drop.js"></script>
-  <script src="<?= constant('URL') ?>public/js/updateInfo_admin.js"></script>
+  <script src="<?= constant('URL') ?>public/js/updateInfo_admin.js" type="module"></script>
 </body>
 
 </html>

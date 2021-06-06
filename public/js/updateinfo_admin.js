@@ -1,4 +1,16 @@
+"use strict";
+
+import { URL } from "./modules.js";
+
 listarInfo();
+
+let editInfo = document.getElementById("editarInfo");
+let changePass = document.getElementById("changePassword");
+
+editInfo.addEventListener("click", editarInfo, false);
+changePass.addEventListener("click", changePassword, false);
+
+let enviar = document.getElementById("enviar");
 
 enviar.addEventListener("click", () => {
 	// Verificar que se agregó un archivo
@@ -16,7 +28,7 @@ enviar.addEventListener("click", () => {
 	// Solo para ver que sí se agregó el archivo
 	// console.log(...data);
 
-	fetch("http://localhost/reservaya-mvc/app/models/admin/usuarios/añadirFotoPerfil.php", {
+	fetch(URL + "app/models/admin/usuarios/añadirFotoPerfil.php", {
 		method: "POST",
 		body: data,
 	})
@@ -59,7 +71,7 @@ enviar.addEventListener("click", () => {
 });
 
 edit.addEventListener("click", () => {
-	fetch("http://localhost/reservaya-mvc/app/models/admin/informacion/cambioPassword.php", {
+	fetch(URL + "app/models/admin/informacion/cambioPassword.php", {
 		method: "POST",
 		body: new FormData(pop_up_wrap_edit),
 	})
@@ -88,7 +100,7 @@ edit.addEventListener("click", () => {
 });
 
 function listarInfo() {
-	fetch("http://localhost/reservaya-mvc/app/models/admin/informacion/listarInfo.php", {
+	fetch(URL + "app/models/admin/informacion/listarInfo.php", {
 		method: "POST",
 	})
 		.then((response) => response.json())
@@ -101,7 +113,7 @@ function listarInfo() {
 }
 
 function editarInfo() {
-	fetch("http://localhost/reservaya-mvc/app/models/admin/informacion/editarInfo.php", {
+	fetch(URL + "app/models/admin/informacion/editarInfo.php", {
 		method: "POST",
 		body: new FormData(form_update_info),
 	})

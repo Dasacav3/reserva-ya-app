@@ -1,3 +1,15 @@
+"use strict";
+
+import { URL } from "./modules.js";
+
+let editInfo = document.getElementById("editarInfo");
+let changePass = document.getElementById("changePassword");
+
+editInfo.addEventListener("click", editarInfo, false);
+changePass.addEventListener("click", changePassword, false);
+
+let enviar = document.getElementById("enviar");
+
 listarInfo();
 
 enviar.addEventListener("click", () => {
@@ -16,7 +28,7 @@ enviar.addEventListener("click", () => {
 	// Solo para ver que sí se agregó el archivo
 	// console.log(...data);
 
-	fetch("http://localhost/reservaya-mvc/app/models/cliente/informacion/añadirFotoPerfil.php", {
+	fetch(URL + "app/models/cliente/informacion/añadirFotoPerfil.php", {
 		method: "POST",
 		body: data,
 	})
@@ -59,7 +71,7 @@ enviar.addEventListener("click", () => {
 });
 
 edit.addEventListener("click", () => {
-	fetch("http://localhost/reservaya-mvc/app/models/cliente/informacion/cambioPassword.php", {
+	fetch(URL + "app/models/cliente/informacion/cambioPassword.php", {
 		method: "POST",
 		body: new FormData(pop_up_wrap_edit),
 	})
@@ -88,7 +100,7 @@ edit.addEventListener("click", () => {
 });
 
 function listarInfo() {
-	fetch("http://localhost/reservaya-mvc/app/models/cliente/informacion/listarInfo.php", {
+	fetch(URL + "app/models/cliente/informacion/listarInfo.php", {
 		method: "POST",
 	})
 		.then((response) => response.json())
@@ -102,13 +114,13 @@ function listarInfo() {
 }
 
 function editarInfo() {
-	fetch("http://localhost/reservaya-mvc/app/models/cliente/informacion/editarInfo.php", {
+	fetch(URL + "app/models/cliente/informacion/editarInfo.php", {
 		method: "POST",
 		body: new FormData(form_update_info),
 	})
 		.then((response) => response.text())
 		.then((response) => {
-            console.log(response);
+			console.log(response);
 			if (response == "ok") {
 				const Toast = Swal.mixin({
 					toast: true,
@@ -126,7 +138,7 @@ function editarInfo() {
 					icon: "success",
 					title: "Información actualizada satisfactoriamente",
 				});
-                listarInfo()
+				listarInfo();
 			} else {
 				const Toast = Swal.mixin({
 					toast: true,
@@ -144,7 +156,7 @@ function editarInfo() {
 					icon: "error",
 					title: "No se pudo actualizar la información",
 				});
-                listarInfo()
+				listarInfo();
 			}
 		});
 }
