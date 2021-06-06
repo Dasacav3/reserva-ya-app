@@ -149,13 +149,7 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 	<?php require "footer.php"; ?>
 	<script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
 	<script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
-	<script src="<?= constant('URL') ?>public/js/datatable.js"></script>
-	<script src="<?= constant('URL') ?>public/js/reservas_emp.js"></script>
-	<script>
-		window.onload = (() => {
-			updateStateReserva();
-		})
-	</script>
+	<script src="<?= constant('URL') ?>public/js/reservas_emp.js" type="module"></script>
 </body>
 
 </html>
