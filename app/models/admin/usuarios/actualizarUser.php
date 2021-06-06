@@ -40,7 +40,7 @@
 
         foreach($resultado2 as $dat){
             echo '
-                <a href="#" class="closePopup-edit closePopup" onclick="cerrar()"><i class="fas fa-times-circle"></i></a>
+                <a href="#" class="closePopup-edit closePopup"><i class="fas fa-times-circle"></i></a>
                 <h4 class="form-title">Editar empleado</h4>
                 <div class="form-fields">
                     <div>
@@ -68,7 +68,7 @@
                         <input type="tel" name="cel_emp_1" id="cel_emp_1" value="'.$dat["CELULAR_EMPLEADO"].'" /> <br />
                     </div>
                 </div>
-                <input type="button" value="Guardar" onclick="editarEmpleado()" />
+                <input type="button" value="Guardar" id="editarEmpleado" />
             ';
         }
     }else if($tipo == 'Cliente'){
@@ -84,7 +84,7 @@
 
         foreach($resultado2 as $dat){
             echo '
-                <a href="#" class="closePopup-edit closePopup" onclick="cerrar()"><i class="fas fa-times-circle"></i></a>
+                <a href="#" class="closePopup-edit closePopup"><i class="fas fa-times-circle"></i></a>
                 <h4 class="form-title">Editar cliente</h4>
                 <div class="form-fields">
                     <div>
@@ -112,7 +112,7 @@
                         <input type="tel" name="cel_cliente_1" id="cel_cliente_1" value="'.$dat["CELULAR_CLIENTE"].'" /> <br />
                     </div>
                 </div>
-                <input type="button" value="Guardar" onclick="editarCliente()" />
+                <input type="button" value="Guardar" id="editarCliente" />
             ';
         }
 

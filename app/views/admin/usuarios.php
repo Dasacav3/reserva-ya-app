@@ -123,10 +123,9 @@ $img = $_SESSION['datos'][6];
   </main>
   <?php require "footer.php"; ?>
   <script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
-  <script src="<?= constant('URL') ?>public/js/datatable.js"></script>
   <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
   <script src="<?= constant('URL') ?>public/js/regularExpression.js"></script>
-  <script src="<?= constant('URL') ?>public/js/usuarios_admin.js"></script>
+  <script src="<?= constant('URL') ?>public/js/usuarios_admin.js" type="module"></script>
 </body>
 
 </html>
