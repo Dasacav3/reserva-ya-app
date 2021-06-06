@@ -35,7 +35,7 @@ $img = $_SESSION['datos'][6];
       <h2 class="title_table">Modulo de Gestión de Proveedores</h2>
     </div>
     <?php
-    include('../../../controller/database.php');
+    require 'app/controller/database.php';
     try {
       $query = $pdo->prepare("SELECT * FROM proveedor");
       $query->execute();
@@ -46,9 +46,19 @@ $img = $_SESSION['datos'][6];
     <div class="datatable-container">
       <table class="datatable">
         <thead>
-          <tr>
-            <th colspan="1" style="text-align: center;"><a href="http://localhost/reservaya-mvc/app/views/admin/proveedores/agregarprov.php"><input type="button" value="AGREGAR" style="background: none; color: #fff; border: none;"></a></th>
-          </tr>
+          <div class="header-tools"> 
+            <div class="tools">
+              <ul>
+                <li>
+                  <a href="<?php echo constant('URL'); ?>admin/agregarprov"><button><i class="fas fa-plus-circle"></i> Añadir</button></a>
+                  
+                </li>
+              </ul>
+            </div>
+            <div class="search">
+              <input type="text" class="search-input" id="search_input" />
+            </div>
+          </div>
           <tr>
             <th>ID</th>
             <th>NOMBRE</th>
@@ -80,8 +90,8 @@ $img = $_SESSION['datos'][6];
               <td><?php
                   echo $row['TELEFONO_PROVEEDOR'];
                   ?></td>
-              <td><a href="http://localhost/reservaya-mvc/app/models/admin/proveedores/actualizaprov.php?id=<?php echo $row['ID_PROVEEDOR']; ?>&NP=<?php echo $row['NOMBRE_PROVEEDOR']; ?>&DP=<?php echo $row['DIRECCION_PROVEEDOR']; ?>&PE=<?php echo $row['PERSONA_ENCARGADA']; ?>&TP=<?php echo $row['TELEFONO_PROVEEDOR']; ?>"><button class="btn-edit"><i class='fas fa-edit'></i></button></a>
-                <a href="http://localhost/reservaya-mvc/app/models/admin/proveedores/eliminaprov.php?id=<?php echo $row['ID_PROVEEDOR']; ?>&NP=<?php echo $row['NOMBRE_PROVEEDOR']; ?>&DP=<?php echo $row['DIRECCION_PROVEEDOR']; ?>&PE=<?php echo $row['PERSONA_ENCARGADA']; ?>&TP=<?php echo $row['TELEFONO_PROVEEDOR']; ?>"><button class="btn-delete"><i class='fas fa-trash-alt'></i></button></a>
+              <td><a href="<?php echo constant('URL'); ?>admin/actualizaprov?id=<?php echo $row['ID_PROVEEDOR']; ?>&NP=<?php echo  $row['NOMBRE_PROVEEDOR']; ?>&DP=<?php echo  $row['DIRECCION_PROVEEDOR']; ?>&PE=<?php echo $row['PERSONA_ENCARGADA']; ?>&TP=<?php echo $row['TELEFONO_PROVEEDOR']; ?>"><button class="btn-edit"><i class='fas fa-edit'></i></button></a>
+                <a href="<?php echo constant('URL'); ?>admin/eliminaprov?id=<?php echo $row['ID_PROVEEDOR']; ?>&NP=<?php echo  $row['NOMBRE_PROVEEDOR']; ?>&DP=<?php echo  $row['DIRECCION_PROVEEDOR']; ?>&PE=<?php echo $row['PERSONA_ENCARGADA']; ?>&TP=<?php echo $row['TELEFONO_PROVEEDOR']; ?>"><button class="btn-delete"><i class='fas fa-trash-alt'></i></button></a>
               </td>
             </tr>
         </tbody>

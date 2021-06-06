@@ -24,12 +24,12 @@
 		} catch (Exception $e) {
 			echo "Conexion Fallida: " . $e->getMessage();
 			echo "<script>alert('ELIMINAR INSUMOS PRIMERO');
-				window.history.go(-1)</script>";
+				window.history.go(-1);</script>";
 		}
 		echo "<script>alert('Se elimino correctamente');</script>";
 	?>
 		<script>
-			top.location.href = "http://localhost/reservaya-mvc/app/views/admin/dashboard.php";
+			top.location.href = "http://localhost/reservaya-mvc/admin/proveedores";
 		</script>
 	<?php
 	} else {

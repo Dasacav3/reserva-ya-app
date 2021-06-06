@@ -23,7 +23,7 @@
 ?>
 
 	<script>
-         top.location.href="http://localhost/reservaya-mvc/app/views/admin/dashboard.php";
+         top.location.href="http://localhost/reservaya-mvc/admin/proveedores";
       </script>
 
 <?php
