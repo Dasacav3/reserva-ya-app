@@ -54,6 +54,12 @@ window.addEventListener("DOMContentLoaded", () => {
 	mostrarCliente();
 	mostrarMesa();
 
+	function enableBtns() {
+		for (let i = 0; i < btnEdit.length; i++) {
+			btnEdit[i].addEventListener("click", Editar, false);
+		}
+	}
+
 	function mostrarCliente() {
 		fetch(URL + "app/models/admin/reservas/mostrarCliente.php", {
 			method: "POST",
@@ -135,6 +141,8 @@ window.addEventListener("DOMContentLoaded", () => {
 				current_btn.classList.remove("active");
 
 				button.classList.add("active");
+
+				enableBtns();
 			});
 
 			return button;
@@ -152,9 +160,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			.then((response) => response.json())
 			.then((response) => {
 				paginationTable(response);
-				for (let i = 0; i < btnEdit.length; i++) {
-					btnEdit[i].addEventListener("click", Editar, false);
-				}
+				enableBtns();
 			});
 	}
 

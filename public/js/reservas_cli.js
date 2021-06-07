@@ -34,6 +34,12 @@ window.addEventListener("DOMContentLoaded", () => {
 	listarReservas();
 	mostrarMesa();
 
+	function enableBtns() {
+		for (let i = 0; i < btnCancel.length; i++) {
+			btnCancel[i].addEventListener("click", cancelarReserva, false);
+		}
+	}
+
 	function DisplayList(items, wrapper, rows_per_page, page) {
 		wrapper.innerHTML = "";
 		page--;
@@ -95,6 +101,8 @@ window.addEventListener("DOMContentLoaded", () => {
 				current_btn.classList.remove("active");
 
 				button.classList.add("active");
+
+				enableBtns();
 			});
 
 			return button;
@@ -112,9 +120,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			.then((response) => response.json())
 			.then((response) => {
 				paginationTable(response);
-				for (let i = 0; i < btnCancel.length; i++) {
-					btnCancel[i].addEventListener("click", cancelarReserva, false);
-				}
+				enableBtns();
 			});
 	}
 
