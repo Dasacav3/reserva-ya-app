@@ -1,0 +1,159 @@
+@import url("colors_fonts.css");
+
+html,
+body {
+	background: #1c2833;
+	color: #4f585e;
+	font-family: var(--poppins);
+	margin: 0;
+}
+body {
+	width: 100%;
+	height: 100%;
+}
+body::-webkit-scrollbar {
+	width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: #40474b;
+	border-radius: 20px;
+}
+img {
+	width: 115px;
+	height: 100px;
+	padding: 3px;
+	border-radius: 10px;
+}
+
+.navegacion {
+	width: 80%;
+	margin: 10px auto;
+	background: #5d6d7e;
+}
+.menu {
+	display: flex;
+	justify-content: space-around;
+}
+
+@media (max-width: 300px) {
+	.menu {
+		flex-direction: column;
+	}
+}
+
+.navegacion ul {
+	list-style: none;
+}
+
+.menu > li {
+	position: relative;
+	display: inline-block;
+}
+
+.menu > li > a {
+	display: inline-block;
+	padding: 1rem;
+	color: #353535;
+	text-decoration: none;
+	color: white;
+}
+
+.menu li a:hover {
+	background-size: 100% 2px;
+	color: white;
+	transition: all 0.3s;
+}
+a {
+	background-image: linear-gradient(currentColor, currentColor);
+	background-position: 0% 100%;
+	background-repeat: no-repeat;
+	background-size: 0% 2px;
+	transition: background-size 0.3s;
+}
+
+/* Submenu*/
+
+.submenu {
+	width: 280px;
+	position: absolute;
+	background: #333333;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 1.5s;
+	padding: 1rem;
+}
+
+.submenu li{
+	width: 300px;
+}
+
+.submenu li a {
+	text-align: right;
+	display: inline;
+	color: #fff;
+	text-decoration: none;
+}
+
+.menu li:hover .submenu {
+	visibility: visible;
+	opacity: 1;
+}
+.titulo {
+	text-align: center;
+	color: white;
+	font-size: 40px;
+}
+.container {
+	width: 100%;
+	max-width: 800px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 20px;
+	height: 450px;
+	justify-content: center;
+	margin: auto;
+}
+.container .card {
+	font-size: 17px;
+	width: 380px;
+	height: 420px;
+	border-radius: 6px;
+	color: #17202a;
+	background: rgba(255, 255, 255, 0.4);
+	box-shadow: 3px 3px 5px #ecf0f1;
+	text-align: center;
+	overflow: hidden;
+}
+
+.container .card h1 {
+	font-weight: 600;
+}
+@media (max-width: 450px) {
+	.container {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		grid-gap: 20px;
+		height: 450px;
+		justify-content: center;
+		margin: auto;
+	}
+	.container .card {
+		font-size: 17px;
+		width: 380px;
+		height: 420px;
+		border-radius: 6px;
+		color: #17202a;
+		background: rgba(255, 255, 255, 0.4);
+		box-shadow: 3px 3px 5px #ecf0f1;
+		text-align: center;
+		overflow: hidden;
+	}
+}
+.container .card:hover {
+	background: #d0d3d4;
+	transition: all 0.3s;
+	padding: 0;
+	font-size: 18px;
+	hyphens: auto;
+}
