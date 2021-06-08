@@ -32,6 +32,20 @@ class Admin extends Controller
         $this->view->render('admin/productos');
     }
 
+    public function agregar_producto()
+    {
+        $this->view->render('admin/agregar_producto');
+    }
+    public function verificar_eliminar()
+    {
+        $this->view->render('admin/verificar_eliminar');
+    }
+
+    public function actualizar_producto()
+    {
+        $this->view->render('admin/actualizar_producto');
+    }
+
     public function insumos()
     {
         $this->view->render('admin/insumos');

@@ -116,3 +116,140 @@ body.dark .closePopup {
 		flex-direction: column;
 	}
 }
+
+/*Formulario añadir categora*/
+.form_categoria {
+	display: none;
+}
+
+.form_categoria.show {
+	display: block;
+}
+
+.form_categoria {
+	background: white;
+	color: black;
+	margin: auto;
+	transition: 0.3s ease all;
+	width: 450px;
+	height: 320px;
+	position: absolute;
+	top: 0;
+	left: 200px;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+}
+.form_categoria input {
+	padding: 10px;
+}
+.form_categoria h2 {
+	padding: 10px;
+}
+.form_categoria h3 {
+	padding: 10px;
+	font-weight: normal;
+}
+#label_categoria {
+	padding: 10px;
+}
+#cerrar_categoria {
+	color: #ffffff;
+	background: #dd3333;
+	border-radius: 0.25em;
+	font-size: 20px;
+	cursor: pointer;
+	-webkit-appearance: button;
+	margin-top: 40px;
+	border: none;
+}
+#cerrar_categoria:hover {
+	background: #ab353f;
+}
+#enviar_categoria {
+	color: #ffffff;
+	background-color: #3085d6;
+	border-radius: 0.25em;
+	font-size: 20px;
+	cursor: pointer;
+	-webkit-appearance: button;
+	margin-top: 40px;
+	border: none;
+}
+#enviar_categoria:hover {
+	background: #18558e;
+}
+
+#nombre_categoria {
+	width: 80%;
+	height: 60px;
+	border: 1px solid var(--emerald);
+	border-radius: 5px;
+}
+
+/*Formulario editar categoria*/
+.edit_category {
+	display: none;
+}
+.show1 {
+	display: block;
+}
+.edit_category {
+	background: white;
+	color: black;
+	margin: auto;
+	width: 450px;
+	height: 340px;
+	position: absolute;
+	top: 0;
+	left: 200px;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+}
+.edit_category input {
+	padding: 8px;
+	margin-top: 10px;
+}
+.edit_category h2 {
+	padding: 10px;
+}
+.edit_category h3 {
+	padding: 8px;
+	font-weight: normal;
+}
+#cerrar_actualizacion_categoria {
+	color: #ffffff;
+	background: #dd3333;
+	border-radius: 0.25em;
+	font-size: 20px;
+	cursor: pointer;
+	-webkit-appearance: button;
+	margin-top: 40px;
+	border: none;
+}
+#cerrar_actualizacion_categoria:hover {
+	background: #ab353f;
+}
+#enviar_actualizacion_categoria {
+	color: #ffffff;
+	background-color: #3085d6;
+	border-radius: 0.25em;
+	font-size: 20px;
+	cursor: pointer;
+	-webkit-appearance: button;
+	margin-top: 40px;
+	border: none;
+}
+#enviar_actualizacion_categoria:hover {
+	background: #18558e;
+}
+
+#edit_category .id_categoria_producto,
+#categoria {
+	padding: 10px;
+	width: 80%;
+	height: 50px;
+}
