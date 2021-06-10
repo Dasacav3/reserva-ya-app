@@ -13,6 +13,22 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
+/*
+
+_ADMINISTRADOR_
+usuario: admin@gmail.com
+contraseña: 1234
+
+_EMPLEADO_
+usuario: empleado@gmail.com
+contraseña: 1234
+
+_CLIENTE_
+usuario: cliente@gmail.com
+contraseña: 1234
+
+
+/*
 -- Volcando estructura de base de datos para reservaya
 CREATE DATABASE IF NOT EXISTS `reservaya` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `reservaya`;
@@ -32,7 +48,11 @@ CREATE TABLE IF NOT EXISTS `administrador` (
   CONSTRAINT `administrador_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuario` (`ID_USUARIO`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.administrador: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `administrador` DISABLE KEYS */;
+INSERT INTO `administrador` (`ID_ADMIN`, `NOMBRE_ADMIN`, `APELLIDO_ADMIN`, `EMAIL_ADMIN`, `CELULAR_ADMIN`, `ID_USUARIO`) VALUES
+	(1, 'Administrador', 'Reserva Ya', 'admin@reservaya.com', '3112547896', 1);
+/*!40000 ALTER TABLE `administrador` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_admin
 CREATE TABLE IF NOT EXISTS `auditoria_admin` (
@@ -52,9 +72,13 @@ CREATE TABLE IF NOT EXISTS `auditoria_admin` (
   `ID_ADMIN` int(11) NOT NULL,
   `AUDI_ACCION` varchar(45) NOT NULL,
   PRIMARY KEY (`ID_AUDI`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.auditoria_admin: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `auditoria_admin` DISABLE KEYS */;
+INSERT INTO `auditoria_admin` (`ID_AUDI`, `NOMBRE_ADMIN_ANTERIOR`, `APELLIDO_ADMIN_ANTERIOR`, `EMAIL_ADMIN_ANTERIOR`, `CELULAR_ADMIN_ANTERIOR`, `ID_USUARIO_ANTERIOR`, `NOMBRE_ADMIN_NUEVO`, `APELLIDO_ADMIN_NUEVO`, `EMAIL_ADMIN_NUEVO`, `CELULAR_ADMIN_NUEVO`, `ID_USUARIO_NUEVO`, `AUDI_FECHA_MODIFICACION`, `AUDI_USUARIO`, `ID_ADMIN`, `AUDI_ACCION`) VALUES
+	(15, NULL, NULL, NULL, NULL, NULL, 'Administrador', 'Reserva Ya', 'admin@reservaya.com', '3112547896', 1, '2021-06-08 13:24:14', 'root@localhost', 1, 'Insercion');
+/*!40000 ALTER TABLE `auditoria_admin` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_categoria_insumo
 CREATE TABLE IF NOT EXISTS `auditoria_categoria_insumo` (
@@ -66,9 +90,11 @@ CREATE TABLE IF NOT EXISTS `auditoria_categoria_insumo` (
   `ID_CATEGORIA_INSUMO` int(11) NOT NULL,
   `AUDI_ACCION` varchar(45) NOT NULL,
   PRIMARY KEY (`ID_AUDI`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.auditoria_categoria_insumo: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `auditoria_categoria_insumo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auditoria_categoria_insumo` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_categoria_producto
 CREATE TABLE IF NOT EXISTS `auditoria_categoria_producto` (
@@ -80,9 +106,11 @@ CREATE TABLE IF NOT EXISTS `auditoria_categoria_producto` (
   `ID_CATEGORIA_PRODUCTO` int(11) NOT NULL,
   `AUDI_ACCION` varchar(45) NOT NULL,
   PRIMARY KEY (`ID_AUDI`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.auditoria_categoria_producto: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `auditoria_categoria_producto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auditoria_categoria_producto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_cliente
 CREATE TABLE IF NOT EXISTS `auditoria_cliente` (
@@ -104,9 +132,13 @@ CREATE TABLE IF NOT EXISTS `auditoria_cliente` (
   `ID_CLIENTE` int(11) NOT NULL,
   `AUDI_ACCION` varchar(45) NOT NULL,
   PRIMARY KEY (`ID_AUDI`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.auditoria_cliente: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `auditoria_cliente` DISABLE KEYS */;
+INSERT INTO `auditoria_cliente` (`ID_AUDI`, `NOMBRE_CLIENTE_ANTERIOR`, `APELLIDO_CLIENTE_ANTERIOR`, `FECHA_NACIMIENTO_CLIENTE_ANTERIOR`, `EMAIL_CLIENTE_ANTERIOR`, `CELULAR_CLIENTE_ANTERIOR`, `ID_USUARIO_ANTERIOR`, `NOMBRE_CLIENTE_NUEVO`, `APELLIDO_CLIENTE_NUEVO`, `FECHA_NACIMIENTO_CLIENTE_NUEVO`, `EMAIL_CLIENTE_NUEVO`, `CELULAR_CLIENTE_NUEVO`, `ID_USUARIO_NUEVO`, `AUDI_FECHA_MODIFICACION`, `AUDI_USUARIO`, `ID_CLIENTE`, `AUDI_ACCION`) VALUES
+	(12, NULL, NULL, NULL, NULL, NULL, NULL, 'Cliente', 'Reserva Ya', '2000-06-08', 'cliente@gmail.com', '3147895241', 3, '2021-06-08 13:25:10', 'root@localhost', 1, 'Insercion');
+/*!40000 ALTER TABLE `auditoria_cliente` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_empleado
 CREATE TABLE IF NOT EXISTS `auditoria_empleado` (
@@ -128,9 +160,13 @@ CREATE TABLE IF NOT EXISTS `auditoria_empleado` (
   `ID_EMPLEADO` int(11) NOT NULL,
   `AUDI_ACCION` varchar(45) NOT NULL,
   PRIMARY KEY (`ID_AUDI`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.auditoria_empleado: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `auditoria_empleado` DISABLE KEYS */;
+INSERT INTO `auditoria_empleado` (`ID_AUDI`, `DOC_EMPLEADO_ANTERIOR`, `NOMBRE_EMPLEADO_ANTERIOR`, `APELLIDO_EMPLEADO_ANTERIOR`, `EMAIL_EMPLEADO_ANTERIOR`, `CELULAR_EMPLEADO_ANTERIOR`, `ID_USUARIO_ANTERIOR`, `DOC_EMPLEADO_NUEVO`, `NOMBRE_EMPLEADO_NUEVO`, `APELLIDO_EMPLEADO_NUEVO`, `EMAIL_EMPLEADO_NUEVO`, `CELULAR_EMPLEADO_NUEVO`, `ID_USUARIO_NUEVO`, `AUDI_FECHA_MODIFICACION`, `AUDI_USUARIO`, `ID_EMPLEADO`, `AUDI_ACCION`) VALUES
+	(8, NULL, NULL, NULL, NULL, NULL, NULL, '47851478', 'Empleado', 'Reserva Ya', 'empleado@reservaya.com', '3178456985', 2, '2021-06-08 13:25:53', 'root@localhost', 1, 'Insercion');
+/*!40000 ALTER TABLE `auditoria_empleado` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_insumo
 CREATE TABLE IF NOT EXISTS `auditoria_insumo` (
@@ -152,9 +188,11 @@ CREATE TABLE IF NOT EXISTS `auditoria_insumo` (
   `ID_INSUMO` int(11) NOT NULL,
   `AUDI_ACCION` varchar(45) NOT NULL,
   PRIMARY KEY (`ID_AUDI`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.auditoria_insumo: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `auditoria_insumo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auditoria_insumo` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_mesa
 CREATE TABLE IF NOT EXISTS `auditoria_mesa` (
@@ -168,9 +206,11 @@ CREATE TABLE IF NOT EXISTS `auditoria_mesa` (
   `ID_MESA` int(11) NOT NULL,
   `AUDI_ACCION` varchar(45) NOT NULL,
   PRIMARY KEY (`ID_AUDI`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.auditoria_mesa: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `auditoria_mesa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auditoria_mesa` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_producto
 CREATE TABLE IF NOT EXISTS `auditoria_producto` (
@@ -192,9 +232,11 @@ CREATE TABLE IF NOT EXISTS `auditoria_producto` (
   `ID_PRODUCTO` int(11) NOT NULL,
   `AUDI_ACCION` varchar(45) NOT NULL,
   PRIMARY KEY (`ID_AUDI`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.auditoria_producto: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `auditoria_producto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auditoria_producto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_proveedor
 CREATE TABLE IF NOT EXISTS `auditoria_proveedor` (
@@ -214,7 +256,9 @@ CREATE TABLE IF NOT EXISTS `auditoria_proveedor` (
   PRIMARY KEY (`ID_AUDI`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.auditoria_proveedor: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `auditoria_proveedor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auditoria_proveedor` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_reservacion
 CREATE TABLE IF NOT EXISTS `auditoria_reservacion` (
@@ -234,9 +278,11 @@ CREATE TABLE IF NOT EXISTS `auditoria_reservacion` (
   `ID_RESERVACION` int(11) NOT NULL,
   `AUDI_ACCION` varchar(45) NOT NULL,
   PRIMARY KEY (`ID_AUDI`)
-) ENGINE=InnoDB AUTO_INCREMENT=474 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=555 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.auditoria_reservacion: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `auditoria_reservacion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auditoria_reservacion` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_reservacion_reserva_mesa
 CREATE TABLE IF NOT EXISTS `auditoria_reservacion_reserva_mesa` (
@@ -250,9 +296,11 @@ CREATE TABLE IF NOT EXISTS `auditoria_reservacion_reserva_mesa` (
   `ID_RESERVACION_RESERVA_MESA` int(11) NOT NULL,
   `AUDI_ACCION` varchar(45) NOT NULL,
   PRIMARY KEY (`ID_AUDI`)
-) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.auditoria_reservacion_reserva_mesa: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `auditoria_reservacion_reserva_mesa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auditoria_reservacion_reserva_mesa` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_usuario
 CREATE TABLE IF NOT EXISTS `auditoria_usuario` (
@@ -272,27 +320,37 @@ CREATE TABLE IF NOT EXISTS `auditoria_usuario` (
   `ID_USUARIO` int(11) NOT NULL,
   `AUDI_ACCION` varchar(45) NOT NULL,
   PRIMARY KEY (`ID_AUDI`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.auditoria_usuario: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `auditoria_usuario` DISABLE KEYS */;
+INSERT INTO `auditoria_usuario` (`ID_AUDI`, `NOMBRE_USUARIO_ANTERIOR`, `CLAVE_USUARIO_ANTERIOR`, `TIPO_USUARIO_ANTERIOR`, `ESTADO_USUARIO_ANTERIOR`, `FOTO_PERFIL_ANTERIOR`, `NOMBRE_USUARIO_NUEVO`, `CLAVE_USUARIO_NUEVO`, `TIPO_USUARIO_NUEVO`, `ESTADO_USUARIO_NUEVO`, `FOTO_PERFIL_NUEVO`, `AUDI_FECHA_MODIFICACION`, `AUDI_USUARIO`, `ID_USUARIO`, `AUDI_ACCION`) VALUES
+	(34, NULL, NULL, NULL, NULL, NULL, 'admin@gmail.com', '$2y$10$C9gbqEXD1ZMaRpZ.8RERk.qzE5yNnjO5olg5y.giNzyMHI6tqlIkm', 'Administrador', 'Activo', '.', '2021-06-08 13:22:55', 'root@localhost', 1, 'Insercion'),
+	(36, NULL, NULL, NULL, NULL, NULL, 'empleado@gmail.com', '$2y$10$O1V6G4j.RHNsPegZ9QTaw.NdTL7PQy/quAlD9O1XmpicZ0IkB0KXq', 'Empleado', 'Activo', '.', '2021-06-08 13:23:18', 'root@localhost', 2, 'Insercion'),
+	(37, NULL, NULL, NULL, NULL, NULL, 'cliente@gmail.com', '$2y$10$KO4IpwfevK5LgqsSnuM/3.0oxEg81z2al6ZOrctrfhgAbsqJmoVpO', 'Cliente', 'Activo', '.', '2021-06-08 13:23:40', 'root@localhost', 3, 'Insercion');
+/*!40000 ALTER TABLE `auditoria_usuario` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.categoria_insumo
 CREATE TABLE IF NOT EXISTS `categoria_insumo` (
   `ID_CATEGORIA_INSUMO` int(11) NOT NULL AUTO_INCREMENT,
   `NOMBRE_CATEGORIA_INSUMO` varchar(100) NOT NULL,
   PRIMARY KEY (`ID_CATEGORIA_INSUMO`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.categoria_insumo: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `categoria_insumo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `categoria_insumo` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.categoria_producto
 CREATE TABLE IF NOT EXISTS `categoria_producto` (
   `ID_CATEGORIA_PRODUCTO` int(11) NOT NULL AUTO_INCREMENT,
   `NOMBRE_CATEGORIA_PRODUCTO` varchar(50) NOT NULL,
   PRIMARY KEY (`ID_CATEGORIA_PRODUCTO`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.categoria_producto: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `categoria_producto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `categoria_producto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.cliente
 CREATE TABLE IF NOT EXISTS `cliente` (
@@ -308,9 +366,13 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   UNIQUE KEY `CELULAR_CLIENTE` (`CELULAR_CLIENTE`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuario` (`ID_USUARIO`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.cliente: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` (`ID_CLIENTE`, `NOMBRE_CLIENTE`, `APELLIDO_CLIENTE`, `FECHA_NACIMIENTO_CLIENTE`, `EMAIL_CLIENTE`, `CELULAR_CLIENTE`, `ID_USUARIO`) VALUES
+	(1, 'Cliente', 'Reserva Ya', '2000-06-08', 'cliente@gmail.com', '3147895241', 3);
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.empleado
 CREATE TABLE IF NOT EXISTS `empleado` (
@@ -327,9 +389,13 @@ CREATE TABLE IF NOT EXISTS `empleado` (
   UNIQUE KEY `CELULAR_EMPLEADO` (`CELULAR_EMPLEADO`),
   KEY `ID_USUARIO` (`ID_USUARIO`),
   CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuario` (`ID_USUARIO`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.empleado: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
+INSERT INTO `empleado` (`ID_EMPLEADO`, `DOC_EMPLEADO`, `NOMBRE_EMPLEADO`, `APELLIDO_EMPLEADO`, `EMAIL_EMPLEADO`, `CELULAR_EMPLEADO`, `ID_USUARIO`) VALUES
+	(1, '47851478', 'Empleado', 'Reserva Ya', 'empleado@reservaya.com', '3178456985', 2);
+/*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.insumo
 CREATE TABLE IF NOT EXISTS `insumo` (
@@ -345,9 +411,11 @@ CREATE TABLE IF NOT EXISTS `insumo` (
   KEY `ID_CATEGORIA_INSUMO` (`ID_CATEGORIA_INSUMO`),
   CONSTRAINT `insumo_ibfk_1` FOREIGN KEY (`ID_PROVEEDOR`) REFERENCES `proveedor` (`ID_PROVEEDOR`) ON UPDATE CASCADE,
   CONSTRAINT `insumo_ibfk_2` FOREIGN KEY (`ID_CATEGORIA_INSUMO`) REFERENCES `categoria_insumo` (`ID_CATEGORIA_INSUMO`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.insumo: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `insumo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `insumo` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.mesa
 CREATE TABLE IF NOT EXISTS `mesa` (
@@ -355,9 +423,11 @@ CREATE TABLE IF NOT EXISTS `mesa` (
   `CAPACIDAD_MESA` int(2) NOT NULL,
   `ESTADO_MESA` enum('Disponible','Ocupada') NOT NULL,
   PRIMARY KEY (`ID_MESA`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.mesa: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `mesa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mesa` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.producto
 CREATE TABLE IF NOT EXISTS `producto` (
@@ -372,9 +442,11 @@ CREATE TABLE IF NOT EXISTS `producto` (
   KEY `ID_CATEGORIA_PRODUCTO` (`ID_CATEGORIA_PRODUCTO`),
   KEY `verProducto` (`ID_PRODUCTO`,`NOMBRE_PRODUCTO`,`VALOR_PRODUCTO`),
   CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`ID_CATEGORIA_PRODUCTO`) REFERENCES `categoria_producto` (`ID_CATEGORIA_PRODUCTO`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.producto: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `producto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.proveedor
 CREATE TABLE IF NOT EXISTS `proveedor` (
@@ -386,7 +458,9 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
   PRIMARY KEY (`ID_PROVEEDOR`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.proveedor: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.reservacion
 CREATE TABLE IF NOT EXISTS `reservacion` (
@@ -399,9 +473,11 @@ CREATE TABLE IF NOT EXISTS `reservacion` (
   PRIMARY KEY (`ID_RESERVACION`),
   KEY `ID_CLIENTE` (`ID_CLIENTE`),
   CONSTRAINT `reservacion_ibfk_1` FOREIGN KEY (`ID_CLIENTE`) REFERENCES `cliente` (`ID_CLIENTE`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=248 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=253 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.reservacion: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `reservacion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reservacion` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.reservacion_reserva_mesa
 CREATE TABLE IF NOT EXISTS `reservacion_reserva_mesa` (
@@ -413,9 +489,11 @@ CREATE TABLE IF NOT EXISTS `reservacion_reserva_mesa` (
   KEY `ID_MESA` (`ID_MESA`),
   CONSTRAINT `reservacion_reserva_mesa_ibfk_1` FOREIGN KEY (`ID_RESERVACION`) REFERENCES `reservacion` (`ID_RESERVACION`) ON UPDATE CASCADE,
   CONSTRAINT `reservacion_reserva_mesa_ibfk_2` FOREIGN KEY (`ID_MESA`) REFERENCES `mesa` (`ID_MESA`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=218 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.reservacion_reserva_mesa: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `reservacion_reserva_mesa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reservacion_reserva_mesa` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.usuario
 CREATE TABLE IF NOT EXISTS `usuario` (
@@ -427,9 +505,15 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `FOTO_PERFIL` varchar(255) NOT NULL,
   PRIMARY KEY (`ID_USUARIO`),
   UNIQUE KEY `NOMBRE_USUARIO` (`NOMBRE_USUARIO`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla reservaya.usuario: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` (`ID_USUARIO`, `NOMBRE_USUARIO`, `CLAVE_USUARIO`, `TIPO_USUARIO`, `ESTADO_USUARIO`, `FOTO_PERFIL`) VALUES
+	(1, 'admin@gmail.com', '$2y$10$C9gbqEXD1ZMaRpZ.8RERk.qzE5yNnjO5olg5y.giNzyMHI6tqlIkm', 'Administrador', 'Activo', '.'),
+	(2, 'empleado@gmail.com', '$2y$10$O1V6G4j.RHNsPegZ9QTaw.NdTL7PQy/quAlD9O1XmpicZ0IkB0KXq', 'Empleado', 'Activo', '.'),
+	(3, 'cliente@gmail.com', '$2y$10$KO4IpwfevK5LgqsSnuM/3.0oxEg81z2al6ZOrctrfhgAbsqJmoVpO', 'Cliente', 'Activo', '.');
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 
 -- Volcando estructura para disparador reservaya.AUDITORIA_DELETE_ADMIN
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION';
