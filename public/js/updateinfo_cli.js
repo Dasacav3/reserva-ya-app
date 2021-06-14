@@ -28,7 +28,7 @@ enviar.addEventListener("click", () => {
 	// Solo para ver que sí se agregó el archivo
 	// console.log(...data);
 
-	fetch(URL + "app/models/cliente/informacion/añadirFotoPerfil.php", {
+	fetch(URL + "cliente/editarFotoPerfil", {
 		method: "POST",
 		body: data,
 	})
@@ -71,7 +71,7 @@ enviar.addEventListener("click", () => {
 });
 
 edit.addEventListener("click", () => {
-	fetch(URL + "app/models/cliente/informacion/cambioPassword.php", {
+	fetch(URL + "cliente/cambioPassword", {
 		method: "POST",
 		body: new FormData(pop_up_wrap_edit),
 	})
@@ -100,7 +100,7 @@ edit.addEventListener("click", () => {
 });
 
 function listarInfo() {
-	fetch(URL + "app/models/cliente/informacion/listarInfo.php", {
+	fetch(URL + "cliente/listarInformacion", {
 		method: "POST",
 	})
 		.then((response) => response.json())
@@ -114,7 +114,7 @@ function listarInfo() {
 }
 
 function editarInfo() {
-	fetch(URL + "app/models/cliente/informacion/editarInfo.php", {
+	fetch(URL + "cliente/editarInformacion", {
 		method: "POST",
 		body: new FormData(form_update_info),
 	})
