@@ -2,6 +2,11 @@
 
 class Registro extends Controller
 {
+
+    protected $usuario;
+    protected $cliente;
+    protected $empleado;
+
     public function __construct()
     {
         parent::__construct();
@@ -13,8 +18,29 @@ class Registro extends Controller
     }
 
 
-    public function saludo()
+    public function añadirCliente()
     {
-        echo "<p>Ejecutaste el metodo saludo</p>";
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $fecha = $_POST['nacimiento'];
+        $celular = $_POST['cel'];
+        $correo = $_POST['email'];
+        $password = $_POST['password'];
+        $estado = 'Activo';
+        $tipo = 'Cliente';
+        $foto = URL . "public/profile_photo/user_default_reservaya.png";
+
+    
+        if($this->model->registrarCliente(['username' => $correo, 'clave' => $password, 'estado' => $estado, 'tipo' => $tipo, 'foto' => $foto, 'nombre' => $nombre, 'apellido' => $apellido, 'fecha' => $fecha, 'celular' => $celular, 'correo' => $correo])){
+            echo "ok";
+        }else{
+            echo "Hubo un problema";
+        }
+        
+    }
+
+    public function añadirEmpleado() 
+    {
+
     }
 }
