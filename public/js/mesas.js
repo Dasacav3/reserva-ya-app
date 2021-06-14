@@ -105,14 +105,11 @@ window.addEventListener("DOMContentLoaded", () => {
 						<td> ${item[i].ID_MESA}  </td>
 						<td> ${item[i].CAPACIDAD_MESA}  </td>
                         <td> ${item[i].ESTADO_MESA}  </td>
-						<td>`;
-			if (item[i].ESTADO_MESA === "Disponible") {
-				output += `
+						<td>
                         <button class='btn-edit' id='btnEdit-${item[i].ID_MESA}'><i class='fas fa-edit'></i></button>
                         <button class='btn-delete' id='btnDelete-${item[i].ID_MESA}'><i class='fas fa-trash-alt'></i></button>
                         </td>   
 					</tr>`;
-			}
 			wrapper.innerHTML = output;
 		}
 	}
@@ -141,7 +138,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				icon: "error",
 			});
 		} else {
-			fetch(URL + "app/models/admin/mesas/añadirMesa.php", {
+			fetch(URL + "mesa/añadir", {
 				method: "POST",
 				body: new FormData(formAdd),
 			})
@@ -160,7 +157,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	function getMesas(busqueda) {
-		fetch(URL + "app/models/admin/mesas/listarMesa.php", {
+		fetch(URL + "mesa/obtenerTodo", {
 			method: "POST",
 			body: busqueda,
 		})
@@ -178,7 +175,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		let idAttr = this.getAttribute("id");
 		let id = idAttr.split("-");
 		openModalEdit();
-		fetch(URL + "app/models/admin/mesas/listarDataMesa.php", {
+		fetch(URL + "mesa/obtener", {
 			method: "POST",
 			body: id[1],
 		})
@@ -202,7 +199,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				icon: "error",
 			});
 		} else {
-			fetch(URL + "app/models/admin/mesas/editarMesa.php", {
+			fetch(URL + "mesa/actualizar", {
 				method: "POST",
 				body: new FormData(formEdit),
 			})
@@ -235,7 +232,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			cancelButtonText: "Cancelar",
 		}).then((result) => {
 			if (result.isConfirmed) {
-				fetch(URL + "app/models/admin/mesas/eliminarMesa.php", {
+				fetch(URL + "mesa/eliminar", {
 					method: "POST",
 					body: id[1],
 				})
