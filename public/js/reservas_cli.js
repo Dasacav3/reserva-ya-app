@@ -113,7 +113,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	function listarReservas(search) {
-		fetch(URL + "app/models/cliente/reservas/listarReserva.php", {
+		fetch(URL + "reserva/listarReserva", {
 			method: "POST",
 			body: search,
 		})
@@ -125,7 +125,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	function mostrarMesa() {
-		fetch(URL + "app/models/cliente/reservas/mostrarMesa.php", {
+		fetch(URL + "reserva/listarMesa", {
 			method: "POST",
 		})
 			.then((response) => response.text())
@@ -187,7 +187,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			async function añadirReserva() {
 				try {
 					console.time("tasks time");
-					const add = await fetch(URL + "app/models/cliente/reservas/añadirReserva.php", {
+					const add = await fetch(URL + "reserva/añadirReservaCli", {
 						method: "POST",
 						body: new FormData(pop_up_wrap_add),
 					})
@@ -247,7 +247,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				try {
-					fetch(URL + "app/models/cliente/reservas/cancelarReserva.php", {
+					fetch(URL + "reserva/cancelarReserva", {
 						method: "POST",
 						body: id[1],
 					})

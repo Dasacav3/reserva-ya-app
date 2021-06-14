@@ -61,7 +61,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	function mostrarCliente() {
-		fetch(URL + "app/models/admin/reservas/mostrarCliente.php", {
+		fetch(URL + "reserva/listarCliente", {
 			method: "POST",
 		})
 			.then((response) => response.text())
@@ -71,7 +71,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	function mostrarMesa() {
-		fetch(URL + "app/models/admin/reservas/mostrarMesa.php", {
+		fetch(URL + "reserva/listarMesa", {
 			method: "POST",
 		})
 			.then((response) => response.text())
@@ -153,12 +153,13 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	function listarReservas(search) {
-		fetch(URL + "app/models/admin/reservas/listarReserva.php", {
+		fetch(URL + "reserva/listarReserva", {
 			method: "POST",
 			body: search,
 		})
 			.then((response) => response.json())
 			.then((response) => {
+				console.log(response);
 				paginationTable(response);
 				enableBtns();
 			});
@@ -225,12 +226,13 @@ window.addEventListener("DOMContentLoaded", () => {
 			async function añadirReserva() {
 				try {
 					console.time("tasks time");
-					const add = await fetch(URL + "app/models/admin/reservas/añadirReserva.php", {
+					const add = await fetch(URL + "reserva/añadirReserva", {
 						method: "POST",
 						body: new FormData(pop_up_wrap_add),
 					})
 						.then((response) => response.text())
 						.then((response) => {
+							console.log(response);
 							if (response == "ok") {
 								Swal.fire({
 									icon: "success",
@@ -254,18 +256,18 @@ window.addEventListener("DOMContentLoaded", () => {
 
 			añadirReserva();
 
-			function sendMail() {
-				fetch(URL + "app/controller/mail/sendMail_add.php", {
-					method: "POST",
-					body: new FormData(pop_up_wrap_add),
-				})
-					.then((response) => response.text())
-					.then((response) => {
-						console.log(response);
-					});
-			}
+			// function sendMail() {
+			// 	fetch(URL + "app/controller/mail/sendMail_add.php", {
+			// 		method: "POST",
+			// 		body: new FormData(pop_up_wrap_add),
+			// 	})
+			// 		.then((response) => response.text())
+			// 		.then((response) => {
+			// 			console.log(response);
+			// 		});
+			// }
 
-			sendMail();
+			// sendMail();
 		}
 	});
 
@@ -275,7 +277,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		abrir();
 		let idObj = this.getAttribute("id");
 		let id = idObj.split("-");
-		fetch(URL + "app/models/admin/reservas/actualizarReserva.php", {
+		fetch(URL + "reserva/listarDatosReserva", {
 			method: "POST",
 			body: id[1],
 		})
@@ -330,7 +332,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				icon: "error",
 			});
 		} else {
-			fetch(URL + "app/models/admin/reservas/editarReserva.php", {
+			fetch(URL + "reserva/editarReserva", {
 				method: "POST",
 				body: new FormData(pop_up_wrap_edit),
 			})
@@ -351,14 +353,14 @@ window.addEventListener("DOMContentLoaded", () => {
 						pop_up_wrap_edit.classList.remove("show");
 					}
 				});
-			fetch(URL + "app/controller/mail/sendMail_edit.php", {
-				method: "POST",
-				body: new FormData(pop_up_wrap_edit),
-			})
-				.then((response) => response.text())
-				.then((response) => {
-					console.log(response);
-				});
+			// fetch(URL + "app/controller/mail/sendMail_edit.php", {
+			// 	method: "POST",
+			// 	body: new FormData(pop_up_wrap_edit),
+			// })
+			// 	.then((response) => response.text())
+			// 	.then((response) => {
+			// 		console.log(response);
+			// 	});
 		}
 	});
 

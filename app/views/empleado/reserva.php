@@ -6,25 +6,6 @@
 	<title>Gestión de Reservaciones</title>
 </head>
 <?php
-session_start();
-
-error_reporting(0);
-
-$sesion = $_SESSION['datos'];
-
-if ($sesion == null || $sesion = '' || $_SESSION['datos'][2] != 'Empleado') {
-?>
-	<script>
-		function Regresar() {
-			window.history.go(-1);
-		}
-		Regresar();
-	</script>
-<?php
-	die();
-}
-
-$img = $_SESSION['datos'][6];
 
 // Estableciendo fechas para validacion de formulario
 $fecha_actual = date("Y-m-d");
