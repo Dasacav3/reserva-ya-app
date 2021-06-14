@@ -8,7 +8,7 @@ if (btnSubmit !== null) {
 }
 
 function loginUser() {
-	fetch(URL + "app/models/loginUser.php", {
+	fetch(URL + "login/loginUser", {
 		method: "POST",
 		body: new FormData(form),
 	})
