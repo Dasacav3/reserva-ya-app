@@ -4,28 +4,6 @@
   <?php require "head.php"; ?>
   <title>Gestión de proveedores</title>
 </head>
-<?php
-session_start();
-
-error_reporting(0);
-
-$sesion = $_SESSION['datos'];
-
-if ($sesion == null || $sesion = '' || $_SESSION['datos'][2] != 'Administrador') {
-?>
-  <script>
-    function Regresar() {
-      window.history.go(-1);
-    }
-    Regresar();
-  </script>
-<?php
-}
-
-
-$img = $_SESSION['datos'][6];
-
-?>
   <body id="body">
       <?php
 
