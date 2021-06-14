@@ -103,6 +103,8 @@ window.addEventListener("DOMContentLoaded", () => {
 				current_btn.classList.remove("active");
 
 				button.classList.add("active");
+
+				enableBtns();
 			});
 
 			return button;
@@ -112,20 +114,24 @@ window.addEventListener("DOMContentLoaded", () => {
 		SetupPaginations(list_items, pagination_element, rows);
 	}
 
+	function enableBtns() {
+		for (let i = 0; i < btnEdit.length; i++) {
+			btnEdit[i].addEventListener("click", Editar, false);
+		}
+		for (let i = 0; i < btnDelete.length; i++) {
+			btnDelete[i].addEventListener("click", eliminarUser, false);
+		}
+	}
+
 	function listarUsuarios(busqueda) {
-		fetch(URL + "app/models/admin/usuarios/listarUser.php", {
+		fetch(URL + "usuario/listarUsuarios", {
 			method: "POST",
 			body: busqueda,
 		})
 			.then((response) => response.json())
 			.then((response) => {
 				paginationTable(response);
-				for (let i = 0; i < btnEdit.length; i++) {
-					btnEdit[i].addEventListener("click", Editar, false);
-				}
-				for (let i = 0; i < btnDelete.length; i++) {
-					btnDelete[i].addEventListener("click", eliminarUser, false);
-				}
+				enableBtns();
 			});
 	}
 
@@ -195,7 +201,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				icon: "error",
 			});
 		} else {
-			fetch(URL + "app/models/admin/usuarios/añadirUser.php", {
+			fetch(URL + "usuario/añadirEmpleado", {
 				method: "POST",
 				body: new FormData(pop_up_wrap_add),
 			})
@@ -224,7 +230,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		abrir();
 		let idObj = this.getAttribute("id");
 		let id = idObj.split("-");
-		fetch(URL + "app/models/admin/usuarios/actualizarUser.php", {
+		fetch(URL + "usuario/listarDatosUsuario", {
 			method: "POST",
 			body: id[1],
 		})
@@ -292,7 +298,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				icon: "error",
 			});
 		} else {
-			fetch(URL + "app/models/admin/usuarios/editarUser.php", {
+			fetch(URL + "usuario/editarEmpleado", {
 				method: "POST",
 				body: new FormData(pop_up_wrap_edit),
 			})
@@ -360,7 +366,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				icon: "error",
 			});
 		} else {
-			fetch(URL + "app/models/admin/usuarios/editarUser.php", {
+			fetch(URL + "usuario/editarCliente", {
 				method: "POST",
 				body: new FormData(pop_up_wrap_edit),
 			})
@@ -398,7 +404,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			cancelButtonText: "NO",
 		}).then((result) => {
 			if (result.isConfirmed) {
-				fetch(URL + "app/models/admin/usuarios/eliminarUser.php", {
+				fetch(URL + "usuario/eliminarUsuarios", {
 					method: "POST",
 					body: id[1],
 				})
