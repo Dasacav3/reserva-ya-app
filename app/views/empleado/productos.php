@@ -6,28 +6,6 @@
   <title>Gestión de productos</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
-<?php
-session_start();
-
-error_reporting(0);
-
-$sesion = $_SESSION['datos'];
-
-if ($sesion == null || $sesion = '' || $_SESSION['datos'][2] != 'Empleado') {
-?>
-  <script>
-    function Regresar() {
-      window.history.go(-1);
-    }
-    Regresar();
-  </script>
-<?php
-  die();
-}
-
-$img = $_SESSION['datos'][6];
-
-?>
 
 <body id="body">
   <?php require "contenido.php";

@@ -6,29 +6,6 @@
   <title>Gestión de productos</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
-<?php
-session_start();
-
-error_reporting(0);
-
-$sesion = $_SESSION['datos'];
-
-if ($sesion == null || $sesion = '' || $_SESSION['datos'][2] != 'Administrador') {
-?>
-  <script>
-    function Regresar() {
-      window.history.go(-1);
-    }
-    Regresar();
-  </script>
-<?php
-  die();
-}
-
-$img = $_SESSION['datos'][6];
-
-?>
-
 <body id="body">
   <?php require "contenido.php";
   include("app/controller/database.php");
@@ -68,7 +45,7 @@ $img = $_SESSION['datos'][6];
               <!-- Formulario editar categoria  -->
               <button id="update_category" class="update_category"><i class="fas fa-edit"></i> Editar categoria</button>
               <div id="pop-up-edit" class="pop-up form-modal">
-                <form action="<?php echo constant('URL'); ?> app/models/admin/productos/verificar_actualizar_categoria.php" method="post" id="edit_category" class="edit_category">
+                <form action="<?php echo constant('URL'); ?>app/models/admin/productos/verificar_actualizar_categoria.php" method="post" id="edit_category" class="edit_category">
                   <h2>Editar categoria</h2>
                   <h3>Categoria antigua </h3>
                   <br>
