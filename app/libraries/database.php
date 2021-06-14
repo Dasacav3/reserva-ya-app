@@ -18,7 +18,7 @@ class Database
         $this->charset = constant('CHARSET');
     }
 
-    public function connect()
+    protected function connect()
     {
         try {
             $connection = "mysql:host=" . $this->host . ";dbname=" . $this->db . ";charset=" . $this->charset;
