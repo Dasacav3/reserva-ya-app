@@ -4,7 +4,7 @@
             <i class="fa fa-bars" aria-hidden="true"></i>
         </div>
         <div class="navbar__left">
-            <h4>¡Bienvenid<i class="fas fa-at"></i> <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</h4>
+            <h4>¡Bienvenid<i class="fas fa-at"></i> <?= $this->session->get('user')['nombre_cliente'] . " " . $this->session->get('user')['apellido_cliente'] ?>!</h4>
         </div>
         <div class="navbar__right">
             <button class="switch" id="switch">
@@ -18,7 +18,7 @@
                 <i class="fa fa-power-off" aria-hidden="true"></i>
             </a>
             <a href="<?= constant('URL') ?>cliente/updateInfo">
-                <img class="foto_perfil" src="<?php echo $img; ?>" />
+                <img class="foto_perfil" src="<?= $this->session->get('user')['foto_perfil']?>" />
             </a>
         </div>
     </nav>

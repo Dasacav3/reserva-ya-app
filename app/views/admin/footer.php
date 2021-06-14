@@ -7,7 +7,7 @@
         <i onclick="closeSidebar()" class="fa fa-times" id="sidebarIcon" aria-hidden="true"></i>
     </div>
     <div class="sidebar__menu sidebar__link sidebar__username">
-        <a>¡Bienvenid<i class="fas fa-at"></i> <?php echo $_SESSION['datos'][3] . " " . $_SESSION['datos'][4]; ?>!</a>
+        <a>¡Bienvenid<i class="fas fa-at"></i> <?= $this->session->get('user')['nombre_admin'] . " " . $this->session->get('user')['apellido_admin']?>!</a>
         <hr>
     </div>
     <div class="sidebar__menu" id="sidebar__menu">
@@ -44,8 +44,8 @@
             <a href="<?= constant('URL') ?>admin/usuarios">Usuarios</a>
         </div>
         <div class="sidebar__link">
-            <i class="fa fa-address-book"></i>
-            <a href="<?= constant('URL') ?>admin/informacion">Información</a>
+            <i class="fa fa-print"></i>
+            <a href="<?= constant('URL') ?>admin/reportes">Reportes</a>
         </div>
         <div class="sidebar__link">
             <i class="fa fa-question-circle"></i>

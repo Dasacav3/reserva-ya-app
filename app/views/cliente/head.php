@@ -14,3 +14,11 @@
 <link rel="stylesheet" href="<?= constant('URL') ?>public/css/modals.css" />
 <link rel="stylesheet" href="<?= constant('URL') ?>public/css/checkbox_comp.css" />
 <link rel="stylesheet" href="<?= constant('URL') ?>public/css/drag_and_drop.css" />
+
+<?php
+
+if($this->session->get('user') == null || $this->session->get('user')['tipo_usuario'] != "Cliente"){
+    header("location: http://localhost/reservaya-mvc/login");
+}
+
+?>
