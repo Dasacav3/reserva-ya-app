@@ -90,7 +90,7 @@ mostrarProveedor();
 mostrarCategoria();
 
 function mostrarProveedor() {
-	fetch(URL + "app/models/admin/insumos/mostrarProveedor.php", {
+	fetch(URL + "insumo/listarProveedor", {
 		method: "POST",
 	})
 		.then((response) => response.text())
@@ -100,7 +100,7 @@ function mostrarProveedor() {
 }
 
 function mostrarCategoria() {
-	fetch(URL + "app/models/admin/insumos/mostrarCategoria.php", {
+	fetch(URL + "insumo/listarCategoria", {
 		method: "POST",
 	})
 		.then((response) => response.text())
@@ -181,7 +181,7 @@ function DisplayList(items, wrapper, rows_per_page, page) {
 }
 
 function listarInsumos(search) {
-	fetch(URL + "app/models/admin/insumos/listarInsumos.php", {
+	fetch(URL + "insumo/listarInsumos", {
 		method: "POST",
 		body: search,
 	})
@@ -252,7 +252,7 @@ registrar.addEventListener("click", () => {
 		async function añadirInsumos() {
 			try {
 				console.time("tasks time");
-				const add = await fetch(URL + "app/models/admin/insumos/añadirInsumos.php", {
+				const add = await fetch(URL + "insumo/añadirInsumo", {
 					method: "POST",
 					body: new FormData(pop_up_wrap_add),
 				})
@@ -302,7 +302,7 @@ registrarCategoria.addEventListener("click", () => {
 		async function anadirCategoria() {
 			try {
 				console.time("tasks time");
-				const add = await fetch(URL + "app/models/admin/insumos/añadirCategoria.php", {
+				const add = await fetch(URL + "insumo/añadirCategoriaInsumo", {
 					method: "POST",
 					body: new FormData(pop_up_wrap_add_categoria),
 				})
@@ -352,7 +352,7 @@ editarCategoria.addEventListener("click", () => {
 		async function actualizarCategoria() {
 			try {
 				console.time("tasks time");
-				const add = await fetch(URL + "app/models/admin/insumos/editarCategoria.php", {
+				const add = await fetch(URL + "insumo/editarCategoriaInsumo", {
 					method: "POST",
 					body: new FormData(pop_up_wrap_edit_categoria),
 				})
@@ -383,7 +383,7 @@ editarCategoria.addEventListener("click", () => {
 });
 
 function Editar(id) {
-	fetch(URL + "app/models/admin/insumos/actualizarInsumos.php", {
+	fetch(URL + "insumo/listarDatosInsumo", {
 		method: "POST",
 		body: id,
 	})
@@ -460,7 +460,7 @@ edit.addEventListener("click", function () {
 			icon: "error",
 		});
 	} else {
-		fetch(URL + "app/models/admin/insumos/editarInsumos.php", {
+		fetch(URL + "insumo/editarInsumos", {
 			method: "POST",
 			body: new FormData(pop_up_wrap_edit),
 		})
@@ -494,7 +494,7 @@ function eliminarInsumos(id) {
 		cancelButtonText: "NO",
 	}).then((result) => {
 		if (result.isConfirmed) {
-			fetch(URL + "app/models/admin/insumos/eliminarInsumos.php", {
+			fetch(URL + "insumo/eliminarInsumos", {
 				method: "POST",
 				body: id,
 			})
