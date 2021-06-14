@@ -1,20 +1,23 @@
 <?php
 
-class View{
+class View
+{
 
-    public function __construct(){
-        //echo "<p>Vista base</p>";
+    private $session;
+
+    public function __construct()
+    {
+        $this->mensaje = "";
+        $this->session = new Session();
     }
 
-    public function render($nombre){
+    public function render($nombre)
+    {
         $path = 'app/views/' . $nombre . '.php';
-        if(file_exists($path)){
+        if (file_exists($path)) {
             require $path;
-        }else{
+        } else {
             $path = new Error_Manage();
         }
-
     }
-
-
 }
