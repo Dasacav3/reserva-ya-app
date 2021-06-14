@@ -3,37 +3,14 @@
 
 <head>
   <?php require "head.php"; ?>
-  <title>Información</title>
+  <title>Reportes</title>
 </head>
-<?php
-session_start();
-
-error_reporting(0);
-
-$sesion = $_SESSION['datos'];
-
-if ($sesion == null || $sesion = '' || $_SESSION['datos'][2] != 'Administrador') {
-?>
-  <script>
-    function Regresar() {
-      window.history.go(-1);
-    }
-    Regresar();
-  </script>
-<?php
-  die();
-}
-
-$img = $_SESSION['datos'][6];
-
-?>
-
 <body id="body">
   <?php require "contenido.php"; ?>
 
   <main class="main__container">
     <div>
-      <h2 class="title_table">Información</h2>
+      <h2 class="title_table">Reportes</h2>
       <div class="reportes_container">
 
         <div class="reporte_card">
@@ -116,7 +93,7 @@ $img = $_SESSION['datos'][6];
   <?php require "footer.php"; ?>
   <script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
   <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
-  <script src="<?= constant('URL') ?>public/js/informacion.js" type="module"></script>
+  <script src="<?= constant('URL') ?>public/js/reportes.js" type="module"></script>
 </body>
 
 </html>

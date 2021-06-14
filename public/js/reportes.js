@@ -54,7 +54,7 @@ for (let i = 0; i < cerrar_add.length; i++) {
 mostrarCliente();
 
 function mostrarCliente() {
-	fetch(URL + "app/models/admin/reservas/mostrarCliente.php", {
+	fetch(URL + "reserva/listarCliente", {
 		method: "POST",
 	})
 		.then((response) => response.text())
@@ -79,7 +79,7 @@ function generarReporteInsumo() {
 			text: "La fecha final no puede estar vacia",
 		});
 	} else {
-		fetch(URL + "app/controller/pdf/generateReport.php", {
+		fetch(URL + "reporte/generarReporte", {
 			method: "POST",
 			body: new FormData(reporte_insumo),
 		})
@@ -107,7 +107,7 @@ function generarReporteReserva() {
 			text: "La fecha final no puede estar vacia",
 		});
 	} else {
-		fetch(URL + "app/controller/pdf/generateReport.php", {
+		fetch(URL + "reporte/generarReporte", {
 			method: "POST",
 			body: new FormData(reporte_reserva),
 		})
@@ -128,7 +128,7 @@ function generarReporteUsuario() {
 			text: "Debe seleccionar un cliente",
 		});
 	} else {
-		fetch(URL + "app/controller/pdf/generateReport.php", {
+		fetch(URL + "reporte/generarReporte", {
 			method: "POST",
 			body: new FormData(reporte_usuario),
 		})
