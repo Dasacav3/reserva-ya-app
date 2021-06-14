@@ -77,8 +77,14 @@ body.dark .container {
 }
 
 .main__title {
-	width: 320px;
-	padding: 3em;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-evenly;
+	margin-top: 3em;
+}
+
+.main__title img{
+	width: 300px;
 }
 
 body.dark .main__title{
@@ -101,6 +107,14 @@ body.dark .main__title{
 
 body.dark .main__container {
 	color: #fff;
+}
+
+.main__greeting{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	font-weight: 500;
 }
 
 .navbar {

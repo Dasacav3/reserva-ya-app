@@ -4,44 +4,38 @@
 <head>
 	<?php require "head.php"; ?>
 	<title>Dashboard Reserva Ya</title>
+	<link rel="stylesheet" href="<?= constant('URL') ?>lib/fullcalendar/main.css">
 </head>
-<?php
-
-session_start();
-
-error_reporting(0);
-
-$sesion = $_SESSION['datos'];
-
-if ($sesion == null || $sesion = '' || $_SESSION['datos'][2] != 'Administrador') {
-?>
-	<script>
-		function Regresar() {
-			window.history.go(-1);
-		}
-		Regresar();
-	</script>
-<?php
-
-	die();
-}
-
-$img = $_SESSION['datos'][6];
-
-?>
-
 <body id="body">
 	<?php require "contenido.php"; ?>
 	<div class="main__title">
-		<img src="<?= constant('URL') ?>public/img/assets/hello.svg" alt="" />
 		<div class="main__greeting">
+			<img src="<?= constant('URL') ?>public/img/assets/hello.svg" alt="" />
 			<h1>¡Bienvenido!</h1>
-			<p>Este es tu dashboard Reserva Ya</p>
+			<p> Al sistema de reservaciones Reserva Ya</p>
 		</div>
+		<section>
+			<div class="box">
+				<div class="container-calendar">
+					<div id="dycalendar"></div>
+				</div>
+			</div>
+		</section>
 	</div>
 	<?php require "footer.php"; ?>
 	<script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
 	<script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
+	<script src="<?= constant('URL') ?>public/js/dycalendar.min.js"></script>
+	<script>
+		dycalendar.draw({
+			target: "#dycalendar",
+			type: "month",
+			dayformat: "full",
+			monthformat: "full",
+			highlighttoday: true,
+			prevnextbutton: "show",
+		});
+	</script>
 </body>
 
 </html>
