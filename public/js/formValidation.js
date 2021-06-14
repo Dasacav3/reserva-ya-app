@@ -1,3 +1,7 @@
+"use strict";
+
+import { URL } from "./modules.js";
+
 // Formulario de registro
 
 const formulario = document.getElementById("form");
@@ -66,7 +70,7 @@ registrar.addEventListener("click", () => {
 		error.innerHTML = warnings;
 	} else {
 		error.innerHTML = "";
-		fetch("http://localhost/reservaya-mvc/app/models/signupUser.php", {
+		fetch(URL + "registro/añadirCliente", {
 			method: "POST",
 			body: new FormData(form),
 		})
@@ -81,9 +85,9 @@ registrar.addEventListener("click", () => {
 						timer: 2000,
 					}).then(() => {
 						form.reset();
-						window.location = "http://localhost/reservaya-mvc/login";
+						window.location = URL + "login";
 					});
-				}else {
+				} else {
 					Swal.fire({
 						title: "El nombre de usuario (email) ya ha sido registrado",
 						icon: "error",

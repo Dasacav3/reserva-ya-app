@@ -1,5 +1,7 @@
 "use strict";
 
+const URL = "http://localhost/reservaya-mvc/";
+
 // Sidebar Toggle Codes;
 var sidebarOpen = false;
 var sidebar = document.getElementById("sidebar");
@@ -28,43 +30,55 @@ function changeActiveLinkAdmin() {
 	links.forEach((link) => {
 		var a = link.querySelector("a");
 		var ancla = a.textContent;
-		if (URLactual == "http://localhost/reservaya-mvc/admin" && ancla == "Inicio") {
-			link.classList.add("active_menu_link");
-		} else if (
-			URLactual == "http://localhost/reservaya-mvc/admin/updateInfo" &&
-			ancla == "Actualizar información"
+		if (
+			(URLactual == URL + "admin" && ancla == "Inicio") ||
+			(URLactual == URL + "admin#" && ancla == "Inicio")
 		) {
 			link.classList.add("active_menu_link");
 		} else if (
-			URLactual == "http://localhost/reservaya-mvc/admin/reservas" &&
-			ancla == "Reservaciones"
-		) {
-			link.classList.add("active_menu_link");
-		} else if (URLactual == "http://localhost/reservaya-mvc/admin/mesas" && ancla == "Mesas") {
-			link.classList.add("active_menu_link");
-		} else if (
-			URLactual == "http://localhost/reservaya-mvc/admin/productos" &&
-			ancla == "Productos"
-		) {
-			link.classList.add("active_menu_link");
-		} else if (URLactual == "http://localhost/reservaya-mvc/admin/insumos" && ancla == "Insumos") {
-			link.classList.add("active_menu_link");
-		} else if (
-			URLactual == "http://localhost/reservaya-mvc/admin/proveedores" &&
-			ancla == "Proveedores"
+			(URLactual == URL + "admin/updateInfo" && ancla == "Actualizar información") ||
+			(URLactual == URL + "admin/updateInfo#" && ancla == "Actualizar información")
 		) {
 			link.classList.add("active_menu_link");
 		} else if (
-			URLactual == "http://localhost/reservaya-mvc/admin/usuarios" &&
-			ancla == "Usuarios"
+			(URLactual == URL + "admin/reservas" && ancla == "Reservaciones") ||
+			(URLactual == URL + "admin/reservas#" && ancla == "Reservaciones")
 		) {
 			link.classList.add("active_menu_link");
 		} else if (
-			URLactual == "http://localhost/reservaya-mvc/admin/informacion" &&
-			ancla == "Información"
+			(URLactual == URL + "admin/mesas" && ancla == "Mesas") ||
+			(URLactual == URL + "admin/mesas#" && ancla == "Mesas")
 		) {
 			link.classList.add("active_menu_link");
-		} else if (URLactual == "http://localhost/reservaya-mvc/admin/soporte" && ancla == "Soporte") {
+		} else if (
+			(URLactual == URL + "admin/productos" && ancla == "Productos") ||
+			(URLactual == URL + "admin/productos#" && ancla == "Productos")
+		) {
+			link.classList.add("active_menu_link");
+		} else if (
+			(URLactual == URL + "admin/insumos" && ancla == "Insumos") ||
+			(URLactual == URL + "admin/insumos#" && ancla == "Insumos")
+		) {
+			link.classList.add("active_menu_link");
+		} else if (
+			(URLactual == URL + "admin/proveedores" && ancla == "Proveedores") ||
+			(URLactual == URL + "admin/proveedores#" && ancla == "Proveedores")
+		) {
+			link.classList.add("active_menu_link");
+		} else if (
+			(URLactual == URL + "admin/usuarios" && ancla == "Usuarios") ||
+			(URLactual == URL + "admin/usuarios#" && ancla == "Usuarios")
+		) {
+			link.classList.add("active_menu_link");
+		} else if (
+			(URLactual == URL + "admin/reportes" && ancla == "Reportes") ||
+			(URLactual == URL + "admin/reportes#" && ancla == "Reportes")
+		) {
+			link.classList.add("active_menu_link");
+		} else if (
+			(URLactual == URL + "admin/soporte" && ancla == "Soporte") ||
+			(URLactual == URL + "admin/soporte#" && ancla == "Soporte")
+		) {
 			link.classList.add("active_menu_link");
 		}
 	});
@@ -79,21 +93,24 @@ function changeActiveLinkCliente() {
 	links.forEach((link) => {
 		var a = link.querySelector("a");
 		var ancla = a.textContent;
-		if (URLactual == "http://localhost/reservaya-mvc/cliente" && ancla == "Inicio") {
-			link.classList.add("active_menu_link");
-		} else if (
-			URLactual == "http://localhost/reservaya-mvc/cliente/updateInfo" &&
-			ancla == "Actualizar información"
+		if (
+			(URLactual == URL + "cliente" && ancla == "Inicio") ||
+			(URLactual == URL + "cliente#" && ancla == "Inicio")
 		) {
 			link.classList.add("active_menu_link");
 		} else if (
-			URLactual == "http://localhost/reservaya-mvc/cliente/reservas" &&
-			ancla == "Reservaciones"
+			(URLactual == URL + "cliente/updateInfo" && ancla == "Actualizar información") ||
+			(URLactual == URL + "cliente/updateInfo#" && ancla == "Actualizar información")
 		) {
 			link.classList.add("active_menu_link");
 		} else if (
-			URLactual == "http://localhost/reservaya-mvc/cliente/soporte" &&
-			ancla == "Soporte"
+			(URLactual == URL + "cliente/reservas" && ancla == "Reservaciones") ||
+			(URLactual == URL + "cliente/reservas#" && ancla == "Reservaciones")
+		) {
+			link.classList.add("active_menu_link");
+		} else if (
+			(URLactual == URL + "cliente/soporte" && ancla == "Soporte") ||
+			(URLactual == URL + "cliente/soporte#" && ancla == "Soporte")
 		) {
 			link.classList.add("active_menu_link");
 		}
@@ -109,24 +126,30 @@ function changeActiveLinkEmpleado() {
 	links.forEach((link) => {
 		var a = link.querySelector("a");
 		var ancla = a.textContent;
-		if (URLactual == "http://localhost/reservaya-mvc/empleado" && ancla == "Inicio") {
-			link.classList.add("active_menu_link");
-		} else if (
-			URLactual == "http://localhost/reservaya-mvc/empleado/updateInfo" &&
-			ancla == "Actualizar información"
+		if (
+			(URLactual == URL + "empleado" && ancla == "Inicio") ||
+			(URLactual == URL + "empleado#" && ancla == "Inicio")
 		) {
 			link.classList.add("active_menu_link");
 		} else if (
-			URLactual == "http://localhost/reservaya-mvc/empleado/reservas" &&
-			ancla == "Reservaciones"
+			(URLactual == URL + "empleado/updateInfo" && ancla == "Actualizar información") ||
+			(URLactual == URL + "empleado/updateInfo#" && ancla == "Actualizar información")
 		) {
 			link.classList.add("active_menu_link");
 		} else if (
-			URLactual == "http://localhost/reservaya-mvc/empleado/productos" &&
-			ancla == "Productos"
+			(URLactual == URL + "empleado/reservas" && ancla == "Reservaciones") ||
+			(URLactual == URL + "empleado/reservas#" && ancla == "Reservaciones")
 		) {
 			link.classList.add("active_menu_link");
-		} else if (URLactual == "http://localhost/reservaya-mvc/empleado/soporte" && ancla == "Soporte") {
+		} else if (
+			(URLactual == URL + "empleado/productos" && ancla == "Productos") ||
+			(URLactual == URL + "empleado/productos#" && ancla == "Productos")
+		) {
+			link.classList.add("active_menu_link");
+		} else if (
+			(URLactual == URL + "empleado/soporte" && ancla == "Soporte") ||
+			(URLactual == URL + "empleado/soporte#" && ancla == "Soporte")
+		) {
 			link.classList.add("active_menu_link");
 		}
 	});
