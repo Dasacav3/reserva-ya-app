@@ -1,4 +1,4 @@
-const URL = "http://localhost/reservaya-mvc/";
+const url = "http://localhost/reservaya-mvc/";
 
 // Modal añadir y editar
 var pop_up_add = document.getElementById("pop-up-add");
