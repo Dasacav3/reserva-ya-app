@@ -170,9 +170,9 @@ class ReservaModel extends Model implements IModel
 
         $connect = $this->db->connect();
 
-        try{
+        try {
             $connect->beginTransaction();
-    
+
             $querySelect = "SELECT reservacion.ID_RESERVACION, mesa.ID_MESA
             FROM reservacion_reserva_mesa
             INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
@@ -180,27 +180,26 @@ class ReservaModel extends Model implements IModel
             INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE
             WHERE reservacion_reserva_mesa.ID_RESERVACION_RESERVA_MESA = :id";
             $query = $connect->prepare($querySelect);
-            $query->bindValue(":id",$id);
+            $query->bindValue(":id", $id);
             $query->execute();
             $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
-            foreach($resultado as $dat){
+            foreach ($resultado as $dat) {
                 $id_reserva = $dat['ID_RESERVACION'];
                 $id_mesa = $dat['ID_MESA'];
             }
-            
+
             $queryUpdateMesa = "UPDATE mesa SET estado_mesa = 'Disponible' WHERE id_mesa = :id_mesa";
             $query = $connect->prepare($queryUpdateMesa);
-            $query->bindValue(":id_mesa",$id_mesa);
+            $query->bindValue(":id_mesa", $id_mesa);
             $query->execute();
-    
+
             $queryUpdateReserva = "UPDATE reservacion SET estado_reservacion = 'Cancelada' WHERE id_reservacion = :id_reserva";
             $query = $connect->prepare($queryUpdateReserva);
-            $query->bindValue(":id_reserva",$id_reserva);
+            $query->bindValue(":id_reserva", $id_reserva);
             $query->execute();
-    
+
             $connect->commit();
-    
-        }catch(Exception $e){
+        } catch (Exception $e) {
             $connect->rollBack();
             echo "Conexion fallida " . $e->getMessage();
             die();
@@ -249,6 +248,30 @@ class ReservaModel extends Model implements IModel
             }
 
             return true;
+        }
+    }
+
+    public function updateAuto($data)
+    {
+        $fecha_actual = $data['fecha_actual'];
+        $hora_restada = $data['hora_restada'];
+        $connect = $this->db->connect();
+
+        try {
+            $connect->beginTransaction();
+
+            $query2 = $connect->prepare("UPDATE reservacion_reserva_mesa AS RM
+            INNER JOIN reservacion AS R ON RM.ID_RESERVACION = R.ID_RESERVACION
+            INNER JOIN mesa AS M ON RM.ID_MESA = M.ID_MESA
+            SET R.ESTADO_RESERVACION = 'Completada', M.ESTADO_MESA = 'Disponible'
+            WHERE FECHA_RESERVACION <= '$fecha_actual' AND HORA_RESERVACION < '$hora_restada'");
+            if ($query2->execute()) {
+                echo "ok";
+            }
+
+            $connect->commit();
+        } catch (Exception $e) {
+            echo "Conexión fallida " . $e->getMessage();
         }
     }
 }

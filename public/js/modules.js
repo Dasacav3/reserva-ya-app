@@ -4,7 +4,7 @@ export const URL = "http://localhost/reservaya-mvc/";
 
 // Actualización automatica de estado de reserva
 export function updateStateReserva() {
-	fetch(URL + "app/controller/reservas/reservasEstado.php", {
+	fetch(URL + "reserva/updateEstadoReserva", {
 		method: "POST",
 	})
 		.then((res) => res.text())

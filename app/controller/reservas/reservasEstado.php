@@ -4,6 +4,8 @@ require_once "../database.php";
 
 error_reporting(0);
 
+date_default_timezone_set("America/Bogota");
+
 $fecha_actual = date("Y-m-d");
 
 $hora_actual = date("H:i:s");

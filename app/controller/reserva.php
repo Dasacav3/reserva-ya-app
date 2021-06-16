@@ -16,7 +16,6 @@ class Reserva extends Controller
     {
         parent::__construct();
         $this->session = new Session();
-
     }
 
     public function añadirReserva()
@@ -35,7 +34,8 @@ class Reserva extends Controller
         }
     }
 
-    public function añadirReservaCli(){
+    public function añadirReservaCli()
+    {
         $this->idCliente = $this->session->get('user')['id_cliente'];
 
         $this->fechaReserva = $_POST['fecha_reserva'];
@@ -103,11 +103,26 @@ class Reserva extends Controller
         }
     }
 
-    public function cancelarReserva() {
+    public function cancelarReserva()
+    {
         if ($this->model->delete(file_get_contents("php://input"))) {
             echo "ok";
         } else {
             echo "Hubo un problema";
         }
+    }
+
+    public function updateEstadoReserva()
+    {
+
+        date_default_timezone_set("America/Bogota");
+
+        $fecha_actual = date("Y-m-d");
+
+        $hora_actual = date("H:i:s");
+
+        $hora_restada = date("H:i:s", strtotime($hora_actual . "- 1 hour"));
+
+        $this->model->updateAuto(['fecha_actual' => $fecha_actual, 'hora_restada' => $hora_restada]);
     }
 }
