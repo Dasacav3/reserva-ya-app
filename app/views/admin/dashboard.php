@@ -6,6 +6,7 @@
 	<title>Dashboard Reserva Ya</title>
 	<link rel="stylesheet" href="<?= constant('URL') ?>lib/fullcalendar/main.css">
 </head>
+
 <body id="body">
 	<?php require "contenido.php"; ?>
 	<div class="main__title">
@@ -13,6 +14,78 @@
 			<img src="<?= constant('URL') ?>public/img/assets/hello.svg" alt="" />
 			<h1>¡Bienvenido!</h1>
 			<p> Al sistema de reservaciones Reserva Ya</p>
+		</div>
+		<div class="boxes-container">
+			<div class="small-box">
+				<div class="text-box">
+					<h3><?= $this->getCantReservas() ?></h3>
+					<p>Reservaciones</p>
+				</div>
+				<div class="icon-box">
+					<i class="fas fa-book"></i>
+				</div>
+				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+			</div>
+			<div class="small-box">
+				<div class="text-box">
+					<h3><?= $this->getCantProductos() ?></h3>
+					<p>Productos</p>
+				</div>
+				<div class="icon-box">
+					<i class="fas fa-hamburger"></i>
+				</div>
+				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+			</div>
+			<div class="small-box">
+				<div class="text-box">
+					<h3><?= $this->getCantInsumos() ?></h3>
+					<p>Insumos</p>
+				</div>
+				<div class="icon-box">
+					<i class="fas fa-utensils"></i>
+				</div>
+				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+			</div>
+			<div class="small-box">
+				<div class="text-box">
+					<h3><?= $this->getCantProveedores() ?></h3>
+					<p>Proveedores</p>
+				</div>
+				<div class="icon-box">
+					<i class="fas fa-truck-moving"></i>
+				</div>
+				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+			</div>
+			<div class="small-box">
+				<div class="text-box">
+					<h3><?= $this->getCantMesas() ?></h3>
+					<p>Mesas</p>
+				</div>
+				<div class="icon-box">
+					<i class="fas fa-table"></i>
+				</div>
+				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+			</div>
+			<div class="small-box">
+				<div class="text-box">
+					<h3><?= $this->getCantEmpleados() ?></h3>
+					<p>Empleados</p>
+				</div>
+				<div class="icon-box">
+					<i class="fas fa-user-cog"></i>
+				</div>
+				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+			</div>
+			<div class="small-box">
+				<div class="text-box">
+					<h3><?= $this->getCantClientes() ?></h3>
+					<p>Clientes</p>
+				</div>
+				<div class="icon-box">
+					<i class="fas fa-user-alt"></i>
+				</div>
+				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+			</div>
 		</div>
 		<section>
 			<div class="box">

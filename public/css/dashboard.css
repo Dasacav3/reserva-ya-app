@@ -467,6 +467,66 @@ body.dark .reportes_container .reporte_card button {
 	background: var(--red-black);
 }
 
+
+.boxes-container{
+	display: flex;
+	flex-direction: column;
+	color: var(--champagne-pink);
+}
+
+
+.small-box{
+	border-radius: .25rem;
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+	background: var(--carbon-black);
+	padding: 1em;
+}
+
+body.dark .small-box{
+	background: var(--dt-background-color-container);
+}
+
+.icon-box{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+.small-box-link{
+	text-decoration: none;
+	color: var(--emerald);
+}
+
+.small-box-link:hover{
+	background: rgb(189, 187, 187);
+	border-radius: 5px;
+	transition: background, color 1s;
+	color: rgb(35, 35, 35);
+}
+
+.bg-primary{
+	background: var(--popstar);
+}
+
+.bg-secondary{
+	background: var(--burnt-sienna);
+}
+
+.bg-third{
+	background: var(--emerald);
+}
+
+.bg-fourth{
+	background: var(--skobeloff);
+}
+
+.bg-fiveth{
+	background: #D8973C;
+}
+
 /* ================================================================= */
 /* ============				RESPONSIVE				   ============= */
 /* ================================================================= */
@@ -529,6 +589,16 @@ body.dark .reportes_container .reporte_card button {
 		padding: 3em 0;
 	}
 
+	.main__title{
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.boxes-container{
+		margin: 2em 0;
+	}
+
 	.reportes_container {
 		grid-template-columns: 1fr;
 	}
@@ -541,6 +611,10 @@ body.dark .reportes_container .reporte_card button {
 @media only screen and (max-width: 480px) {
 	.navbar__left {
 		display: none;
+	}
+
+	.main__title{
+		flex-direction: column;
 	}
 
 	.sidebar__username {

@@ -12,7 +12,6 @@ section {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #161623;
 	overflow: hidden;
     border-radius: 10px;
 }
@@ -24,9 +23,9 @@ section {
 
 .container-calendar {
 	position: relative;
-	width: 400px;
-	min-height: 400px;
-	background: rgba(255, 255, 255, 0.1);
+	width: 320px;
+	min-height: 320px;
+	background: var(--carbon-black);
 	box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
 	border: 1px solid rgba(255, 255, 255, 0.5);
 	border-right: 1px solid rgba(255, 255, 255, 0.2);
@@ -38,19 +37,22 @@ section {
 	align-items: center;
 }
 
+body.dark .container-calendar{
+	background: var(--dt-background-color-container);
+}
+
 #dycalendar {
 	width: 100%;
-	padding: 20px;
 }
 
 #dycalendar table {
 	width: 100%;
-	margin-top: 40px;
+	margin-top: 20px;
 	border-spacing: 5px;
 }
 
 #dycalendar table tr:nth-child(1) td {
-	background: #fff;
+	background: var(--emerald);
 	color: #111;
 	border-radius: 4px;
 	font-weight: 600;
@@ -65,13 +67,13 @@ section {
 }
 
 #dycalendar table td:hover{
-    background: #fff;
+    background: var(--emerald);
     color: #111 !important;
 }
 
 .dycalendar-month-container .dycalendar-today-date,
 .dycalendar-month-container .dycalendar-target-date {
-	background: #fff;
+	background: var(--emerald);
 	color: #111 !important;
 }
 
@@ -83,19 +85,19 @@ section {
 
 .dycalendar-prev-next-btn.prev-btn, 
 .dycalendar-prev-next-btn.next-btn{
-    background: #fff;
+    background: var(--emerald);
     color: #111;
-    width: 44px;
-    height: 38px;
+    width: 20px;
     left: 4px;
     border-radius: 4px;
     text-align: center;
     font-size: 24px;
     cursor: pointer;
+	margin: 10px;
 }
 
 .dycalendar-month-container .dycalendar-span-month-year{
-    color: #fff;
+    color: var(--emerald);
     font-size: 1.5em;
     font-weight: 500;
 }
