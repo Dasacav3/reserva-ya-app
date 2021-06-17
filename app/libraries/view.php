@@ -36,6 +36,19 @@ class View
         $this->model->close();
     }
 
+    public function getCantReservasCli(){
+        $id = $this->session->get('user')['id_cliente'];
+        try {
+            $query = $this->model->prepare("SELECT COUNT(*) FROM reservacion WHERE id_cliente = :id");
+            $query->execute(['id' => $id]);
+            $resultado = $query->fetch();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+        return $resultado[0];
+        $this->model->close();
+    }
+
     public function getCantInsumos(){
         try {
             $query = $this->model->prepare("SELECT COUNT(*) FROM insumo");

@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="<?= constant('URL') ?>public/css/modals.css" />
 <link rel="stylesheet" href="<?= constant('URL') ?>public/css/checkbox_comp.css" />
 <link rel="stylesheet" href="<?= constant('URL') ?>public/css/drag_and_drop.css" />
+<link rel="stylesheet" href="<?= constant('URL') ?>public/css/calendar.css" />
 
 <?php
 
