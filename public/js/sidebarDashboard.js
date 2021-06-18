@@ -1,6 +1,6 @@
 "use strict";
 
-const URL = "http://192.168.213.129/";
+const URL = "http://34.67.243.191/";
 
 // Sidebar Toggle Codes;
 var sidebarOpen = false;

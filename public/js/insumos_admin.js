@@ -1,4 +1,4 @@
-const url = "http://192.168.213.129/";
+const url = "http://34.67.243.191/";
 
 // Modal añadir y editar
 var pop_up_add = document.getElementById("pop-up-add");
