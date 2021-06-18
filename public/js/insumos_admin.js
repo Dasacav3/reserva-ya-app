@@ -90,7 +90,7 @@ mostrarProveedor();
 mostrarCategoria();
 
 function mostrarProveedor() {
-	fetch(URL + "insumo/listarProveedor", {
+	fetch(url + "insumo/listarProveedor", {
 		method: "POST",
 	})
 		.then((response) => response.text())
@@ -100,7 +100,7 @@ function mostrarProveedor() {
 }
 
 function mostrarCategoria() {
-	fetch(URL + "insumo/listarCategoria", {
+	fetch(url + "insumo/listarCategoria", {
 		method: "POST",
 	})
 		.then((response) => response.text())
@@ -181,7 +181,7 @@ function DisplayList(items, wrapper, rows_per_page, page) {
 }
 
 function listarInsumos(search) {
-	fetch(URL + "insumo/listarInsumos", {
+	fetch(url + "insumo/listarInsumos", {
 		method: "POST",
 		body: search,
 	})
@@ -252,7 +252,7 @@ registrar.addEventListener("click", () => {
 		async function añadirInsumos() {
 			try {
 				console.time("tasks time");
-				const add = await fetch(URL + "insumo/añadirInsumo", {
+				const add = await fetch(url + "insumo/añadirInsumo", {
 					method: "POST",
 					body: new FormData(pop_up_wrap_add),
 				})
@@ -302,7 +302,7 @@ registrarCategoria.addEventListener("click", () => {
 		async function anadirCategoria() {
 			try {
 				console.time("tasks time");
-				const add = await fetch(URL + "insumo/añadirCategoriaInsumo", {
+				const add = await fetch(url + "insumo/añadirCategoriaInsumo", {
 					method: "POST",
 					body: new FormData(pop_up_wrap_add_categoria),
 				})
@@ -352,7 +352,7 @@ editarCategoria.addEventListener("click", () => {
 		async function actualizarCategoria() {
 			try {
 				console.time("tasks time");
-				const add = await fetch(URL + "insumo/editarCategoriaInsumo", {
+				const add = await fetch(url + "insumo/editarCategoriaInsumo", {
 					method: "POST",
 					body: new FormData(pop_up_wrap_edit_categoria),
 				})
@@ -383,7 +383,7 @@ editarCategoria.addEventListener("click", () => {
 });
 
 function Editar(id) {
-	fetch(URL + "insumo/listarDatosInsumo", {
+	fetch(url + "insumo/listarDatosInsumo", {
 		method: "POST",
 		body: id,
 	})
@@ -460,7 +460,7 @@ edit.addEventListener("click", function () {
 			icon: "error",
 		});
 	} else {
-		fetch(URL + "insumo/editarInsumos", {
+		fetch(url + "insumo/editarInsumos", {
 			method: "POST",
 			body: new FormData(pop_up_wrap_edit),
 		})
@@ -494,7 +494,7 @@ function eliminarInsumos(id) {
 		cancelButtonText: "NO",
 	}).then((result) => {
 		if (result.isConfirmed) {
-			fetch(URL + "insumo/eliminarInsumos", {
+			fetch(url + "insumo/eliminarInsumos", {
 				method: "POST",
 				body: id,
 			})

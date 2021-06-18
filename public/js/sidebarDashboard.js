@@ -1,6 +1,6 @@
 "use strict";
 
-const URL = "http://localhost/reservaya-mvc/";
+const URL = "http://192.168.213.129/";
 
 // Sidebar Toggle Codes;
 var sidebarOpen = false;
