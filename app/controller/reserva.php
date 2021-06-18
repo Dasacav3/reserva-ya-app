@@ -53,7 +53,15 @@ class Reserva extends Controller
 
     public function listarReserva()
     {
-        $resultado = $this->model->getAll(file_get_contents("php://input"));
+        $search = file_get_contents("php://input");
+
+        if(isset($this->session->get('user')['id_cliente'])){
+            $id = $this->session->get('user')['id_cliente'];
+            $resultado = $this->model->getAllCli(['id' => $id, 'bus' => $search]);
+        }else{
+            $resultado = $this->model->getAll($search);
+        }
+        
 
         if (!empty($resultado)) {
             echo $resultado;
