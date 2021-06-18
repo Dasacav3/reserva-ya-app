@@ -139,7 +139,7 @@ class ReporteModel extends Model
             <div class='container'>
                 <header class='header'>
                     <div class='header_img_container'>
-                        <img class='header_img' src='http://192.168.213.129/public/img/logo-reservaya.png' />
+                        <img class='header_img' src='http://34.67.243.191/public/img/logo-reservaya.png' />
                     </div>
                     <h1 class='header_title'>Reporte Reservaciones</h1>
                 </header>
@@ -200,7 +200,7 @@ class ReporteModel extends Model
             <div class='container'>
                 <header class='header'>
                     <div class='header_img_container'>
-                        <img class='header_img' src='http://192.168.213.129/public/img/logo-reservaya.png' />
+                        <img class='header_img' src='http://34.67.243.191/public/img/logo-reservaya.png' />
                     </div>
                     <h1 class='header_title'>Reporte Insumos</h1>
                 </header>
@@ -252,7 +252,7 @@ class ReporteModel extends Model
             <div class='container'>
                 <header class='header'>
                     <div class='header_img_container'>
-                        <img class='header_img' src='http://192.168.213.129/public/img/logo-reservaya.png' />
+                        <img class='header_img' src='http://34.67.243.191/public/img/logo-reservaya.png' />
                     </div>
                     <h1 class='header_title'>Reporte Reservaciones Cliente</h1>
                 </header>
