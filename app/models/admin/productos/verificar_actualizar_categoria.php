@@ -16,11 +16,11 @@ if (isset($_POST['ID_CATEGORIA_PRODUCTO'])) {
             $query_categoria->bindParam(":NOMBRE_CATEGORIA_PRODUCTO",$NOMBRE_CATEGORIA_PRODUCTO);
             $query_categoria->execute();
       if ($query_categoria) {
-           header("location:http://192.168.213.129/admin/productos"); 
+           header("location:http://34.67.243.191/admin/productos"); 
       }
       else{
             echo "No se pudo actualizar la categoria";
-             header("location:http://192.168.213.129/admin/productos"); 
+             header("location:http://34.67.243.191/admin/productos"); 
       }
     
 $pdo=null;

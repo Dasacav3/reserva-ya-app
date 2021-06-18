@@ -1,6 +1,6 @@
 <?php
 
-    define('URL', 'http://192.168.213.129/');
+    define('URL', 'http://34.67.243.191/');
 
     define('HOST', 'localhost');
     define('DB', 'reservaya');

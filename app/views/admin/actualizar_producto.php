@@ -21,7 +21,7 @@
  		<?php
 			  $resultado = $productos->fetchAll(PDO::FETCH_ASSOC);
 			 foreach ($resultado as $row)?>
-		<form action="http://192.168.213.129/app/models/admin/productos/verificar_actualizar.php" method="post"  class="contact" id="contact"  enctype="multipart/form-data" autocomplete="off">
+		<form action="http://34.67.243.191/app/models/admin/productos/verificar_actualizar.php" method="post"  class="contact" id="contact"  enctype="multipart/form-data" autocomplete="off">
 			<input type="hidden" name="ID_PRODUCTO" value="<?php echo $ID_PRODUCTO?>">
 			<br>
 			<label for="NOMBRE_PRODUCTO">Nombre producto</label>

@@ -12,7 +12,7 @@
 		$query->execute(); 
 	?>
 	<div class="container">
-		<form  action="http://192.168.213.129/app/models/admin/productos/verificar_agregar_productos.php" method="post"  class="contact" id="contact"  enctype="multipart/form-data" autocomplete="OFf">
+		<form  action="http://34.67.243.191/app/models/admin/productos/verificar_agregar_productos.php" method="post"  class="contact" id="contact"  enctype="multipart/form-data" autocomplete="OFf">
 			<br>
 			<label for="NOMBRE_PRODUCTO">Nombre producto</label>
 			<br>

@@ -10,7 +10,7 @@
 		$insertar->execute();
 
 			if ($insertar) {
-			 	header("location: http://192.168.213.129/admin/productos");
+			 	header("location: http://34.67.243.191/admin/productos");
 			 } else{
 			 	echo "No se inserto";
 			 }

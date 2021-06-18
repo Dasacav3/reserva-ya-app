@@ -27,7 +27,7 @@
 		}
 	?>
       <script>
-			top.location.href = "http://192.168.213.129/admin/proveedores";
+			top.location.href = "http://34.67.243.191/admin/proveedores";
       </script>
   <?php
 		}

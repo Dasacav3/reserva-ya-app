@@ -19,7 +19,7 @@ if (isset($_POST['ID_CATEGORIA_PRODUCTO'])) {
             $nombre_base = basename($_FILES["IMAGEN_PRODUCTO"]["name"]);
             $nombre_final = date("m-d-y"). "-" . date("h-i-s"). "-" . $nombre_base;
             $ruta = "../../../../public/products_img/" . $nombre_final;
-            $url = "http://192.168.213.129/public/products_img/" . $nombre_final;
+            $url = "http://34.67.243.191/public/products_img/" . $nombre_final;
             $subirimagen = move_uploaded_file($_FILES["IMAGEN_PRODUCTO"]["tmp_name"], $ruta);
 		var_dump($url);
 	}
@@ -45,11 +45,11 @@ if (isset($_POST['ID_CATEGORIA_PRODUCTO'])) {
             	echo "valor nulo";
             }
              if ($queryProducto) {
-           header("location:http://192.168.213.129/admin/productos"); 
+           header("location:http://34.67.243.191/admin/productos"); 
       }
       else{
             echo "No se pudo actualizar la categoria";
-             header("location:hhttp://192.168.213.129/admin/productos"); 
+             header("location:http://34.67.243.191/admin/productos"); 
       }
     
 $pdo=null;

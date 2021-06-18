@@ -13,14 +13,14 @@
 		$nombre_base = basename($_FILES["IMAGEN_PRODUCTO"]["name"]);
 		$nombre_final = date("m-d-y"). "-" . date("h-i-s"). "-" . $nombre_base;
 		$ruta = "../../../../public/products_img/" . $nombre_final;
-		$url = "http://192.168.213.129/public/products_img/" . $nombre_final;
+		$url = "http://34.67.243.191/public/products_img/" . $nombre_final;
 		$subirimagen = move_uploaded_file($_FILES["IMAGEN_PRODUCTO"]["tmp_name"], $ruta);
 		if ($subirimagen) {	
 		$insertar = $pdo->prepare("INSERT INTO producto (ID_CATEGORIA_PRODUCTO,NOMBRE_PRODUCTO,DESCRIPCION_PRODUCTO,CANTIDAD_PRODUCTO,VALOR_PRODUCTO,IMAGEN_PRODUCTO) VALUES ($ID_CATEGORIA_PRODUCTO,'$NOMBRE_PRODUCTO','$DESCRIPCION_PRODUCTO',$CANTIDAD_PRODUCTO,$VALOR_PRODUCTO,'$url')");
 		$insertar->execute();
 
 			if ($insertar) {
-			 	header("location: http://192.168.213.129/admin/productos");
+			 	header("location: http://34.67.243.191/admin/productos");
 			 } else{
 			 	echo "No se inserto";
 			 }

@@ -19,7 +19,7 @@ class ClienteModel extends Model
             // Revisa que exista la carpeta y tiene permisos de escritura
             if(move_uploaded_file($file['tmp_name'], $url = "public/profile_photo/$foto")) {
                 // Ahora sí puedes insertar en base de datos
-                $url = "http://localhost/reservaya-mvc/public/profile_photo/$foto";
+                $url = "http://34.67.243.191/public/profile_photo/$foto";
             } else {
                 echo 'El archivo se subió, pero no se pudo mover a ubicación final';
             }

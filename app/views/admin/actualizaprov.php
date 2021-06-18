@@ -19,7 +19,7 @@
             <h2 class="title_table">Actualizar Proveedores</h2>
         </div>
         <div style="background-color: white;">
-          <form action="http://192.168.213.129/app/models/admin/proveedores/actualizarprov2.php" method="post">
+          <form action="http://34.67.243.191/app/models/admin/proveedores/actualizarprov2.php" method="post">
           	<label>ID Proveedor:</label><br>
             <input type="text" name="id" value="<?php echo $id;?>" readonly='readonly'><br><br>
             <label>Nombre Proveedor:</label><br>

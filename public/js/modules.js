@@ -1,6 +1,6 @@
 "use strict";
 
-export const URL = "http://192.168.213.129/";
+export const URL = "http://34.67.243.191/";
 
 // Actualización automatica de estado de reserva
 export function updateStateReserva() {

@@ -11,7 +11,7 @@
 	if (!$eliminar) {
 		echo 'Error al eliminar';
 	}else{
-		header("location: http://192.168.213.129/admin/productos");	
+		header("location: http://34.67.243.191/admin/productos");	
 	}
 
 	mysqli_close($conn);
