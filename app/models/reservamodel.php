@@ -264,8 +264,8 @@ class ReservaModel extends Model implements IModel
             INNER JOIN reservacion AS R ON RM.ID_RESERVACION = R.ID_RESERVACION
             INNER JOIN mesa AS M ON RM.ID_MESA = M.ID_MESA
             SET R.ESTADO_RESERVACION = 'Completada', M.ESTADO_MESA = 'Disponible'
-            WHERE FECHA_RESERVACION <= '$fecha_actual' AND HORA_RESERVACION < '$hora_restada'");
-            if ($query2->execute()) {
+            WHERE HORA_RESERVACION < :hora AND FECHA_RESERVACION <= :fecha");
+            if ($query2->execute(['hora' => $hora_restada, 'fecha' => $fecha_actual])) {
                 echo "ok";
             }
 
