@@ -10,7 +10,7 @@
 		$insertar->execute();
 
 			if ($insertar) {
-			 	header("location: http://localhost/reservaya-mvc/admin/productos");
+			 	header("location: http://192.168.213.129/admin/productos");
 			 } else{
 			 	echo "No se inserto";
 			 }

@@ -19,7 +19,7 @@
             <h2 class="title_table">Eliminar Proveedores</h2>
         </div>
         <div style="background-color: white;">
-          <form action="http://localhost/reservaya-mvc/app/models/admin/proveedores/eliminaprov2.php" method="post">
+          <form action="http://192.168.213.129/app/models/admin/proveedores/eliminaprov2.php" method="post">
           	<h5>¿Seguro quiere eliminar?</h5>
           	<label>ID Proveedor:</label><br>
             <input type="text" name="id" value="<?php echo $id;?>" readonly='readonly'><br><br>
