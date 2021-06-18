@@ -11,7 +11,7 @@
 	<?php require "contenido.php"; ?>
 	<div class="main__title">
 		<div class="main__greeting">
-			<img src="<?= constant('URL') ?>public/img/assets/hello.svg" alt="" />
+			<img src="<?= constant('URL') ?>public/img/assets/hello.svg" type="image/svg+xml" />
 			<h1>¡Bienvenido!</h1>
 			<p>Este es tu dashboard Reserva Ya</p>
 		</div>
