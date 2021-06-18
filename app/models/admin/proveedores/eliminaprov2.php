@@ -18,7 +18,7 @@
 	}
 	if ($result = $query->fetchAll(PDO::FETCH_ASSOC)) {
 		try {
-			$query = $pdo->prepare("DELETE FROM PROVEEDOR WHERE ID_PROVEEDOR = :id");
+			$query = $pdo->prepare("DELETE FROM proveedor WHERE ID_PROVEEDOR = :id");
 			$query->bindParam(":id", $_REQUEST['id']);
 			$query->execute();
 		} catch (Exception $e) {

@@ -9,7 +9,7 @@
 	<?php
 	include('../../../controller/database.php');
 	try{
-		$query=$pdo->prepare("INSERT INTO PROVEEDOR (NOMBRE_PROVEEDOR,DIRECCION_PROVEEDOR,PERSONA_ENCARGADA,TELEFONO_PROVEEDOR) VALUES (:nombre,:direccion,:persona,:cel)");
+		$query=$pdo->prepare("INSERT INTO proveedor (NOMBRE_PROVEEDOR,DIRECCION_PROVEEDOR,PERSONA_ENCARGADA,TELEFONO_PROVEEDOR) VALUES (:nombre,:direccion,:persona,:cel)");
 		$query->bindParam(":nombre",$_REQUEST['NOMBRE_PROVEEDOR']);
 		$query->bindParam(":direccion",$_REQUEST['DIRECCION_PROVEEDOR']);
 		$query->bindParam(":persona",$_REQUEST['PERSONA_ENCARGADA']);
