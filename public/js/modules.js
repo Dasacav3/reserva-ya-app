@@ -1,6 +1,6 @@
 "use strict";
 
-export const URL = "http://localhost/reservaya-mvc/";
+export const URL = "http://192.168.213.129/";
 
 // Actualización automatica de estado de reserva
 export function updateStateReserva() {

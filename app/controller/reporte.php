@@ -52,7 +52,7 @@ class Reporte extends Controller
         }
 
 
-        $css = file_get_contents("http://localhost/reservaya-mvc/public/css/pdf.css");
+        $css = file_get_contents("http://192.168.213.129/public/css/pdf.css");
 
         $mpdf->SetTitle("Reporte reservaciones");
         $mpdf->SetAuthor("Reserva Ya");
