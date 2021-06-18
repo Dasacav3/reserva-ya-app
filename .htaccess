@@ -7,4 +7,6 @@ RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
+AddType image/svg+xml svg svgz
+AddEncoding gzip svgz
 
