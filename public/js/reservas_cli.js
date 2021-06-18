@@ -217,7 +217,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			añadirReserva();
 
 			function sendMail() {
-				fetch(URL + "app/controller/mail/sendMail_add.php", {
+				fetch(URL + "email/sendEmailAdd", {
 					method: "POST",
 					body: new FormData(pop_up_wrap_add),
 				})

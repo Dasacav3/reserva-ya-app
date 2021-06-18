@@ -255,18 +255,18 @@ window.addEventListener("DOMContentLoaded", () => {
 
 			añadirReserva();
 
-			// function sendMail() {
-			// 	fetch(URL + "app/controller/mail/sendMail_add.php", {
-			// 		method: "POST",
-			// 		body: new FormData(pop_up_wrap_add),
-			// 	})
-			// 		.then((response) => response.text())
-			// 		.then((response) => {
-			// 			console.log(response);
-			// 		});
-			// }
+			function sendMail() {
+				fetch(URL + "email/sendEmailAdd", {
+					method: "POST",
+					body: new FormData(pop_up_wrap_add),
+				})
+					.then((response) => response.text())
+					.then((response) => {
+						console.log(response);
+					});
+			}
 
-			// sendMail();
+			sendMail();
 		}
 	});
 
@@ -352,14 +352,14 @@ window.addEventListener("DOMContentLoaded", () => {
 						pop_up_wrap_edit.classList.remove("show");
 					}
 				});
-			// fetch(URL + "app/controller/mail/sendMail_edit.php", {
-			// 	method: "POST",
-			// 	body: new FormData(pop_up_wrap_edit),
-			// })
-			// 	.then((response) => response.text())
-			// 	.then((response) => {
-			// 		console.log(response);
-			// 	});
+			fetch(URL + "email/sendEmailEdit", {
+				method: "POST",
+				body: new FormData(pop_up_wrap_edit),
+			})
+				.then((response) => response.text())
+				.then((response) => {
+					console.log(response);
+				});
 		}
 	});
 

@@ -20,7 +20,11 @@ class Email extends Controller
 
     public function sendEmailAdd()
     {
-        $idCliente = $_POST['cliente'];
+        if(isset($this->session->get('user')['id_cliente'])){
+            $idCliente = $this->session->get('user')['id_cliente'];
+        }else{
+            $idCliente = $_POST['cliente'];
+        }
         $fechaReserva = $_POST['fecha_reserva'];
         $horaReserva = $_POST['hora_reserva'];
         $idMesa = $_POST['mesa'];
