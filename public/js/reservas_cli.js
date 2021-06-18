@@ -266,12 +266,13 @@ window.addEventListener("DOMContentLoaded", () => {
 				} catch (err) {
 					console.log(err);
 				}
+				sendMailCancel(id[1]);
 			}
 		});
 	}
 
 	function sendMailCancel(id) {
-		fetch(URL + "app/controller/mail/sendMail_delete.php", {
+		fetch(URL + "email/sendEmailCancel", {
 			method: "POST",
 			body: id,
 		})
