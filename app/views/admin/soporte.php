@@ -15,16 +15,28 @@
           <h2 class="title_table">Area de soporte</h2>
         </div>
         <div>
-          <p>01 Actualizar información</p>
-          <video src="http://localhost/reservaya-mvc/public/video_soporte/video_soporte.mp4" width="400" controls></video>
+          <h3>01 Actualizar información</h3>
+          <video preload="none" src="http://34.67.243.191/public/video_soporte/admin/ActualizarInfoAdmin.mp4" width="400" controls></video>
         </div>
         <div>
-          <p>02 Reservaciones</p>
-          <video src="http://localhost/reservaya-mvc/public/video_soporte/video_soporte.mp4" width="400" controls></video>
+          <h3>02 Reservaciones</h3>
+          <video preload="none" src="http://34.67.243.191/public/video_soporte/admin/ReservacionesAdmin.mp4" width="400" controls></video>
         </div>
         <div>
-          <p>03 Tips de seguridad</p>
-          <video src="http://localhost/reservaya-mvc/public/video_soporte/video_soporte.mp4" width="400" controls></video>
+          <h3> Mesas</h3>
+          <video preload="none" src="http://34.67.243.191/public/video_soporte/admin/MesasAdmin.mp4" width="400" controls></video>
+        </div>
+        <div>
+          <h3>04 Insumos</h3>
+          <video preload="none" src="http://34.67.243.191/public/video_soporte/admin/InsumosAdmin.mp4" width="400" controls></video>
+        </div>
+        <div>
+          <h3>05 Productos</h3>
+          <video preload="none" src="http://34.67.243.191/public/video_soporte/admin/ProductosAdmin.mp4" width="400" controls></video>
+        </div>
+        <div>
+          <h3>06 Proveedores</h3>
+          <video preload="none" src="http://34.67.243.191/public/video_soporte/admin/ProveedoresAdmin.mp4" width="400" controls></video>
         </div>
         <div style="display:flex; justify-content: center; margin-top: 2em;">
           <button style="padding: 1em 2em; border-radius: 10px; border: none; background: #ccc; color: black;"><i class="fas fa-download"></i> Manual usuario</button>
