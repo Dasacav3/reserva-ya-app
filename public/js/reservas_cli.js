@@ -139,6 +139,8 @@ window.addEventListener("DOMContentLoaded", () => {
 		const hora_reserva = document.getElementById("add_hora_reserva");
 		const mesa_reserva = document.getElementById("mesa");
 		const asientos_reserva = document.getElementById("add_asientos");
+		const capacidad_mesa = mesa_reserva.value.split("-");
+		let capacidad = capacidad_mesa[1]
 
 		if (
 			fecha_reserva.value == "" &&
@@ -175,12 +177,12 @@ window.addEventListener("DOMContentLoaded", () => {
 			});
 		} else if (
 			asientos_reserva.value < 0 ||
-			asientos_reserva.value > 8 ||
+			asientos_reserva.value > capacidad ||
 			asientos_reserva.value == ""
 		) {
 			Swal.fire({
 				title: "Error",
-				text: "El numero de asientos no puede estar vacio ni ser mayor a 8 por reservación",
+				text: `El numero de asientos no puede estar vacio ni ser mayor a ${capacidad} por reservación`,
 				icon: "error",
 			});
 		} else {
