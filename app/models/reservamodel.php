@@ -12,6 +12,8 @@ class ReservaModel extends Model implements IModel
 
         $connect = $this->db->connect();
 
+        $id_mesa = explode("-", $array['mesa']);
+
         try {
             $queryReserva = $connect->prepare("INSERT INTO reservacion (id_cliente, fecha_reservacion, hora_reservacion, estado_reservacion, asiento) VALUES (:id, :fecha, :hora, :estado, :asiento)");
             $queryReserva->execute(['id' => $array['id'], 'fecha' => $array['fecha'], 'hora' => $array['hora'], 'estado' => $array['estado'], 'asiento' => $array['asiento']]);
@@ -24,7 +26,7 @@ class ReservaModel extends Model implements IModel
 
         try {
             $queryReservaMesa = $connect->prepare("INSERT INTO reservacion_reserva_mesa (id_reservacion,id_mesa) VALUES (:id_reserva, :id_mesa)");
-            $queryReservaMesa->execute(['id_reserva' => $id_reserva, 'id_mesa' => $array['mesa']]);
+            $queryReservaMesa->execute(['id_reserva' => $id_reserva, 'id_mesa' => $id_mesa[0]]);
         } catch (Exception $e) {
             echo "Conexion fallida " . $e->getMessage();
             die();
@@ -32,7 +34,7 @@ class ReservaModel extends Model implements IModel
 
         try {
             $queryMesa2 = $connect->prepare("UPDATE mesa SET estado_mesa = 'Ocupada' WHERE id_mesa = :mesa");
-            $queryMesa2->execute(['mesa' => $array['mesa']]);
+            $queryMesa2->execute(['mesa' => $id_mesa[0]]);
         } catch (Exception $e) {
             echo "Conexion fallida " . $e->getMessage();
             die();
@@ -43,6 +45,8 @@ class ReservaModel extends Model implements IModel
 
     public function saveCli($array)
     {
+
+        $id_mesa = explode("-", $array['mesa']);
 
         $connect = $this->db->connect();
 
@@ -58,7 +62,7 @@ class ReservaModel extends Model implements IModel
 
         try {
             $queryReservaMesa = $connect->prepare("INSERT INTO reservacion_reserva_mesa (id_reservacion,id_mesa) VALUES (:id_reserva, :id_mesa)");
-            $queryReservaMesa->execute(['id_reserva' => $id_reserva, 'id_mesa' => $array['mesa']]);
+            $queryReservaMesa->execute(['id_reserva' => $id_reserva, 'id_mesa' => $id_mesa[0]]);
         } catch (Exception $e) {
             echo "Conexion fallida " . $e->getMessage();
             die();
@@ -66,7 +70,7 @@ class ReservaModel extends Model implements IModel
 
         try {
             $queryMesa2 = $connect->prepare("UPDATE mesa SET estado_mesa = 'Ocupada' WHERE id_mesa = :mesa");
-            $queryMesa2->execute(['mesa' => $array['mesa']]);
+            $queryMesa2->execute(['mesa' => $id_mesa[0]]);
         } catch (Exception $e) {
             echo "Conexion fallida " . $e->getMessage();
             die();
@@ -95,7 +99,7 @@ class ReservaModel extends Model implements IModel
                 INNER JOIN reservacion ON reservacion_reserva_mesa.ID_RESERVACION = reservacion.ID_RESERVACION
                 INNER JOIN mesa ON reservacion_reserva_mesa.ID_MESA = mesa.ID_MESA
                 INNER JOIN cliente ON reservacion.ID_CLIENTE = cliente.ID_CLIENTE
-                WHERE reservacion.ESTADO_RESERVACION = 'Activa' AND (reservacion.ESTADO_RESERVACION LIKE '%" . $data . "%' OR reservacion.ID_RESERVACION LIKE '%" . $data. "%' OR cliente.NOMBRE_CLIENTE LIKE '%" . $data . "%' OR cliente.APELLIDO_CLIENTE LIKE '%" . $data . "%' OR reservacion.FECHA_RESERVACION LIKE '%" . $data . "%' OR reservacion.HORA_RESERVACION LIKE '%" . $data . "%' OR mesa.ID_MESA LIKE '%" . $data . "%' OR reservacion.ASIENTO LIKE '%" . $data . "%')");
+                WHERE reservacion.ESTADO_RESERVACION = 'Activa' AND (reservacion.ESTADO_RESERVACION LIKE '%" . $data . "%' OR reservacion.ID_RESERVACION LIKE '%" . $data . "%' OR cliente.NOMBRE_CLIENTE LIKE '%" . $data . "%' OR cliente.APELLIDO_CLIENTE LIKE '%" . $data . "%' OR reservacion.FECHA_RESERVACION LIKE '%" . $data . "%' OR reservacion.HORA_RESERVACION LIKE '%" . $data . "%' OR mesa.ID_MESA LIKE '%" . $data . "%' OR reservacion.ASIENTO LIKE '%" . $data . "%')");
                 $query->execute();
             }
             $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -175,7 +179,7 @@ class ReservaModel extends Model implements IModel
 
         echo "<option value=''></option>";
         while ($mesa = $query->fetch(PDO::FETCH_ASSOC)) {
-            echo "<option value=" . $mesa['id_mesa'] . ">Mesa #" . $mesa['id_mesa'] . " - Asientos: " . $mesa['capacidad_mesa'] . "</option>";
+            echo "<option value=" . $mesa['id_mesa'] . '-' . $mesa['capacidad_mesa'] . ">Mesa #" . $mesa['id_mesa'] . " - Asientos: " . $mesa['capacidad_mesa'] . "</option>";
         }
 
         $this->close();
@@ -244,6 +248,8 @@ class ReservaModel extends Model implements IModel
     public function update($array)
     {
         $estado = $array['estado'];
+        $id_mesa = explode("-", $array['mesa']);
+
         if ($estado == 'Cancelada' || $estado == 'Completada') {
 
             try {
@@ -256,7 +262,7 @@ class ReservaModel extends Model implements IModel
 
             try {
                 $queryUpdateMesa = $this->prepare("UPDATE mesa SET estado_mesa = 'Disponible' WHERE id_mesa = :mesa");
-                $queryUpdateMesa->execute(['mesa' => $array['mesa']]);
+                $queryUpdateMesa->execute(['mesa' => $id_mesa[0]]);
             } catch (Exception $e) {
                 echo "Conexion fallida " . $e->getMessage();
                 die();
@@ -275,7 +281,7 @@ class ReservaModel extends Model implements IModel
 
             try {
                 $queryUpdateMesa = $this->prepare("UPDATE mesa SET estado_mesa = 'Ocupada' WHERE id_mesa = :mesa");
-                $queryUpdateMesa->execute(['mesa' => $array['mesa']]);
+                $queryUpdateMesa->execute(['mesa' => $id_mesa[0]]);
             } catch (Exception $e) {
                 echo "Conexion fallida " . $e->getMessage();
                 die();
@@ -294,16 +300,17 @@ class ReservaModel extends Model implements IModel
         try {
             $connect->beginTransaction();
 
-            $query2 = $connect->prepare("UPDATE reservacion_reserva_mesa AS RM
-            INNER JOIN reservacion AS R ON RM.ID_RESERVACION = R.ID_RESERVACION
-            INNER JOIN mesa AS M ON RM.ID_MESA = M.ID_MESA
-            SET R.ESTADO_RESERVACION = 'Completada', M.ESTADO_MESA = 'Disponible'
-            WHERE HORA_RESERVACION < :hora AND FECHA_RESERVACION <= :fecha");
-            if ($query2->execute(['hora' => $hora_restada, 'fecha' => $fecha_actual])) {
-                echo "ok";
-            }
+            $query = $connect->prepare(
+                "UPDATE reservacion AS R
+                INNER JOIN reservacion_reserva_mesa AS RM ON R.ID_RESERVACION = RM.ID_RESERVACION
+                INNER JOIN mesa AS M ON RM.ID_MESA = M.ID_MESA
+                SET R.ESTADO_RESERVACION = 'Completada', M.ESTADO_MESA = 'Disponible'
+                WHERE TIME(R.HORA_RESERVACION) < TIME(:hora) AND DATE(R.FECHA_RESERVACION) <= DATE(:fecha) AND M.ESTADO_MESA = 'Ocupada' AND R.ESTADO_RESERVACION = 'Activa'"
+            );
+            $query->execute(['hora' => $hora_restada, 'fecha' => $fecha_actual]);
 
             $connect->commit();
+            echo "ok";
         } catch (Exception $e) {
             echo "Conexión fallida " . $e->getMessage();
         }
