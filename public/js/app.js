@@ -157,7 +157,7 @@ var countdown = new Counter({
 
 	// callback function for each second
 	onUpdateStatus: function (second) {
-		console.log(second);
+		// console.log(second);
 	},
 
 	// callback function for final action after countdown
