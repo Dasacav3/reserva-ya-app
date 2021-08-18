@@ -36,7 +36,7 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 						<input type="text" class="search-input" id="search_input" placeholder="Busqueda" />
 					</div>
 				</div>
-				<table class="datatable">
+				<table class="datatable" id="datatable">
 					<thead>
 						<tr>
 							<th>ESTADO</th>

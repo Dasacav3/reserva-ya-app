@@ -1,4 +1,3 @@
-
 <div id="sidebar">
     <div class="sidebar__title">
         <div class="sidebar__img">
@@ -7,7 +6,7 @@
         <i onclick="closeSidebar()" class="fa fa-times" id="sidebarIcon" aria-hidden="true"></i>
     </div>
     <div class="sidebar__menu sidebar__link sidebar__username">
-        <a>¡Bienvenid<i class="fas fa-at"></i> <?= $this->session->get('user')['nombre_admin'] . " " . $this->session->get('user')['apellido_admin']?>!</a>
+        <a>¡Bienvenid<i class="fas fa-at"></i> <?= $this->session->get('user')['nombre_admin'] . " " . $this->session->get('user')['apellido_admin'] ?>!</a>
         <hr>
     </div>
     <div class="sidebar__menu" id="sidebar__menu">
@@ -56,9 +55,13 @@
             <hr />
         </div>
 
-        <div> 
+        <div>
             <p class="sidebar__role">Rol administrador</p>
         </div>
     </div>
 </div>
 </div>
+
+<script src="<?= constant('URL') ?>lib/jquery/jquery-3.6.0.min.js"></script>
+<script src="<?= constant('URL') ?>lib/datatables/datatables.min.js"></script>
+<script src="<?= constant('URL') ?>public/js/datatable.js"></script>

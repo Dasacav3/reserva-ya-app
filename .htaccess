@@ -7,12 +7,8 @@ RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
-
-ErrorDocument 400 http://localhost/reservaya-mvc/app/views/errors/400.php
-ErrorDocument 401 http://localhost/reservaya-mvc/app/views/errors/401.php
-ErrorDocument 403 http://localhost/reservaya-mvc/app/views/errors/403.php
-ErrorDocument 500 http://localhost/reservaya-mvc/app/views/errors/500.php
-ErrorDocument 502 http://localhost/reservaya-mvc/app/views/errors/502.php
-ErrorDocument 503 http://localhost/reservaya-mvc/app/views/errors/503.php
-ErrorDocument 504 http://localhost/reservaya-mvc/app/views/errors/504.php
-
+<IfModule mod_deflate.c>
+    <filesMatch "\.(js|css|html|php|png)$">
+        SetOutputFilter DEFLATE
+    </filesMatch>
+</IfModule>

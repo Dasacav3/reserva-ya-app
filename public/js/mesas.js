@@ -163,9 +163,23 @@ window.addEventListener("DOMContentLoaded", () => {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				paginationTable(response);
+				// paginationTable(response);
 				console.log(response);
-				enableBtns();
+				// enableBtns();
+
+				$(".datatable").DataTable({
+					responsive: true,
+					language: {
+						url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json",
+					},
+					ajax: "mesa/obtenerTodo",
+					columns: [
+						{ data: "ID_MESA" },
+						{ data: "CAPACIDAD_MESA" },
+						{ data: "ESTADO_MESA" },
+						{ acciones: "BB"}
+					],
+				});
 			});
 	}
 
