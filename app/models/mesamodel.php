@@ -29,7 +29,7 @@ class MesaModel extends Model implements IModel
                 $query = $this->prepare("SELECT * FROM mesa WHERE id_mesa LIKE '%$busqueda%' OR capacidad_mesa LIKE '%$busqueda%' OR estado_mesa LIKE '%$busqueda%'");
                 $query->execute();
             }
-            $data = $query->fetchAll(PDO::FETCH_ASSOC);
+            $data = $query->fetchAll(PDO::FETCH_BOTH);
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -54,12 +54,12 @@ class MesaModel extends Model implements IModel
             <div class="form-fields">
             <div>
                 <label>ID Mesa</label> <br />
-                <input type="number" value="'.$resultado['ID_MESA'].'" name="idMesa" id="idMesa" readonly> <br />
+                <input type="number" value="' . $resultado['ID_MESA'] . '" name="idMesa" id="idMesa" readonly> <br />
                 <label>Capacidad Mesa</label> <br />
-                <input type="number" value="'.$resultado['CAPACIDAD_MESA'].'" name="capacidadMesaUpdate" id="capacidadMesaUpdate"> <br />
+                <input type="number" value="' . $resultado['CAPACIDAD_MESA'] . '" name="capacidadMesaUpdate" id="capacidadMesaUpdate"> <br />
                 <label>Estado Mesa</label> <br />
                 <select name="estadoMesa" id="estadoMesa"> <br /> 
-                    <option value="'.$resultado['ESTADO_MESA'].'">'.$resultado['ESTADO_MESA'].' - Actual</option>
+                    <option value="' . $resultado['ESTADO_MESA'] . '">' . $resultado['ESTADO_MESA'] . ' - Actual</option>
                     <option value="Disponible">Disponible</option>
                     <option value="Ocupada">Ocupada</option>
                 </select>
@@ -90,11 +90,10 @@ class MesaModel extends Model implements IModel
         try {
             $query = $this->prepare("DELETE FROM mesa WHERE id_mesa = :id");
             $query->execute(['id' => $id]);
+            return "ok";
         } catch (Exception $e) {
             return $e->getMessage();
         }
-
-        return true;
 
         $this->close();
     }

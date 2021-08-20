@@ -27,10 +27,10 @@ class Mesa extends Controller
 
     public function obtenerTodo()
     {
-        $resultado = $this->model->getAll(file_get_contents("php://input"));
+        $res = $this->model->getAll(file_get_contents("php://input"));
 
-        if (!empty($resultado)) {
-            echo json_encode($resultado);
+        if (!empty($res)) {
+            echo json_encode($res);
         } else {
             echo "Hubo un problema";
         }
@@ -49,7 +49,7 @@ class Mesa extends Controller
         $this->capacidadMesa = $_POST['capacidadMesaUpdate'];
         $this->estadoMesa = $_POST['estadoMesa'];
 
-        if ($this->model->update(['id' => $this->idMesa, 'capacidad' => $this->capacidadMesa, 'estado' => $this->estadoMesa])) {
+        if ($this->model->update(['id' => $this->idMesa, 'capacidad' => $this->capacidadMesa, 'estado' => $this->estadoMesa]) == "ok") {
             echo "ok";
         } else {
             echo "Hubo un problema";
@@ -60,7 +60,7 @@ class Mesa extends Controller
     {
         $this->idMesa = file_get_contents("php://input");
 
-        if ($this->model->delete($this->idMesa)) {
+        if ($this->model->delete($this->idMesa) == "ok") {
             echo "ok";
         } else {
             echo "Hubo un problema";

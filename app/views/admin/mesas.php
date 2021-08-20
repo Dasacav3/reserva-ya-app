@@ -5,6 +5,7 @@
   <?php require "head.php"; ?>
   <title>Gestión de Mesas</title>
 </head>
+
 <body id="body">
   <?php require "contenido.php"; ?>
   <main class="main__container">
@@ -19,9 +20,6 @@
               </li>
             </ul>
           </div>
-          <div class="search">
-            <input type="text" class="search-input" id="search_input" placeholder="Busqueda" />
-          </div>
         </div>
         <table class="datatable">
           <thead>
@@ -35,6 +33,14 @@
           <tbody id="table_elements">
 
           </tbody>
+          <tfoot>
+            <tr>
+              <th>ID MESA</th>
+              <th>CAPACIDAD MESA</th>
+              <th>ESTADO MESA</th>
+              <th>ACCIONES</th>
+            </tr>
+          </tfoot>
         </table>
         <div class="footer-tools">
           <div class="pages">
@@ -44,7 +50,6 @@
           </div>
         </div>
       </div>
-
 
       <!-- Modal Añadir mesa -->
       <div id="pop-up-add" class="pop-up form-modal">
@@ -73,7 +78,7 @@
   <?php require "footer.php"; ?>
   <script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
   <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
-  <script src="<?= constant('URL') ?>public/js/mesas.js" type="module"></script>
+  <script defer src="<?= constant('URL') ?>public/js/mesas.js" type="module"></script>
 </body>
 
 </html>

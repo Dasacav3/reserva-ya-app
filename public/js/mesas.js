@@ -45,78 +45,57 @@ window.addEventListener("DOMContentLoaded", () => {
 		formEdit.classList.remove("show");
 	}
 
-	//Funciones paginación
+	const datatable = $(".datatable").DataTable({
+		responsive: true,
+		language: {
+			url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json",
+		},
+		ajax: {
+			url: URL + "mesa/obtenerTodo",
+			type: "POST",
+			dataSrc: "",
+		},
 
-	function paginationTable(list_items) {
-		const list_element = document.getElementById("table_elements");
-		const pagination_element = document.getElementById("pagination");
+		columns: [
+			{
+				data: "ID_MESA",
+			},
+			{
+				data: "CAPACIDAD_MESA",
+			},
+			{
+				data: "ESTADO_MESA",
+			},
+			{
+				data: "ID_MESA",
+			},
+		],
+		deferRender: true,
+		columnDefs: [
+			{
+				targets: -1,
+				data: "ID_MESA",
+				render: function (data, type, row, meta) {
+					return (
+						"<button class='btn-edit' id='btnEdit-" +
+						data +
+						"'><i class='fas fa-edit'></i></button><button class='btn-delete' id='btnDelete-" +
+						data +
+						"'><i class='fas fa-trash-alt'></i></button>"
+					);
+				},
+			},
+		],
+		drawCallback: function () {
+			enableBtns();
+		},
+	});
 
-		let current_page = 1;
-		let rows = 5;
-
-		function SetupPaginations(items, wrapper, rows_per_page) {
-			wrapper.innerHTML = "";
-
-			let page_count = Math.ceil(items.length / rows_per_page);
-			for (let i = 1; i <= page_count; i++) {
-				let btn = PaginationButton(i, items);
-				wrapper.appendChild(btn);
-			}
-		}
-
-		function PaginationButton(page, items) {
-			let button = document.createElement("button");
-			button.innerText = page;
-
-			if (current_page == page) button.classList.add("active");
-
-			button.addEventListener("click", () => {
-				current_page = page;
-				DisplayList(items, list_element, rows, current_page);
-
-				let current_btn = document.querySelector(".pagenumbers button.active");
-				current_btn.classList.remove("active");
-
-				button.classList.add("active");
-				enableBtns();
-			});
-
-			return button;
-		}
-
-		DisplayList(list_items, list_element, rows, current_page);
-		SetupPaginations(list_items, pagination_element, rows);
-	}
-
-	function DisplayList(items, wrapper, rows_per_page, page) {
-		wrapper.innerHTML = "";
-		page--;
-
-		let start = rows_per_page * page;
-		let end = start + rows_per_page;
-		let paginatedItems = items.slice(start, end);
-
-		var output = "";
-		for (let i = 0; i < paginatedItems.length; i++) {
-			var item = new Array();
-			item[i] = paginatedItems[i];
-			output += `
-					<tr>
-						<td> ${item[i].ID_MESA}  </td>
-						<td> ${item[i].CAPACIDAD_MESA}  </td>
-                        <td> ${item[i].ESTADO_MESA}  </td>
-						<td>
-                        <button class='btn-edit' id='btnEdit-${item[i].ID_MESA}'><i class='fas fa-edit'></i></button>
-                        <button class='btn-delete' id='btnDelete-${item[i].ID_MESA}'><i class='fas fa-trash-alt'></i></button>
-                        </td>   
-					</tr>`;
-			wrapper.innerHTML = output;
-		}
-	}
+	setInterval( function () {
+		datatable.ajax.reload( null, false ); // user paging is not reset on reload
+	}, 50000 );
 
 	// Funciones core
-
-	getMesas();
 
 	function enableBtns() {
 		for (let i = 0; i < btnDelete.length; i++) {
@@ -127,6 +106,10 @@ window.addEventListener("DOMContentLoaded", () => {
 			btnEdit[i].addEventListener("click", getDataMesa, false);
 		}
 	}
+
+	setTimeout(() => {
+		enableBtns();
+	}, 1000);
 
 	function addMesas() {
 		let capacidadMesa = document.getElementById("capacidadMesa");
@@ -147,40 +130,12 @@ window.addEventListener("DOMContentLoaded", () => {
 					console.log(response);
 					if (response == "ok") {
 						Swal.fire("Existoso", "La mesa ha sido registrada", "success");
-						getMesas();
 						closeModalAdd();
 					} else {
 						Swal.fire("Error", "Hubo un problema", "error");
 					}
 				});
 		}
-	}
-
-	function getMesas(busqueda) {
-		fetch(URL + "mesa/obtenerTodo", {
-			method: "POST",
-			body: busqueda,
-		})
-			.then((response) => response.json())
-			.then((response) => {
-				// paginationTable(response);
-				console.log(response);
-				// enableBtns();
-
-				$(".datatable").DataTable({
-					responsive: true,
-					language: {
-						url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json",
-					},
-					ajax: "mesa/obtenerTodo",
-					columns: [
-						{ data: "ID_MESA" },
-						{ data: "CAPACIDAD_MESA" },
-						{ data: "ESTADO_MESA" },
-						{ acciones: "BB"}
-					],
-				});
-			});
 	}
 
 	let btnEdit = document.getElementsByClassName("btn-edit");
@@ -222,7 +177,6 @@ window.addEventListener("DOMContentLoaded", () => {
 					console.log(response);
 					if (response == "ok") {
 						Swal.fire("Existoso", "La mesa ha sido actualizada", "success");
-						getMesas();
 						closeModalEdit();
 					} else {
 						Swal.fire("Error", "Hubo un problema", "error");
@@ -255,7 +209,6 @@ window.addEventListener("DOMContentLoaded", () => {
 						console.log(response);
 						if (response == "ok") {
 							Swal.fire("Existoso", "La mesa ha sido eliminada", "success");
-							getMesas();
 						} else {
 							Swal.fire("Error", "Hubo un problema", "error");
 						}
@@ -263,14 +216,4 @@ window.addEventListener("DOMContentLoaded", () => {
 			}
 		});
 	}
-
-	let search = document.getElementById("search_input");
-	search.addEventListener("keyup", () => {
-		let busqueda = search.value;
-		if (busqueda.value == "") {
-			getMesas();
-		} else {
-			getMesas(busqueda);
-		}
-	});
 });
