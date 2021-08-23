@@ -42,13 +42,6 @@
             </tr>
           </tfoot>
         </table>
-        <div class="footer-tools">
-          <div class="pages">
-            <ul>
-              <div class="pagenumbers" id="pagination"></div>
-            </ul>
-          </div>
-        </div>
       </div>
 
       <!-- Modal Añadir mesa -->
