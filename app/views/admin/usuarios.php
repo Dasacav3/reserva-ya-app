@@ -5,6 +5,7 @@
   <?php require "head.php"; ?>
   <title>Gestión de Usuarios</title>
 </head>
+
 <body id="body">
   <?php require "contenido.php"; ?>
   <main class="main__container">
@@ -20,40 +21,26 @@
             </li>
           </ul>
         </div>
-        <div class="search">
-          <input type="text" class="search-input" id="search_input" placeholder="Busqueda" />
-        </div>
       </div>
       <table class="datatable">
         <thead>
-          <tr>
-            <th>ID USUARIO</th>
-            <th>NOMBRE DE USUARIO</th>
-            <th>TIPO USUARIO</th>
-            <th>ESTADO USUARIO</th>
-            <th>ACCIONES</th>
-          </tr>
+          <th>ID USUARIO</th>
+          <th>NOMBRE DE USUARIO</th>
+          <th>TIPO USUARIO</th>
+          <th>ESTADO USUARIO</th>
+          <th>ACCIONES</th>
         </thead>
         <tbody id="table_elements">
 
         </tbody>
+        <tfoot>
+          <th>ID USUARIO</th>
+          <th>NOMBRE DE USUARIO</th>
+          <th>TIPO USUARIO</th>
+          <th>ESTADO USUARIO</th>
+          <th>ACCIONES</th>
+        </tfoot>
       </table>
-      <div class="footer-tools">
-        <div class="list-items">
-          Mostrar
-          <select name="n-entries" id="n-entries" class="n-entries">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-          </select>
-          entradas
-        </div>
-        <div class="pages">
-          <ul>
-            <div class="pagenumbers" id="pagination"></div>
-          </ul>
-        </div>
-      </div>
     </div>
 
 

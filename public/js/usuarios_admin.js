@@ -43,76 +43,54 @@ window.addEventListener("DOMContentLoaded", () => {
 		pop_up_wrap_add.classList.remove("show");
 	});
 
-	listarUsuarios();
+	const datatable = $(".datatable").DataTable({
+		responsive: true,
+		language: {
+			url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json",
+		},
+		ajax: {
+			url: URL + "usuario/listarUsuarios",
+			type: "POST",
+			dataSrc: "",
+		},
 
-	function DisplayList(items, wrapper, rows_per_page, page) {
-		wrapper.innerHTML = "";
-		page--;
-
-		let start = rows_per_page * page;
-		let end = start + rows_per_page;
-		let paginatedItems = items.slice(start, end);
-
-		let output = "";
-		for (let i = 0; i < paginatedItems.length; i++) {
-			let item = new Array();
-			item[i] = paginatedItems[i];
-			output += `
-					<tr>
-						<td> ${item[i].ID_USUARIO}  </td>
-						<td> ${item[i].NOMBRE_USUARIO}  </td>
-						<td> ${item[i].TIPO_USUARIO}  </td>
-						<td> ${item[i].ESTADO_USUARIO}  </td>
-						<td>
-							<button class='abrirPopup-edit btn-edit' id='btnEdit-${item[i].ID_USUARIO}'><i class='fas fa-edit'></i></button>
-							<button class='btn-delete' id='btnDelete-${item[i].ID_USUARIO}'><i class='fas fa-trash-alt'></i></button>
-						</td>   
-					</tr>`;
-			wrapper.innerHTML = output;
-		}
-	}
-
-	function paginationTable(list_items) {
-		const list_element = document.getElementById("table_elements");
-		const pagination_element = document.getElementById("pagination");
-
-		let current_page = 1;
-		let rows = 5;
-
-		function SetupPaginations(items, wrapper, rows_per_page) {
-			wrapper.innerHTML = "";
-
-			let page_count = Math.ceil(items.length / rows_per_page);
-			for (let i = 1; i <= page_count; i++) {
-				let btn = PaginationButton(i, items);
-				wrapper.appendChild(btn);
-			}
-		}
-
-		function PaginationButton(page, items) {
-			let button = document.createElement("button");
-			button.innerText = page;
-
-			if (current_page == page) button.classList.add("active");
-
-			button.addEventListener("click", () => {
-				current_page = page;
-				DisplayList(items, list_element, rows, current_page);
-
-				let current_btn = document.querySelector(".pagenumbers button.active");
-				current_btn.classList.remove("active");
-
-				button.classList.add("active");
-
-				enableBtns();
-			});
-
-			return button;
-		}
-
-		DisplayList(list_items, list_element, rows, current_page);
-		SetupPaginations(list_items, pagination_element, rows);
-	}
+		columns: [
+			{
+				data: "ID_USUARIO",
+			},
+			{
+				data: "NOMBRE_USUARIO",
+			},
+			{
+				data: "TIPO_USUARIO",
+			},
+			{
+				data: "ESTADO_USUARIO",
+			},
+			{
+				data: "ID_USUARIO",
+			},
+		],
+		deferRender: true,
+		columnDefs: [
+			{
+				targets: -1,
+				data: "ID_USUARIO",
+				render: function (data, type, row, meta) {
+					return (
+						"<button class='abrirPopup-edit btn-edit' type='button' onclick=Editar('" +
+						data +
+						"');abrir()><i class='fas fa-edit'></i></button><button class='btn-delete' type='button' onclick=eliminarInsumos('" +
+						data +
+						"')><i class='fas fa-trash-alt'></i></button>"
+					);
+				},
+			},
+		],
+		drawCallback: function () {
+			enableBtns();
+		},
+	});
 
 	function enableBtns() {
 		for (let i = 0; i < btnEdit.length; i++) {
@@ -121,18 +99,6 @@ window.addEventListener("DOMContentLoaded", () => {
 		for (let i = 0; i < btnDelete.length; i++) {
 			btnDelete[i].addEventListener("click", eliminarUser, false);
 		}
-	}
-
-	function listarUsuarios(busqueda) {
-		fetch(URL + "usuario/listarUsuarios", {
-			method: "POST",
-			body: busqueda,
-		})
-			.then((response) => response.json())
-			.then((response) => {
-				paginationTable(response);
-				enableBtns();
-			});
 	}
 
 	registrar.addEventListener("click", () => {
