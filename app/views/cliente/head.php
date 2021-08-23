@@ -7,6 +7,10 @@
 <!-- FontAwesome -->
 <link rel="stylesheet" href="<?= constant('URL') ?>lib/fontawesome-5.15.2/css/all.min.css" />
 <script src="<?= constant('URL') ?>lib/fontawesome-5.15.2/js/all.min.js"></script>
+<!-- Datatables -->
+<script src="<?= constant('URL') ?>lib/jquery/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="<?= constant('URL') ?>lib/datatables/datatables.min.css" />
+<script src="<?= constant('URL') ?>lib/datatables/datatables.min.js"></script>
 <!-- Styles CSS -->
 <link rel="stylesheet" href="<?= constant('URL') ?>public/css/normalize.css" />
 <link rel="stylesheet" href="<?= constant('URL') ?>public/css/dashboard.css" />
@@ -18,7 +22,7 @@
 
 <?php
 
-if($this->session->get('user') == null || $this->session->get('user')['tipo_usuario'] != "Cliente"){
+if ($this->session->get('user') == null || $this->session->get('user')['tipo_usuario'] != "Cliente") {
     header("location: http://localhost/reservaya-mvc/login");
 }
 

@@ -31,9 +31,6 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 						</li>
 					</ul>
 				</div>
-				<div class="search">
-					<input type="text" class="search-input" id="search_input" placeholder="Busqueda" />
-				</div>
 			</div>
 			<table class="datatable">
 				<thead>
@@ -51,22 +48,6 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 
 				</tbody>
 			</table>
-			<div class="footer-tools">
-				<div class="list-items">
-					Mostrar
-					<select name="n-entries" id="n-entries" class="n-entries">
-						<option value="5">5</option>
-						<option value="10">10</option>
-						<option value="15">15</option>
-					</select>
-					entradas
-				</div>
-				<div class="pages">
-					<ul>
-						<div class="pagenumbers" id="pagination"></div>
-					</ul>
-				</div>
-			</div>
 		</div>
 
 

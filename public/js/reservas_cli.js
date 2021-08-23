@@ -31,97 +31,70 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	// Peticiones fetch
 
-	listarReservas();
+	const datatable = $(".datatable").DataTable({
+		responsive: true,
+		language: {
+			url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json",
+		},
+		ajax: {
+			url: URL + "reserva/listarReserva",
+			type: "POST",
+			dataSrc: "",
+		},
+
+		columns: [
+			{
+				data: "ESTADO_RESERVACION",
+			},
+			{
+				data: "ID_RESERVACION",
+			},
+			{
+				data: "FECHA_RESERVACION",
+			},
+			{
+				data: "HORA_RESERVACION",
+			},
+			{
+				data: "ID_MESA",
+			},
+			{
+				data: "ASIENTO",
+			},
+			{
+				data: "ID_RESERVACION_RESERVA_MESA",
+			},
+		],
+		deferRender: true,
+		columnDefs: [
+			{
+				targets: -1,
+				data: "ID_RESERVACION_RESERVA_MESA",
+				render: function (data, type, row, meta) {
+					return (
+						"<button class='abrirPopup-edit btn-edit' id='btnEdit-" +
+						data +
+						"'><i class='fas fa-edit'></i></button>"
+					);
+				},
+			},
+		],
+		drawCallback: function () {
+			enableBtns();
+		},
+	});
+
+	setInterval(function () {
+		datatable.ajax.reload(null, false); // user paging is not reset on reload
+	}, 50000);
+
+	
 	mostrarMesa();
 
 	function enableBtns() {
 		for (let i = 0; i < btnCancel.length; i++) {
 			btnCancel[i].addEventListener("click", cancelarReserva, false);
 		}
-	}
-
-	function DisplayList(items, wrapper, rows_per_page, page) {
-		wrapper.innerHTML = "";
-		page--;
-
-		let start = rows_per_page * page;
-		let end = start + rows_per_page;
-		let paginatedItems = items.slice(start, end);
-
-		var output = "";
-		for (let i = 0; i < paginatedItems.length; i++) {
-			var item = new Array();
-			item[i] = paginatedItems[i];
-			output += `
-					<tr>
-						<td> ${item[i].ESTADO_RESERVACION}  </td>
-						<td> ${item[i].ID_RESERVACION}  </td>
-						<td> ${item[i].FECHA_RESERVACION}  </td>
-						<td> ${item[i].HORA_RESERVACION}  </td>
-						<td> ${item[i].ID_MESA}  </td>
-						<td> ${item[i].ASIENTO}  </td>
-						<td>`;
-			if (item[i].ESTADO_RESERVACION === "Activa") {
-				output += `<button class='btn-delete' id='btnDelete-${item[i].ID_RESERVACION_RESERVA_MESA}'><i class='fas fa-trash-alt'></i></button>
-							</td>   
-					</tr>`;
-			}
-			wrapper.innerHTML = output;
-		}
-	}
-
-	function paginationTable(list_items) {
-		const list_element = document.getElementById("table_elements");
-		const pagination_element = document.getElementById("pagination");
-
-		let current_page = 1;
-		let rows = 5;
-
-		function SetupPaginations(items, wrapper, rows_per_page) {
-			wrapper.innerHTML = "";
-
-			let page_count = Math.ceil(items.length / rows_per_page);
-			for (let i = 1; i <= page_count; i++) {
-				let btn = PaginationButton(i, items);
-				wrapper.appendChild(btn);
-			}
-		}
-
-		function PaginationButton(page, items) {
-			let button = document.createElement("button");
-			button.innerText = page;
-
-			if (current_page == page) button.classList.add("active");
-
-			button.addEventListener("click", () => {
-				current_page = page;
-				DisplayList(items, list_element, rows, current_page);
-
-				let current_btn = document.querySelector(".pagenumbers button.active");
-				current_btn.classList.remove("active");
-
-				button.classList.add("active");
-
-				enableBtns();
-			});
-
-			return button;
-		}
-
-		DisplayList(list_items, list_element, rows, current_page);
-		SetupPaginations(list_items, pagination_element, rows);
-	}
-
-	function listarReservas(search) {
-		fetch(URL + "reserva/listarReserva", {
-			method: "POST",
-			body: search,
-		})
-			.then((response) => response.json())
-			.then((response) => {
-				paginationTable(response);
-				enableBtns();
-			});
 	}
 
 	function mostrarMesa() {
@@ -140,7 +113,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		const mesa_reserva = document.getElementById("mesa");
 		const asientos_reserva = document.getElementById("add_asientos");
 		const capacidad_mesa = mesa_reserva.value.split("-");
-		let capacidad = capacidad_mesa[1]
+		let capacidad = capacidad_mesa[1];
 
 		if (
 			fecha_reserva.value == "" &&
@@ -283,13 +256,4 @@ window.addEventListener("DOMContentLoaded", () => {
 				console.log(response);
 			});
 	}
-
-	search_input.addEventListener("keyup", () => {
-		const valor = search_input.value;
-		if (valor == "") {
-			listarReservas();
-		} else {
-			listarReservas(valor);
-		}
-	});
 });
