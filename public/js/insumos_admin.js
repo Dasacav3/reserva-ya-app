@@ -85,7 +85,6 @@ cerrar_edit_category.addEventListener("click", () => {
 
 // Peticiones fetch
 
-listarInsumos();
 mostrarProveedor();
 mostrarCategoria();
 
@@ -110,86 +109,60 @@ function mostrarCategoria() {
 		});
 }
 
-function paginationTable(list_items) {
-	const list_element = document.getElementById("table_elements");
-	const pagination_element = document.getElementById("pagination");
+const datatable = $(".datatable").DataTable({
+	responsive: true,
+	language: {
+		url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json",
+	},
+	ajax: {
+		url: URL + "insumo/listarInsumos",
+		type: "POST",
+		dataSrc: "",
+	},
 
-	let current_page = 1;
-	let rows = 5;
-
-	function SetupPaginations(items, wrapper, rows_per_page) {
-		wrapper.innerHTML = "";
-
-		let page_count = Math.ceil(items.length / rows_per_page);
-		for (let i = 1; i <= page_count; i++) {
-			let btn = PaginationButton(i, items);
-			wrapper.appendChild(btn);
-		}
-	}
-
-	function PaginationButton(page, items) {
-		let button = document.createElement("button");
-		button.innerText = page;
-
-		if (current_page == page) button.classList.add("active");
-
-		button.addEventListener("click", () => {
-			current_page = page;
-			DisplayList(items, list_element, rows, current_page);
-
-			let current_btn = document.querySelector(".pagenumbers button.active");
-			current_btn.classList.remove("active");
-
-			button.classList.add("active");
-		});
-
-		return button;
-	}
-
-	DisplayList(list_items, list_element, rows, current_page);
-	SetupPaginations(list_items, pagination_element, rows);
-}
-
-function DisplayList(items, wrapper, rows_per_page, page) {
-	wrapper.innerHTML = "";
-	page--;
-
-	let start = rows_per_page * page;
-	let end = start + rows_per_page;
-	let paginatedItems = items.slice(start, end);
-
-	var output = "";
-	for (let i = 0; i < paginatedItems.length; i++) {
-		var item = new Array();
-		item[i] = paginatedItems[i];
-		output += `
-					<tr>
-						<td> ${item[i].ID_INSUMO}  </td>
-						<td> ${item[i].NOMBRE_INSUMO}  </td>
-						<td> ${item[i].CANTIDAD_INSUMO}  </td>
-						<td> ${item[i].FECHA_COMPRA_INSUMO}  </td>
-						<td> ${item[i].VALOR_INSUMO}  </td>
-						<td> ${item[i].ID_PROVEEDOR}  </td>
-						<td> ${item[i].ID_CATEGORIA_INSUMO}  </td>
-						<td>
-                        <button class='abrirPopup-edit btn-edit' type='button' onclick=Editar('${item[i].ID_INSUMO}');abrir()><i class='fas fa-edit'></i></button>
-                        <button class='btn-delete' type='button' onclick=eliminarInsumos('${item[i].ID_INSUMO}')><i class='fas fa-trash-alt'></i></button>
-                        </td>
-					</tr>`;
-		wrapper.innerHTML = output;
-	}
-}
-
-function listarInsumos(search) {
-	fetch(URL + "insumo/listarInsumos", {
-		method: "POST",
-		body: search,
-	})
-		.then((response) => response.json())
-		.then((response) => {
-			paginationTable(response);
-		});
-}
+	columns: [
+		{
+			data: "ID_INSUMO",
+		},
+		{
+			data: "NOMBRE_INSUMO",
+		},
+		{
+			data: "CANTIDAD_INSUMO",
+		},
+		{
+			data: "FECHA_COMPRA_INSUMO",
+		},
+		{
+			data: "VALOR_INSUMO",
+		},
+		{
+			data: "ID_CATEGORIA_INSUMO",
+		},
+		{
+			data: "ID_PROVEEDOR",
+		},
+		{
+			data: "ID_INSUMO",
+		},
+	],
+	deferRender: true,
+	columnDefs: [
+		{
+			targets: -1,
+			data: "ID_INSUMO",
+			render: function (data, type, row, meta) {
+				return (
+					"<button class='abrirPopup-edit btn-edit' type='button' onclick=Editar('" +
+					data +
+					"');abrir()><i class='fas fa-edit'></i></button><button class='btn-delete' type='button' onclick=eliminarInsumos('" +
+					data +
+					"')><i class='fas fa-trash-alt'></i></button>"
+				);
+			},
+		},
+	],
+});
 
 registrar.addEventListener("click", () => {
 	const nombre_insumo = document.getElementById("nombre");
