@@ -1,6 +1,5 @@
 @import url("colors_fonts.css");
 
-
 * {
 	scroll-behavior: smooth;
 }
@@ -67,7 +66,7 @@ body.dark {
 		linear-gradient(90deg, #a8b1bb 8px, transparent 8px) -4px 0;
 	background-color: slategray;
 	background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px;
-	/* overflow: auto; */
+	overflow: auto;
 }
 
 body.dark .container {
@@ -83,11 +82,11 @@ body.dark .container {
 	margin-top: 3em;
 }
 
-.main__title img{
+.main__title img {
 	width: 300px;
 }
 
-body.dark .main__title{
+body.dark .main__title {
 	color: var(--champagne-pink);
 }
 
@@ -109,7 +108,7 @@ body.dark .main__container {
 	color: #fff;
 }
 
-.main__greeting{
+.main__greeting {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -286,8 +285,123 @@ body.dark .sidebar__role {
 	position: absolute;
 }
 
+/*---------------------------->*/
+/* MODULO DE RESERVACIONES */
+/*---------------------------->*/
+
+.reserva-add {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin: 2em 0;
+}
+
+.reserva-add-card {
+	width: 320px;
+	height: 250px;
+	background: var(--emerald);
+	border-radius: 1.5em;
+	box-shadow: 3px 3px 8px rgb(36, 34, 34);
+	margin-bottom: 1em;
+	padding: 1em;
+	text-align: center;
+}
+
+.reserva-add-card-title {
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.reserva-add-card hr {
+	border: 1px solid white;
+	width: 100px;
+	margin: 1em auto;
+}
+
+.reserva-add-card input,
+.reserva-add-card select {
+	margin: 2em auto;
+	height: 1.8em;
+	border-radius: 0.5em;
+	border: none;
+	width: min-content;
+	padding: 0.2em;
+	font-size: 1em;
+	text-align: center;
+}
+
+.btn-register-reserva-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2em;
+}
+
+#registrar {
+	color: white;
+	font-weight: bold;
+	background: var(--emerald);
+	padding: 0.5em 1.5em;
+	border: none;
+	border-radius: 0.5em;
+	cursor: pointer;
+	box-shadow: 3px 3px 8px rgb(36, 34, 34);
+}
+
+.reserva-divider {
+	width: 90%;
+	border: 2px solid var(--popstar);
+	box-shadow: 3px 3px 8px rgba(73, 70, 70, 0.871);
+	border-radius: 5px;
+	margin: 1em auto;
+}
+
+.reserva-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin: 2em 0;
+}
+
+.reserva-card {
+	width: 320px;
+	height: 250px;
+	background: var(--popstar);
+	border-radius: 1.5em;
+	box-shadow: 3px 3px 8px rgb(36, 34, 34);
+	margin-bottom: 1em;
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.cancelar {
+	color: white;
+	font-weight: bold;
+	background: var(--popstar);
+	padding: 0.5em 1.5em;
+	border: none;
+	border-radius: 0.5em;
+	cursor: pointer;
+	box-shadow: 3px 3px 8px rgb(36, 34, 34);
+}
+
+.btn-historial {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#datatable-container {
+	width: max-content;
+	width: auto;
+	background: var(--carbon-black);
+}
+
 /* -------------------------------------------- */
-/* Update Information */
+/* MODULO ACTUALIZAR INFORMACIÓN */
 /* -------------------------------------------- */
 
 .updateinfo_container {
@@ -467,64 +581,62 @@ body.dark .reportes_container .reporte_card button {
 	background: var(--red-black);
 }
 
-
-.boxes-container{
+.boxes-container {
 	display: flex;
 	flex-direction: column;
 	color: var(--champagne-pink);
 }
 
-
-.small-box{
-	border-radius: .25rem;
-    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
-    display: block;
-    margin-bottom: 20px;
-    position: relative;
+.small-box {
+	border-radius: 0.25rem;
+	box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+	display: block;
+	margin-bottom: 20px;
+	position: relative;
 	background: var(--carbon-black);
 	padding: 1em;
 }
 
-body.dark .small-box{
+body.dark .small-box {
 	background: var(--dt-background-color-container);
 }
 
-.icon-box{
+.icon-box {
 	position: absolute;
 	right: 10px;
 	top: 10px;
 }
 
-.small-box-link{
+.small-box-link {
 	text-decoration: none;
 	color: var(--emerald);
 }
 
-.small-box-link:hover{
+.small-box-link:hover {
 	background: rgb(189, 187, 187);
 	border-radius: 5px;
 	transition: background, color 1s;
 	color: rgb(35, 35, 35);
 }
 
-.bg-primary{
+.bg-primary {
 	background: var(--popstar);
 }
 
-.bg-secondary{
+.bg-secondary {
 	background: var(--burnt-sienna);
 }
 
-.bg-third{
+.bg-third {
 	background: var(--emerald);
 }
 
-.bg-fourth{
+.bg-fourth {
 	background: var(--skobeloff);
 }
 
-.bg-fiveth{
-	background: #D8973C;
+.bg-fiveth {
+	background: #d8973c;
 }
 
 /* ================================================================= */
@@ -580,6 +692,11 @@ body.dark .small-box{
 	.reportes_container .reporte_card {
 		width: 250px;
 	}
+
+	.reserva-add {
+		align-items: center;
+		flex-direction: column;
+	}
 }
 
 @media only screen and (max-width: 855px) {
@@ -589,13 +706,13 @@ body.dark .small-box{
 		padding: 3em 0;
 	}
 
-	.main__title{
+	.main__title {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
 
-	.boxes-container{
+	.boxes-container {
 		margin: 2em 0;
 	}
 
@@ -613,7 +730,7 @@ body.dark .small-box{
 		display: none;
 	}
 
-	.main__title{
+	.main__title {
 		flex-direction: column;
 	}
 

@@ -4,32 +4,54 @@ import { URL, updateStateReserva } from "./modules.js";
 
 window.addEventListener("DOMContentLoaded", () => {
 	updateStateReserva();
-	// Modal añadir y editar
-	var pop_up_add = document.getElementById("pop-up-add");
-	var pop_up_wrap_add = document.getElementById("pop_up_wrap_add");
+	listarReservasActivas();
 
-	var pop_up_edit = document.getElementById("pop-up-edit");
-	var pop_up_wrap_edit = document.getElementById("pop_up_wrap_edit");
+	let reserva_add_form = document.getElementById("reserva-add");
+	let cards_container = document.getElementById("reserva-container");
 
-	var abrir_add = document.getElementById("abrirPopup-add");
+	let modalHistorial = document.getElementById("pop-up-edit");
+	let modalHistorial2 = document.getElementById("datatable-container");
 
-	function showPopup_add() {
-		pop_up_add.classList.add("show");
-		pop_up_wrap_add.classList.add("show");
-	}
+	let btnOpenHistorial = document.getElementById("btn-historial");
+	let btnCloseHistorial = document.getElementById("btn-close-historial");
 
-	abrir_add.addEventListener("click", () => {
-		showPopup_add();
+	btnOpenHistorial.addEventListener("click", () => {
+		modalHistorial.classList.add("show");
+		modalHistorial2.classList.add("show");
 	});
 
-	var cerrar_add = document.getElementById("closePopup-add");
-
-	cerrar_add.addEventListener("click", () => {
-		pop_up_add.classList.remove("show");
-		pop_up_wrap_add.classList.remove("show");
+	btnCloseHistorial.addEventListener("click", () => {
+		modalHistorial.classList.remove("show");
+		modalHistorial2.classList.remove("show");
 	});
 
 	// Peticiones fetch
+
+	function listarReservasActivas() {
+		fetch(URL + "reserva/listarReserva", {
+			method: "POST",
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				let cards = "";
+				for (let i = 0; i < data.length; i++) {
+					if (data[i]["ESTADO_RESERVACION"] == "Activa") {
+						cards += `
+						<div class="reserva-card">
+							<p class="reserva-add-card-title">Reserva # 00876${data[i]["ID_RESERVACION"]} </p>
+							<p>Mesa: ${data[i]["ID_MESA"]} </p>
+							<p>Asientos: ${data[i]["ASIENTO"]}</p>
+							<p>Hora:  ${data[i]["HORA_RESERVACION"]}</p>
+							<p>Fecha: ${data[i]["FECHA_RESERVACION"]} </p>
+							<button class="cancelar btn-delete" id="btnEdit-${data[i]["ID_RESERVACION_RESERVA_MESA"]}" ><i class="fas fa-trash"></i> Cancelar</button>
+						</div>
+						`;
+					}
+				}
+				cards_container.innerHTML = cards;
+				enableBtns();
+			});
+	}
 
 	const datatable = $(".datatable").DataTable({
 		responsive: true,
@@ -37,7 +59,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json",
 		},
 		ajax: {
-			url: URL + "reserva/listarReserva",
+			url: URL + "reserva/listarReserva2",
 			type: "POST",
 			dataSrc: "",
 		},
@@ -61,24 +83,8 @@ window.addEventListener("DOMContentLoaded", () => {
 			{
 				data: "ASIENTO",
 			},
-			{
-				data: "ID_RESERVACION_RESERVA_MESA",
-			},
 		],
 		deferRender: true,
-		columnDefs: [
-			{
-				targets: -1,
-				data: "ID_RESERVACION_RESERVA_MESA",
-				render: function (data, type, row, meta) {
-					return (
-						"<button class='abrirPopup-edit btn-edit' id='btnEdit-" +
-						data +
-						"'><i class='fas fa-edit'></i></button>"
-					);
-				},
-			},
-		],
 		drawCallback: function () {
 			enableBtns();
 		},
@@ -88,10 +94,10 @@ window.addEventListener("DOMContentLoaded", () => {
 		datatable.ajax.reload(null, false); // user paging is not reset on reload
 	}, 50000);
 
-	
 	mostrarMesa();
 
 	function enableBtns() {
+		let btnCancel = document.getElementsByClassName("btn-delete");
 		for (let i = 0; i < btnCancel.length; i++) {
 			btnCancel[i].addEventListener("click", cancelarReserva, false);
 		}
@@ -164,7 +170,7 @@ window.addEventListener("DOMContentLoaded", () => {
 					console.time("tasks time");
 					const add = await fetch(URL + "reserva/añadirReservaCli", {
 						method: "POST",
-						body: new FormData(pop_up_wrap_add),
+						body: new FormData(reserva_add_form),
 					})
 						.then((response) => response.text())
 						.then((response) => {
@@ -176,11 +182,9 @@ window.addEventListener("DOMContentLoaded", () => {
 									timer: 1500,
 								});
 							}
-							pop_up_wrap_add.reset();
-							listarReservas();
+							reserva_add_form.reset();
+							listarReservasActivas();
 							mostrarMesa();
-							pop_up_add.classList.remove("show");
-							pop_up_wrap_add.classList.remove("show");
 						});
 
 					console.timeEnd("tasks time");
@@ -205,8 +209,6 @@ window.addEventListener("DOMContentLoaded", () => {
 			sendMail();
 		}
 	});
-
-	let btnCancel = document.getElementsByClassName("btn-delete");
 
 	function cancelarReserva() {
 		let idObj = this.getAttribute("id");
@@ -236,7 +238,7 @@ window.addEventListener("DOMContentLoaded", () => {
 						showConfirmButton: false,
 						timer: 1500,
 					});
-					listarReservas();
+					listarReservasActivas();
 					mostrarMesa();
 				} catch (err) {
 					console.log(err);
