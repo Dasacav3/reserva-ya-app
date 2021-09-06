@@ -38,7 +38,6 @@ body.dark {
 
 .container {
 	display: grid;
-	height: 1080px;
 	grid-template-columns: 1fr 4fr;
 	grid-template-rows: 0.2fr 3fr;
 	grid-template-areas:
@@ -66,7 +65,7 @@ body.dark {
 		linear-gradient(90deg, #a8b1bb 8px, transparent 8px) -4px 0;
 	background-color: slategray;
 	background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px;
-	overflow: auto;
+	/* overflow: auto; */
 }
 
 body.dark .container {
@@ -395,9 +394,10 @@ body.dark .sidebar__role {
 }
 
 #datatable-container {
-	width: max-content;
 	width: auto;
+	height: 80%;
 	background: var(--carbon-black);
+	overflow: auto;
 }
 
 /* -------------------------------------------- */
@@ -694,6 +694,11 @@ body.dark .small-box {
 	}
 
 	.reserva-add {
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.reserva-container {
 		align-items: center;
 		flex-direction: column;
 	}
