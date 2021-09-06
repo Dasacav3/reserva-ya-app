@@ -36,10 +36,11 @@ class View
         $this->model->close();
     }
 
-    public function getCantReservasCli(){
+    public function getCantReservasCli()
+    {
         $id = $this->session->get('user')['id_cliente'];
         try {
-            $query = $this->model->prepare("SELECT COUNT(*) FROM reservacion WHERE id_cliente = :id");
+            $query = $this->model->prepare("SELECT COUNT(*) FROM reservacion WHERE id_cliente = :id AND estado_reservacion = 'Activa'");
             $query->execute(['id' => $id]);
             $resultado = $query->fetch();
         } catch (Exception $e) {
@@ -49,7 +50,8 @@ class View
         $this->model->close();
     }
 
-    public function getCantInsumos(){
+    public function getCantInsumos()
+    {
         try {
             $query = $this->model->prepare("SELECT COUNT(*) FROM insumo");
             $query->execute();
@@ -61,7 +63,8 @@ class View
         $this->model->close();
     }
 
-    public function getCantProductos(){
+    public function getCantProductos()
+    {
         try {
             $query = $this->model->prepare("SELECT COUNT(*) FROM producto");
             $query->execute();
@@ -73,7 +76,8 @@ class View
         $this->model->close();
     }
 
-    public function getCantProveedores(){
+    public function getCantProveedores()
+    {
         try {
             $query = $this->model->prepare("SELECT COUNT(*) FROM proveedor");
             $query->execute();
@@ -85,7 +89,8 @@ class View
         $this->model->close();
     }
 
-    public function getCantClientes(){
+    public function getCantClientes()
+    {
         try {
             $query = $this->model->prepare("SELECT COUNT(*) FROM cliente");
             $query->execute();
@@ -97,7 +102,8 @@ class View
         $this->model->close();
     }
 
-    public function getCantEmpleados(){
+    public function getCantEmpleados()
+    {
         try {
             $query = $this->model->prepare("SELECT COUNT(*) FROM empleado");
             $query->execute();
@@ -109,7 +115,8 @@ class View
         $this->model->close();
     }
 
-    public function getCantMesas(){
+    public function getCantMesas()
+    {
         try {
             $query = $this->model->prepare("SELECT COUNT(*) FROM mesa");
             $query->execute();

@@ -30,20 +30,6 @@ body.dark::-webkit-scrollbar-thumb {
 body {
 	font-family: var(--poppins);
 	transition: all 0.4s ease-in;
-}
-
-body.dark {
-	background: var(--carbon-black);
-}
-
-.container {
-	display: grid;
-	grid-template-columns: 1fr 4fr;
-	grid-template-rows: 0.2fr 3fr;
-	grid-template-areas:
-		"sidebar nav nav nav"
-		"sidebar main main main";
-	/* grid-gap: 0.2rem; */
 	background: radial-gradient(
 			circle,
 			transparent 20%,
@@ -65,6 +51,20 @@ body.dark {
 		linear-gradient(90deg, #a8b1bb 8px, transparent 8px) -4px 0;
 	background-color: slategray;
 	background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px;
+}
+
+body.dark {
+	background: var(--carbon-black);
+}
+
+.container {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	grid-template-rows: 0.2fr 3fr;
+	grid-template-areas:
+		"sidebar nav nav nav"
+		"sidebar main main main";
+	/* grid-gap: 0.2rem; */
 	/* overflow: auto; */
 }
 
@@ -179,6 +179,8 @@ body.dark .navbar {
 	padding: 20px;
 	-webkit-transition: display 0.5s ease-in-out;
 	transition: display 1s ease-in-out;
+	height: auto;
+	margin: 0;
 }
 
 body.dark #sidebar {
