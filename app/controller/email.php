@@ -4,10 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'lib/PHPmailer/Exception.php';
-require 'lib/PHPmailer/PHPMailer.php';
-require 'lib/PHPmailer/SMTP.php';
-
+require 'vendor/autoload.php';
 class Email extends Controller
 {
     private $session;
