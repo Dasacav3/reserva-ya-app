@@ -12,74 +12,37 @@
     <div>
       <h2 class="title_table">Modulo de Gestión de Proveedores</h2>
     </div>
-    <?php
-    require 'app/controller/database.php';
-    try {
-      $query = $pdo->prepare("SELECT * FROM proveedor");
-      $query->execute();
-    } catch (Exception $e) {
-      echo "Conexion Fallida: " . $e->getMessage();
-    }
-    ?>
     <div class="datatable-container">
+      <div class="header-tools">
+        <div class="tools">
+          <ul>
+            <li>
+              <a href="#"><button id="btn-abrir-popup" class="btn-abrir-popup"><i class="fas fa-plus-circle"></i> Añadir</button></a>
+            </li>
+          </ul>
+        </div>
+      </div>
       <table class="datatable" style="width: 100%;">
         <thead>
-          <div class="header-tools">
-            <div class="tools">
-              <ul>
-                <li>
-                  <a href="#"><button id="btn-abrir-popup" class="btn-abrir-popup"><i class="fas fa-plus-circle"></i> Añadir</button></a>
-                </li>
-              </ul>
-            </div>
-            <div class="search">
-              <input type="text" class="search-input" id="search_input" />
-            </div>
-          </div>
           <tr>
             <th>ID</th>
             <th>NOMBRE</th>
             <th>DIRECCION</th>
             <th>PERSONA ENCARGADA</th>
             <th>TELEFONO</th>
-            <th colspan="2">ACCIONES</th>
+            <th>ACCIONES</th>
           </tr>
         </thead>
         <tbody>
-          <?php
-          while ($row = $query->fetch(PDO::FETCH_BOTH)) {
-            $traerDatos = $row[0] . "||" .
-              $row[1] . "||" .
-              $row[2] . "||" .
-              $row[3] . "||" .
-              $row[4];
-          ?>
-            <tr>
-              <th>
-                <?php
-                echo $row['0'];
-                ?>
-              </th>
-              <td><?php
-                  echo $row['1'];
-                  ?></td>
-              <td><?php
-                  echo $row['2'];
-                  ?></td>
-              <td><?php
-                  echo $row['3'];
-                  ?></td>
-              <td><?php
-                  echo $row['4'];
-                  ?></td>
-              <td><a><button class="btn-edit hola" id="btn-abrir-popup-edit" onclick="llenarmodal('<?php echo $traerDatos; ?>');"><i class='fas fa-edit'></i></button></a>
-                <a href="<?php echo constant('URL'); ?>app/models/admin/proveedores/eliminaprov2.php?id=<?php echo $row['ID_PROVEEDOR']; ?>" class="PRUEBA"><button class="btn-delete"><i class='fas fa-trash-alt'></i></button></a>
-              </td>
-            </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
         </tbody>
-      <?php
-          }
-      ?>
       </table>
     </div>
   </main>
@@ -123,11 +86,8 @@
       </form>
     </div>
   </div>
-  <?php require "footer.php"; ?>
   <script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
-  <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
-  <script src="<?= constant('URL') ?>public/js/proveedor.js"></script>
+  <!-- <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script> -->
+  <script src="<?= constant('URL') ?>public/js/proveedor.js" type="module"></script>
   <script src="<?= constant('URL') ?>public/js/alert_proveedor.js"></script>
-</body>
-
-</html>
+  <?php require "footer.php"; ?>

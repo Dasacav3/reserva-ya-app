@@ -1,84 +1,46 @@
+"use strict";
+
+import { URL } from "./modules.js";
+
 window.addEventListener("DOMContentLoaded", () => {
-	var btnAbrirPopup = document.getElementById("btn-abrir-popup"),
-		overlay = document.getElementById("overlay"),
-		popup = document.getElementById("popup"),
-		btnCerrarPopup = document.getElementById("btn-cerrar-popup"),
-		overlayEdit = document.getElementById("overlay-edit"),
-		popupEdit = document.getElementById("popup-edit"),
-		btnCerrarPopupEdit = document.getElementById("btn-cerrar-popup-edit");
-
-	btnAbrirPopup.addEventListener("click", function () {
-		overlay.classList.add("active");
-		popup.classList.add("active");
-	});
-
-	btnCerrarPopup.addEventListener("click", function (e) {
-		e.preventDefault();
-		overlay.classList.remove("active");
-		popup.classList.remove("active");
-	});
-
-	$(".hola").on("click", function () {
-		overlayEdit.classList.add("active");
-		popupEdit.classList.add("active");
-	});
-
-	btnCerrarPopupEdit.addEventListener("click", function (e) {
-		e.preventDefault();
-		overlayEdit.classList.remove("active");
-		popupEdit.classList.remove("active");
-	});
-
-	function llenarmodal(traerDatos) {
-		datos = traerDatos.split("||");
-		$("#identificador").val(datos[0]);
-		$("#nombre_prov").val(datos[1]);
-		$("#direccion_prov").val(datos[2]);
-		$("#persona_encargada").val(datos[3]);
-		$("#telefono_prov").val(datos[4]);
-	}
-
 	const datatable = $(".datatable").DataTable({
 		responsive: true,
 		language: {
 			url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json",
 		},
 		ajax: {
-			url: URL + "mesa/obtenerTodo",
+			url: URL + "proveedor/listarProveedor",
 			type: "POST",
 			dataSrc: "",
 		},
 
 		columns: [
 			{
-				data: "0",
+				data: "ID_PROVEEDOR",
 			},
 			{
-				data: "1",
+				data: "NOMBRE_PROVEEDOR",
 			},
 			{
-				data: "2",
+				data: "DIRECCION_PROVEEDOR",
 			},
 			{
-				data: "3",
+				data: "PERSONA_ENCARGADA",
 			},
 			{
-				data: "4",
+				data: "TELEFONO_PROVEEDOR",
 			},
-		],
-		deferRender: true,
-		columnDefs: [
 			{
-				targets: -1,
-				data: "ID_MESA",
+				data: "ID_PROVEEDOR",
 				render: function (data, type, row, meta) {
-					return (
-						"<button class='btn-edit' id='btnEdit-" +
-						data +
-						"'><i class='fas fa-edit'></i></button><button class='btn-delete' id='btnDelete-" +
-						data +
-						"'><i class='fas fa-trash-alt'></i></button>"
-					);
+					return `
+						<a>
+							<button class="btn-edit hola" id="btn-abrir-popup-edit" data-id='${data}'><i class='fas fa-edit'></i></button>
+						</a>
+						<a href="${URL}app/models/admin/proveedores/eliminaprov2.php?id=${data}" class="PRUEBA">
+							<button class="btn-delete"><i class='fas fa-trash-alt'></i></button>
+						</a>
+						`;
 				},
 			},
 		],
@@ -90,4 +52,51 @@ window.addEventListener("DOMContentLoaded", () => {
 	setInterval(function () {
 		datatable.ajax.reload(null, false); // user paging is not reset on reload
 	}, 50000);
+
+	function enableBtns() {
+		var btnAbrirPopup = document.getElementById("btn-abrir-popup"),
+			overlay = document.getElementById("overlay"),
+			popup = document.getElementById("popup"),
+			btnCerrarPopup = document.getElementById("btn-cerrar-popup"),
+			overlayEdit = document.getElementById("overlay-edit"),
+			popupEdit = document.getElementById("popup-edit"),
+			btnCerrarPopupEdit = document.getElementById("btn-cerrar-popup-edit");
+
+		btnAbrirPopup.addEventListener("click", function () {
+			overlay.classList.add("active");
+			popup.classList.add("active");
+		});
+
+		btnCerrarPopup.addEventListener("click", function (e) {
+			e.preventDefault();
+			overlay.classList.remove("active");
+			popup.classList.remove("active");
+		});
+
+		$(".hola").on("click", function () {
+			let id = this.dataset.id;
+			console.log(id);
+			fetch(URL + "proveedor/obtenerProveedor", {
+				method: "POST",
+				body: id,
+			})
+				.then((req) => req.json())
+				.then((res) => {
+					console.log(res);
+					$("#identificador").val(res.ID_PROVEEDOR);
+					$("#nombre_prov").val(res.NOMBRE_PROVEEDOR);
+					$("#direccion_prov").val(res.DIRECCION_PROVEEDOR);
+					$("#persona_encargada").val(res.PERSONA_ENCARGADA);
+					$("#telefono_prov").val(res.TELEFONO_PROVEEDOR);
+				});
+			overlayEdit.classList.add("active");
+			popupEdit.classList.add("active");
+		});
+
+		btnCerrarPopupEdit.addEventListener("click", function (e) {
+			e.preventDefault();
+			overlayEdit.classList.remove("active");
+			popupEdit.classList.remove("active");
+		});
+	}
 });

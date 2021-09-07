@@ -179,7 +179,7 @@ body.dark .navbar {
 	padding: 20px;
 	-webkit-transition: display 0.5s ease-in-out;
 	transition: display 1s ease-in-out;
-	height: auto;
+	height: 100vmax;
 	margin: 0;
 }
 
