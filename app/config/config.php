@@ -1,9 +1,17 @@
 <?php
 
-    define('URL', 'http://localhost/reservaya-mvc/');
+require 'vendor/autoload.php';
 
-    define('HOST', 'localhost');
-    define('DB', 'reservaya');
-    define('USER', 'root');
-    define('PASSWORD', 'mariadb');
-    define('CHARSET', 'utf8');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../..");
+$dotenv->load();
+
+
+
+define('URL', $_ENV['URL']);
+
+define('HOST', $_ENV['HOST']);
+define('DB', $_ENV['DB']);
+define('USER', $_ENV['USER']);
+define('PASSWORD', $_ENV['PASSWORD']);
+define('CHARSET', $_ENV['CHARSET']);
+

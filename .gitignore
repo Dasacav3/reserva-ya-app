@@ -8,3 +8,5 @@
 .vs/VSWorkspaceState.json
 
 vendor
+
+.env
