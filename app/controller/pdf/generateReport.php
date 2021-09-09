@@ -125,7 +125,7 @@ if (isset($insumos)) {
 }
 
 
-$css = file_get_contents("http://localhost/reservaya-mvc/public/css/pdf.css");
+$css = file_get_contents($_ENV['URL']."public/css/pdf.css");
 
 $mpdf->SetTitle("Reporte reservaciones");
 $mpdf->SetAuthor("Reserva Ya");

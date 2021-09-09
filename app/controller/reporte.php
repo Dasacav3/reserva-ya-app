@@ -1,5 +1,8 @@
 <?php
 
+require 'vendor/autoload.php';
+
+use Dotenv\Dotenv;
 class Reporte extends Controller
 {
 
@@ -44,15 +47,15 @@ class Reporte extends Controller
 
 
         if (isset($this->insumos)) {
-            $plantillaInsumo =  $this->model->plantillaInsumos(['listadoInsumos' => $insumosData['listadoInsumos'], 'valorInsumos' => $insumosData['valorInsumos']],$this->fechaFin, $this->fechaInicio, $today);
+            $plantillaInsumo =  $this->model->plantillaInsumos(['listadoInsumos' => $insumosData['listadoInsumos'], 'valorInsumos' => $insumosData['valorInsumos']], $this->fechaFin, $this->fechaInicio, $today);
         } else if (isset($this->reservas)) {
-            $plantillaReserva = $this->model->plantillaReservas(['reservas' => $reservasData['reservas'], 'fechaMasReservada' => $reservasData['fechaMasReservada'], 'mesaMasReservada' => $reservasData['mesaMasReservada']],$this->fechaFin, $this->fechaFin, $today);
+            $plantillaReserva = $this->model->plantillaReservas(['reservas' => $reservasData['reservas'], 'fechaMasReservada' => $reservasData['fechaMasReservada'], 'mesaMasReservada' => $reservasData['mesaMasReservada']], $this->fechaFin, $this->fechaFin, $today);
         } else if (isset($this->clientes)) {
             $plantillaCliente = $this->model->plantillaClientes(['today' => $today, 'listadoCliente' => $clientesData]);
         }
 
 
-        $css = file_get_contents("http://localhost/reservaya-mvc/public/css/pdf.css");
+        $css = file_get_contents($_ENV['URL'] . "public/css/pdf.css");
 
         $mpdf->SetTitle("Reporte reservaciones");
         $mpdf->SetAuthor("Reserva Ya");

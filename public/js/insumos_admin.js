@@ -484,12 +484,3 @@ function eliminarInsumos(id) {
 		}
 	});
 }
-
-search_input.addEventListener("keyup", () => {
-	const valor = search_input.value;
-	if (valor == "") {
-		listarInsumos();
-	} else {
-		listarInsumos(valor);
-	}
-});

@@ -78,11 +78,9 @@ window.addEventListener("DOMContentLoaded", () => {
 				data: "ID_USUARIO",
 				render: function (data, type, row, meta) {
 					return (
-						"<button class='abrirPopup-edit btn-edit' type='button' onclick=Editar('" +
+						"<button class='abrirPopup-edit btn-edit' id='btnEdit-" +
 						data +
-						"');abrir()><i class='fas fa-edit'></i></button><button class='btn-delete' type='button' onclick=eliminarInsumos('" +
-						data +
-						"')><i class='fas fa-trash-alt'></i></button>"
+						"'><i class='fas fa-edit'></i></button>"
 					);
 				},
 			},
@@ -95,9 +93,6 @@ window.addEventListener("DOMContentLoaded", () => {
 	function enableBtns() {
 		for (let i = 0; i < btnEdit.length; i++) {
 			btnEdit[i].addEventListener("click", Editar, false);
-		}
-		for (let i = 0; i < btnDelete.length; i++) {
-			btnDelete[i].addEventListener("click", eliminarUser, false);
 		}
 	}
 
@@ -182,7 +177,6 @@ window.addEventListener("DOMContentLoaded", () => {
 							timer: 1500,
 						});
 						pop_up_wrap_add.reset();
-						listarUsuarios();
 						pop_up_add.classList.remove("show");
 						pop_up_wrap_add.classList.remove("show");
 					}
@@ -279,7 +273,6 @@ window.addEventListener("DOMContentLoaded", () => {
 							timer: 1500,
 						});
 						pop_up_wrap_edit.reset();
-						listarUsuarios();
 						pop_up_edit.classList.remove("show");
 						pop_up_wrap_edit.classList.remove("show");
 					}
@@ -347,7 +340,6 @@ window.addEventListener("DOMContentLoaded", () => {
 							timer: 1500,
 						});
 						pop_up_wrap_edit.reset();
-						listarUsuarios();
 						pop_up_edit.classList.remove("show");
 						pop_up_wrap_edit.classList.remove("show");
 					}
@@ -355,45 +347,44 @@ window.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 
-	let btnDelete = document.getElementsByClassName("btn-delete");
+	// let btnDelete = document.getElementsByClassName("btn-delete");
 
-	function eliminarUser() {
-		let idObj = this.getAttribute("id");
-		let id = idObj.split("-");
-		Swal.fire({
-			title: "¿Esta seguro de eliminar?",
-			icon: "warning",
-			showCancelButton: true,
-			confirmButtonColor: "#3085d6",
-			cancelButtonColor: "#d33",
-			confirmButtonText: "SI",
-			cancelButtonText: "NO",
-		}).then((result) => {
-			if (result.isConfirmed) {
-				fetch(URL + "usuario/eliminarUsuarios", {
-					method: "POST",
-					body: id[1],
-				})
-					.then((response) => response.text())
-					.then((response) => {
-						listarUsuarios();
-						Swal.fire({
-							icon: "success",
-							title: "Eliminado",
-							showConfirmButton: false,
-							timer: 1500,
-						});
-					});
-			}
-		});
-	}
-
-	search_input.addEventListener("keyup", () => {
-		const valor = search_input.value;
-		if (valor == "") {
-			listarUsuarios();
-		} else {
-			listarUsuarios(valor);
-		}
-	});
+	// function eliminarUser() {
+	// 	let idObj = this.getAttribute("id");
+	// 	let id = idObj.split("-");
+	// 	Swal.fire({
+	// 		title: "¿Esta seguro de eliminar?",
+	// 		icon: "warning",
+	// 		showCancelButton: true,
+	// 		confirmButtonColor: "#3085d6",
+	// 		cancelButtonColor: "#d33",
+	// 		confirmButtonText: "SI",
+	// 		cancelButtonText: "NO",
+	// 	}).then((result) => {
+	// 		if (result.isConfirmed) {
+	// 			fetch(URL + "usuario/eliminarUsuarios", {
+	// 				method: "POST",
+	// 				body: id[1],
+	// 			})
+	// 				.then((response) => response.text())
+	// 				.then((response) => {
+	// 					if(response == "ok"){
+	// 						Swal.fire({
+	// 							icon: "success",
+	// 							title: "Eliminado",
+	// 							showConfirmButton: false,
+	// 							timer: 1500,
+	// 						});
+	// 					}else{
+	// 						Swal.fire({
+	// 							icon: "error",
+	// 							title: "El cliente no se puede eliminar porque tiene reservas",
+	// 							showConfirmButton: false,
+	// 							timer: 1500,
+	// 						});
+	// 					}
+	// 				});
+	// 		}
+	// 	});
+	// }
 });

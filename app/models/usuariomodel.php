@@ -165,19 +165,18 @@ class UsuarioModel extends Model implements IModel
     public function delete($id)
     {
         try {
-            $query = $this->prepare("SELECT tipo_usuario FROM usuario WHERE id_usuario = :id");
+            $query = $this->prepare("SELECT * FROM usuario WHERE id_usuario = :id");
             $query->bindParam(":id", $id);
             $query->execute();
-            $resultado = $query->fetch(PDO::FETCH_NUM);
-            foreach ($resultado as $dat) {
-                $tipo = $dat;
-            }
+            $resultado = $query->fetch(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
             echo "Conexion fallida " . $e->getMessage();
             die();
         }
 
-        if ($tipo == 'Empleado') {
+        echo $resultado['TIPO_USUARIO'];
+
+        if ($resultado['TIPO_USUARIO'] == 'Empleado') {
             try {
                 $this->beginTransaction();
 
@@ -197,7 +196,7 @@ class UsuarioModel extends Model implements IModel
                 echo "Conexion fallida " . $e->getMessage();
                 die();
             }
-        } else if ($tipo == 'Cliente') {
+        } else if ($resultado['TIPO_USUARIO'] == 'Cliente') {
             try {
                 $this->beginTransaction();
 
@@ -218,34 +217,32 @@ class UsuarioModel extends Model implements IModel
                 die();
             }
         }
-
-        return true;
+        return "ok";
     }
 
     public function update($array)
     {
         $tipo = $array['tipo'];
 
-        if($tipo == 'Empleado'){    
+        if ($tipo == 'Empleado') {
             try {
                 $queryEmpleado = $this->prepare("UPDATE empleado SET doc_empleado = :doc, nombre_empleado = :nombre, apellido_empleado = :apellido, email_empleado = :email, celular_empleado = :cel WHERE id_usuario = :id");
                 $queryEmpleado->execute(['doc' => $array['doc'], 'nombre' => $array['nombre'], 'apellido' => $array['apellido'], 'email' => $array['email'], 'cel' => $array['cel'], 'id' => $array['id']]);
-            }catch (Exception $e) {
+            } catch (Exception $e) {
                 echo "Conexion fallida " . $e->getMessage();
                 die();
             }
-    
+
             try {
                 $queryUser = $this->prepare("UPDATE usuario SET estado_usuario = :estado WHERE id_usuario = :id");
                 $queryUser->execute(['estado' => $array['estado'], 'id' => $array['id']]);
-            }catch (Exception $e) {
+            } catch (Exception $e) {
                 echo "Conexion fallida " . $e->getMessage();
                 die();
             }
-    
+
             echo "ok";
-    
-        }else if($tipo == 'Cliente'){
+        } else if ($tipo == 'Cliente') {
             $id = $_POST['id_cliente'];
             $nombre = $_POST['name_cliente_1'];
             $apellido = $_POST['last_cliente_1'];
@@ -253,27 +250,26 @@ class UsuarioModel extends Model implements IModel
             $estado = $_POST['estado_usuario'];
             $email = $_POST['email_cliente_1'];
             $cel = $_POST['cel_cliente_1'];
-    
+
             try {
                 $queryCliente = $this->prepare("UPDATE cliente SET nombre_cliente = :nombre, apellido_cliente = :apellido, fecha_nacimiento_cliente = :fecha, email_cliente = :email, celular_cliente = :cel WHERE id_usuario = :id");
                 $queryCliente->execute(['nombre' => $array['nombre'], 'apellido' => $array['apellido'], 'fecha' => $array['fecha'], 'email' => $array['email'], 'cel' => $array['cel'], 'id' => $id]);
-            }catch (Exception $e) {
+            } catch (Exception $e) {
                 echo "Conexion fallida " . $e->getMessage();
                 die();
             }
-    
+
             try {
                 $queryUser = $this->prepare("UPDATE usuario SET estado_usuario = :estado WHERE id_usuario = :id");
-                $queryUser->bindParam(":estado",$estado);
-                $queryUser->bindParam(":id",$id);
+                $queryUser->bindParam(":estado", $estado);
+                $queryUser->bindParam(":id", $id);
                 $queryUser->execute();
-            }catch (Exception $e) {
+            } catch (Exception $e) {
                 echo "Conexion fallida " . $e->getMessage();
                 die();
             }
-    
+
             echo "ok";
-            
         }
     }
 }

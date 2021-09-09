@@ -61,7 +61,3 @@
     </div>
 </div>
 </div>
-
-<script src="<?= constant('URL') ?>lib/jquery/jquery-3.6.0.min.js"></script>
-<script src="<?= constant('URL') ?>lib/datatables/datatables.min.js"></script>
-<script src="<?= constant('URL') ?>public/js/datatable.js"></script>
