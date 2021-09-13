@@ -1,6 +1,6 @@
 <div class="container">
     <nav class="navbar">
-        <div class="nav_icon" onclick="toggleSidebar()">
+        <div class="nav_icon" id="nav_icon">
             <i class="fa fa-bars" aria-hidden="true"></i>
         </div>
         <div class="navbar__left">

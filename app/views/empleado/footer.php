@@ -4,7 +4,9 @@
         <div class="sidebar__img">
             <img src="<?= constant('URL') ?>public/img/logo-reservaya.png" alt="logo" />
         </div>
-        <i onclick="closeSidebar()" class="fa fa-times" id="sidebarIcon" aria-hidden="true"></i>
+        <div id="sidebarIcon">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
     </div>
     <div class="sidebar__menu sidebar__link sidebar__username">
         <a>¡Bienvenid<i class="fas fa-at"></i> <?= $this->session->get('user')['nombre_empleado'] . " " . $this->session->get('user')['apellido_empleado'] ?>!</a>

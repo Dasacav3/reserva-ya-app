@@ -1,6 +1,6 @@
 <div class="container">
     <nav class="navbar">
-        <div class="nav_icon" onclick="toggleSidebar()">
+        <div class="nav_icon" id="nav_icon">
             <i class="fa fa-bars" aria-hidden="true"></i>
         </div>
         <div class="navbar__left">
@@ -18,11 +18,7 @@
                 <i class="fa fa-power-off" aria-hidden="true"></i>
             </a>
             <a href="<?= constant('URL') ?>cliente/updateInfo">
-                <img class="foto_perfil" src="<?= $this->session->get('user')['foto_perfil']?>" />
+                <img class="foto_perfil" src="<?= $this->session->get('user')['foto_perfil'] ?>" />
             </a>
         </div>
     </nav>
-
-           
-
-    

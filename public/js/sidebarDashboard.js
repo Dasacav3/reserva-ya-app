@@ -1,38 +1,49 @@
 "use strict";
 
-// const URL = "http://localhost/reservaya-mvc/";
-
 import { URL } from "./modules.js";
 
 window.addEventListener("DOMContentLoaded", () => {
 	// Sidebar Toggle Codes;
-	var sidebarOpen = false;
-	var sidebar = document.getElementById("sidebar");
-	var sidebarCloseIcon = document.getElementById("sidebarIcon");
+	let sidebarOpen = false;
+	let sidebar = document.getElementById("sidebar");
+	let sidebarCloseIcon = document.getElementById("sidebarIcon");
+	let btnNavbar = document.getElementById("nav_icon");
+
+	if (btnNavbar) {
+		btnNavbar.addEventListener("click", toggleSidebar, false);
+	}
+
+	if (sidebarCloseIcon) {
+		sidebarCloseIcon.addEventListener("click", closeSidebar, false);
+	}
 
 	function toggleSidebar() {
 		if (!sidebarOpen) {
-			sidebar.classList.add("sidebar_responsive");
-			sidebarOpen = true;
+			if (sidebar) {
+				sidebar.classList.add("sidebar_responsive");
+				sidebarOpen = true;
+			}
 		}
 	}
 
 	function closeSidebar() {
 		if (sidebarOpen) {
-			sidebar.classList.remove("sidebar_responsive");
-			sidebarOpen = false;
+			if (sidebar) {
+				sidebar.classList.remove("sidebar_responsive");
+				sidebarOpen = false;
+			}
 		}
 	}
 
 	changeActiveLinkAdmin();
 
 	function changeActiveLinkAdmin() {
-		var URLactual = window.location.href;
-		var sidebar = document.getElementById("sidebar__menu");
-		var links = sidebar.querySelectorAll(".sidebar__link");
+		let URLactual = window.location.href;
+		let sidebar = document.getElementById("sidebar__menu");
+		let links = sidebar.querySelectorAll(".sidebar__link");
 		links.forEach((link) => {
-			var a = link.querySelector("a");
-			var ancla = a.textContent;
+			let a = link.querySelector("a");
+			let ancla = a.textContent;
 			if (
 				(URLactual == URL + "admin" && ancla == "Inicio") ||
 				(URLactual == URL + "admin#" && ancla == "Inicio")
@@ -90,12 +101,12 @@ window.addEventListener("DOMContentLoaded", () => {
 	changeActiveLinkCliente();
 
 	function changeActiveLinkCliente() {
-		var URLactual = window.location.href;
-		var sidebar = document.getElementById("sidebar__menu");
-		var links = sidebar.querySelectorAll(".sidebar__link");
+		let URLactual = window.location.href;
+		let sidebar = document.getElementById("sidebar__menu");
+		let links = sidebar.querySelectorAll(".sidebar__link");
 		links.forEach((link) => {
-			var a = link.querySelector("a");
-			var ancla = a.textContent;
+			let a = link.querySelector("a");
+			let ancla = a.textContent;
 			if (
 				(URLactual == URL + "cliente" && ancla == "Inicio") ||
 				(URLactual == URL + "cliente#" && ancla == "Inicio")
@@ -123,12 +134,12 @@ window.addEventListener("DOMContentLoaded", () => {
 	changeActiveLinkEmpleado();
 
 	function changeActiveLinkEmpleado() {
-		var URLactual = window.location.href;
-		var sidebar = document.getElementById("sidebar__menu");
-		var links = sidebar.querySelectorAll(".sidebar__link");
+		let URLactual = window.location.href;
+		let sidebar = document.getElementById("sidebar__menu");
+		let links = sidebar.querySelectorAll(".sidebar__link");
 		links.forEach((link) => {
-			var a = link.querySelector("a");
-			var ancla = a.textContent;
+			let a = link.querySelector("a");
+			let ancla = a.textContent;
 			if (
 				(URLactual == URL + "empleado" && ancla == "Inicio") ||
 				(URLactual == URL + "empleado#" && ancla == "Inicio")
