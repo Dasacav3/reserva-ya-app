@@ -29,7 +29,7 @@
 		echo "<script>alert('Se elimino correctamente');</script>";
 	?>
 		<script>
-			top.location.href = "<?= constant('URL') ?>admin/proveedores";
+			window.location.href = "<?= constant('URL') ?>admin/proveedores";
 		</script>
 	<?php
 	} else {

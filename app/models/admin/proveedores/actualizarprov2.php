@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>actualiza</title>
+	<title>Actualiza</title>
 </head>
 <body>
 	<?php
@@ -27,7 +27,7 @@
 		}
 	?>
       <script>
-			top.location.href = "<?= constant('URL') ?>admin/proveedores";
+			window.location.href = "<?= constant('URL') ?>admin/proveedores";
       </script>
   <?php
 		}

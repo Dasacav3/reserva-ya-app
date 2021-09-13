@@ -20,13 +20,11 @@
 	} catch (Exception $e) {
 		echo "Conexion Fallida: " . $e->getMessage();
 	}
-	echo "<script>alert('Se agrego correctamente');</script>";
+	echo "<script>
+		window.location.href = " . $_ENV['URL'] . "admin/proveedores';
+	</script>";
 
 	?>
-
-	<script>
-		top.location.href = "<?= constant('URL') ?>admin/proveedores";
-	</script>
 
 	<?php
 	$pdo = null;
