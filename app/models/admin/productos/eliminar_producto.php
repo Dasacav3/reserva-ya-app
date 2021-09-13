@@ -11,7 +11,7 @@
 	if (!$eliminar) {
 		echo 'Error al eliminar';
 	}else{
-		header("location: http://localhost/reservaya-mvc/admin/productos");	
+		header("location: " . $_ENV['URL'] . "admin/productos");	
 	}
 
 	mysqli_close($conn);

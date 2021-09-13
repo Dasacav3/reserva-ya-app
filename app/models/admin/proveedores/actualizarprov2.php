@@ -27,7 +27,7 @@
 		}
 	?>
       <script>
-			top.location.href = "http://localhost/reservaya-mvc/admin/proveedores";
+			top.location.href = "<?= constant('URL') ?>admin/proveedores";
       </script>
   <?php
 		}
