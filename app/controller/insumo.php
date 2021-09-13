@@ -21,10 +21,11 @@ class Insumo extends Controller
     {
         $this->nombreCategoriaInsumo = $_POST['nombre'];
 
-        if($this->model->saveCategory($this->nombreCategoriaInsumo)){
+        if ($this->model->saveCategory($this->nombreCategoriaInsumo)) {
+            header("Access-Control-Allow-Origin: *");
             echo "ok";
-        }else{
-            echo "Hubo un problema";  
+        } else {
+            echo "Hubo un problema";
         }
     }
 
@@ -33,9 +34,9 @@ class Insumo extends Controller
         $this->idCategoriaInsumo = $_POST['idCategoriaInsumo'];
         $this->nombreCategoriaInsumo = $_POST['nombre'];
 
-        if($this->model->updateCategory(['nombre' => $this->nombreCategoriaInsumo, 'id' => $this->idCategoriaInsumo])){
+        if ($this->model->updateCategory(['nombre' => $this->nombreCategoriaInsumo, 'id' => $this->idCategoriaInsumo])) {
             echo "ok";
-        }else{
+        } else {
             echo "Hubo un problema";
         }
     }
@@ -49,10 +50,10 @@ class Insumo extends Controller
         $this->idProveedor = $_POST['proveedor'];
         $this->idCategoriaInsumo = $_POST['categoria'];
 
-        if($this->model->save(['nombre' => $this->nombreInsumo, 'cantidad' => $this->cantidadInsumo, 'fecha' => $this->fechaCompraInsumo, 'valor' => $this->valorInsumo, 'proveedor' => $this->idProveedor, 'categoria' => $this->idCategoriaInsumo])){
+        if ($this->model->save(['nombre' => $this->nombreInsumo, 'cantidad' => $this->cantidadInsumo, 'fecha' => $this->fechaCompraInsumo, 'valor' => $this->valorInsumo, 'proveedor' => $this->idProveedor, 'categoria' => $this->idCategoriaInsumo])) {
             echo "ok";
-        }else{
-            echo "Hubo un problema";  
+        } else {
+            echo "Hubo un problema";
         }
     }
 
@@ -60,23 +61,26 @@ class Insumo extends Controller
     {
         $resultado = $this->model->getAll(file_get_contents("php://input"));
 
-        if(!empty($resultado)){
+        if (!empty($resultado)) {
+            header("Access-Control-Allow-Origin: *");
             echo $resultado;
         }
     }
 
-    public function listarCategoria(){
+    public function listarCategoria()
+    {
         $resultado = $this->model->getCategory();
 
-        if(!empty($resultado)){
+        if (!empty($resultado)) {
             echo $resultado;
         }
     }
 
-    public function listarProveedor(){
+    public function listarProveedor()
+    {
         $resultado = $this->model->getProveedor();
 
-        if(!empty($resultado)){
+        if (!empty($resultado)) {
             echo $resultado;
         }
     }
@@ -85,7 +89,7 @@ class Insumo extends Controller
     {
         $resultado = $this->model->get(file_get_contents("php://input"));
 
-        if(!empty($resultado)){
+        if (!empty($resultado)) {
             echo $resultado;
         }
     }
@@ -102,19 +106,19 @@ class Insumo extends Controller
 
         $resultado = $this->model->update(['nombre_insumo' => $this->nombreInsumo, 'cantidad_insumo' => $this->cantidadInsumo, 'fecha_compra_insumo' => $this->fechaCompraInsumo, 'valor_insumo' => $this->valorInsumo, 'id_proveedor' => $this->idProveedor, 'id_categoria_insumo' => $this->idCategoriaInsumo, 'id' => $this->idInsumo]);
 
-        if($resultado){
+        if ($resultado) {
             echo "ok";
-        }else{
+        } else {
             echo "Hubo un problema";
         }
     }
 
     public function eliminarInsumos()
     {
-        if($this->model->delete(file_get_contents("php://input"))){
+        if ($this->model->delete(file_get_contents("php://input"))) {
             echo "ok";
-        }else{
-            echo "Hubo un problema";  
+        } else {
+            echo "Hubo un problema";
         }
     }
 }

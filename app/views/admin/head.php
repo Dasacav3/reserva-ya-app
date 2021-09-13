@@ -23,7 +23,7 @@
 <?php
 
 if($this->session->get('user') == null || $this->session->get('user')['tipo_usuario'] != "Administrador"){
-    header("location: http://localhost/reservaya-mvc/login");
+    header("location: " . $_ENV['URL']);
 }
 
 ?>
