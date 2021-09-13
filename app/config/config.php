@@ -6,7 +6,6 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../..");
 $dotenv->load();
 
 
-
 define('URL', $_ENV['URL']);
 
 define('HOST', $_ENV['HOST']);

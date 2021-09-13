@@ -87,7 +87,7 @@
     </div>
   </div>
   <script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
-  <!-- <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script> -->
+  <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js" type="module"></script>
   <script src="<?= constant('URL') ?>public/js/proveedor.js" type="module"></script>
   <script src="<?= constant('URL') ?>public/js/alert_proveedor.js"></script>
   <?php require "footer.php"; ?>

@@ -123,7 +123,7 @@
   </main>
   <?php require "footer.php"; ?>
   <script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
-  <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
+  <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js" type="module"></script>
   <script src="<?= constant('URL') ?>public/js/alert_product.js"></script>
   <script src="<?= constant('URL') ?>public/js/modales_productos.js"></script>
 </body>

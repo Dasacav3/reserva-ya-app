@@ -63,7 +63,7 @@
   </main>
   <?php require "footer.php"; ?>
   <script src="<?= constant('URL') ?>public/js/app.js" type="module"></script>
-  <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js"></script>
+  <script src="<?= constant('URL') ?>public/js/sidebarDashboard.js" type="module"></script>
   <script src="<?= constant('URL') ?>public/js/drag_and_drop.js"></script>
   <script src="<?= constant('URL') ?>public/js/updateinfo_admin.js" type="module"></script>
 </body>
