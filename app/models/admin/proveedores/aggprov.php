@@ -21,7 +21,7 @@
 		echo "Conexion Fallida: " . $e->getMessage();
 	}
 	echo "<script>
-		window.location.href = " . $_ENV['URL'] . "admin/proveedores';
+		window.history.go(-1);
 	</script>";
 
 	?>

@@ -26,12 +26,7 @@
 			echo "<script>alert('ELIMINAR INSUMOS PRIMERO');
 				window.history.go(-1);</script>";
 		}
-		echo "<script>alert('Se elimino correctamente');</script>";
-	?>
-		<script>
-			window.location.href = "<?= constant('URL') ?>admin/proveedores";
-		</script>
-	<?php
+		echo "<script>alert('Se elimino correctamente');window.history.go(-1);</script>";
 	} else {
 		echo "<script>alert('Informacion incorrecta');
 			window.history.go(-1)</script>";
