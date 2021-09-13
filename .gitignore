@@ -10,3 +10,7 @@
 vendor
 
 .env
+
+public/reports/*
+
+public/profile_photo/*

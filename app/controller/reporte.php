@@ -1,8 +1,7 @@
 <?php
 
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
-use Dotenv\Dotenv;
 class Reporte extends Controller
 {
 
@@ -53,7 +52,6 @@ class Reporte extends Controller
         } else if (isset($this->clientes)) {
             $plantillaCliente = $this->model->plantillaClientes(['today' => $today, 'listadoCliente' => $clientesData]);
         }
-
 
         $css = file_get_contents($_ENV['URL'] . "public/css/pdf.css");
 

@@ -1,6 +1,6 @@
 body {
 	background: #c1c5ca;
-	font-family: "Poppins";
+	font-family: "Poppins", sans-serif;
 	height: 100%;
 }
 
@@ -17,9 +17,9 @@ body {
 	margin: auto;
 }
 
-.periodo{
-    width: 100%;
-    text-align: right;
+.periodo {
+	width: 100%;
+	text-align: right;
 }
 
 .header_title {
@@ -51,6 +51,6 @@ body {
 	font-size: 1em;
 }
 
-.footer p{
-    padding-bottom: 1em;
+.footer p {
+	padding-bottom: 1em;
 }

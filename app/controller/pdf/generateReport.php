@@ -1,6 +1,6 @@
 <?php
 
-require_once("../../../lib/mpdf/vendor/autoload.php");
+require_once("../../../vendor/autoload.php");
 require_once("reservasPdf.php");
 require_once("insumosPdf.php");
 require_once("clientesPdf.php");
