@@ -21,7 +21,7 @@
       <h2 class="title_table">Actualizar Proveedores</h2>
     </div>
     <div style="background-color: white;">
-      <form action="http://localhost/reservaya-mvc/app/models/admin/proveedores/actualizarprov2.php" method="post">
+      <form action="<?= constant('URL') ?>app/models/admin/proveedores/actualizarprov2.php" method="post">
         <label>ID Proveedor:</label><br>
         <input type="text" name="id" value="<?php echo $id; ?>" readonly='readonly'><br><br>
         <label>Nombre Proveedor:</label><br>

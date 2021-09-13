@@ -52,7 +52,7 @@
     <div class="popup" id="popup">
       <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
       <h3>Agregar proveedor</h3>
-      <form action="http://localhost/reservaya-mvc/app/models/admin/proveedores/aggprov.php" method="post">
+      <form action="<?= constant('URL') ?>app/models/admin/proveedores/aggprov.php" method="post">
         <label>Nombre Proveedor:</label><br>
         <input type="text" name="NOMBRE_PROVEEDOR"> <br><br>
         <label>Direccion Proveedor:</label> <br>
@@ -71,7 +71,7 @@
     <div class="popup" id="popup-edit">
       <a href="#" id="btn-cerrar-popup-edit" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
       <h3>Actualizar proveedor</h3>
-      <form action="http://localhost/reservaya-mvc/app/models/admin/proveedores/actualizarprov2.php" method="post">
+      <form action="<?= constant('URL') ?>app/models/admin/proveedores/actualizarprov2.php" method="post">
         <label>ID Proveedor:</label><br>
         <input type="text" name="id" id="identificador" readonly='readonly'><br><br>
         <label>Nombre Proveedor:</label><br>

@@ -5,14 +5,16 @@
   <?php require "head.php"; ?>
   <title>Agregar proveedores</title>
 </head>
+
 <body id="body">
-  <?php require "contenido.php"; include ("app/controller/database.php");?>
+  <?php require "contenido.php";
+  include("app/controller/database.php"); ?>
   <main class="main__container">
     <div>
       <h2 class="title_table">Agregar Proveedores</h2>
     </div>
     <div style="background-color: white;">
-      <form action="http://localhost/reservaya-mvc/app/models/admin/proveedores/aggprov.php" method="post">
+      <form action="<?= constant('URL') ?>app/models/admin/proveedores/aggprov.php" method="post">
         <label>Nombre Proveedor:</label><br>
         <input type="text" name="NOMBRE_PROVEEDOR"> <br><br>
         <label>Direccion Proveedor:</label> <br>
