@@ -221,7 +221,7 @@ window.addEventListener("DOMContentLoaded", () => {
 								});
 							}
 							pop_up_wrap_add.reset();
-							listarReservas();
+							datatable.ajax.reload(null, false);
 							mostrarMesa();
 							pop_up_add.classList.remove("show");
 							pop_up_wrap_add.classList.remove("show");
@@ -302,7 +302,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			});
 		} else if (
 			asientos_reserva1.value <= 0 ||
-			asientos_reserva1.value > 8 ||
+			asientos_reserva1.value > 10 ||
 			asientos_reserva1.value == ""
 		) {
 			Swal.fire({
@@ -326,7 +326,7 @@ window.addEventListener("DOMContentLoaded", () => {
 							timer: 1500,
 						});
 						pop_up_wrap_edit.reset();
-						listarReservas();
+						datatable.ajax.reload(null, false);
 						mostrarMesa();
 						pop_up_edit.classList.remove("show");
 						pop_up_wrap_edit.classList.remove("show");
@@ -342,5 +342,4 @@ window.addEventListener("DOMContentLoaded", () => {
 				});
 		}
 	});
-
 });

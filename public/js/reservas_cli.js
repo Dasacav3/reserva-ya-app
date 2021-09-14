@@ -182,6 +182,7 @@ window.addEventListener("DOMContentLoaded", () => {
 									timer: 1500,
 								});
 							}
+							datatable.ajax.reload(null, false);
 							reserva_add_form.reset();
 							listarReservasActivas();
 							mostrarMesa();
@@ -239,6 +240,7 @@ window.addEventListener("DOMContentLoaded", () => {
 						timer: 1500,
 					});
 					listarReservasActivas();
+					datatable.ajax.reload(null, false);
 					mostrarMesa();
 				} catch (err) {
 					console.log(err);
