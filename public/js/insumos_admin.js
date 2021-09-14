@@ -155,31 +155,36 @@ window.addEventListener("DOMContentLoaded", () => {
 				data: "ID_INSUMO",
 				render: function (data, type, row, meta) {
 					return (
-						"<button class='abrirPopup-edit btn-edit' type='button' onclick=Editar('" +
+						"<button class='abrirPopup-edit btn-edit' data-id='" +
 						data +
-						"');abrir()><i class='fas fa-edit'></i></button><button class='btn-delete' type='button' onclick=eliminarInsumos('" +
+						"'><i class='fas fa-edit'></i></button><button class='btn-delete' data-id='" +
 						data +
-						"')><i class='fas fa-trash-alt'></i></button>"
+						"'><i class='fas fa-trash-alt'></i></button>"
 					);
 				},
 			},
 		],
+		drawCallback: function () {
+			enableBtns();
+		},
 	});
 
-	let btnEdit = document.getElementsByClassName("btn-edit");
+	setInterval(function () {
+		enableBtns(); // user paging is not reset on reload
+	}, 1000);
 
-	if (btnEdit) {
-		btnEdit.forEach((element) => {
-			element.addEventListener("click", Editar, false);
-		});
-	}
+	function enableBtns() {
+		let btnEdit = document.getElementsByClassName("btn-edit");
+		let btnDelete = document.getElementsByClassName("btn-delete");
 
-	let btnDelete = document.getElementsByClassName("btn-delete");
+		for (let i = 0; i < btnEdit.length; i++) {
+			btnEdit[i].addEventListener("click", abrir, false);
+			btnEdit[i].addEventListener("click", Editar, false);
+		}
 
-	if (btnDelete) {
-		btnDelete.forEach((element) => {
-			element.addEventListener("click", eliminarInsumos, false);
-		});
+		for (let i = 0; i < btnDelete.length; i++) {
+			btnDelete[i].addEventListener("click", eliminarInsumos, false);
+		}
 	}
 
 	registrar.addEventListener("click", () => {
@@ -373,7 +378,8 @@ window.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
-	function Editar(id) {
+	function Editar() {
+		let id = this.dataset.id;
 		fetch(URL + "insumo/listarDatosInsumo", {
 			method: "POST",
 			body: id,
@@ -466,7 +472,6 @@ window.addEventListener("DOMContentLoaded", () => {
 							timer: 1500,
 						});
 						pop_up_wrap_edit.reset();
-						listarInsumos();
 						pop_up_edit.classList.remove("show");
 						pop_up_wrap_edit.classList.remove("show");
 					}
@@ -474,7 +479,8 @@ window.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
-	function eliminarInsumos(id) {
+	function eliminarInsumos() {
+		let id = this.dataset.id;
 		Swal.fire({
 			title: "¿Esta seguro de eliminar?",
 			icon: "warning",
@@ -491,7 +497,6 @@ window.addEventListener("DOMContentLoaded", () => {
 				})
 					.then((response) => response.text())
 					.then((response) => {
-						listarInsumos();
 						Swal.fire({
 							icon: "success",
 							title: "Eliminado",

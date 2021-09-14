@@ -119,6 +119,10 @@ window.addEventListener("DOMContentLoaded", () => {
 		},
 	});
 
+	setInterval(function () {
+		enableBtns(); // user paging is not reset on reload
+	}, 1000);
+
 	function mostrarCliente() {
 		fetch(URL + "reserva/listarCliente", {
 			method: "POST",

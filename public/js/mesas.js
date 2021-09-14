@@ -91,9 +91,9 @@ window.addEventListener("DOMContentLoaded", () => {
 		},
 	});
 
-	setInterval( function () {
-		datatable.ajax.reload( null, false ); // user paging is not reset on reload
-	}, 50000 );
+	setInterval(function () {
+		enableBtns(); // user paging is not reset on reload
+	}, 1000);
 
 	// Funciones core
 
@@ -106,10 +106,6 @@ window.addEventListener("DOMContentLoaded", () => {
 			btnEdit[i].addEventListener("click", getDataMesa, false);
 		}
 	}
-
-	setTimeout(() => {
-		enableBtns();
-	}, 1000);
 
 	function addMesas() {
 		let capacidadMesa = document.getElementById("capacidadMesa");

@@ -154,7 +154,7 @@
           </form>
         </div>
       </div>
-      <table id="example" class="datatable">
+      <table class="datatable">
         <thead>
           <tr>
             <th>Categoria producto</th>
@@ -194,6 +194,7 @@
               <td><?php echo $row["4"] ?></td>
               <td class="imagen_vista"><?php echo '<img src="' . $row["5"] . '" style="width:140px;height:140px;border-radius:10px;background:none;">' ?>
               <td>
+                <br>
                 <!-- Actualizar registro -->
                 <button class="abrirPopup-edit btn-edit actualizar_producto" data-id="<?php echo $TraerDatos; ?>">Editar</button>
                 <br>

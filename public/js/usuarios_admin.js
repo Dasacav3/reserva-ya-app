@@ -96,6 +96,10 @@ window.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 
+	setInterval(function () {
+		enableBtns(); // user paging is not reset on reload
+	}, 1000);
+
 	registrar.addEventListener("click", () => {
 		const doc = document.getElementById("doc_emp");
 		const nombre = document.getElementById("name_emp");

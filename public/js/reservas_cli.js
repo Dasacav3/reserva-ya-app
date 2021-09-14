@@ -91,8 +91,8 @@ window.addEventListener("DOMContentLoaded", () => {
 	});
 
 	setInterval(function () {
-		datatable.ajax.reload(null, false); // user paging is not reset on reload
-	}, 50000);
+		enableBtns(); // user paging is not reset on reload
+	}, 1000);
 
 	mostrarMesa();
 

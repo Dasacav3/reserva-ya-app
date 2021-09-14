@@ -50,8 +50,8 @@ window.addEventListener("DOMContentLoaded", () => {
 	});
 
 	setInterval(function () {
-		datatable.ajax.reload(null, false); // user paging is not reset on reload
-	}, 50000);
+		enableBtns();
+	}, 1000);
 
 	function enableBtns() {
 		let btnAbrirPopup = document.getElementById("btn-abrir-popup"),

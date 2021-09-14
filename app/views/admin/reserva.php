@@ -33,7 +33,7 @@ $mod_date = strtotime($fecha_actual . "+ 30 days");
 						</ul>
 					</div>
 				</div>
-				<table class="datatable" id="datatable">
+				<table class="datatable">
 					<thead>
 						<th>ESTADO</th>
 						<th>ID RESERVA</th>

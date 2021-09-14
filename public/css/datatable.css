@@ -243,3 +243,7 @@ body.dark .datatable-container {
 		width: 100vw;
 	}
 }
+
+table.dataTable tbody tr {
+	background-color: var(--dt-background-color-container);
+}
