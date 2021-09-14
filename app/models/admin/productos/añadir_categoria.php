@@ -9,7 +9,7 @@ $insertar = $pdo->prepare("INSERT INTO categoria_producto(NOMBRE_CATEGORIA_PRODU
 $insertar->execute();
 
 if ($insertar) {
-	header("location: " . $_ENV['URL'] . "admin/productos");
+	echo "<script>window.history.go(-1)</script>";
 } else {
 	echo "No se inserto";
 }

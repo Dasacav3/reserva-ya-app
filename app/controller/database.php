@@ -9,3 +9,4 @@ try {
 } catch (PDOException $e) {
     echo "Conexion fallida " . $e->getMessage();
 }
+return $pdo;

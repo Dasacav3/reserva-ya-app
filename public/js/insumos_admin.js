@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-	const URL = "http://*/";
+	const URL = "http://localhost/reservaya-mvc/";
 	// Modal añadir y editar
 	var pop_up_add = document.getElementById("pop-up-add");
 	var pop_up_add_categoria = document.getElementById("pop-up-add-categoria");
@@ -165,6 +165,22 @@ window.addEventListener("DOMContentLoaded", () => {
 			},
 		],
 	});
+
+	let btnEdit = document.getElementsByClassName("btn-edit");
+
+	if (btnEdit) {
+		btnEdit.forEach((element) => {
+			element.addEventListener("click", Editar, false);
+		});
+	}
+
+	let btnDelete = document.getElementsByClassName("btn-delete");
+
+	if (btnDelete) {
+		btnDelete.forEach((element) => {
+			element.addEventListener("click", eliminarInsumos, false);
+		});
+	}
 
 	registrar.addEventListener("click", () => {
 		const nombre_insumo = document.getElementById("nombre");

@@ -19,7 +19,7 @@ if ($_FILES["IMAGEN_PRODUCTO"]) {
       $nombre_base = basename($_FILES["IMAGEN_PRODUCTO"]["name"]);
       $nombre_final = date("m-d-y") . "-" . date("h-i-s") . "-" . $nombre_base;
       $ruta = "../../../../public/products_img/" . $nombre_final;
-      $url = $_ENV['URL'] . "public/products_img/" . $nombre_final;
+      $url = "http://localhost/reservaya-mvc/public/products_img/" . $nombre_final;
       $subirimagen = move_uploaded_file($_FILES["IMAGEN_PRODUCTO"]["tmp_name"], $ruta);
       var_dump($url);
 }
@@ -44,10 +44,10 @@ if (empty($_POST['IMAGEN_PRODUCTO'])) {
       echo "valor nulo";
 }
 if ($queryProducto) {
-      header("location:" . $_ENV['URL'] . "admin/productos");
+      echo "<script>window.history.go(-1)</script>";
 } else {
       echo "No se pudo actualizar la categoria";
-      header("location:" . $_ENV['URL'] . "admin/productos");
+      echo "<script>window.history.go(-1)</script>";
 }
 
 $pdo = null;

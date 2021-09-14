@@ -8,18 +8,15 @@ if (isset($_POST['ID_CATEGORIA_PRODUCTO'])) {
 
 $NOMBRE_CATEGORIA_PRODUCTO = $_POST['NOMBRE_CATEGORIA_PRODUCTO'];
 
-var_dump($ID_CATEGORIA_PRODUCTO);
-var_dump($NOMBRE_CATEGORIA_PRODUCTO);
-
 $query_categoria = $pdo->prepare("UPDATE categoria_producto SET NOMBRE_CATEGORIA_PRODUCTO = :NOMBRE_CATEGORIA_PRODUCTO WHERE ID_CATEGORIA_PRODUCTO = :ID_CATEGORIA_PRODUCTO");
 $query_categoria->bindParam(":ID_CATEGORIA_PRODUCTO", $ID_CATEGORIA_PRODUCTO);
 $query_categoria->bindParam(":NOMBRE_CATEGORIA_PRODUCTO", $NOMBRE_CATEGORIA_PRODUCTO);
 $query_categoria->execute();
 if ($query_categoria) {
-      header("location:" . $_ENV['URL'] . "admin/productos");
+      echo "<script>window.history.go(-1)</script>";
 } else {
       echo "No se pudo actualizar la categoria";
-      header("location:" . $_ENV['URL'] . "admin/productos");
+      echo "<script>window.history.go(-1)</script>";
 }
 
 $pdo = null;

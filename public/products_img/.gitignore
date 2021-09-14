@@ -1,0 +1,6 @@
+# Ignore all kinds of images
+
+/*.png
+/*.jpg
+/*.jpeg
+/*.gif

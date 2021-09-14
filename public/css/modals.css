@@ -60,6 +60,7 @@ body.dark .form-modal > form input[type="button"] {
 .pop-up {
 	background: rgba(48, 48, 48, 0.5);
 	position: fixed;
+	z-index: 1;
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -67,7 +68,7 @@ body.dark .form-modal > form input[type="button"] {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	visibility: hidden;
+	display: none;
 }
 
 .pop-up-wrap {
@@ -192,9 +193,7 @@ body.dark .closePopup {
 .edit_category {
 	display: none;
 }
-.show1 {
-	display: block;
-}
+
 .edit_category {
 	background: white;
 	color: black;
@@ -253,143 +252,199 @@ body.dark .closePopup {
 	width: 80%;
 	height: 50px;
 }
+/*Modal agregar producto*/
+#submit {
+	background: #7fd1b9;
+	transition: all 0.5s;
+}
 
-.overlay {
-	background: rgba(0, 0, 0, 0.3);
+#submit:hover {
+	background: #7fd1b9;
+	font-size: large;
+	font-weight: 700px;
+}
+.form_add_product {
+	background: white;
+	border-radius: 5px;
+	margin: center;
+	height: 100%;
+	margin: 0 auto;
+	width: 600px;
+	display: none;
+}
+.form_add_product input {
+	margin: 10px;
+	padding: 10px;
+	font-weight: 600;
+	width: 95%;
+	border-radius: 0.5em;
+	border: 1px solid;
+	border-color: #4e937a;
+}
+.form_add_product select {
+	border-color: #4e937a;
+}
+.form_add_product label {
+	padding: 15px;
+	margin-bottom: 1em;
+	color: black;
+}
+.container_add_product {
+	background: rgba(48, 48, 48, 0.5);
 	position: fixed;
+	z-index: 1;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	align-items: center;
-	justify-content: center;
 	display: flex;
-	visibility: hidden;
+	justify-content: center;
+	align-items: center;
+	display: none;
 }
-
-.overlay.active {
-	visibility: visible;
+#DESCRIPCION_PRODUCTO {
+	width: 400px;
+	height: 100px;
+	margin: 10px;
+	padding: 10px;
+	font-weight: 600;
+	width: 95%;
+	border-radius: 0.5em;
+	border-color: #4e937a;
+	resize: none;
 }
-
-.popup {
-	background: #f8f8f8;
-	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
-	border-radius: 25px;
-	font-family: "Montserrat", sans-serif;
-	padding: 20px;
+.ID_CATEGORIA_PRODUCTO {
+	background: transparent;
+	border: none;
+	font-size: 14px;
+	height: 30px;
+	padding: 5px;
+	width: 250px;
+}
+.ID_CATEGORIA_PRODUCTO::-ms-expand {
+	display: none;
+}
+.ID_CATEGORIA_PRODUCTO:hover {
+	border-color: #7fd1b9ff;
+}
+.ID_CATEGORIA_PRODUCTO:focus {
+	border-color: #aaa;
+	box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	color: #222;
+	outline: none;
+}
+.categoria_producto {
+	margin: 10px;
+	padding: 10px;
+	font-weight: 600;
+	width: 95%;
+	border-radius: 0.5em;
+	border-color: #4e937a;
+}
+.IMAGEN_PRODUCTO {
+	background-color: #de6e4bff;
+	color: #fff;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 auto 0;
+	min-height: 15px;
+	overflow: hidden;
+	padding: 10px;
+	position: relative;
 	text-align: center;
 	width: 600px;
-
-	transition: 0.3s ease all;
-	transform: scale(0.7);
-	opacity: 0;
 }
-
-.popup .btn-cerrar-popup {
-	font-size: 16px;
-	line-height: 16px;
-	display: block;
-	text-align: right;
-	transition: 0.5s ease all;
-	color: #bbbbbb;
-}
-
-.popup .btn-cerrar-popup:hover {
-	color: #000;
-}
-
-.popup h3 {
-	font-size: 36px;
-	font-weight: 600;
-	margin-bottom: 10px;
-	opacity: 0;
-}
-
-.popup h4 {
-	font-size: 26px;
-	font-weight: 300;
-	margin-bottom: 40px;
-	opacity: 0;
-}
-
-.popup form .contenedor-inputs {
-	opacity: 0;
-}
-
-.popup form .contenedor-inputs input {
-	width: 100%;
-	margin-bottom: 20px;
-	height: 52px;
-	font-size: 18px;
-	line-height: 52px;
+.title {
 	text-align: center;
-	border: 1px solid #bbbbbb;
 }
-
-.popup form .btn-submit {
-	padding: 0 20px;
-	height: 40px;
-	line-height: 40px;
-	border: none;
-	color: #fff;
-	background: #5e7de3;
-	border-radius: 3px;
-	font-family: "Montserrat", sans-serif;
-	font-size: 16px;
+.close-modal-product {
 	cursor: pointer;
-	transition: 0.8s ease all;
+	padding: 3px;
+	display: flex;
+	margin: auto;
 }
 
-.popup form .btn-submit:hover {
-	background: rgba(94, 125, 227, 0.9);
+.close_add_product {
+	color: #ad343e;
+}
+/*Estilo datatable*/
+.container_table {
+	position: relative;
 }
 
-/* ------------------------- */
-/* ANIMACIONES */
-/* ------------------------- */
-.popup.active {
-	transform: scale(1);
-	opacity: 1;
+/*Formulario editar producto*/
+.container_edit_product {
+	background: rgba(48, 48, 48, 0.5);
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: none;
 }
-.popup.active h3 {
-	animation: entradaTitulo 0.8s ease 0.5s forwards;
+.form_edit_product {
+	display: none;
 }
-.popup.active h4 {
-	animation: entradaSubtitulo 0.8s ease 0.5s forwards;
+.show {
+	display: block;
 }
-.popup.active .contenedor-inputs {
-	animation: entradaInputs 1s linear 1s forwards;
+.form_edit_product {
+	background: white;
+	border-radius: 5px;
+	margin: center;
+	height: 100%;
+	margin: 0 auto;
+	width: 600px;
 }
-
-@keyframes entradaTitulo {
-	from {
-		opacity: 0;
-		transform: translateY(-25px);
-	}
-
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
-}
-
-@keyframes entradaSubtitulo {
-	from {
-		opacity: 0;
-		transform: translateY(25px);
-	}
-
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
+#submit {
+	background: #7fd1b9;
+	transition: all 0.5s;
 }
 
-@keyframes entradaInputs {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
+#submit:hover {
+	background: #7fd1b9;
+	font-size: large;
+	font-weight: 700px;
+}
+.form_edit_product input {
+	margin: 10px;
+	padding: 10px;
+	font-weight: 600;
+	width: 95%;
+	border-radius: 0.5em;
+	border: 1px solid;
+	border-color: #4e937a;
+}
+.form_edit_product select {
+	border-color: #4e937a;
+}
+.form_edit_product label {
+	padding: 15px;
+	margin-bottom: 1em;
+	color: black;
+}
+#DESCRIPCION_PRODUCTO_Editar {
+	width: 400px;
+	height: 100px;
+	margin: 10px;
+	padding: 10px;
+	font-weight: 600;
+	width: 95%;
+	border-radius: 0.5em;
+	border-color: #4e937a;
+	resize: none;
+}
+.ID_EDIT_PRODUCT {
+	display: none;
+}
+@media (min-width: 500px) and (max-width: 700px) {
+	.form_add_product {
+		width: 450px;
 	}
 }
