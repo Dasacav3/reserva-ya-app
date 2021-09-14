@@ -35,7 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				render: function (data, type, row, meta) {
 					return `
 						<a>
-							<button class="btn-edit hola" id="btn-abrir-popup-edit" data-id='${data}'><i class='fas fa-edit'></i></button>
+							<button class="btn-edit hola" data-id='${data}'><i class='fas fa-edit'></i></button>
 						</a>
 						<a href="${URL}app/models/admin/proveedores/eliminaprov2.php?id=${data}" class="PRUEBA">
 							<button class="btn-delete"><i class='fas fa-trash-alt'></i></button>
@@ -54,7 +54,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	}, 50000);
 
 	function enableBtns() {
-		var btnAbrirPopup = document.getElementById("btn-abrir-popup"),
+		let btnAbrirPopup = document.getElementById("btn-abrir-popup"),
 			overlay = document.getElementById("overlay"),
 			popup = document.getElementById("popup"),
 			btnCerrarPopup = document.getElementById("btn-cerrar-popup"),
