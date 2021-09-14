@@ -127,6 +127,8 @@ window.addEventListener("DOMContentLoaded", () => {
 					if (response == "ok") {
 						Swal.fire("Existoso", "La mesa ha sido registrada", "success");
 						closeModalAdd();
+						formAdd.reset();
+						datatable.ajax.reload(null, false);
 					} else {
 						Swal.fire("Error", "Hubo un problema", "error");
 					}
@@ -174,6 +176,7 @@ window.addEventListener("DOMContentLoaded", () => {
 					if (response == "ok") {
 						Swal.fire("Existoso", "La mesa ha sido actualizada", "success");
 						closeModalEdit();
+						datatable.ajax.reload(null, false);
 					} else {
 						Swal.fire("Error", "Hubo un problema", "error");
 					}
@@ -208,6 +211,7 @@ window.addEventListener("DOMContentLoaded", () => {
 						} else {
 							Swal.fire("Error", "Hubo un problema", "error");
 						}
+						datatable.ajax.reload(null, false);
 					});
 			}
 		});
