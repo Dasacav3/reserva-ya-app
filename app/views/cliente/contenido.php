@@ -18,7 +18,7 @@
                 <i class="fa fa-power-off" aria-hidden="true"></i>
             </a>
             <a href="<?= constant('URL') ?>cliente/updateInfo">
-                <img class="foto_perfil" src="<?= $this->session->get('user')['foto_perfil'] ?>" />
+                <img class="foto_perfil" src="<?= constant('URL') ?><?= $this->session->get('user')['foto_perfil'] ?>" />
             </a>
         </div>
     </nav>
