@@ -36,7 +36,7 @@ class Usuario extends Controller
         $this->claveUsuario = $_POST['pass_emp'];
         $this->tipoUsuario = 'Empleado';
         $this->estadoUsuario = 1;
-        $this->fotoPerfil = 'http://localhost/reservaya-mvc/public/profile_photo/user_default_reservaya.png';
+        $this->fotoPerfil = 'public/profile_photo/user_default_reservaya.png';
 
         if ($this->model->save(['doc' => $this->documentoEmpleado, 'nombre' => $this->nombreEmpleado, 'apellido' => $this->apellidoEmpleado, 'email' => $this->emailEmpleado, 'cel' => $this->celularEmpleado, 'clave' => $this->claveUsuario, 'tipo' => $this->tipoUsuario, 'estado' => $this->estadoUsuario, 'foto' => $this->fotoPerfil])) {
             echo "ok";
@@ -66,7 +66,7 @@ class Usuario extends Controller
         $this->idUsuario = $_POST['id_cliente'];
         $this->tipoUsuario = $_POST['tipo_usuario'];
 
-        if($this->model->update(['nombre' => $this->nombreCliente, 'apellido' => $this->apellidoCliente, 'fecha' => $this->fechaCliente, 'email' => $this->emailCliente, 'cel' => $this->celularCliente, 'id' => $this->idUsuario, 'estado' => $this->estadoUsuario, 'tipo' => $this->tipoUsuario])){
+        if ($this->model->update(['nombre' => $this->nombreCliente, 'apellido' => $this->apellidoCliente, 'fecha' => $this->fechaCliente, 'email' => $this->emailCliente, 'cel' => $this->celularCliente, 'id' => $this->idUsuario, 'estado' => $this->estadoUsuario, 'tipo' => $this->tipoUsuario])) {
             echo "ok";
         }
     }
@@ -82,7 +82,7 @@ class Usuario extends Controller
         $this->celularEmpleado = $_POST['cel_emp_1'];
         $this->tipoUsuario = $_POST['tipo_usuario'];
 
-        if($this->model->update(['doc' => $this->documentoEmpleado, 'nombre' => $this->nombreEmpleado, 'apellido' => $this->apellidoEmpleado, 'email' => $this->emailEmpleado, 'cel' => $this->celularEmpleado, 'id' => $this->idUsuario, 'tipo' => $this->tipoUsuario, 'estado' => $this->estadoUsuario])){
+        if ($this->model->update(['doc' => $this->documentoEmpleado, 'nombre' => $this->nombreEmpleado, 'apellido' => $this->apellidoEmpleado, 'email' => $this->emailEmpleado, 'cel' => $this->celularEmpleado, 'id' => $this->idUsuario, 'tipo' => $this->tipoUsuario, 'estado' => $this->estadoUsuario])) {
             echo "ok";
         }
     }

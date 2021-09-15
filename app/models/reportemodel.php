@@ -94,7 +94,6 @@ class ReporteModel extends Model
         $resultado = ['listadoInsumos' => $listadoInsumos, 'valorInsumos' => $valorTotal];
 
         return $resultado;
-
     }
 
     public function reporteCliente($cliente)
@@ -117,19 +116,20 @@ class ReporteModel extends Model
         return $listadoCliente;
     }
 
-    public function plantillaReservas($data,$fecha_final,$fecha_inicio,$today){
+    public function plantillaReservas($data, $fecha_final, $fecha_inicio, $today)
+    {
 
         $reservas = $data['reservas'];
         $fechaMasReservada = $data['fechaMasReservada'];
         $mesaMasReservada = $data['mesaMasReservada'];
 
-        usort($mesaMasReservada, function($a, $b) {
+        usort($mesaMasReservada, function ($a, $b) {
             return $b['VECES'] <=> $a['VECES'];
         });
-        usort($fechaMasReservada, function($a, $b) {
+        usort($fechaMasReservada, function ($a, $b) {
             return $b['VECES'] <=> $a['VECES'];
         });
-        $plantilla="
+        $plantilla = "
         <!DOCTYPE html>
         <html lang='es'>
         <head>
@@ -139,16 +139,16 @@ class ReporteModel extends Model
             <div class='container'>
                 <header class='header'>
                     <div class='header_img_container'>
-                        <img class='header_img' src='http://localhost/reservaya-mvc/public/img/logo-reservaya.png' />
+                        <img class='header_img' src='" . constant('URL') . "public/img/logo-reservaya.png' />
                     </div>
                     <h1 class='header_title'>Reporte Reservaciones</h1>
                 </header>
                 <main>
-                    <p>Fecha de creación: ".$today."</p>
-                    <p>Mesa más reservada: ".$mesaMasReservada[0]['ID_MESA']."</p>
-                    <p>Fecha más reservada: ".$fechaMasReservada[0]['FECHA_RESERVACION']."</p> 
-                    <p>Conteo de reservaciones: ".count($reservas)."</p>
-                    <p class='periodo'>Período: (".$fecha_inicio.") | (".$fecha_final.")</p>
+                    <p>Fecha de creación: " . $today . "</p>
+                    <p>Mesa más reservada: " . $mesaMasReservada[0]['ID_MESA'] . "</p>
+                    <p>Fecha más reservada: " . $fechaMasReservada[0]['FECHA_RESERVACION'] . "</p> 
+                    <p>Conteo de reservaciones: " . count($reservas) . "</p>
+                    <p class='periodo'>Período: (" . $fecha_inicio . ") | (" . $fecha_final . ")</p>
                     <table class='tabla'>
                         <thead>
                             <tr>
@@ -163,8 +163,8 @@ class ReporteModel extends Model
                             </tr>
                         </thead>
                         <tbody>";
-                        foreach ($reservas as $dat){
-                        $plantilla .= "
+        foreach ($reservas as $dat) {
+            $plantilla .= "
                                 <tr>
                                     <td>" . $dat['ESTADO_RESERVACION'] . "</td>
                                     <td>" . $dat['ID_RESERVACION'] . "</td>
@@ -175,8 +175,8 @@ class ReporteModel extends Model
                                     <td>" . $dat['ID_MESA'] . "</td>
                                     <td>" . $dat['ASIENTO'] . "</td>  
                                 </tr>";
-                        }        
-                        $plantilla .= "</tbody>
+        }
+        $plantilla .= "</tbody>
                     </table>
                 </main>
             </div>
@@ -185,12 +185,13 @@ class ReporteModel extends Model
         return $plantilla;
     }
 
-    public function plantillaInsumos($data,$fecha_final,$fecha_inicio,$today){
+    public function plantillaInsumos($data, $fecha_final, $fecha_inicio, $today)
+    {
 
         $listadoInsumos = $data['listadoInsumos'];
         $valorTotal = $data['valorInsumos'][0];
 
-        $plantillaInsumos="
+        $plantillaInsumos = "
         <!DOCTYPE html>
         <html lang='es'>
         <head>
@@ -200,13 +201,13 @@ class ReporteModel extends Model
             <div class='container'>
                 <header class='header'>
                     <div class='header_img_container'>
-                        <img class='header_img' src='http://localhost/reservaya-mvc/public/img/logo-reservaya.png' />
+                        <img class='header_img' src='" . constant('URL') . "public/img/logo-reservaya.png' />
                     </div>
                     <h1 class='header_title'>Reporte Insumos</h1>
                 </header>
                 <main>
-                    <p>Fecha de creación: ".$today."</p>
-                    <p class='periodo'>Período: (".$fecha_inicio.") | (".$fecha_final.")</p>
+                    <p>Fecha de creación: " . $today . "</p>
+                    <p class='periodo'>Período: (" . $fecha_inicio . ") | (" . $fecha_final . ")</p>
                     <table class='tabla'>
                         <thead>
                             <tr>
@@ -217,18 +218,18 @@ class ReporteModel extends Model
                             </tr>
                         </thead>
                         <tbody>";
-                        foreach ($listadoInsumos as $dat){
-                            $plantillaInsumos .= "
+        foreach ($listadoInsumos as $dat) {
+            $plantillaInsumos .= "
                                 <tr>
                                     <td>" . $dat['NOMBRE_INSUMO'] . "</td>
                                     <td>" . $dat['CANTIDAD_INSUMO'] . "</td>
                                     <td>" . $dat['FECHA_COMPRA_INSUMO'] . "</td>
                                     <td>" . $dat['VALOR_INSUMO'] . "</td>
                                 </tr>";
-                        }        
-                        $plantillaInsumos .= "</tbody>
+        }
+        $plantillaInsumos .= "</tbody>
                     </table>
-                    <p>Valor total: $ ".$valorTotal."</p>
+                    <p>Valor total: $ " . $valorTotal . "</p>
                 </main>
             </div>
         </body>
@@ -237,12 +238,13 @@ class ReporteModel extends Model
         return $plantillaInsumos;
     }
 
-    public function plantillaClientes($data){
+    public function plantillaClientes($data)
+    {
 
         $listadoCliente = $data['listadoCliente'];
         $today = $data['today'];
 
-        $plantilla="
+        $plantilla = "
         <!DOCTYPE html>
         <html lang='es'>
         <head>
@@ -252,20 +254,20 @@ class ReporteModel extends Model
             <div class='container'>
                 <header class='header'>
                     <div class='header_img_container'>
-                        <img class='header_img' src='http://localhost/reservaya-mvc/public/img/logo-reservaya.png' />
+                        <img class='header_img' src='" . constant('URL') . "public/img/logo-reservaya.png' />
                     </div>
                     <h1 class='header_title'>Reporte Reservaciones Cliente</h1>
                 </header>
                 <main>";
-                foreach ($listadoCliente as $dat){
-                    $plantilla .= "
+        foreach ($listadoCliente as $dat) {
+            $plantilla .= "
                                 <p>Nombre: " . $dat['NOMBRE_CLIENTE'] . "</p>
                                 <p>Apellido: " . $dat['APELLIDO_CLIENTE'] . "</p>";
-                    break;
-                    } 
-                    $plantilla .= "
-                    <p>Conteo de reservaciones: ".count($listadoCliente)."</p>
-                    <p>Fecha de creación: ".$today."</p>
+            break;
+        }
+        $plantilla .= "
+                    <p>Conteo de reservaciones: " . count($listadoCliente) . "</p>
+                    <p>Fecha de creación: " . $today . "</p>
                     <table class='tabla'>
                         <thead>
                             <tr>
@@ -278,8 +280,8 @@ class ReporteModel extends Model
                             </tr>
                         </thead>
                         <tbody>";
-                        foreach ($listadoCliente as $dat){
-                        $plantilla .= "
+        foreach ($listadoCliente as $dat) {
+            $plantilla .= "
                                 <tr>
                                     <td>" . $dat['ESTADO_RESERVACION'] . "</td>
                                     <td>" . $dat['ID_RESERVACION'] . "</td>
@@ -288,8 +290,8 @@ class ReporteModel extends Model
                                     <td>" . $dat['ID_MESA'] . "</td>
                                     <td>" . $dat['ASIENTO'] . "</td>
                                 </tr>";
-                        }        
-                        $plantilla .= "</tbody>
+        }
+        $plantilla .= "</tbody>
                     </table>
                 </main>
             </div>
