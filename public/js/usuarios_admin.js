@@ -183,6 +183,7 @@ window.addEventListener("DOMContentLoaded", () => {
 						pop_up_wrap_add.reset();
 						pop_up_add.classList.remove("show");
 						pop_up_wrap_add.classList.remove("show");
+						datatable.ajax.reload(null, false);
 					}
 				});
 		}
@@ -279,6 +280,7 @@ window.addEventListener("DOMContentLoaded", () => {
 						pop_up_wrap_edit.reset();
 						pop_up_edit.classList.remove("show");
 						pop_up_wrap_edit.classList.remove("show");
+						datatable.ajax.reload(null, false);
 					}
 				});
 		}
@@ -291,6 +293,12 @@ window.addEventListener("DOMContentLoaded", () => {
 		const apellido = document.getElementById("last_cliente_1");
 		const email = document.getElementById("email_cliente_1");
 		const cel = document.getElementById("cel_cliente_1");
+
+		const date = fecha.value;
+		const dateBirth = new Date(date);
+		const dateNow = new Date();
+
+		const result = dateNow.getFullYear() - dateBirth.getFullYear();
 
 		if (estado.value == "") {
 			Swal.fire({
@@ -328,6 +336,12 @@ window.addEventListener("DOMContentLoaded", () => {
 				text: "El numero de celular del cliente no puede estar vacio",
 				icon: "error",
 			});
+		} else if (result < 18) {
+			Swal.fire({
+				title: "Error",
+				text: "La fecha de nacimiento es incorrecta",
+				icon: "error",
+			});
 		} else {
 			fetch(URL + "usuario/editarCliente", {
 				method: "POST",
@@ -346,49 +360,9 @@ window.addEventListener("DOMContentLoaded", () => {
 						pop_up_wrap_edit.reset();
 						pop_up_edit.classList.remove("show");
 						pop_up_wrap_edit.classList.remove("show");
+						datatable.ajax.reload(null, false);
 					}
 				});
 		}
 	}
-
-	// let btnDelete = document.getElementsByClassName("btn-delete");
-
-	// function eliminarUser() {
-	// 	let idObj = this.getAttribute("id");
-	// 	let id = idObj.split("-");
-	// 	Swal.fire({
-	// 		title: "¿Esta seguro de eliminar?",
-	// 		icon: "warning",
-	// 		showCancelButton: true,
-	// 		confirmButtonColor: "#3085d6",
-	// 		cancelButtonColor: "#d33",
-	// 		confirmButtonText: "SI",
-	// 		cancelButtonText: "NO",
-	// 	}).then((result) => {
-	// 		if (result.isConfirmed) {
-	// 			fetch(URL + "usuario/eliminarUsuarios", {
-	// 				method: "POST",
-	// 				body: id[1],
-	// 			})
-	// 				.then((response) => response.text())
-	// 				.then((response) => {
-	// 					if(response == "ok"){
-	// 						Swal.fire({
-	// 							icon: "success",
-	// 							title: "Eliminado",
-	// 							showConfirmButton: false,
-	// 							timer: 1500,
-	// 						});
-	// 					}else{
-	// 						Swal.fire({
-	// 							icon: "error",
-	// 							title: "El cliente no se puede eliminar porque tiene reservas",
-	// 							showConfirmButton: false,
-	// 							timer: 1500,
-	// 						});
-	// 					}
-	// 				});
-	// 		}
-	// 	});
-	// }
 });

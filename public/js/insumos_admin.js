@@ -276,6 +276,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			}
 
 			añadirInsumos();
+			datatable.ajax.reload(null, false);
 		}
 	});
 
@@ -317,6 +318,7 @@ window.addEventListener("DOMContentLoaded", () => {
 							pop_up_wrap_add_categoria.classList.remove("show");
 							mostrarCategoria();
 							mostrarProveedor();
+							datatable.ajax.reload(null, false);
 						});
 
 					console.timeEnd("tasks time");
@@ -329,16 +331,16 @@ window.addEventListener("DOMContentLoaded", () => {
 	});
 
 	editarCategoria.addEventListener("click", () => {
-		let id_categoria = document.getElementById("idCategoriaInsumo");
-		const nombre_categoria = document.getElementById("nombreCategoria_edit");
+		let id_categoria = document.getElementById("categoria_edit");
+		let nombre_categoria = document.getElementById("nombreCategoria_edit");
 
-		if (nombre_categoria.value == "" && id_categoria.value == "") {
+		if (id_categoria.value == "" && nombre_categoria.value == "") {
 			Swal.fire({
 				title: "Error",
 				text: "Diligencia todos los campos",
 				icon: "error",
 			});
-		} else if (nombre_categoria.value < 0 || nombre_categoria.value == "") {
+		} else if (nombre_categoria.value == "") {
 			Swal.fire({
 				title: "Error",
 				text: "El nombre de la categoria no puede estar vacia",
@@ -367,6 +369,7 @@ window.addEventListener("DOMContentLoaded", () => {
 							pop_up_wrap_edit_categoria.classList.remove("show");
 							mostrarCategoria();
 							mostrarProveedor();
+							datatable.ajax.reload(null, false);
 						});
 
 					console.timeEnd("tasks time");
@@ -474,6 +477,7 @@ window.addEventListener("DOMContentLoaded", () => {
 						pop_up_wrap_edit.reset();
 						pop_up_edit.classList.remove("show");
 						pop_up_wrap_edit.classList.remove("show");
+						datatable.ajax.reload(null, false);
 					}
 				});
 		}
@@ -503,6 +507,7 @@ window.addEventListener("DOMContentLoaded", () => {
 							showConfirmButton: false,
 							timer: 1500,
 						});
+						datatable.ajax.reload(null, false);
 					});
 			}
 		});
