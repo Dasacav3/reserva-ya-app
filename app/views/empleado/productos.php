@@ -135,8 +135,8 @@
             <br>
             <label for="ID_CATEGORIA_PRODUCTO">Categoria</label>
             <br>
-            <select name="ID_CATEGORIA_PRODUCTO" class="categoria_producto" required="">
-              <option>Seleccionar</option>
+            <select name="ID_CATEGORIA_PRODUCTO" class="categoria_producto" required>
+              <option></option>
               <?php
               foreach ($category as $resultado_category) {
 
@@ -192,7 +192,7 @@
               <td><?php echo $row["2"] ?></td>
               <td><?php echo $row["3"] ?></td>
               <td><?php echo $row["4"] ?></td>
-              <td class="imagen_vista"><?php echo '<img src="' . $row["5"] . '" style="width:140px;height:140px;border-radius:10px;background:none;">' ?>
+              <td class="imagen_vista"><?php echo '<img src="' . constant('URL') . $row["5"] . '" style="width:140px;height:140px;border-radius:10px;background:none;">' ?>
               <td>
                 <br>
                 <!-- Actualizar registro -->
