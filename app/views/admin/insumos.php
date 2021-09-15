@@ -67,7 +67,7 @@
           </div>
           <div>
             <label for="">Valor Insumo</label> <br />
-            <input type="number" min="1000" name="valor" id="add_valor" /> <br />
+            <input type="number" step="0.01" min="1000" name="valor" id="add_valor" /> <br />
             <label for="">Id Proveedor</label> <br />
             <select name="proveedor" id="proveedor">
             </select> <br>
@@ -136,7 +136,7 @@
           </div>
           <div>
             <label for="">Valor Insumo</label> <br />
-            <input type="number" min="1000" name="valorEditar" id="add_valor_Editar" /> <br />
+            <input type="number" step="0.01" min="1000" name="valorEditar" id="add_valor_Editar" /> <br />
             <label for="">Id Proveedor</label> <br />
             <input name="proveedorEditar" id="proveedorEditar"><br>
             <label for="">Id Categoria</label> <br />

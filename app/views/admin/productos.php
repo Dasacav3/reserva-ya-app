@@ -88,7 +88,7 @@
               <br>
               <label for="VALOR_PRODUCTO">Valor producto</label>
               <br>
-              <input type="number" min="1" name="VALOR_PRODUCTO" id="VALOR_PRODUCTO" class="VALOR_PRODUCTO" required="">
+              <input type="number" step="0.01" min="1" name="VALOR_PRODUCTO" id="VALOR_PRODUCTO" class="VALOR_PRODUCTO" required="">
               <br>
               <label for="ID_CATEGORIA_PRODUCTO">Categoria</label>
               <br>
@@ -131,7 +131,7 @@
             <br>
             <label for="VALOR_PRODUCTO">Valor producto</label>
             <br>
-            <input type="number" min="1" name="VALOR_PRODUCTO" id="VALOR_PRODUCTO_Editar" class="VALOR_PRODUCTO">
+            <input type="number" step="0.01" min="1" name="VALOR_PRODUCTO" id="VALOR_PRODUCTO_Editar" class="VALOR_PRODUCTO">
             <br>
             <label for="ID_CATEGORIA_PRODUCTO">Categoria</label>
             <br>

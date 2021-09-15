@@ -588,3 +588,29 @@ body.dark .closePopup {
 		opacity: 1;
 	}
 }
+
+@media screen and (max-width: 360px) {
+	.form_add_product {
+		max-width: 300;
+		width: 100%;
+	}
+	.form_edit_product {
+		max-width: 300;
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.form_categoria {
+		max-width: 300;
+		width: 100%;
+		left: 0;
+		height: 80%;
+	}
+	.edit_category {
+		max-width: 300;
+		width: 100%;
+		left: 0;
+		height: 90%;
+	}
+}

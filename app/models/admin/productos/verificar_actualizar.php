@@ -33,8 +33,7 @@ $queryProducto->bindParam(":CANTIDAD_PRODUCTO", $CANTIDAD_PRODUCTO);
 $queryProducto->bindParam(":VALOR_PRODUCTO", $VALOR_PRODUCTO);
 $queryProducto->bindParam(":ID_PRODUCTO", $ID_PRODUCTO);
 $queryProducto->execute();
-if (empty($_POST['IMAGEN_PRODUCTO'])) {
-      echo "llego";
+if ($subirimagen != "") {
       $queryimagen = $pdo->prepare("UPDATE producto SET IMAGEN_PRODUCTO = :url WHERE ID_PRODUCTO = :ID_PRODUCTO");
       $queryimagen->bindParam(':url', $url);
       $queryimagen->bindParam(":ID_PRODUCTO", $ID_PRODUCTO);
@@ -44,10 +43,10 @@ if (empty($_POST['IMAGEN_PRODUCTO'])) {
       echo "valor nulo";
 }
 if ($queryProducto) {
-      echo "<script>window.history.go(-1)</script>";
+      header("location:http://localhost/reservaya-mvc/admin/productos");
 } else {
       echo "No se pudo actualizar la categoria";
-      echo "<script>window.history.go(-1)</script>";
+      header("location:http://localhost/reservaya-mvc/admin/productos");
 }
 
 $pdo = null;
