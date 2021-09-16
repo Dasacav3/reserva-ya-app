@@ -28,7 +28,7 @@ class Registro extends Controller
         $password = $_POST['password'];
         $estado = 'Activo';
         $tipo = 'Cliente';
-        $foto = URL . "public/profile_photo/user_default_reservaya.png";
+        $foto = "public/profile_photo/user_default_reservaya.png";
 
     
         if($this->model->registrarCliente(['username' => $correo, 'clave' => $password, 'estado' => $estado, 'tipo' => $tipo, 'foto' => $foto, 'nombre' => $nombre, 'apellido' => $apellido, 'fecha' => $fecha, 'celular' => $celular, 'correo' => $correo])){
