@@ -587,7 +587,7 @@ body.dark .closePopup {
 	}
 }
 
-@media screen and (max-width: 500px) {
+@media (max-width: 500px) {
 	.form_add_product {
 		max-width: 320px;
 		width: 100%;
@@ -610,7 +610,7 @@ body.dark .closePopup {
 	}
 }
 
-@media screen and (max-width: 700px) {
+@media (min-width: 500px) and (max-width: 700px) {
 	.form_add_product {
 		max-width: 500px;
 		width: 100%;
