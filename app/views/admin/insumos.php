@@ -27,9 +27,6 @@
             </li>
           </ul>
         </div>
-        <div class="search">
-          <input type="text" class="search-input" id="search_input" placeholder="Busqueda" />
-        </div>
       </div>
       <table class="datatable">
         <thead>

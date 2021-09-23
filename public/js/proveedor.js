@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", () => {
 						<a>
 							<button class="btn-edit hola" data-id='${data}'><i class='fas fa-edit'></i></button>
 						</a>
-						<a href="${URL}app/models/admin/proveedores/eliminaprov2.php?id=${data}" class="PRUEBA">
+						<a href="${URL}app/models/admin/proveedores/eliminaprov2.php?id=${data}" class="prueba">
 							<button class="btn-delete"><i class='fas fa-trash-alt'></i></button>
 						</a>
 						`;
@@ -97,6 +97,28 @@ window.addEventListener("DOMContentLoaded", () => {
 			e.preventDefault();
 			overlayEdit.classList.remove("active");
 			popupEdit.classList.remove("active");
+		});
+
+		$(".prueba").on("click", function (e) {
+			e.preventDefault();
+			const LINK = $(this).attr("href");
+			Swal.fire({
+				title: "¿Deseas Eliminar?",
+				text: "Esta acción no se puede revertir",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#3085d6",
+				cancelButtonColor: "#d33",
+				confirmButtonText: "Aceptar",
+				cancelButtonText: "Cancelar",
+			}).then((result) => {
+				if (result.isConfirmed) {
+					Swal.fire("Eliminado", "El proveedor ha sido eliminado", "success");
+				}
+				if (result.value) {
+					document.location.href = LINK;
+				}
+			});
 		});
 	}
 });

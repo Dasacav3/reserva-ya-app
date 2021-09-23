@@ -199,7 +199,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			function sendMail() {
 				fetch(URL + "email/sendEmailAdd", {
 					method: "POST",
-					body: new FormData(pop_up_wrap_add),
+					body: new FormData(reserva_add_form),
 				})
 					.then((response) => response.text())
 					.then((response) => {

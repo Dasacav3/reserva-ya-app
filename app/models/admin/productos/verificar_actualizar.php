@@ -31,8 +31,6 @@ if ($subirimagen != "") {
       $queryimagen->bindParam(':url', $url);
       $queryimagen->bindParam(":ID_PRODUCTO", $ID_PRODUCTO);
       $queryimagen->execute();
-} else {
-      echo "valor nulo";
 }
 if ($queryProducto) {
       echo "<script>window.history.go(-1)</script>";

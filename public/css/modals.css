@@ -52,7 +52,7 @@ body.dark .form-modal > form input[type="button"] {
 	border-radius: var(--dt-border-radius);
 	width: 300px;
 	padding: 10px 20px;
-	margin: 20% auto;
+	margin: 10% auto;
 	position: relative;
 	box-shadow: -8px 9px 48px 9px rgba(0, 0, 0, 0.69);
 }
@@ -84,7 +84,7 @@ body.dark .form-modal > form input[type="button"] {
 	border-radius: var(--dt-border-radius);
 	width: 300px;
 	padding: 10px 20px;
-	margin: 20% auto;
+	margin: 10% auto;
 	position: relative;
 	box-shadow: -8px 9px 48px 9px rgba(77, 72, 72, 0.69);
 }
@@ -290,13 +290,12 @@ body.dark .closePopup {
 }
 .container_add_product {
 	background: rgba(48, 48, 48, 0.5);
-	position: absolute;
+	position: fixed;
 	z-index: 1;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	padding-top: 10%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -589,7 +588,7 @@ body.dark .closePopup {
 	}
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 500px) {
 	.form_add_product {
 		max-width: 300;
 		width: 100%;
@@ -600,7 +599,7 @@ body.dark .closePopup {
 	}
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
 	.form_categoria {
 		max-width: 300;
 		width: 100%;

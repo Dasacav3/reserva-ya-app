@@ -22,11 +22,11 @@
 			$query->bindParam(":id", $_REQUEST['id']);
 			$query->execute();
 		} catch (Exception $e) {
-			echo "Conexion Fallida: " . $e->getMessage();
 			echo "<script>alert('ELIMINAR INSUMOS PRIMERO');
 				window.history.go(-1);</script>";
+			die();
 		}
-		echo "<script>alert('Se elimino correctamente');window.history.go(-1);</script>";
+		echo "<script>window.history.go(-1);</script>";
 	} else {
 		echo "<script>alert('Informacion incorrecta');
 			window.history.go(-1)</script>";
