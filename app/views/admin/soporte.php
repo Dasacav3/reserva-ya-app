@@ -39,7 +39,7 @@
           <video preload="none" src="http://localhost/reservaya-mvc/public/video_soporte/admin/ProveedoresAdmin.mp4" width="400" controls></video>
         </div>
         <div style="display:flex; justify-content: center; margin-top: 2em;">
-          <button style="padding: 1em 2em; border-radius: 10px; border: none; background: #ccc; color: black;"><i class="fas fa-download"></i> Manual usuario</button>
+          <a href="<?= constant('URL') ?>docs/Manual%20de%20usuario.pdf" style="padding: 1em 2em; border-radius: 10px; border: none; background: #ccc; color: black;"><i class="fas fa-download"></i> Manual usuario</a>
         </div>
       </div>
     </div>
