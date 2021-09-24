@@ -16,15 +16,15 @@
         </div>
         <div>
           <h3>01 Actualizar información</h3>
-          <video preload="none" src="http://localhost/reservaya-mvc/public/video_soporte/cliente/video_soporte.mp4" width="400" controls></video>
+          <video preload="none" src="<?= constant('URL') ?>public/video_soporte/cliente/video_soporte.mp4" width="400" controls></video>
         </div>
         <div>
           <h3>02 Reservaciones</h3>
-          <video preload="none" src="http://localhost/reservaya-mvc/public/video_soporte/cliente/video_soporte.mp4" width="400" controls></video>
+          <video preload="none" src="<?= constant('URL') ?>public/video_soporte/cliente/video_soporte.mp4" width="400" controls></video>
         </div>
         <div>
           <h3>03 Tips de seguridad</h3>
-          <video preload="none" src="http://localhost/reservaya-mvc/public/video_soporte/cliente/video_soporte.mp4" width="400" controls></video>
+          <video preload="none" src="<?= constant('URL') ?>public/video_soporte/cliente/video_soporte.mp4" width="400" controls></video>
         </div>
       </div>
     </div>

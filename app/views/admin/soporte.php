@@ -16,27 +16,27 @@
         </div>
         <div>
           <h3>01 Actualizar información</h3>
-          <video preload="none" src="http://localhost/reservaya-mvc/public/video_soporte/admin/ActualizarInfoAdmin.mp4" width="400" controls></video>
+          <video preload="none" src="<?= constant('URL') ?>public/video_soporte/admin/Actualizarinfoadmin-1.webm" width="400" controls></video>
         </div>
         <div>
           <h3>02 Reservaciones</h3>
-          <video preload="none" src="http://localhost/reservaya-mvc/public/video_soporte/admin/ReservacionesAdmin.mp4" width="400" controls></video>
+          <video preload="none" src="<?= constant('URL') ?>public/video_soporte/admin/ReservacionesAdmin.mp4" width="400" controls></video>
         </div>
         <div>
           <h3> Mesas</h3>
-          <video preload="none" src="http://localhost/reservaya-mvc/public/video_soporte/admin/MesasAdmin.mp4" width="400" controls></video>
+          <video preload="none" src="<?= constant('URL') ?>public/video_soporte/admin/MesasAdmin.mp4" width="400" controls></video>
         </div>
         <div>
           <h3>04 Insumos</h3>
-          <video preload="none" src="http://localhost/reservaya-mvc/public/video_soporte/admin/InsumosAdmin.mp4" width="400" controls></video>
+          <video preload="none" src="<?= constant('URL') ?>public/video_soporte/admin/InsumosAdmin.mp4" width="400" controls></video>
         </div>
         <div>
           <h3>05 Productos</h3>
-          <video preload="none" src="http://localhost/reservaya-mvc/public/video_soporte/admin/ProductosAdmin.mp4" width="400" controls></video>
+          <video preload="none" src="<?= constant('URL') ?>public/video_soporte/admin/ProductosAdmin.mp4" width="400" controls></video>
         </div>
         <div>
           <h3>06 Proveedores</h3>
-          <video preload="none" src="http://localhost/reservaya-mvc/public/video_soporte/admin/ProveedoresAdmin.mp4" width="400" controls></video>
+          <video preload="none" src="<?= constant('URL') ?>public/video_soporte/admin/ProveedoresAdmin.mp4" width="400" controls></video>
         </div>
         <div style="display:flex; justify-content: center; margin-top: 2em;">
           <a href="<?= constant('URL') ?>docs/Manual%20de%20usuario.pdf" style="padding: 1em 2em; border-radius: 10px; border: none; background: #ccc; color: black;"><i class="fas fa-download"></i> Manual usuario</a>
