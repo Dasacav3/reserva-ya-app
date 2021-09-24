@@ -21,7 +21,7 @@
         <img class="nav-bar__img" src="<?= constant('URL') ?>public/img/logo-reservaya.png" alt="Logo Reserva Ya" />
         <nav class="nav-bar__nav">
             <ul class="nav-bar__nav-ul">
-                <li class="nav-bar__nav-ul-li"><a href="index.html" class="nav-bar-link"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="nav-bar__nav-ul-li"><a href="<?= constant('URL') ?>" class="nav-bar-link"><i class="fas fa-home"></i> Inicio</a></li>
                 <li class="nav-bar__nav-ul-li">
                     <a href="#navServices" class="nav-bar-link"><i class="fas fa-box"></i> Servicios</a>
                 </li>
