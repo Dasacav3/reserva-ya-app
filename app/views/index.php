@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Favicon -->
     <link rel="shortcut icon" href="<?= constant('URL') ?>public/img/favicon.png" type="image/x-icon" />
+    <!-- SweetAlert -->
+    <script src="<?= constant('URL') ?>lib/sweetaler2/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="<?= constant('URL') ?>lib/sweetaler2/sweetalert2.min.css" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?= constant('URL') ?>lib/fontawesome-5.15.2/css/all.min.css" />
     <script src="<?= constant('URL') ?>lib/fontawesome-5.15.2/js/all.min.js"></script>
@@ -144,17 +147,17 @@
                 <h2>Contactanos</h2>
             </div>
             <div class="contacto-form">
-                <form method="POST">
+                <form method="POST" id="form-contact-client">
                     <p>Nombre</p>
                     <br />
-                    <input type="text" id="name" required /> <br />
+                    <input type="text" id="name" name="name" required /> <br />
                     <p>Correo electronico</p>
                     <br />
-                    <input type="email" name="" id="email" required /> <br />
+                    <input type="email" name="email" id="email" required /> <br />
                     <p>Mensaje</p>
                     <br />
-                    <textarea name="" id="message" cols="30" rows="10" required></textarea>
-                    <input type="submit" value="Enviar" />
+                    <textarea name="message" id="message" cols="30" rows="10" required></textarea>
+                    <input type="submit" value="Enviar" id="sendMessage" />
                 </form>
             </div>
             <div class="contacto-map">
@@ -175,9 +178,60 @@
         </div>
     </footer>
     <script>
-        document.querySelector(".menu-btn").addEventListener("click", () => {
-            document.querySelector(".nav-bar__nav-ul").classList.toggle("show");
-        });
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelector(".menu-btn").addEventListener("click", () => {
+                document.querySelector(".nav-bar__nav-ul").classList.toggle("show");
+            });
+
+            let formContactClient = document.getElementById('form-contact-client');
+            let btnSendEmail = document.getElementById('sendMessage');
+            let name = document.getElementById('name');
+            let email = document.getElementById('email');
+            let message = document.getElementById('message');
+
+            let validateEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+
+            btnSendEmail.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (name.value == "") {
+                    Swal.fire({
+                        title: "El nombre no puede estar vacio",
+                        icon: "warning",
+                        showConfirmButton: false,
+                        timer: 700,
+                    })
+                } else if (!validateEmail.test(email.value)) {
+                    Swal.fire({
+                        title: "El correo electronico debe ser valido",
+                        icon: "warning",
+                        showConfirmButton: false,
+                        timer: 700,
+                    })
+                } else if (message.value == "") {
+                    Swal.fire({
+                        title: "El mensaje no puede estar vacio",
+                        icon: "warning",
+                        showConfirmButton: false,
+                        timer: 700,
+                    })
+                } else {
+                    fetch("email/sendEmailInfo", {
+                        body: new FormData(formContactClient),
+                        method: "POST"
+                    }).then(req => req.text()).then(res => {
+                        console.log(res);
+                        Swal.fire({
+                            title: "Mensaje enviado",
+                            icon: "success",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        })
+
+                    })
+                }
+            })
+        })
     </script>
 </body>
 

@@ -434,4 +434,131 @@ class Email extends Controller
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     }
+
+    public function sendEmailInfo()
+    {
+
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+
+        try {
+            //Server settings
+            $mail = new PHPMailer(true);
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->isSMTP();                                        //Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = $_ENV['PHPMAILER_USER'];               //SMTP username
+            $mail->Password   = $_ENV['PHPMAILER_PASSWORD'];               //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;                                  //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+            //Recipients
+            $mail->setFrom($_ENV['PHPMAILER_USER'], 'Notificación de contacto cliente');
+            $mail->addAddress($_ENV['PHPMAILER_USER']);                          //Add a recipient
+
+            //Content
+            $mail->CharSet = 'UTF-8';
+            $mail->isHTML(true);
+            $mail->addEmbeddedImage('public/img/logo-reservaya.png', 'logo', 'logo-reservaya.png');
+            $mail->Subject = 'El cliente ' . $name . ' esta solicitando información | Reserva Ya Notifications';
+            $mail->Body   = ' <!DOCTYPE html>
+            <html lang="es">
+                <head>
+                    <meta charset="UTF-8" />
+                    <style>
+                    *{
+                        font-family: "Arial", sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                    }
+                    body{
+                        margin: auto;
+                    }
+                    .container {
+                        display: grid;
+                        gap: 0;
+                        width: 500px;
+                        border: 1px solid black;
+                    }
+                    .header {
+                        display: flex;
+                        align-items: center;
+                        height: 80px;
+                        background: #7a6563ff;
+                    }
+                    .header img {
+                        width: 200px;
+                        margin-left: 1em;
+                    }
+                    .image img{
+                        height: 300px;
+                        width: 500px;
+                    }
+                    .main {
+                        margin: 1em;
+                        font-size: 20px
+                    }
+                    .main h1{
+                        font-size: 38px;
+                    }
+                    .main ul li{
+                        list-style: none;
+                        font-weight: bold;
+                    }
+                    .info{
+                        font-size: 15px;
+                        font-style: italic;
+                        text-align: center;
+                    }
+                    .footer {
+                        color: #fff;
+                        height: 50px;
+                        background: #7a6563ff;
+                        display: flex;
+                        align-items: center;
+                    }
+                    .footer p {
+                        text-align: center;
+                        width: 100%;
+                        font-weight: bold;
+                    }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="header">
+                            <img src="cid:logo" alt="" />
+                        </div>
+                        <div class="image">
+                            <img src="https://picsum.photos/500/300" /> 
+                        </div>
+                        <div class="main">
+                            <h1>Información clientes</h1> <br>
+                            <p><b>Cliente:</b> ' . $name . '</p> <br>
+                            <p><b>Correo electronico:</b> ' . $email . '</p> <br>
+                            <p><b>Mensaje:</b> <br> ' . $message . '</p> 
+                        </div>
+                        </br>
+                        <div class="info">
+                            <p>*Correo recibido por ' . $name . '*</p>
+                        </div>
+                        <div class="footer">
+                            <p>© Todos los derechos reservados | 2020 - 2021 | Sephia PUB</p>
+                        </div>
+                    </div>
+                </body>
+            </html>
+            
+                ';
+            // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            $mail->send();
+            echo 'ok';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
 }
