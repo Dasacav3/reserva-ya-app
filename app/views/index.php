@@ -35,7 +35,7 @@
                     <a href="#navContacto" class="nav-bar-link"><i class="fas fa-envelope"></i> Contacto</a>
                 </li>
                 <li class="nav-bar__nav-ul-li">
-                    <a href="<?= constant('URL') ?>carta" class="nav-bar-link"><i class="fas fa-utensils"></i> Productos</a>
+                    <a href="<?= constant('URL') ?>carta" class="nav-bar-link"><i class="fas fa-utensils"></i> Carta</a>
                 </li>
                 <li class="nav-bar__nav-ul-li">
                     <a href="<?= constant('URL') ?>login" class="nav-bar-link"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</a>

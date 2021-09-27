@@ -28,14 +28,17 @@ try {
     <title>Carta</title>
     <link rel="shortcut icon" href="<?= constant('URL') ?>public/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/carta.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="<?= constant('URL') ?>lib/fontawesome-5.15.2/css/all.min.css" />
+    <script src="<?= constant('URL') ?>lib/fontawesome-5.15.2/js/all.min.js"></script>
 </head>
 
 <body>
     <nav class="navegacion">
         <ul class="menu">
-            <li><a href="<?= constant('URL') ?>">Inicio</a></li>
-            <li><a href="<?= constant('URL') ?>login">Iniciar sesión</a></li>
-            <li><a href="#">Productos</a>
+            <li><a href="<?= constant('URL') ?>"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="<?= constant('URL') ?>login"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</a></li>
+            <li><a href="#"><i class="fas fa-paperclip"></i> Categorias</a>
                 <ul class="submenu">
                     <?php
                     while ($fila = $sql_categorias->fetch(PDO::FETCH_NUM)) {
@@ -55,7 +58,7 @@ try {
                 </ul>
         </ul>
     </nav>
-    <h1 class="titulo">Menu</h1>
+    <h1 class="titulo">Carta</h1>
     <br>
     <div class="container">
         <?php
