@@ -24,7 +24,7 @@
 				<div class="icon-box">
 					<i class="fas fa-book"></i>
 				</div>
-				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+				<a href="<?= constant('URL') ?>cliente/reservas" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
 			</div>
 			<div class="small-box">
 				<div class="text-box">
@@ -34,7 +34,7 @@
 				<div class="icon-box">
 					<i class="fas fa-hamburger"></i>
 				</div>
-				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+				<a href="<?= constant('URL') ?>carta" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
 			</div>
 		</div>
 		<section>

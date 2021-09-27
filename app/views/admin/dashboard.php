@@ -24,7 +24,7 @@
 				<div class="icon-box">
 					<i class="fas fa-book"></i>
 				</div>
-				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+				<a href="<?= constant('URL') ?>admin/reservas" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
 			</div>
 			<div class="small-box">
 				<div class="text-box">
@@ -34,7 +34,7 @@
 				<div class="icon-box">
 					<i class="fas fa-hamburger"></i>
 				</div>
-				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+				<a href="<?= constant('URL') ?>admin/productos" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
 			</div>
 			<div class="small-box">
 				<div class="text-box">
@@ -44,7 +44,7 @@
 				<div class="icon-box">
 					<i class="fas fa-utensils"></i>
 				</div>
-				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+				<a href="<?= constant('URL') ?>admin/insumos" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
 			</div>
 			<div class="small-box">
 				<div class="text-box">
@@ -54,7 +54,7 @@
 				<div class="icon-box">
 					<i class="fas fa-truck-moving"></i>
 				</div>
-				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+				<a href="<?= constant('URL') ?>admin/proveedores" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
 			</div>
 			<div class="small-box">
 				<div class="text-box">
@@ -64,7 +64,7 @@
 				<div class="icon-box">
 					<i class="fas fa-table"></i>
 				</div>
-				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+				<a href="<?= constant('URL') ?>admin/mesas" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
 			</div>
 			<div class="small-box">
 				<div class="text-box">
@@ -74,7 +74,7 @@
 				<div class="icon-box">
 					<i class="fas fa-user-cog"></i>
 				</div>
-				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+				<a href="<?= constant('URL') ?>admin/usuarios" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
 			</div>
 			<div class="small-box">
 				<div class="text-box">
@@ -84,7 +84,7 @@
 				<div class="icon-box">
 					<i class="fas fa-user-alt"></i>
 				</div>
-				<a href="#" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
+				<a href="<?= constant('URL') ?>admin/usuarios" class="small-box-link">Más información <i class="fas fa-arrow-circle-right"></i></a>
 			</div>
 		</div>
 		<section>
