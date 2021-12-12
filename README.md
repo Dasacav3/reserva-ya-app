@@ -54,6 +54,6 @@ El aplicativo cuenta con tres roles (Administrador,Empleado,Cliente) cada uno co
     contraseña: 1234
     ```
 
-- Ingresar a los archivos `/public/js/modules.js` `/public/js/insumos_admin.js` y cambiar la variable `URL` por la misma URL que uso en el archivo .env
+- Cambiar la variable `URL` por la misma URL que utilizó en el archivo .env
 - Ingresar al archivo `/app/controller/database.php` y configurar los datos de la BD
 - Por ultimo, ya puedes ingresar a la URL y utilizar el sistema
