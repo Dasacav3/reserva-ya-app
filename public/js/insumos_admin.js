@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-	const URL = "http://localhost/reservaya-mvc/";
+	const URL = window.location.origin + '/';
 	// Modal añadir y editar
 	var pop_up_add = document.getElementById("pop-up-add");
 	var pop_up_add_categoria = document.getElementById("pop-up-add-categoria");
