@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mariadb:10.3
+    restart: always
+    container_name: mariadb-reservaya
+    volumes:
+      - ./schemas:/var/lib/mysql:rw
+    environment:
+      MYSQL_ROOT_PASSWORD: mariadb
+      MYSQL_DATABASE: reservaya
+      MYSQL_USER: reservaya
+      MYSQL_PASSWORD: reservaya
+    ports:
+      - '23306:3306'
+    networks:
+      mysql_network:
+        aliases:
+          - mysql_host
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8000:80
+    environment:
+      - PMA_ARBITRARY=1
+
+volumes:
+  schemas: {}
+networks:
+  mysql_network:
+    name: mysql_net
+    driver: bridge
