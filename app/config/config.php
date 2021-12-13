@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
+require __DIR__.'/../../vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../..");
 $dotenv->load();
@@ -13,4 +13,5 @@ define('DB', $_ENV['DB']);
 define('USER', $_ENV['USER']);
 define('PASSWORD', $_ENV['PASSWORD']);
 define('CHARSET', $_ENV['CHARSET']);
+define('PORT', $_ENV['PORT']);
 
