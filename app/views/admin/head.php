@@ -22,8 +22,8 @@
 
 <?php
 
-if($this->session->get('user') == null || $this->session->get('user')['tipo_usuario'] != "Administrador"){
-    header("location: " . $_ENV['URL']);
+if($this->session->get('user') == null || $this->session->get('user')['tipo_usuario'] != "Admin"){
+    header("location: " . constant('URL'));
 }
 
 ?>

@@ -23,7 +23,7 @@
 <?php
 
 if($this->session->get('user') == null || $this->session->get('user')['tipo_usuario'] != "Empleado"){
-    header("location: " . $_ENV['URL']);
+    header("location: " . constant('URL'));
 }
 
 ?>

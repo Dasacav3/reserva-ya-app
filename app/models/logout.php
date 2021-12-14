@@ -1,11 +1,9 @@
 <?php
 
-require_once "../../vendor/autoload.php";
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../..");
-$dotenv->load();
+include __DIR__ . '/../config/config.php';
 
 session_start();
 session_unset();
 session_destroy();
-header("location: " . $_ENV['URL']);
+
+header("location: " . constant('URL'));
