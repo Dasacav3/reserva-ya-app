@@ -31,7 +31,7 @@ El aplicativo cuenta con tres roles (Administrador,Empleado,Cliente) cada uno co
     APP_DB_ADMIN_PORT=8001
     APP_SERVER_PORT=8002
 
-    DB_HOST=127.0.0.1
+    DB_HOST=      // Gateway docker network
     DB_NAME=
     DB_USER=
     DB_PASSWORD=
@@ -43,6 +43,17 @@ El aplicativo cuenta con tres roles (Administrador,Empleado,Cliente) cada uno co
     PHPMAILER_PASSWORD=
     ```
 
+- Ahora ejecutar el comando (Debe tener docker instalado y ejecutandose):
+
+    ```
+    docker-compose up -d --build
+    ```
+
+    - Si no se ejecuta correctamente, verificar que el archivo .env exista y que los valores de las variables esten correctos.
+    - Para consultar el `network_id` de la red de docker, ejecutar el comando: `docker network ls`
+
+
+- Para consultar el `DB_HOST` es necesario que se ejecute el comando `docker network inspect 'network_id'` y buscar el valor de `Gateway`
 
 - Importar el archivo ReservaYa BD.sql que se encuentra en la carpeta /docs
 
@@ -61,7 +72,7 @@ El aplicativo cuenta con tres roles (Administrador,Empleado,Cliente) cada uno co
     contraseña: 1234
     ```
 
-- Cambiar la variable `URL` por la misma URL que utilizó en el archivo .env
+- Cambiar la variable `APP_URL` por la misma URL que utilizó en el archivo .env
 
 - __Importante__ Si se quiere utilizar el envio de correos electronicos es necesario que tenga las variables de PHPMAILER_USER y PHPMAILER_PASSWORD con las credenciales de la cuenta de correo (preferiblemente una cuenta de gmail)
 
