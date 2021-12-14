@@ -7,3 +7,6 @@ vendor
 public/reports/*
 public/profile_photo/*
 schemas
+html
+config
+mariadb
