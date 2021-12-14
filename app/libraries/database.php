@@ -12,12 +12,12 @@ class Database
 
     public function __construct()
     {
-        $this->host = constant('HOST');
-        $this->db = constant('DB');
-        $this->user = constant('USER');
-        $this->password = constant('PASSWORD');
-        $this->charset = constant('CHARSET');
-        $this->port = constant('PORT');
+        $this->host = constant('DB_HOST');
+        $this->db = constant('DB_NAME');
+        $this->user = constant('DB_USER');
+        $this->password = constant('DB_PASSWORD');
+        $this->charset = constant('DB_CHARSET');
+        $this->port = constant('DB_PORT');
     }
 
     protected function connect()
