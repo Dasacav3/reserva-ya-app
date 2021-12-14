@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `administrador` (
 -- Volcando datos para la tabla reservaya.administrador: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `administrador` DISABLE KEYS */;
 INSERT INTO `administrador` (`ID_ADMIN`, `NOMBRE_ADMIN`, `APELLIDO_ADMIN`, `EMAIL_ADMIN`, `CELULAR_ADMIN`, `ID_USUARIO`) VALUES
-	(1, 'Administrador', 'Reserva Ya', 'admin@reservaya.com', '3112547896', 1);
+	(1, 'Admin', 'Reserva Ya', 'admin@reservaya.com', '3112547896', 1);
 /*!40000 ALTER TABLE `administrador` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_admin
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `auditoria_admin` (
 -- Volcando datos para la tabla reservaya.auditoria_admin: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `auditoria_admin` DISABLE KEYS */;
 INSERT INTO `auditoria_admin` (`ID_AUDI`, `NOMBRE_ADMIN_ANTERIOR`, `APELLIDO_ADMIN_ANTERIOR`, `EMAIL_ADMIN_ANTERIOR`, `CELULAR_ADMIN_ANTERIOR`, `ID_USUARIO_ANTERIOR`, `NOMBRE_ADMIN_NUEVO`, `APELLIDO_ADMIN_NUEVO`, `EMAIL_ADMIN_NUEVO`, `CELULAR_ADMIN_NUEVO`, `ID_USUARIO_NUEVO`, `AUDI_FECHA_MODIFICACION`, `AUDI_USUARIO`, `ID_ADMIN`, `AUDI_ACCION`) VALUES
-	(15, NULL, NULL, NULL, NULL, NULL, 'Administrador', 'Reserva Ya', 'admin@reservaya.com', '3112547896', 1, '2021-06-08 13:24:14', 'root@localhost', 1, 'Insercion');
+	(15, NULL, NULL, NULL, NULL, NULL, 'Admin', 'Reserva Ya', 'admin@reservaya.com', '3112547896', 1, '2021-06-08 13:24:14', 'root@localhost', 1, 'Insercion');
 /*!40000 ALTER TABLE `auditoria_admin` ENABLE KEYS */;
 
 -- Volcando estructura para tabla reservaya.auditoria_categoria_insumo
@@ -307,12 +307,12 @@ CREATE TABLE IF NOT EXISTS `auditoria_usuario` (
   `ID_AUDI` int(11) NOT NULL AUTO_INCREMENT,
   `NOMBRE_USUARIO_ANTERIOR` varchar(70) DEFAULT NULL,
   `CLAVE_USUARIO_ANTERIOR` varchar(255) DEFAULT NULL,
-  `TIPO_USUARIO_ANTERIOR` enum('Cliente','Empleado','Administrador') DEFAULT NULL,
+  `TIPO_USUARIO_ANTERIOR` enum('Cliente','Empleado','Admin') DEFAULT NULL,
   `ESTADO_USUARIO_ANTERIOR` enum('Activo','Inactivo') DEFAULT NULL,
   `FOTO_PERFIL_ANTERIOR` varchar(255) DEFAULT NULL,
   `NOMBRE_USUARIO_NUEVO` varchar(70) DEFAULT NULL,
   `CLAVE_USUARIO_NUEVO` varchar(255) DEFAULT NULL,
-  `TIPO_USUARIO_NUEVO` enum('Cliente','Empleado','Administrador') DEFAULT NULL,
+  `TIPO_USUARIO_NUEVO` enum('Cliente','Empleado','Admin') DEFAULT NULL,
   `ESTADO_USUARIO_NUEVO` enum('Activo','Inactivo') DEFAULT NULL,
   `FOTO_PERFIL_NUEVO` varchar(255) DEFAULT NULL,
   `AUDI_FECHA_MODIFICACION` datetime NOT NULL,
@@ -325,7 +325,7 @@ CREATE TABLE IF NOT EXISTS `auditoria_usuario` (
 -- Volcando datos para la tabla reservaya.auditoria_usuario: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `auditoria_usuario` DISABLE KEYS */;
 INSERT INTO `auditoria_usuario` (`ID_AUDI`, `NOMBRE_USUARIO_ANTERIOR`, `CLAVE_USUARIO_ANTERIOR`, `TIPO_USUARIO_ANTERIOR`, `ESTADO_USUARIO_ANTERIOR`, `FOTO_PERFIL_ANTERIOR`, `NOMBRE_USUARIO_NUEVO`, `CLAVE_USUARIO_NUEVO`, `TIPO_USUARIO_NUEVO`, `ESTADO_USUARIO_NUEVO`, `FOTO_PERFIL_NUEVO`, `AUDI_FECHA_MODIFICACION`, `AUDI_USUARIO`, `ID_USUARIO`, `AUDI_ACCION`) VALUES
-	(34, NULL, NULL, NULL, NULL, NULL, 'admin@gmail.com', '$2y$10$C9gbqEXD1ZMaRpZ.8RERk.qzE5yNnjO5olg5y.giNzyMHI6tqlIkm', 'Administrador', 'Activo', '.', '2021-06-08 13:22:55', 'root@localhost', 1, 'Insercion'),
+	(34, NULL, NULL, NULL, NULL, NULL, 'admin@gmail.com', '$2y$10$C9gbqEXD1ZMaRpZ.8RERk.qzE5yNnjO5olg5y.giNzyMHI6tqlIkm', 'Admin', 'Activo', '.', '2021-06-08 13:22:55', 'root@localhost', 1, 'Insercion'),
 	(36, NULL, NULL, NULL, NULL, NULL, 'empleado@gmail.com', '$2y$10$O1V6G4j.RHNsPegZ9QTaw.NdTL7PQy/quAlD9O1XmpicZ0IkB0KXq', 'Empleado', 'Activo', '.', '2021-06-08 13:23:18', 'root@localhost', 2, 'Insercion'),
 	(37, NULL, NULL, NULL, NULL, NULL, 'cliente@gmail.com', '$2y$10$KO4IpwfevK5LgqsSnuM/3.0oxEg81z2al6ZOrctrfhgAbsqJmoVpO', 'Cliente', 'Activo', '.', '2021-06-08 13:23:40', 'root@localhost', 3, 'Insercion');
 /*!40000 ALTER TABLE `auditoria_usuario` ENABLE KEYS */;
@@ -500,7 +500,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT,
   `NOMBRE_USUARIO` varchar(70) NOT NULL,
   `CLAVE_USUARIO` varchar(255) NOT NULL,
-  `TIPO_USUARIO` enum('Cliente','Empleado','Administrador') NOT NULL,
+  `TIPO_USUARIO` enum('Cliente','Empleado','Admin') NOT NULL,
   `ESTADO_USUARIO` enum('Activo','Inactivo') NOT NULL,
   `FOTO_PERFIL` varchar(255) NOT NULL,
   PRIMARY KEY (`ID_USUARIO`),
@@ -510,7 +510,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcando datos para la tabla reservaya.usuario: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
 INSERT INTO `usuario` (`ID_USUARIO`, `NOMBRE_USUARIO`, `CLAVE_USUARIO`, `TIPO_USUARIO`, `ESTADO_USUARIO`, `FOTO_PERFIL`) VALUES
-	(1, 'admin@gmail.com', '$2y$10$C9gbqEXD1ZMaRpZ.8RERk.qzE5yNnjO5olg5y.giNzyMHI6tqlIkm', 'Administrador', 'Activo', '.'),
+	(1, 'admin@gmail.com', '$2y$10$C9gbqEXD1ZMaRpZ.8RERk.qzE5yNnjO5olg5y.giNzyMHI6tqlIkm', 'Admin', 'Activo', '.'),
 	(2, 'empleado@gmail.com', '$2y$10$O1V6G4j.RHNsPegZ9QTaw.NdTL7PQy/quAlD9O1XmpicZ0IkB0KXq', 'Empleado', 'Activo', '.'),
 	(3, 'cliente@gmail.com', '$2y$10$KO4IpwfevK5LgqsSnuM/3.0oxEg81z2al6ZOrctrfhgAbsqJmoVpO', 'Cliente', 'Activo', '.');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;

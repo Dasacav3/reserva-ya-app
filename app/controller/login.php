@@ -18,15 +18,14 @@ class Login extends Controller
         $this->view->render('login');
     }
 
-
     public function loginUser()
     {
         $this->username = $_POST['user_name'];
         $this->password = $_POST['password'];
         $data = $this->model->get(['user' => $this->username, 'clave' => $this->password]);
 
-        if ($data['tipo_usuario'] == 'Administrador') {
-            echo "administrador";
+        if ($data['tipo_usuario'] == 'Admin') {
+            echo "admin";
         } else if ($data['tipo_usuario'] == 'Cliente') {
             echo "cliente";
         } else if ($data['tipo_usuario'] == 'Empleado') {
@@ -35,9 +34,7 @@ class Login extends Controller
             echo "usuario o contraseña incorrecto";
         }
 
-
         // Iniciar sesión
         $this->session->add('user', $data);
-        // var_dump($this->session->get('user'));
     }
 }

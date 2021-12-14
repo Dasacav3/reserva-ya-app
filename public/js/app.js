@@ -15,7 +15,7 @@ function loginUser() {
 		.then((response) => response.text())
 		.then((response) => {
 			console.log(response);
-			if (response.trim() == "administrador") {
+			if (response.trim() == "admin") {
 				Swal.fire({
 					title: "Ingreso exitoso",
 					icon: "success",

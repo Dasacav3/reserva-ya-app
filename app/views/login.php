@@ -14,6 +14,14 @@
 	<title>Inicio de Sesión</title>
 </head>
 
+<?php
+
+if($this->session->get('user')){
+    header("location: " . constant('URL').strtolower($this->session->get('user')['tipo_usuario']));
+}
+
+?>
+
 <body class="body-login">
 	<div class="login-container">
 		<div class="return">

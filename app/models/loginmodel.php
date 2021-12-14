@@ -19,7 +19,7 @@ class LoginModel extends Model
         }
 
         if ($data) {
-            if ($data[1] == 'Administrador' and password_verify($userdata['clave'], $data[2]) and $data[3] == 'Activo') {
+            if ($data[1] == 'Admin' and password_verify($userdata['clave'], $data[2]) and $data[3] == 'Activo') {
                 try {
                     $query = $this->prepare("SELECT usuario.id_usuario, usuario.nombre_usuario, usuario.tipo_usuario, administrador.nombre_admin, administrador.apellido_admin, administrador.id_admin, usuario.foto_perfil FROM administrador INNER JOIN usuario ON administrador.id_usuario = usuario.id_usuario WHERE nombre_usuario = :nombre");
                     $query->execute(['nombre' => $userdata['user']]);
