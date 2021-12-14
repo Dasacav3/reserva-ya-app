@@ -25,12 +25,19 @@ El aplicativo cuenta con tres roles (Administrador,Empleado,Cliente) cada uno co
 - Crear un archivo .env y agregar las variables del archivo .env example
 
     ```
-    HOST="localhost"
-    DB=
-    URL=
-    USER=
-    PASSWORD=
-    CHARSET="utf8"
+    APP_NAME=
+    APP_URL=
+
+    APP_DB_ADMIN_PORT=8001
+    APP_SERVER_PORT=8002
+
+    DB_HOST=127.0.0.1
+    DB_NAME=
+    DB_USER=
+    DB_PASSWORD=
+    DB_CHARSET=utf8
+    DB_PORT=23306
+    MYSQL_ROOT_PASSWORD=
 
     PHPMAILER_USER=
     PHPMAILER_PASSWORD=
@@ -55,5 +62,7 @@ El aplicativo cuenta con tres roles (Administrador,Empleado,Cliente) cada uno co
     ```
 
 - Cambiar la variable `URL` por la misma URL que utilizó en el archivo .env
-- Ingresar al archivo `/app/controller/database.php` y configurar los datos de la BD
+
+- __Importante__ Si se quiere utilizar el envio de correos electronicos es necesario que tenga las variables de PHPMAILER_USER y PHPMAILER_PASSWORD con las credenciales de la cuenta de correo (preferiblemente una cuenta de gmail)
+
 - Por ultimo, ya puedes ingresar a la URL y utilizar el sistema
