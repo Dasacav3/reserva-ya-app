@@ -1,28 +1,28 @@
 # Reserva Ya Application
 
-Reserva ya es una aplicación de software que permite la gestión de reservaciones, productos, insumos y proveedores para el establecimiento Gastrobar Sephia PUB.
+Reserva Ya is a software application that allows the management of reservations, products, supplies and suppliers for the Gastrobar Sephia PUB establishment.
 
 ![image](https://user-images.githubusercontent.com/57577210/123087218-e7849a80-d3e9-11eb-988e-bb7817242343.png)
 ![image](https://user-images.githubusercontent.com/57577210/123087268-f8351080-d3e9-11eb-877d-8b47e43ce380.png)
 ![image](https://user-images.githubusercontent.com/57577210/123087321-097e1d00-d3ea-11eb-9dea-3f7794f2dfca.png)
 
-El aplicativo cuenta con tres roles (Administrador,Empleado,Cliente) cada uno con sus diferentes permisos asociados como se describe a continación:
+The application has three roles (Administrator, Employee, Client) each with its different associated permissions as described below:
 
-### Administrador:
+### Administrator:
 
 ![image](https://user-images.githubusercontent.com/57577210/123087373-1438b200-d3ea-11eb-9a4d-ab1c794810f0.png)
 
-### Empleado:
+### Employee:
 
 ![image](https://user-images.githubusercontent.com/57577210/123087666-68dc2d00-d3ea-11eb-8408-9a563d578afb.png)
 
-### Cliente:
+### Client:
 
 ![image](https://user-images.githubusercontent.com/57577210/123087856-a50f8d80-d3ea-11eb-805f-384126ca866a.png)
 
-# ¿Cómo probarlo?
+# How to test it?
 
-- Crear un archivo .env y agregar las variables del archivo .env example
+- Create a .env file and add the variables from the .env.example
 
     ```
     APP_NAME=
@@ -42,38 +42,38 @@ El aplicativo cuenta con tres roles (Administrador,Empleado,Cliente) cada uno co
     PHPMAILER_USER=
     PHPMAILER_PASSWORD=
     ```
-
-- Ahora ejecutar el comando (Debe tener docker instalado y ejecutandose):
+    
+- Now you can execute the command (You must have docker installed and running)
 
     ```
     docker-compose up -d --build
     ```
 
-    - Si no se ejecuta correctamente, verificar que el archivo .env exista y que los valores de las variables esten correctos.
-    - Para consultar el `network_id` de la red de docker, ejecutar el comando: `docker network ls`
+    - If it doesn't run correctly, check that the .env file exists and that the variable values are correct.
+    - To query the `network_id` of the docker network, run the command: `docker network ls`
 
 
-- Para consultar el `DB_HOST` es necesario que se ejecute el comando `docker network inspect 'network_id'` y buscar el valor de `Gateway`
+- To query the `DB_HOST` it is necessary to run the command `docker network inspect 'network_id'` and look for the value of `Gateway`
 
-- Importar el archivo ReservaYa BD.sql que se encuentra en la carpeta /docs
+- Import the ReservaYa BD.sql file found in the /docs folder
 
-    Tener en cuenta los siguientes datos para el ingreso:
+    Take into account the following data for admission:
     ```
-    _ADMINISTRADOR_
+    _ADMINISTRATOR_
     usuario: admin@gmail.com
     contraseña: 1234
 
-    _EMPLEADO_
+    _EMPLOYEE_
     usuario: empleado@gmail.com
     contraseña: 1234
 
-    _CLIENTE_
+    _CLIENT_
     usuario: cliente@gmail.com
     contraseña: 1234
     ```
 
-- Cambiar la variable `APP_URL` por la misma URL que utilizó en el archivo .env
+- Change the `APP_URL` variable to the same URL you used in the .env file
 
-- __Importante__ Si se quiere utilizar el envio de correos electronicos es necesario que tenga las variables de PHPMAILER_USER y PHPMAILER_PASSWORD con las credenciales de la cuenta de correo (preferiblemente una cuenta de gmail)
+- __Important__ If you want to use the sending of emails, you need to have the PHPMAILER_USER and PHPMAILER_PASSWORD variables with the email account credentials (preferably a gmail account)
 
-- Por ultimo, ya puedes ingresar a la URL y utilizar el sistema
+- Finally, you can now enter the URL and use the system
